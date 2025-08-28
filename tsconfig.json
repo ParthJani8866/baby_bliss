@@ -33,6 +33,6 @@
     "src/app/user/account/profile/page.jsx",
     "src/app/api/stripe/payment/route.ts",
     "src/app/Providers.js"
-, "pages/libs/utils.js", "pages/components/ui/dropdown-menu.js"  ],
+, "ui/libs/utils.js", "pages/components/ui/dropdown-menu.js"  ],
   "exclude": ["node_modules"]
 }
