@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "./components/ui/dropdown-menu";
+} from "./../ui/dropdown-menu";
 import CategoryDropdown from "./components/CategoryDropdown";
 import Header from "./components/header";
 import { useState, useEffect } from "react";

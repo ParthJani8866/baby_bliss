@@ -5,7 +5,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "../components/ui/dropdown-menu";
+} from "../../ui/dropdown-menu";
 import { ChevronDown , ChevronUp} from "lucide-react";
 import { slugify } from "../../utils/slugify"; // adjust path if needed
 

@@ -1,4 +1,4 @@
-import dbConnect from "../../../pages/libs/mongodb";
+import dbConnect from "../../../ui/libs/mongodb";
 import Product from "../../../pages/models/product";
 
 export default async function handler(req, res) {
