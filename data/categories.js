@@ -1,4 +1,4 @@
-export const categories = [
+const categories = [
   { id: 1, name: "Activity & Play Time" },
   { id: 2, name: "Baby Care" },
   { id: 3, name: "Baby Clothing" },
@@ -15,3 +15,5 @@ export const categories = [
   { id: 14, name: "Potty Training & Step Stools" },
   { id: 15, name: "Strollers, Buggies & Prams" }
 ];
+
+module.exports = { categories };
