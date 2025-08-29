@@ -4,6 +4,7 @@ import { categories } from "../../data/categories";
 import { subcategories } from "../../data/subcategories";
 import { slugify } from "../../utils/slugify";
 import Header from "../components/header";
+import Head from "next/head";
 
 export default function ProductPage({ product, brand, category, subcategory }) {
   return (
