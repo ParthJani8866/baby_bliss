@@ -8,7 +8,7 @@ module.exports = {
   priority: 0.7,
   additionalPaths: async (config) => {
     return categories.map((category) => ({
-      loc: `/categories/${slugify(category.name, { lower: true })}`,
+      loc: `/baby-products/${slugify(category.name, { lower: true })}`,
       changefreq: 'daily',
       priority: 0.8,
     }));

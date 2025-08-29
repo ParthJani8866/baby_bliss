@@ -9,7 +9,7 @@ const auth = new google.auth.GoogleAuth({
 });
 
 const indexing = google.indexing({ version: 'v3', auth });
-
+//
 async function publishUrl(url) {
   await indexing.urlNotifications.publish({
     requestBody: { url, type: 'URL_UPDATED' }
@@ -19,7 +19,7 @@ async function publishUrl(url) {
 
 async function run() {
   for (const cat of categories) {
-    const url = `https://truevivah.com/categories/${slugify(cat.name, { lower: true })}`;
+    const url = `https://truevivah.com/baby-products/${slugify(cat.name, { lower: true })}`;
     await publishUrl(url);
   }
 }
