@@ -7,6 +7,7 @@ import Header from "../components/header";
 import { useState, useEffect } from "react";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
+import Image from "next/image";
 
 export default function CategoryPage({ category }) {
   const [products, setProducts] = useState([]);
@@ -54,11 +55,15 @@ export default function CategoryPage({ category }) {
             >
               {/* Image with zoom */}
               <div className="relative rounded shadow group">
-                <img
-                  src={product.image}
+               <Image
+                    src={`/images/${product.image}`} 
                   alt={product.name}
-                  className="w-full h-48 md:h-64 object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
-                  onClick={() => openLightbox(product.image)}
+                  className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
+                  priority
+                  fetchPriority="high"
+                  width={500}
+                  height={500}
+                  onClick={() => openLightbox(`/images/${product.image}`)}
                 />
 
                 {/* Zoom Icon */}

@@ -43,16 +43,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex-1">
-            <Image
-              src="/images/baby-cream.png"
-              alt="Baby products"
-              fill
-              className="w-full max-w-xs md:max-w-md mx-auto h-auto rounded shadow"
-              fetchPriority="high"
-              priority={true}
-            ></Image>
-          </div>
+        
         </div>
       </section>
 
@@ -67,13 +58,14 @@ export default function Home() {
               {/* Image with zoom */}
               <div className="relative rounded shadow group">
                 <Image
-                  src={product.image} // your product image
+                    src={`/images/${product.image}`} 
                   alt={product.name}
-                  fill // makes it cover parent container
                   className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
-                  priority={true} // preloads this LCP image
-                  fetchPriority="high" // tells browser this image is high priority
-                  onClick={() => openLightbox(product.image)}
+                  priority
+                  fetchPriority="high"
+                  width={500}
+                  height={500}
+                  onClick={() => openLightbox(`/images/${product.image}`)}
                 />
 
                 {/* Zoom Icon */}
