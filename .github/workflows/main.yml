@@ -1,0 +1,47 @@
+name: CI/CD Deploy Next.js to AWS EC2
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Next.js
+      run: npm run build
+
+    - name: Copy files to EC2
+      uses: appleboy/scp-action@v0.1.5
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_KEY }}
+        source: "."
+        target: "/var/www/baby_bliss/baby_bliss"
+
+    - name: SSH and restart app
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_KEY }}
+        script: |
+          cd /var/www/baby_bliss/baby_bliss
+          npm install --production
+          pm2 delete baby_bliss || true
+          pm2 start npm --name "baby_bliss" -- start
+          pm2 save
