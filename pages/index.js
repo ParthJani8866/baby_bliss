@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Header from "./components/header";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
+import Image from "next/image";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -43,11 +44,14 @@ export default function Home() {
           </div>
 
           <div className="flex-1">
-            <img
+            <Image
               src="/images/baby-cream.png"
               alt="Baby products"
+              fill
               className="w-full max-w-xs md:max-w-md mx-auto h-auto rounded shadow"
-            />
+              fetchPriority="high"
+              priority={true}
+            ></Image>
           </div>
         </div>
       </section>
@@ -62,10 +66,13 @@ export default function Home() {
             >
               {/* Image with zoom */}
               <div className="relative rounded shadow group">
-                <img
-                  src={product.image}
+                <Image
+                  src={product.image} // your product image
                   alt={product.name}
-                  className="w-full h-48 md:h-64 object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
+                  fill // makes it cover parent container
+                  className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
+                  priority={true} // preloads this LCP image
+                  fetchPriority="high" // tells browser this image is high priority
                   onClick={() => openLightbox(product.image)}
                 />
 

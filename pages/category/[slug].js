@@ -7,6 +7,7 @@ import Header from "../components/header";
 import { useState, useEffect } from "react";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
+import Image from "next/image";
 
 export default function CategoryPage({ category }) {
   const [products, setProducts] = useState([]);
@@ -54,10 +55,13 @@ export default function CategoryPage({ category }) {
             >
               {/* Image with zoom */}
               <div className="relative rounded shadow group">
-                <img
-                  src={product.image}
+                <Image
+                  src={product.image} // your product image
                   alt={product.name}
-                  className="w-full h-48 md:h-64 object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
+                  fill // makes it cover parent container
+                  className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
+                  priority={true} // preloads this LCP image
+                  fetchPriority="high" // tells browser this image is high priority
                   onClick={() => openLightbox(product.image)}
                 />
 
