@@ -5,9 +5,23 @@ import { categories } from "../../data/categories";
 import { slugify } from "../../utils/slugify";
 import Link from "next/link";
 import CategoryDropdown from "./CategoryDropdown";
+import { useState, useEffect } from "react";
 
 export default function Header() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false); // track client mount
+
+  // Detect mobile screen
+  useEffect(() => {
+    setMounted(true); // component is mounted
+
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
+
     <>
       {/* SEO */}
       <Head>
@@ -18,7 +32,7 @@ export default function Header() {
       {/* Header */}
       <header className="bg-white shadow-md w-full">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
-          
+
           {/* Logo + Brand */}
           <Link href="/" className="flex items-center space-x-3">
             <img
@@ -26,11 +40,13 @@ export default function Header() {
               alt="Logo"
               className="w-10 h-10 object-contain"
             />
-            <h1 className="text-2xl font-bold text-gray-800">Baby Bliss Boutique</h1>
+            {!isMobile && (
+              <h1 className="text-xl font-bold text-orange-500">Baby Bliss</h1>
+            )}
           </Link>
 
           {/* Category Dropdown */}
-          <div className="hidden md:flex ml-6">
+          <div className="md:flex ml-6">
             <CategoryDropdown categories={categories} />
           </div>
 
@@ -52,14 +68,16 @@ export default function Header() {
             </nav>
 
             {/* Search Box */}
-            <div>
-              <input
-                type="text"
-                placeholder="Search products..."
-                className="px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                onChange={(e) => console.log(e.target.value)}
-              />
-            </div>
+            {!isMobile && (
+              <div>
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  className="px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  onChange={(e) => console.log(e.target.value)}
+                />
+              </div>
+            )}
           </div>
 
         </div>
