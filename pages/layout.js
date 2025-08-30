@@ -1,5 +1,5 @@
 import Script from "next/script";
-import "./globals.css";
+import "./../styles/global.css";
 
 export const metadata = {
   title: "My Next.js Site",

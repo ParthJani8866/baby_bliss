@@ -7,6 +7,7 @@ import Header from "./components/header";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import Image from "next/image";
+import AdBanner from "./components/AdBanner";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -43,12 +44,14 @@ export default function Home() {
             </p>
           </div>
 
-        
+
         </div>
       </section>
 
       {/* Products Grid */}
       <main className="container mx-auto px-4 py-6 md:py-12">
+        <AdBanner />
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {products.map((product) => (
             <div
@@ -58,7 +61,7 @@ export default function Home() {
               {/* Image with zoom */}
               <div className="relative rounded shadow group">
                 <Image
-                    src={`/images/${product.image}`} 
+                  src={`/images/${product.image}`}
                   alt={product.name}
                   className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
                   priority
