@@ -1,6 +1,5 @@
 // pages/layout.js
 import Script from "next/script";
-import "./../styles/global.css";
 
 export default function Layout({ children }) {
   return (
