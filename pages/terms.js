@@ -3,6 +3,7 @@
 import Head from "next/head";
 import Header from "./components/header";
 import Footer from "./components/Footer";
+import Link from "next/link";
 
 export default function TermsAndConditions() {
     return (
@@ -63,8 +64,13 @@ export default function TermsAndConditions() {
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">8. Privacy</h2>
                 <p className="mb-4">
-                    Our use of personal information is described in our <a href="/privacy-policy" className="text-blue-600 hover:underline">Privacy Policy</a>. By using the website, you consent to our collection and use of information as outlined there.
+                    Our use of personal information is described in our{" "}
+                    <Link href="/privacy-policy" className="text-blue-600 hover:underline">
+                        Privacy Policy
+                    </Link>
+                    . By using the website, you consent to our collection and use of information as outlined there.
                 </p>
+
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">9. Changes to Terms</h2>
                 <p className="mb-4">
