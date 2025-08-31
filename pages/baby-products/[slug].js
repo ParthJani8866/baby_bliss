@@ -4,6 +4,8 @@ import Head from "next/head";
 import { categories } from "../../data/categories";
 import { slugify } from "../../utils/slugify";
 import Header from "../components/header";
+import Footer from "../components/Footer";
+
 import { useState, useEffect } from "react";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
@@ -119,6 +121,7 @@ export default function CategoryPage({ category }) {
           onCloseRequest={() => setLightboxOpen(false)}
         />
       )}
+      <Footer />
     </div>
   );
 }

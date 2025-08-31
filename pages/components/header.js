@@ -9,19 +9,19 @@ import { useState, useEffect } from "react";
 
 export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
-  const [mounted, setMounted] = useState(false); // track client mount
+  const [mounted, setMounted] = useState(false);
 
   // Detect mobile screen
   useEffect(() => {
-    setMounted(true); // component is mounted
+    setMounted(true);
 
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  return (
 
+  return (
     <>
       {/* SEO */}
       <Head>
@@ -65,21 +65,14 @@ export default function Header() {
               <Link href="/category/baby-safety" className="text-gray-700 hover:text-gray-600 transition">
                 Baby Safety
               </Link>
+              {/* New Blogs Menu */}
+              <Link href="/blogs" className="text-gray-700 hover:text-blue-600 transition">
+                Blogs
+              </Link>
             </nav>
 
-            {/* Search Box */}
-            {!isMobile && (
-              <div>
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  className="px-3 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  onChange={(e) => console.log(e.target.value)}
-                />
-              </div>
-            )}
+           
           </div>
-
         </div>
       </header>
     </>

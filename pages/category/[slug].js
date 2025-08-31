@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import Image from "next/image";
+import Footer from "../components/Footer";
 
 export default function CategoryPage({ category }) {
   const [products, setProducts] = useState([]);
@@ -119,6 +120,7 @@ export default function CategoryPage({ category }) {
           onCloseRequest={() => setLightboxOpen(false)}
         />
       )}
+      <Footer />
     </div>
   );
 }
