@@ -4,7 +4,6 @@ import Head from "next/head";
 import Header from "../components/header"; // adjust the path if needed
 import Link from "next/link";
 import Footer from "../components/Footer";
-import RelatedBlogs from "../components/RelatedBlogs";
 
 export default function BestBabyDiapers() {
   const relatedBlogs = [
@@ -102,7 +101,7 @@ export default function BestBabyDiapers() {
           </p>
         </div>
         <div className="max-w-4xl mx-auto px-4 py-12">
-          <RelatedBlogs blogs={relatedBlogs} />
+          
         </div>
       </div>
       <Footer />
