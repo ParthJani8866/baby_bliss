@@ -15,7 +15,7 @@ export default function BreastfeedingVsFormula() {
         <title>Breastfeeding vs Formula: Pros & Cons Every Parent Should Consider | Baby Bliss</title>
         <meta
           name="description"
-          content="Learn the pros and cons of breastfeeding vs formula feeding. Make an informed decision for your baby's health and your convenience."
+          content="Learn the pros and cons of breastfeeding vs formula feeding. Make an informed decision for your baby&apos;s health and your convenience."
         />
       </Head>
 
@@ -71,7 +71,7 @@ export default function BreastfeedingVsFormula() {
           <li>Consult your pediatrician before deciding on formula types.</li>
           <li>Combine breastfeeding and formula if needed (mixed feeding).</li>
           <li>Ensure proper storage and preparation of formula to avoid contamination.</li>
-          <li>Prioritize your and your baby's comfort — every family is unique.</li>
+          <li>Prioritize your and your baby&apos;s comfort — every family is unique.</li>
         </ul>
 
         {/* Conclusion */}

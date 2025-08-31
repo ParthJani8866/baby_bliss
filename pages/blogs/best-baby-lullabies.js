@@ -25,7 +25,7 @@ export default function BestBabyLullabies() {
         </h1>
 
         <p className="mb-4 leading-relaxed">
-          Sleep is crucial for your baby's development, and lullabies are a great way to calm and soothe your little one. Here’s a list of 10 popular lullabies that can help your baby drift off peacefully.
+          Sleep is crucial for your baby&apos;s development, and lullabies are a great way to calm and soothe your little one. Here’s a list of 10 popular lullabies that can help your baby drift off peacefully.
         </p>
 
         {/* Lullaby List */}

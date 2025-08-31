@@ -26,7 +26,7 @@ export default function BestBabyDiapers() {
         </h1>
 
         <p className="mb-4 leading-relaxed">
-          Choosing the right diaper is crucial for your baby's comfort and skin health. With so many options available in India, it can be overwhelming. In this guide, we’ll cover the top 10 baby diapers and what to consider when buying them.
+          Choosing the right diaper is crucial for your baby&apos;s comfort and skin health. With so many options available in India, it can be overwhelming. In this guide, we’ll cover the top 10 baby diapers and what to consider when buying them.
         </p>
 
         {/* Top Diapers List */}
