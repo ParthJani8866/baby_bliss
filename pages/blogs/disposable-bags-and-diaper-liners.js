@@ -63,7 +63,7 @@ export default function DisposableBagsAndDiaperLiners() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </Head>
-
+      <Script type='text/javascript' src='//pl27553777.revenuecpmgate.com/df/af/59/dfaf59384b36255eb7c96260e0fb4db8.js'></Script>
       <main className="max-w-4xl mx-auto px-4 py-10">
         {/* Breadcrumbs */}
         <nav className="text-sm mb-6 text-gray-500">

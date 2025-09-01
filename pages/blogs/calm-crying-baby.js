@@ -19,7 +19,7 @@ export default function CalmCryingBaby() {
           content="Discover 5 effective and tested ways to calm a crying baby. Practical tips for soothing your newborn quickly and safely."
         />
       </Head>
-
+      <Script type='text/javascript' src='//pl27553777.revenuecpmgate.com/df/af/59/dfaf59384b36255eb7c96260e0fb4db8.js'></Script>
       <div className="max-w-4xl mx-auto px-4 py-12">
         <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
           <Link href="/" className="hover:text-orange-500 transition-colors duration-200">

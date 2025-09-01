@@ -76,6 +76,7 @@ export default function Blogs() {
                     content="Read expert blogs and guides on baby products, newborn care, and parenting tips."
                 />
             </Head>
+            <Script type='text/javascript' src='//pl27553777.revenuecpmgate.com/df/af/59/dfaf59384b36255eb7c96260e0fb4db8.js'></Script>
             <div className="max-w-4xl mx-auto px-4 py-12">
                 <h1 className="text-3xl font-bold mb-8 text-orange-500">Baby Bliss Blogs</h1>
 

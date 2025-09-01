@@ -25,6 +25,7 @@ export default function BestBabyDiapers() {
           content="Discover the top 10 baby diapers for absorbency, comfort, and eco-friendliness. Tips for choosing the best diapers for your baby."
         />
       </Head>
+      <Script type='text/javascript' src='//pl27553777.revenuecpmgate.com/df/af/59/dfaf59384b36255eb7c96260e0fb4db8.js'></Script>
       <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
         <div className="max-w-4xl mx-auto px-4 py-12">
           <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
