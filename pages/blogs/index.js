@@ -76,20 +76,6 @@ export default function Blogs() {
                     content="Read expert blogs and guides on baby products, newborn care, and parenting tips."
                 />
             </Head>
-            <Script id="custom-ad-script" strategy="afterInteractive">
-                {`
-          (function(xlu){
-            var d = document,
-                s = d.createElement('script'),
-                l = d.scripts[d.scripts.length - 1];
-            s.settings = xlu || {};
-            s.src = "//weepy-attack.com/b.XPVqsBdWGtl/0yYfWccv/eekmi9HuaZ_UslHk_PuTcYT2/MBzMQi3eNuTLAztINmjpYTzQNnDjci1pMYQg";
-            s.async = true;
-            s.referrerPolicy = 'no-referrer-when-downgrade';
-            l.parentNode.insertBefore(s, l);
-          })({})
-        `}
-            </Script>
             <div className="max-w-4xl mx-auto px-4 py-12">
                 <h1 className="text-3xl font-bold mb-8 text-orange-500">Baby Bliss Blogs</h1>
 
