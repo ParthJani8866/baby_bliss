@@ -4,6 +4,7 @@ import Head from "next/head";
 import Header from "../components/header"; // adjust the path if needed
 import Link from "next/link";
 import Footer from "../components/Footer";
+import Script from "next/script";
 
 export default function BestBabyDiapers() {
   const relatedBlogs = [
@@ -24,19 +25,33 @@ export default function BestBabyDiapers() {
           content="Discover the top 10 baby diapers for absorbency, comfort, and eco-friendliness. Tips for choosing the best diapers for your baby."
         />
       </Head>
+      <Script id="custom-ad-script" strategy="afterInteractive">
+        {`
+          (function(xlu){
+            var d = document,
+                s = d.createElement('script'),
+                l = d.scripts[d.scripts.length - 1];
+            s.settings = xlu || {};
+            s.src = "//weepy-attack.com/b.XPVqsBdWGtl/0yYfWccv/eekmi9HuaZ_UslHk_PuTcYT2/MBzMQi3eNuTLAztINmjpYTzQNnDjci1pMYQg";
+            s.async = true;
+            s.referrerPolicy = 'no-referrer-when-downgrade';
+            l.parentNode.insertBefore(s, l);
+          })({})
+        `}
+      </Script>
       <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
         <div className="max-w-4xl mx-auto px-4 py-12">
-            <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
-          <Link href="/" className="hover:text-orange-500 transition-colors duration-200">
-            Home
-          </Link>
-          <span>/</span>
-          <Link href="/blogs" className="hover:text-orange-500 transition-colors duration-200">
-            Blogs
-          </Link>
-          <span>/</span>
-          <span className="text-gray-700 font-medium">10 Best Baby Diapers: Comfort & Eco-Friendly Picks</span>
-        </nav>
+          <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
+            <Link href="/" className="hover:text-orange-500 transition-colors duration-200">
+              Home
+            </Link>
+            <span>/</span>
+            <Link href="/blogs" className="hover:text-orange-500 transition-colors duration-200">
+              Blogs
+            </Link>
+            <span>/</span>
+            <span className="text-gray-700 font-medium">10 Best Baby Diapers: Comfort & Eco-Friendly Picks</span>
+          </nav>
           <h1 className="text-3xl font-bold mb-6 text-orange-500">
             10 Best Baby Diapers: Comfort & Eco-Friendly Picks
           </h1>
@@ -112,7 +127,7 @@ export default function BestBabyDiapers() {
           </p>
         </div>
         <div className="max-w-4xl mx-auto px-4 py-12">
-          
+
         </div>
       </div>
       <Footer />

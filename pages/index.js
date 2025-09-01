@@ -10,6 +10,7 @@ import "react-image-lightbox/style.css";
 import Image from "next/image";
 import AdBanner from "./components/AdBanner";
 import { NextSeo } from "next-seo";
+import Script from "next/script";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -50,7 +51,6 @@ export default function Home() {
           ],
         }}
       />
-
       <Header />
 
       {/* Hero Section with SEO-friendly content */}

