@@ -24,6 +24,7 @@ export default function Header() {
   return (
     <>
       {/* SEO */}
+      <meta name="8e14bbdd94c8fba73ae094f9c07249548ec74659" content="8e14bbdd94c8fba73ae094f9c07249548ec74659" />
       <Head>
         <title>Baby Bliss Boutique - Premium Baby Products</title>
         <link rel="icon" href="/images/logo.png" />
