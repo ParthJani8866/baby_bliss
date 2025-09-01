@@ -26,6 +26,17 @@ export default function BestBabyDiapers() {
       </Head>
       <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
         <div className="max-w-4xl mx-auto px-4 py-12">
+            <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
+          <Link href="/" className="hover:text-orange-500 transition-colors duration-200">
+            Home
+          </Link>
+          <span>/</span>
+          <Link href="/blogs" className="hover:text-orange-500 transition-colors duration-200">
+            Blogs
+          </Link>
+          <span>/</span>
+          <span className="text-gray-700 font-medium">10 Best Baby Diapers: Comfort & Eco-Friendly Picks</span>
+        </nav>
           <h1 className="text-3xl font-bold mb-6 text-orange-500">
             10 Best Baby Diapers: Comfort & Eco-Friendly Picks
           </h1>

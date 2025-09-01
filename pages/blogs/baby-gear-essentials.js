@@ -3,6 +3,7 @@
 import Head from "next/head";
 import Header from "../components/header"; // adjust path if needed
 import Footer from "../components/Footer"; // adjust path if needed
+import Link from "next/link";
 
 export default function BabyGearEssentials() {
   return (
@@ -20,6 +21,17 @@ export default function BabyGearEssentials() {
       </Head>
 
       <div className="max-w-4xl mx-auto px-4 py-12">
+        <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
+          <Link href="/" className="hover:text-orange-500 transition-colors duration-200">
+            Home
+          </Link>
+          <span>/</span>
+          <Link href="/blogs" className="hover:text-orange-500 transition-colors duration-200">
+            Blogs
+          </Link>
+          <span>/</span>
+          <span className="text-gray-700 font-medium">Top 10 Must-Have Baby Gear Essentials for New Parents</span>
+        </nav>
         <h1 className="text-3xl font-bold mb-6 text-orange-500">
           Top 10 Must-Have Baby Gear Essentials for New Parents
         </h1>

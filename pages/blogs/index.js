@@ -57,6 +57,11 @@ export default function Blogs() {
             title: "Self-Care for Stay-At-Home Moms: Tips for Wellbeing and Balance",
             slug: "self-care-for-moms",
             description: "Important self-care tips for stay-at-home moms to maintain health and balance."
+        },
+        {
+            title: "Baby Diapers: Absorbency, Comfort , disposable-bags",
+            slug: "disposable-bags-and-diaper-liners",
+            description: "Important self-care tips for stay-at-home moms to maintain health and balance."
         }
     ];
 

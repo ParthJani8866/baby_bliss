@@ -3,6 +3,7 @@
 import Head from "next/head";
 import Header from "../components/header"; // adjust path if needed
 import Footer from "../components/Footer";
+import Link from "next/link";
 
 export default function BreastfeedingVsFormula() {
   return (
@@ -20,6 +21,17 @@ export default function BreastfeedingVsFormula() {
       </Head>
 
       <div className="max-w-4xl mx-auto px-4 py-12">
+        <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
+          <Link href="/" className="hover:text-orange-500 transition-colors duration-200">
+            Home
+          </Link>
+          <span>/</span>
+          <Link href="/blogs" className="hover:text-orange-500 transition-colors duration-200">
+            Blogs
+          </Link>
+          <span>/</span>
+          <span className="text-gray-700 font-medium">Breastfeeding vs Formula: Pros & Cons Every Parent Should Consider</span>
+        </nav>
         <h1 className="text-3xl font-bold mb-6 text-orange-500">
           Breastfeeding vs Formula: Pros & Cons Every Parent Should Consider
         </h1>

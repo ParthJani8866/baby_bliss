@@ -19,6 +19,17 @@ export default function NewbornBabyClothes() {
             </Head>
 
             <div className="max-w-4xl mx-auto px-4 py-12">
+                <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
+                    <Link href="/" className="hover:text-orange-500 transition-colors duration-200">
+                        Home
+                    </Link>
+                    <span>/</span>
+                    <Link href="/blogs" className="hover:text-orange-500 transition-colors duration-200">
+                        Blogs
+                    </Link>
+                    <span>/</span>
+                    <span className="text-gray-700 font-medium"> How to Swaddle Your Baby: Step-by-Step Techniques for Comfort</span>
+                </nav>
                 <h1 className="text-3xl font-bold mb-6 text-orange-500">
                     Newborn Baby Clothes: What You Need to Know in 2025
                 </h1>
@@ -98,7 +109,7 @@ export default function NewbornBabyClothes() {
                     Newborn baby clothes are more than just cute outfits — they ensure comfort, safety, and practicality for your little one. Focus on soft fabrics, safe designs, and versatile pieces, and you’ll have a wardrobe that keeps your newborn happy and cozy.
                 </p>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }
