@@ -4,6 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Header from "../components/header";
 import Footer from "../components/Footer";
+import Script from "next/script";
 
 export default function NewbornBabyClothes() {
     return (

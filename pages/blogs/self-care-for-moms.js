@@ -4,6 +4,7 @@ import Head from "next/head";
 import Header from "../components/header"; // adjust path if needed
 import Footer from "../components/Footer";
 import Link from "next/link";
+import Script from "next/script";
 
 export default function SelfCareForMoms() {
   return (
