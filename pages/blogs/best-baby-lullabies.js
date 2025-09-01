@@ -21,6 +21,8 @@ export default function BestBabyLullabies() {
         />
       </Head>
       <Script type='text/javascript' src='//pl27553777.revenuecpmgate.com/df/af/59/dfaf59384b36255eb7c96260e0fb4db8.js'></Script>
+      <Script async="async" data-cfasync="false" src="//geographicalpaperworkmovie.com/14557498d6b14f90b64bcba955b87ea1/invoke.js"></Script>
+            <div id="container-14557498d6b14f90b64bcba955b87ea1"></div>
       <div className="max-w-4xl mx-auto px-4 py-12">
         <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
           <Link href="/" className="hover:text-orange-500 transition-colors duration-200">
