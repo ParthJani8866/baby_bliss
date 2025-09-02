@@ -57,22 +57,17 @@ export default function Header() {
               <Link href="/" className="text-gray-700 hover:text-blue-600 transition">
                 Home
               </Link>
+              <Link href="/category/activity-and-play-time" className="text-gray-700 hover:text-gray-600 transition">
+                Baby Toys
+              </Link>
               <Link href="/category/baby-care" className="text-gray-700 hover:text-gray-600 transition">
                 Baby Care
-              </Link>
-              <Link href="/category/baby-clothing" className="text-gray-700 hover:text-gray-600 transition">
-                Baby Clothing
-              </Link>
-              <Link href="/category/baby-safety" className="text-gray-700 hover:text-gray-600 transition">
-                Baby Safety
               </Link>
               {/* New Blogs Menu */}
               <Link href="/blogs" className="text-gray-700 hover:text-blue-600 transition">
                 Blogs
               </Link>
             </nav>
-
-           
           </div>
         </div>
       </header>
