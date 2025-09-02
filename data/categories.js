@@ -1,19 +1,12 @@
 const categories = [
-  { id: 1, name: "Activity and Play Time" },
-  { id: 2, name: "Baby Care" },
-  { id: 3, name: "Baby Clothing" },
-  { id: 4, name: "Baby Safety" },
-  { id: 5, name: "Baby Shoes" },
-  { id: 6, name: "Car Seats and Accessories" },
-  { id: 7, name: "Carriers and Accessories" },
-  { id: 8, name: "Diapering and Nappy Changing" },
-  { id: 9, name: "Feeding" },
-  { id: 10, name: "Gift Packs" },
-  { id: 11, name: "Maternity" },
-  { id: 12, name: "Nursery" },
-  { id: 13, name: "Pacifiers and Teethers" },
-  { id: 14, name: "Potty Training and Step Stools" },
-  { id: 15, name: "Strollers, Buggies & Prams" }
+  { id: 1, name: "Activity and Play Time", image: "img6.jpg" },
+  { id: 5, name: "Walkers and Ride-Ons", image: "img17.jpg" },
+  { id: 6, name: "Tricycles and Kids Cycles", image: "img34.jpg" },
+  { id: 7, name: "Rattles and Plush Toys", image: "img23.jpg" },
+  { id: 2, name: "Baby Care", image: "img8.jpg" },
+  { id: 8, name: "Books and Learning Material", image: "img51.jpg" },
+  { id: 3, name: "Bath and Hygiene" , image: "img13.jpg"},
+  { id: 4, name: "Playmats and Gyms" , image: "img15.jpg"}
 ];
 
 module.exports = { categories };

@@ -7,7 +7,8 @@ const ProductSchema = new mongoose.Schema({
   name: String,
   price: Number,
   amazonUrl: String,
-  image: String
+  image: String,
+  isBest:Boolean
 });
 
 export default mongoose.models.Product || mongoose.model("Product", ProductSchema);

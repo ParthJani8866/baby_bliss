@@ -4,27 +4,65 @@ import Head from "next/head";
 import { categories } from "../../data/categories";
 import { slugify } from "../../utils/slugify";
 import Header from "../components/header";
-import { useState, useEffect } from "react";
+import Footer from "../components/Footer";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import Image from "next/image";
-import Footer from "../components/Footer";
+import { useState, useEffect } from "react";
+
+// Max Price Slider Component
+function MaxPriceSlider({ maxPrice, onChange }) {
+  const [value, setValue] = useState(maxPrice);
+
+  useEffect(() => {
+    onChange(value); // send max price to parent
+  }, [value]);
+
+  return (
+    <div className="flex flex-col gap-4">
+      <label className="font-semibold">Maximum Price: ₹{value}</label>
+      <input
+        type="range"
+        min={0}
+        max={maxPrice}
+        value={value}
+        onChange={(e) => setValue(Number(e.target.value))}
+        className="w-full"
+      />
+      <button
+        onClick={() => setValue(maxPrice)}
+        className="mt-2 px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600"
+      >
+        Reset
+      </button>
+    </div>
+  );
+}
 
 export default function CategoryPage({ category }) {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [maxPrice, setMaxPrice] = useState(10000);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+
   useEffect(() => {
-    // Fetch products from your API
     fetch("/api/products")
       .then((res) => res.json())
       .then((data) => {
-        // Filter products by this category
         const filtered = data.filter((p) => p.categoryId === category.id);
         setProducts(filtered);
+        setFilteredProducts(filtered);
       })
       .catch((err) => console.error(err));
   }, [category.id]);
+
+  // Filter products whenever maxPrice changes
+  useEffect(() => {
+    const filtered = products.filter((p) => p.price <= maxPrice);
+    setFilteredProducts(filtered);
+  }, [maxPrice, products]);
+
   const openLightbox = (imageUrl) => {
     setSelectedImage(imageUrl);
     setLightboxOpen(true);
@@ -43,89 +81,84 @@ export default function CategoryPage({ category }) {
           content={`${category.name}, baby products, baby care, baby clothing`}
         />
       </Head>
+
       <Header />
 
       <section className="max-w-7xl mx-auto px-4 py-6">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">{category.name}</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">{category.name}</h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="flex flex-col border border-gray-200 rounded shadow hover:shadow-lg transition-all bg-white overflow-hidden"
-            >
-              {/* Image with zoom */}
-              <div className="relative rounded shadow group">
-                <Image
-                  src={`/images/${product.image}`}
-                  alt={product.name}
-                  className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
-                  priority
-                  fetchPriority="high"
-                  width={500}
-                  height={500}
-                  onClick={() => openLightbox(`/images/${product.image}`)}
-                />
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Sidebar */}
+          <aside className="w-full md:w-1/4 bg-white p-4 rounded shadow">
+            <h2 className="font-semibold text-lg mb-4">Filter by Price</h2>
+            <MaxPriceSlider
+              maxPrice={10000}
+              onChange={(value) => setMaxPrice(value)}
+            />
+          </aside>
 
-                {/* Zoom Icon */}
-                <button
-                  onClick={() => openLightbox(product.image)}
-                  className="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md flex items-center justify-center z-10"
+          {/* Products Grid */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
+                <div
+                  key={product.id}
+                  className="flex flex-col border border-gray-200 rounded shadow hover:shadow-lg transition-all bg-white overflow-hidden"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-800"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 21l-4.35-4.35M11 18a7 7 0 100-14 7 7 0 000 14z"
+                  {/* Product Image */}
+                  <div className="relative rounded shadow group">
+                    <Image
+                      src={`/images/${product.image}`}
+                      alt={product.name}
+                      className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
+                      width={500}
+                      height={500}
+                      onClick={() => openLightbox(`/images/${product.image}`)}
                     />
-                  </svg>
-                </button>
-              </div>
+                  </div>
 
-              {/* Product Info */}
-              <div className="p-4 flex-1">
-                <h3 className="font-semibold text-sm md:text-base">{product.name}</h3>
-                <p className="text-green-600 font-bold text-sm md:text-base">₹{product.price}</p>
-              </div>
+                  {/* Product Info */}
+                  <div className="p-4 flex-1">
+                    <h3 className="font-semibold text-sm md:text-base">{product.name}</h3>
+                    <p className="text-green-600 font-bold text-sm md:text-base">
+                      ₹{product.price}
+                    </p>
+                  </div>
 
-              {/* Bottom Buy Button Panel */}
-              {product.amazonUrl && (
-                <div className="p-4 border-t border-gray-200 bg-gray-50 flex justify-center">
-                  <a
-                    href={product.amazonUrl}
-                    target="_blank"
-                    rel="nofollow noreferrer"
-                    className="w-full text-center px-4 py-2 bg-orange-500 text-white rounded text-sm md:text-base hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                  >
-                    Buy Now
-                  </a>
+                  {/* Buy Now Button */}
+                  {product.amazonUrl && (
+                    <div className="p-4 border-t border-gray-200 bg-gray-50 flex justify-center">
+                      <a
+                        href={product.amazonUrl}
+                        target="_blank"
+                        rel="nofollow noreferrer"
+                        className="w-full text-center px-4 py-2 bg-orange-500 text-white rounded text-sm md:text-base hover:bg-orange-600"
+                      >
+                        Buy Now
+                      </a>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          ))}
-
+              ))
+            ) : (
+              <p className="text-gray-500 col-span-full">
+                No products found under ₹{maxPrice}.
+              </p>
+            )}
+          </div>
         </div>
       </section>
-      {/* Lightbox Popup */}
+
       {lightboxOpen && (
-        <Lightbox
-          mainSrc={selectedImage}
-          onCloseRequest={() => setLightboxOpen(false)}
-        />
+        <Lightbox mainSrc={selectedImage} onCloseRequest={() => setLightboxOpen(false)} />
       )}
+
       <Footer />
     </div>
   );
 }
 
-// getStaticPaths + getStaticProps to get category info
+// Static paths + props
 export async function getStaticPaths() {
   const paths = categories.map((c) => ({ params: { slug: slugify(c.name) } }));
   return { paths, fallback: false };
