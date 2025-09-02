@@ -47,24 +47,16 @@ export default function Header() {
           </Link>
 
           {/* Category Dropdown */}
-          <div className="md:flex ml-6">
-            <CategoryDropdown categories={categories} />
-          </div>
+
 
           {/* Navigation + Search */}
           <div className="flex items-center space-x-6">
-            <nav className="hidden md:flex space-x-4">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 transition">
-                Home
-              </Link>
-              <Link href="/category/activity-and-play-time" className="text-gray-700 hover:text-gray-600 transition">
-                Baby Toys
-              </Link>
-              <Link href="/category/baby-care" className="text-gray-700 hover:text-gray-600 transition">
-                Baby Care
-              </Link>
+            <div className="md:flex ml-6">
+              <CategoryDropdown categories={categories} />
+            </div>
+            <nav className="md:flex space-x-4">
               {/* New Blogs Menu */}
-              <Link href="/blogs" className="text-gray-700 hover:text-blue-600 transition">
+              <Link href="/blogs" className="text-xl font-bold text-orange-500 hover:text-blue-600 transition">
                 Blogs
               </Link>
             </nav>

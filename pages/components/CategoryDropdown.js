@@ -6,7 +6,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "../../ui/dropdown-menu";
-import { ChevronDown , ChevronUp} from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { slugify } from "../../utils/slugify"; // adjust path if needed
 
 export default function CategoryDropdown({ categories = [] }) {
@@ -29,7 +29,7 @@ export default function CategoryDropdown({ categories = [] }) {
       </DropdownMenuTrigger>
 
       {/* Dropdown Content */}
-      <DropdownMenuContent className="bg-white border border-gray-300 rounded w-56 mt-1 shadow-none">
+      <DropdownMenuContent   style={{ zIndex: 1000 }} className="bg-white border border-gray-300 rounded w-56 mt-1 shadow-none">
         {categories.length > 0 ? (
           categories.map((cat) => (
             <DropdownMenuItem
