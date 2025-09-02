@@ -11,30 +11,20 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 // Max Price Slider Component
-function MaxPriceSlider({ maxPrice, onChange }) {
-  const [value, setValue] = useState(maxPrice);
-
-  useEffect(() => {
-    onChange(value); // send max price to parent
-  }, [value]);
-
+function MaxPriceSlider({ maxPrice, value, onChange }) {
   return (
     <div className="flex flex-col gap-4">
-      <label className="font-semibold">Maximum Price: ₹{value}</label>
+      <label className="font-semibold text-gray-700">
+        Maximum Price: <span className="text-green-600">₹{value}</span>
+      </label>
       <input
         type="range"
         min={0}
         max={maxPrice}
         value={value}
-        onChange={(e) => setValue(Number(e.target.value))}
-        className="w-full"
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="w-full accent-orange-500"
       />
-      <button
-        onClick={() => setValue(maxPrice)}
-        className="mt-2 px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600"
-      >
-        Reset
-      </button>
     </div>
   );
 }
@@ -45,6 +35,8 @@ export default function CategoryPage({ category }) {
   const [maxPrice, setMaxPrice] = useState(10000);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     fetch("/api/products")
@@ -57,11 +49,19 @@ export default function CategoryPage({ category }) {
       .catch((err) => console.error(err));
   }, [category.id]);
 
-  // Filter products whenever maxPrice changes
   useEffect(() => {
     const filtered = products.filter((p) => p.price <= maxPrice);
     setFilteredProducts(filtered);
   }, [maxPrice, products]);
+
+  useEffect(() => {
+    setMounted(true);
+
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const openLightbox = (imageUrl) => {
     setSelectedImage(imageUrl);
@@ -89,13 +89,23 @@ export default function CategoryPage({ category }) {
 
         <div className="flex flex-col md:flex-row gap-6">
           {/* Sidebar */}
-          <aside className="w-full md:w-1/4 bg-white p-4 rounded shadow">
-            <h2 className="font-semibold text-lg mb-4">Filter by Price</h2>
-            <MaxPriceSlider
-              maxPrice={10000}
-              onChange={(value) => setMaxPrice(value)}
-            />
-          </aside>
+          {!isMobile && (
+            <aside className="w-full md:w-1/5 bg-white p-6 rounded-xl shadow-lg sticky top-6 h-max">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-bold text-lg text-gray-800">Filter by Price</h2>
+                <button
+                  onClick={() => setMaxPrice(10000)}
+                  className="text-sm text-orange-500 font-semibold hover:underline"
+                >
+                  Reset
+                </button>
+              </div>
+              <MaxPriceSlider
+                maxPrice={10000}
+                value={maxPrice}
+                onChange={(value) => setMaxPrice(value)}
+              />
+            </aside>)}
 
           {/* Products Grid */}
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -106,11 +116,11 @@ export default function CategoryPage({ category }) {
                   className="flex flex-col border border-gray-200 rounded shadow hover:shadow-lg transition-all bg-white overflow-hidden"
                 >
                   {/* Product Image */}
-                  <div className="relative rounded shadow group">
+                  <div className="relative rounded overflow-hidden">
                     <Image
                       src={`/images/${product.image}`}
                       alt={product.name}
-                      className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
+                      className="object-cover transition-transform duration-300 hover:scale-105 cursor-zoom-in"
                       width={500}
                       height={500}
                       onClick={() => openLightbox(`/images/${product.image}`)}
@@ -132,7 +142,7 @@ export default function CategoryPage({ category }) {
                         href={product.amazonUrl}
                         target="_blank"
                         rel="nofollow noreferrer"
-                        className="w-full text-center px-4 py-2 bg-orange-500 text-white rounded text-sm md:text-base hover:bg-orange-600"
+                        className="w-full text-center px-4 py-2 bg-orange-500 text-white rounded text-sm md:text-base hover:bg-orange-600 transition"
                       >
                         Buy Now
                       </a>
