@@ -13,7 +13,7 @@ export default function CategoryDropdown({ categories = [] }) {
   const [open, setOpen] = useState(false);
 
   const handleNavigate = (category) => {
-    window.location.href = `/category/${slugify(category.name)}`;
+    window.location.href = `/baby-products/${slugify(category.name)}`;
   };
 
   return (

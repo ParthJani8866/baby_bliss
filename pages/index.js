@@ -135,7 +135,7 @@ export default function Home() {
             .map((cat) => (
               <Link
                 key={cat.name}
-                href={`/category/${slugify(cat.name.toLowerCase())}`}
+                href={`/baby-products/${slugify(cat.name.toLowerCase())}`}
                 className="flex flex-col items-center p-4 bg-gray-50 border border-gray-200 rounded-lg shadow hover:shadow-lg transition w-full max-w-[160px]"
               >
                 <Image
