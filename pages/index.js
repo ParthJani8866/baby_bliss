@@ -23,7 +23,7 @@ export default function Home() {
     fetch("/api/products")
       .then((res) => res.json())
       .then((data) => setProducts(data))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error("Error fetching products:", err));
   }, []);
 
   const openLightbox = (imageUrl) => {
@@ -31,19 +31,45 @@ export default function Home() {
     setLightboxOpen(true);
   };
 
-  return (
+  // JSON-LD Schema Markup for SEO
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": products.map((product, index) => ({
+      "@type": "Product",
+      "position": index + 1,
+      "name": product.name,
+      "image": `https://baby-toys.shop/images/${product.image}`,
+      "description":
+        product.shortDescription ||
+        "High-quality baby product available in Ahmedabad and across India.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Baby Bliss"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": `https://baby-toys.shop/products/${product.id}`,
+        "priceCurrency": "INR",
+        "price": product.price,
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+    }))
+  };
 
+  return (
     <div className="bg-white text-black min-h-screen">
       {/* SEO Meta Tags */}
       <NextSeo
-        title="Baby Bliss Boutique - Premium Baby Products Online"
-        description="Shop premium baby products — bottles, toys, strollers, and more — delivered across India with quality and safety you can trust."
-        canonical="https://truevivah.com/"
+        title="Buy Baby Toys in Ahmedabad | Baby Bliss Boutique"
+        description="Shop premium baby toys, walkers, strollers, and essentials in Ahmedabad (380051). Quality products delivered fast across India."
+        canonical="https://baby-toys.shop/"
         openGraph={{
-          url: "https://truevivah.com/",
-          title: "Baby Bliss Boutique - Premium Baby Products Online",
+          url: "https://baby-toys.shop/",
+          title: "Buy Baby Toys in Ahmedabad | Baby Bliss Boutique",
           description:
-            "Safe, curated baby essentials for every stage of parenting — from newborn to toddler.",
+            "Premium baby essentials from feeding bottles to educational toys. Trusted by parents, delivered across India.",
           images: [
             {
               url: "/images/og-image.jpg",
@@ -54,6 +80,17 @@ export default function Home() {
           ],
         }}
       />
+
+      {/* Product Schema */}
+      {products.length > 0 && (
+        <Script
+          id="product-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        />
+      )}
+
+      {/* Google Tag Manager */}
       <Script
         id="gtm-script"
         strategy="afterInteractive"
@@ -67,27 +104,31 @@ export default function Home() {
           `,
         }}
       />
+
       <Header />
 
-      {/* Hero Section with SEO-friendly content */}
+      {/* Hero Section */}
       <section className="hero relative p-6 md:p-10 bg-gray-50 overflow-hidden">
         <div className="container mx-auto flex flex-col md:flex-row items-center gap-6 relative z-10">
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-3xl font-bold mb-4">Welcome to Baby Bliss Boutique</h1>
+            <h1 className="text-3xl font-bold mb-4">
+              Buy Baby Toys in Ahmedabad | Baby Bliss Boutique
+            </h1>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              Discover premium baby products curated with love and care. At Baby Bliss, we prioritize
-              safety, quality, and comfort for your little ones. From feeding bottles, strollers, and
-              toys to skincare and essentials, our collection is carefully handpicked for every parent.
-              Whether you’re a first-time parent or looking for thoughtful baby shower gifts, Baby Bliss
-              brings you the perfect combination of reliability, affordability, and style — delivered
-              across India with quick and hassle-free service.
+              Discover premium baby products curated with love and care. From
+              baby walkers, feeding bottles, and strollers to educational toys,
+              Baby Bliss ensures safe, high-quality, and affordable essentials
+              delivered across India.
             </p>
           </div>
         </div>
       </section>
+
       {/* Categories */}
       <section className="my-12 px-4 md:px-8">
-        <h2 className="text-2xl font-semibold text-center mb-6">Shop by Category</h2>
+        <h2 className="text-2xl font-semibold text-center mb-6">
+          Shop by Category
+        </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-items-center">
           {categories
             .filter((cat) => cat.id !== 3 && cat.id !== 8)
@@ -102,9 +143,12 @@ export default function Home() {
                   alt={cat.name}
                   width={180}
                   height={120}
+                  loading="lazy"
                   className="object-cover rounded mb-2"
                 />
-                <span className="text-sm font-medium text-gray-700 text-center">{cat.name}</span>
+                <span className="text-sm font-medium text-gray-700 text-center">
+                  {cat.name}
+                </span>
               </Link>
             ))}
         </div>
@@ -112,10 +156,12 @@ export default function Home() {
 
       {/* Best Products Section */}
       <section className="my-12 px-4 md:px-8">
-        <h2 className="text-2xl font-semibold text-center mb-6">Our Best Products</h2>
+        <h2 className="text-2xl font-semibold text-center mb-6">
+          Our Best Products
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products
-            .filter((p) => p.id < 15) // assuming your product JSON has "isBest": true for best products
+            .filter((p) => p.id < 15)
             .map((product) => (
               <div
                 key={product.id}
@@ -129,17 +175,25 @@ export default function Home() {
                     className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
                     width={500}
                     height={500}
-                    onClick={() => openLightbox(`/images/${product.image}`)}
+                    loading="lazy"
+                    onClick={() =>
+                      openLightbox(`/images/${product.image}`)
+                    }
                   />
                 </div>
 
                 {/* Product Info */}
                 <div className="p-4 flex-1">
-                  <h3 className="font-semibold text-sm md:text-base">{product.name}</h3>
+                  <h3 className="font-semibold text-sm md:text-base">
+                    {product.name}
+                  </h3>
                   <p className="text-gray-600 text-xs md:text-sm mb-2">
-                    {product.shortDescription || "A premium, baby-safe product designed for comfort and reliability."}
+                    {product.shortDescription ||
+                      "A premium, baby-safe product designed for comfort and reliability."}
                   </p>
-                  <p className="text-green-600 font-bold text-sm md:text-base">₹{product.price}</p>
+                  <p className="text-green-600 font-bold text-sm md:text-base">
+                    ₹{product.price}
+                  </p>
                 </div>
 
                 {/* Buy Now Button */}
@@ -159,18 +213,20 @@ export default function Home() {
             ))}
         </div>
         {products.filter((p) => p.isBest).length === 0 && (
-          <p className="text-center text-gray-500 mt-4">No best products available right now.</p>
+          <p className="text-center text-gray-500 mt-4">
+            No best products available right now.
+          </p>
         )}
       </section>
 
-
-      {/* Lightbox for Image Preview */}
+      {/* Lightbox */}
       {lightboxOpen && (
         <Lightbox
           mainSrc={selectedImage}
           onCloseRequest={() => setLightboxOpen(false)}
         />
       )}
+
       <Footer />
     </div>
   );
