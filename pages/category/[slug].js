@@ -1,6 +1,7 @@
 "use client";
 
 import Head from "next/head";
+import Script from "next/script";
 import { categories } from "../../data/categories";
 import { slugify } from "../../utils/slugify";
 import Header from "../components/header";
@@ -36,8 +37,8 @@ export default function CategoryPage({ category }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const [isMobile, setIsMobile] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
+  // Fetch products
   useEffect(() => {
     fetch("/api/products")
       .then((res) => res.json())
@@ -49,14 +50,14 @@ export default function CategoryPage({ category }) {
       .catch((err) => console.error(err));
   }, [category.id]);
 
+  // Filter products by price
   useEffect(() => {
     const filtered = products.filter((p) => p.price <= maxPrice);
     setFilteredProducts(filtered);
   }, [maxPrice, products]);
 
+  // Detect screen size for responsiveness
   useEffect(() => {
-    setMounted(true);
-
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -68,19 +69,61 @@ export default function CategoryPage({ category }) {
     setLightboxOpen(true);
   };
 
+  // JSON-LD Schema for products
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": filteredProducts.map((product, index) => ({
+      "@type": "Product",
+      "position": index + 1,
+      "name": product.name,
+      "image": `https://baby-toys.shop/images/${product.image}`,
+      "description":
+        product.shortDescription ||
+        `${product.name} available in Ahmedabad. High quality baby products.`,
+      "brand": { "@type": "Brand", "name": "Baby Bliss" },
+      "offers": {
+        "@type": "Offer",
+        "url": `https://baby-toys.shop/products/${product.id}`,
+        "priceCurrency": "INR",
+        "price": product.price,
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+    }))
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen">
+      {/* SEO Meta Tags */}
       <Head>
-        <title>{category.name} - Baby Bliss Boutique</title>
+        <title>{`${category.name} in Ahmedabad | Baby Bliss Boutique`}</title>
         <meta
           name="description"
-          content={`Explore ${category.name} products at Baby Bliss Boutique. Best quality and deals for your baby.`}
+          content={`Shop the best ${category.name} for babies in Ahmedabad (380051). Explore toys, essentials, and more.`}
         />
         <meta
           name="keywords"
-          content={`${category.name}, baby products, baby care, baby clothing`}
+          content={`${category.name}, baby toys Ahmedabad, ${category.name} 380051, baby products online India`}
         />
+        <meta property="og:title" content={`${category.name} - Baby Bliss Boutique`} />
+        <meta
+          property="og:description"
+          content={`Discover high-quality ${category.name} for babies. Available online across Ahmedabad and India.`}
+        />
+        <meta property="og:image" content="/images/og-image.jpg" />
+        <meta property="og:url" content={`https://baby-toys.shop/category/${slugify(category.name)}`} />
+        <meta property="og:type" content="website" />
       </Head>
+
+      {/* JSON-LD Schema */}
+      {filteredProducts.length > 0 && (
+        <Script
+          id="product-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        />
+      )}
 
       <Header />
 
@@ -88,7 +131,7 @@ export default function CategoryPage({ category }) {
         <h1 className="text-3xl font-bold text-gray-800 mb-6">{category.name}</h1>
 
         <div className="flex flex-col md:flex-row gap-6">
-          {/* Sidebar */}
+          {/* Sidebar for price filter */}
           {!isMobile && (
             <aside className="w-full md:w-1/5 bg-white p-6 rounded-xl shadow-lg sticky top-6 h-max">
               <div className="flex items-center justify-between mb-4">
@@ -105,9 +148,10 @@ export default function CategoryPage({ category }) {
                 value={maxPrice}
                 onChange={(value) => setMaxPrice(value)}
               />
-            </aside>)}
+            </aside>
+          )}
 
-          {/* Products Grid */}
+          {/* Product grid */}
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
@@ -159,8 +203,12 @@ export default function CategoryPage({ category }) {
         </div>
       </section>
 
+      {/* Lightbox for product images */}
       {lightboxOpen && (
-        <Lightbox mainSrc={selectedImage} onCloseRequest={() => setLightboxOpen(false)} />
+        <Lightbox
+          mainSrc={selectedImage}
+          onCloseRequest={() => setLightboxOpen(false)}
+        />
       )}
 
       <Footer />
@@ -168,7 +216,7 @@ export default function CategoryPage({ category }) {
   );
 }
 
-// Static paths + props
+// Static paths + props for dynamic routing
 export async function getStaticPaths() {
   const paths = categories.map((c) => ({ params: { slug: slugify(c.name) } }));
   return { paths, fallback: false };
