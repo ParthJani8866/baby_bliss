@@ -11,6 +11,7 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="description" content="Baby Bliss Boutique - Premium Baby Products" />
         <link rel="icon" href="/favicon_io/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google-site-verification" content="cABz7WiOmmxhYSWi92HCqRHetXYjBdcGqlVm9VerfRc" />
       </Head>
 
       {/* Google Analytics */}
