@@ -16,7 +16,7 @@ export default function MyApp({ Component, pageProps }) {
 
       {/* Google Analytics */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-ZTGCM2GSH7"
+        src="https://www.googletagmanager.com/gtag/js?id=G-VQ83YSY2P5"
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -24,7 +24,7 @@ export default function MyApp({ Component, pageProps }) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-ZTGCM2GSH7');
+          gtag('config', 'G-VQ83YSY2P5');
         `}
       </Script>
       <Script
