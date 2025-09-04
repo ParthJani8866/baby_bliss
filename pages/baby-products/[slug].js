@@ -293,6 +293,23 @@ export default function BabyProductsPage({ category }) {
                         rel="nofollow noreferrer"
                         className="w-full text-center px-4 py-2 bg-orange-500 text-white rounded text-sm md:text-base hover:bg-orange-600 transition"
                         aria-label={`Buy ${product.name} on Amazon`}
+                        onClick={async () => {
+                          try {
+                            await fetch("/api/add-purchase", {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify({
+                                productId: product._id,
+                                productName: product.name,
+                                price: product.price,
+                                amazonUrl: product.amazonUrl,
+                              }),
+                            });
+                            console.log("Purchase recorded!");
+                          } catch (err) {
+                            console.error("Failed to record purchase:", err);
+                          }
+                        }}
                       >
                         Buy Now
                       </a>
@@ -321,11 +338,10 @@ export default function BabyProductsPage({ category }) {
               <button
                 key={i}
                 onClick={() => setCurrentPage(i + 1)}
-                className={`px-3 py-1 rounded ${
-                  currentPage === i + 1
+                className={`px-3 py-1 rounded ${currentPage === i + 1
                     ? "bg-orange-500 text-white"
                     : "bg-gray-200 hover:bg-gray-300"
-                }`}
+                  }`}
               >
                 {i + 1}
               </button>
