@@ -69,26 +69,29 @@ export default function BabyProductsPage({ category }) {
     setLightboxOpen(true);
   };
 
-  // JSON-LD Schema for products
+  // JSON-LD Schema for products (correct ItemList -> ListItem -> Product)
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "itemListElement": filteredProducts.map((product, index) => ({
-      "@type": "Product",
+      "@type": "ListItem",
       "position": index + 1,
-      "name": product.name,
-      "image": `https://baby-toys.shop/images/${product.image}`,
-      "description":
-        product.shortDescription ||
-        `${product.name} available in Ahmedabad. High quality baby products.`,
-      "brand": { "@type": "Brand", "name": "Baby Bliss" },
-      "offers": {
-        "@type": "Offer",
-        "url": `https://baby-toys.shop/baby-products/${slugify(category.name)}`,
-        "priceCurrency": "INR",
-        "price": product.price,
-        "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition"
+      "item": {
+        "@type": "Product",
+        "name": product.name,
+        "image": `https://baby-toys.shop/images/${product.image}`,
+        "description":
+          product.shortDescription ||
+          `${product.name} available in Ahmedabad. High quality baby products.`,
+        "brand": { "@type": "Brand", "name": "Baby Bliss" },
+        "offers": {
+          "@type": "Offer",
+          "url": product.amazonUrl || `https://baby-toys.shop/baby-products/${slugify(category.name)}`,
+          "priceCurrency": "INR",
+          "price": product.price,
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        }
       }
     }))
   };
@@ -130,6 +133,11 @@ export default function BabyProductsPage({ category }) {
       <section className="max-w-7xl mx-auto px-4 py-6">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">{category.name}</h1>
 
+        {/* Affiliate Disclaimer */}
+        <p className="text-xs text-gray-500 mb-6">
+          As an Amazon Associate I earn from qualifying purchases.
+        </p>
+
         <div className="flex flex-col md:flex-row gap-6">
           {/* Sidebar */}
           {!isMobile && (
@@ -168,6 +176,7 @@ export default function BabyProductsPage({ category }) {
                       width={500}
                       height={500}
                       onClick={() => openLightbox(`/images/${product.image}`)}
+                      loading="lazy"
                     />
                   </div>
 
@@ -187,6 +196,7 @@ export default function BabyProductsPage({ category }) {
                         target="_blank"
                         rel="nofollow noreferrer"
                         className="w-full text-center px-4 py-2 bg-orange-500 text-white rounded text-sm md:text-base hover:bg-orange-600 transition"
+                        aria-label={`Buy ${product.name} on Amazon`}
                       >
                         Buy Now
                       </a>

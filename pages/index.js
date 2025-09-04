@@ -62,12 +62,12 @@ export default function Home() {
     <div className="bg-white text-black min-h-screen">
       {/* SEO Meta Tags */}
       <NextSeo
-        title="Buy Baby Toys in Ahmedabad | Baby Bliss Boutique"
+        title="Buy Baby Toys, Baby Bicycle,Baby Tricycle,Baby Cycle,Baby Walkers & Strollers in Ahmedabad | Baby Bliss Boutique"
         description="Shop premium baby toys, walkers, strollers, and essentials in Ahmedabad (380051). Quality products delivered fast across India."
         canonical="https://baby-toys.shop/"
         openGraph={{
           url: "https://baby-toys.shop/",
-          title: "Buy Baby Toys in Ahmedabad | Baby Bliss Boutique",
+          title: "Buy Baby Toys, Baby Bicycle,Baby Tricycle,Baby Cycle,Baby Walkers & Strollers in Ahmedabad | Baby Bliss Boutique",
           description:
             "Premium baby essentials from feeding bottles to educational toys. Trusted by parents, delivered across India.",
           images: [

@@ -9,8 +9,12 @@ export default function Footer() {
         {/* About Section */}
         <div>
           <h3 className="text-xl font-bold text-orange-500 mb-3">Baby Bliss</h3>
+
           <p className="text-sm">
             Baby Bliss Boutique is your one-stop shop for premium baby products. We care about quality, safety, and comfort for your little ones.
+          </p>
+          <p className="text-sm">
+            As an Amazon Associate I earn from qualifying purchases.
           </p>
         </div>
 
