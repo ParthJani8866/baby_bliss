@@ -34,27 +34,38 @@ export default function BabyProductsPage({ category }) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [maxPrice, setMaxPrice] = useState(10000);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const [isMobile, setIsMobile] = useState(false);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const PRODUCTS_PER_PAGE = 24;
 
   // Fetch products
   useEffect(() => {
     fetch("/api/products")
       .then((res) => res.json())
-      .then((data) => {
-        const filtered = data.filter((p) => p.categoryId === category.id);
-        setProducts(filtered);
-        setFilteredProducts(filtered);
-      })
+      .then((data) => setProducts(data))
       .catch((err) => console.error(err));
+  }, []);
+
+  // Set default selected category based on page
+  useEffect(() => {
+    setSelectedCategories([category.id]);
   }, [category.id]);
 
-  // Filter products by price
+  // Filter products by price + categories
   useEffect(() => {
-    const filtered = products.filter((p) => p.price <= maxPrice);
+    let filtered = products.filter((p) => p.price <= maxPrice);
+    if (selectedCategories.length > 0) {
+      filtered = filtered.filter((p) => selectedCategories.includes(p.categoryId));
+    }
     setFilteredProducts(filtered);
-  }, [maxPrice, products]);
+    setCurrentPage(1); // reset to first page when filters change
+  }, [maxPrice, products, selectedCategories]);
 
   // Detect mobile
   useEffect(() => {
@@ -69,13 +80,28 @@ export default function BabyProductsPage({ category }) {
     setLightboxOpen(true);
   };
 
-  // JSON-LD Schema for products (correct ItemList -> ListItem -> Product)
+  const toggleCategory = (id) => {
+    if (selectedCategories.includes(id)) {
+      setSelectedCategories(selectedCategories.filter((c) => c !== id));
+    } else {
+      setSelectedCategories([...selectedCategories, id]);
+    }
+  };
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * PRODUCTS_PER_PAGE,
+    currentPage * PRODUCTS_PER_PAGE
+  );
+
+  // JSON-LD Schema for products
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "itemListElement": filteredProducts.map((product, index) => ({
+    "itemListElement": paginatedProducts.map((product, index) => ({
       "@type": "ListItem",
-      "position": index + 1,
+      "position": index + 1 + (currentPage - 1) * PRODUCTS_PER_PAGE,
       "item": {
         "@type": "Product",
         "name": product.name,
@@ -86,19 +112,20 @@ export default function BabyProductsPage({ category }) {
         "brand": { "@type": "Brand", "name": "Baby Bliss" },
         "offers": {
           "@type": "Offer",
-          "url": product.amazonUrl || `https://baby-toys.shop/baby-products/${slugify(category.name)}`,
+          "url":
+            product.amazonUrl ||
+            `https://baby-toys.shop/baby-products/${slugify(category.name)}`,
           "priceCurrency": "INR",
           "price": product.price,
           "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition"
-        }
-      }
-    }))
+          "itemCondition": "https://schema.org/NewCondition",
+        },
+      },
+    })),
   };
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* SEO Meta Tags */}
       <Head>
         <title>{`${category.name} | Baby Products - Baby Bliss Boutique`}</title>
         <meta
@@ -109,18 +136,23 @@ export default function BabyProductsPage({ category }) {
           name="keywords"
           content={`baby products, ${category.name}, baby toys, baby care, baby clothes, baby essentials`}
         />
-        <meta property="og:title" content={`${category.name} | Baby Products - Baby Bliss Boutique`} />
+        <meta
+          property="og:title"
+          content={`${category.name} | Baby Products - Baby Bliss Boutique`}
+        />
         <meta
           property="og:description"
           content={`Discover ${category.name} and other baby products for your little ones. Safe, premium, and delivered across India.`}
         />
         <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content={`https://baby-toys.shop/baby-products/${slugify(category.name)}`} />
+        <meta
+          property="og:url"
+          content={`https://baby-toys.shop/baby-products/${slugify(category.name)}`}
+        />
         <meta property="og:type" content="website" />
       </Head>
 
-      {/* JSON-LD Schema */}
-      {filteredProducts.length > 0 && (
+      {paginatedProducts.length > 0 && (
         <Script
           id="product-schema"
           type="application/ld+json"
@@ -142,6 +174,7 @@ export default function BabyProductsPage({ category }) {
           {/* Sidebar */}
           {!isMobile && (
             <aside className="w-full md:w-1/5 bg-white p-6 rounded-xl shadow-lg sticky top-6 h-max">
+              {/* Price Filter */}
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-bold text-lg text-gray-800">Filter by Price</h2>
                 <button
@@ -156,18 +189,83 @@ export default function BabyProductsPage({ category }) {
                 value={maxPrice}
                 onChange={(value) => setMaxPrice(value)}
               />
+
+              {/* Category Filter */}
+              <div className="mt-6">
+                <h2 className="font-bold text-lg text-gray-800 mb-2">Filter by Category</h2>
+                <div className="flex flex-col gap-2 max-h-64 overflow-y-auto">
+                  {categories.map((c) => (
+                    <label key={c.id} className="flex items-center gap-2 text-sm">
+                      <input
+                        type="checkbox"
+                        checked={selectedCategories.includes(c.id)}
+                        onChange={() => toggleCategory(c.id)}
+                        className="accent-orange-500"
+                      />
+                      {c.name}
+                    </label>
+                  ))}
+                </div>
+              </div>
             </aside>
+          )}
+
+          {/* Mobile Filters */}
+          {isMobile && (
+            <div className="mb-4">
+              <button
+                className="w-full bg-orange-500 text-white py-2 rounded"
+                onClick={() => setShowMobileFilters(!showMobileFilters)}
+              >
+                {showMobileFilters ? "Hide Filters" : "Show Filters"}
+              </button>
+
+              {showMobileFilters && (
+                <div className="mt-4 bg-white p-4 rounded shadow">
+                  <div className="mb-4">
+                    <h2 className="font-bold text-lg text-gray-800 mb-2">Filter by Price</h2>
+                    <MaxPriceSlider
+                      maxPrice={10000}
+                      value={maxPrice}
+                      onChange={(value) => setMaxPrice(value)}
+                    />
+                    <button
+                      onClick={() => setMaxPrice(10000)}
+                      className="mt-2 text-sm text-orange-500 font-semibold hover:underline"
+                    >
+                      Reset Price
+                    </button>
+                  </div>
+
+                  <div>
+                    <h2 className="font-bold text-lg text-gray-800 mb-2">Filter by Category</h2>
+                    <div className="flex flex-col gap-2 max-h-64 overflow-y-auto">
+                      {categories.map((c) => (
+                        <label key={c.id} className="flex items-center gap-2 text-sm">
+                          <input
+                            type="checkbox"
+                            checked={selectedCategories.includes(c.id)}
+                            onChange={() => toggleCategory(c.id)}
+                            className="accent-orange-500"
+                          />
+                          {c.name}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           )}
 
           {/* Products Grid */}
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => (
+            {paginatedProducts.length > 0 ? (
+              paginatedProducts.map((product) => (
                 <div
                   key={product.id}
                   className="flex flex-col border border-gray-200 rounded shadow hover:shadow-lg transition-all bg-white overflow-hidden"
                 >
-                  {/* Product Image */}
                   <div className="relative rounded overflow-hidden">
                     <Image
                       src={`/images/${product.image}`}
@@ -180,7 +278,6 @@ export default function BabyProductsPage({ category }) {
                     />
                   </div>
 
-                  {/* Product Info */}
                   <div className="p-4 flex-1">
                     <h3 className="font-semibold text-sm md:text-base">{product.name}</h3>
                     <p className="text-green-600 font-bold text-sm md:text-base">
@@ -188,7 +285,6 @@ export default function BabyProductsPage({ category }) {
                     </p>
                   </div>
 
-                  {/* Buy Now Button */}
                   {product.amazonUrl && (
                     <div className="p-4 border-t border-gray-200 bg-gray-50 flex justify-center">
                       <a
@@ -211,14 +307,41 @@ export default function BabyProductsPage({ category }) {
             )}
           </div>
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center gap-2 mt-6">
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+            >
+              Prev
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i + 1)}
+                className={`px-3 py-1 rounded ${
+                  currentPage === i + 1
+                    ? "bg-orange-500 text-white"
+                    : "bg-gray-200 hover:bg-gray-300"
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+            <button
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+            >
+              Next
+            </button>
+          </div>
+        )}
       </section>
 
-      {/* Lightbox */}
       {lightboxOpen && (
-        <Lightbox
-          mainSrc={selectedImage}
-          onCloseRequest={() => setLightboxOpen(false)}
-        />
+        <Lightbox mainSrc={selectedImage} onCloseRequest={() => setLightboxOpen(false)} />
       )}
 
       <Footer />

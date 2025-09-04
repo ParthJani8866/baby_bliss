@@ -63,13 +63,13 @@ export default function Home() {
       {/* SEO Meta Tags */}
       <NextSeo
         title="Buy Baby Toys, Baby Bicycle,Baby Tricycle,Baby Cycle,Baby Walkers & Strollers in Ahmedabad | Baby Bliss Boutique"
-        description="Shop premium baby toys, walkers, strollers, and essentials in Ahmedabad (380051). Quality products delivered fast across India."
+        description="Discover premium baby products curated with love and care. From baby walkers, feeding bottles, strollers, bicycles, tricycles, and educational toys, Baby Bliss ensures safe, high-quality, and affordable essentials delivered across India."
         canonical="https://baby-toys.shop/"
         openGraph={{
           url: "https://baby-toys.shop/",
           title: "Buy Baby Toys, Baby Bicycle,Baby Tricycle,Baby Cycle,Baby Walkers & Strollers in Ahmedabad | Baby Bliss Boutique",
           description:
-            "Premium baby essentials from feeding bottles to educational toys. Trusted by parents, delivered across India.",
+            "Discover premium baby products curated with love and care. From baby walkers, feeding bottles, strollers, bicycles, tricycles, and educational toys, Baby Bliss ensures safe, high-quality, and affordable essentials delivered across India.",
           images: [
             {
               url: "/images/og-image.jpg",
@@ -115,10 +115,7 @@ export default function Home() {
               Buy Baby Toys in Ahmedabad | Baby Bliss Boutique
             </h1>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              Discover premium baby products curated with love and care. From
-              baby walkers, feeding bottles, and strollers to educational toys,
-              Baby Bliss ensures safe, high-quality, and affordable essentials
-              delivered across India.
+              Discover premium baby products curated with love and care. From baby walkers, feeding bottles, strollers, bicycles, tricycles, and educational toys, Baby Bliss ensures safe, high-quality, and affordable essentials delivered across India.
             </p>
           </div>
         </div>
