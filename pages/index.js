@@ -18,17 +18,32 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     fetch("/api/products")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error("Error fetching products:", err));
+
+    // Check if popup was already closed
+    const popupClosed = localStorage.getItem("popupClosed");
+    if (!popupClosed) {
+      const timer = setTimeout(() => {
+        setShowPopup(true);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const openLightbox = (imageUrl) => {
     setSelectedImage(imageUrl);
     setLightboxOpen(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+    localStorage.setItem("popupClosed", "true");
   };
 
   // JSON-LD Schema Markup for SEO
@@ -45,7 +60,7 @@ export default function Home() {
         "High-quality baby product available in Ahmedabad and across India.",
       "brand": {
         "@type": "Brand",
-        "name": "Baby Bliss"
+        "name": "Baby Bliss",
       },
       "offers": {
         "@type": "Offer",
@@ -53,9 +68,9 @@ export default function Home() {
         "priceCurrency": "INR",
         "price": product.price,
         "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition"
-      }
-    }))
+        "itemCondition": "https://schema.org/NewCondition",
+      },
+    })),
   };
 
   return (
@@ -65,20 +80,6 @@ export default function Home() {
         title="Buy Baby Toys, Baby Bicycle,Baby Tricycle,Baby Cycle,Baby Walkers & Strollers in Ahmedabad | Baby Bliss Boutique"
         description="Discover premium baby products curated with love and care. From baby walkers, feeding bottles, strollers, bicycles, tricycles, and educational toys, Baby Bliss ensures safe, high-quality, and affordable essentials delivered across India."
         canonical="https://baby-toys.shop/"
-        openGraph={{
-          url: "https://baby-toys.shop/",
-          title: "Buy Baby Toys, Baby Bicycle,Baby Tricycle,Baby Cycle,Baby Walkers & Strollers in Ahmedabad | Baby Bliss Boutique",
-          description:
-            "Discover premium baby products curated with love and care. From baby walkers, feeding bottles, strollers, bicycles, tricycles, and educational toys, Baby Bliss ensures safe, high-quality, and affordable essentials delivered across India.",
-          images: [
-            {
-              url: "/images/og-image.jpg",
-              width: 800,
-              height: 600,
-              alt: "Baby Bliss Boutique",
-            },
-          ],
-        }}
       />
 
       {/* Product Schema */}
@@ -115,7 +116,10 @@ export default function Home() {
               Buy Baby Toys in Ahmedabad | Baby Bliss Boutique
             </h1>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              Discover premium baby products curated with love and care. From baby walkers, feeding bottles, strollers, bicycles, tricycles, and educational toys, Baby Bliss ensures safe, high-quality, and affordable essentials delivered across India.
+              Discover premium baby products curated with love and care. From
+              baby walkers, feeding bottles, strollers, bicycles, tricycles, and
+              educational toys, Baby Bliss ensures safe, high-quality, and
+              affordable essentials delivered across India.
             </p>
           </div>
         </div>
@@ -133,8 +137,7 @@ export default function Home() {
               <Link
                 key={cat.name}
                 href={`/baby-products/${slugify(cat.name.toLowerCase())}`}
-                className="flex flex-col items-center p-4 bg-gray-50 border border-gray-200 rounded-lg shadow hover:shadow-lg transition w-full max-w-[160px]"
-              >
+                className="flex flex-col items-center p-4 bg-gray-50 border border-gray-200 rounded-lg shadow hover:shadow-lg transition w-full max-w-[160px]">
                 <Image
                   src={`/images/${cat.image}`}
                   alt={cat.name}
@@ -162,9 +165,7 @@ export default function Home() {
             .map((product) => (
               <div
                 key={product.id}
-                className="flex flex-col border border-gray-200 rounded-lg shadow hover:shadow-lg transition-all bg-white overflow-hidden"
-              >
-                {/* Image */}
+                className="flex flex-col border border-gray-200 rounded-lg shadow hover:shadow-lg transition-all bg-white overflow-hidden">
                 <div className="relative rounded shadow group">
                   <Image
                     src={`/images/${product.image}`}
@@ -173,13 +174,9 @@ export default function Home() {
                     width={500}
                     height={500}
                     loading="lazy"
-                    onClick={() =>
-                      openLightbox(`/images/${product.image}`)
-                    }
+                    onClick={() => openLightbox(`/images/${product.image}`)}
                   />
                 </div>
-
-                {/* Product Info */}
                 <div className="p-4 flex-1">
                   <h3 className="font-semibold text-sm md:text-base">
                     {product.name}
@@ -192,16 +189,13 @@ export default function Home() {
                     ₹{product.price}
                   </p>
                 </div>
-
-                {/* Buy Now Button */}
                 {product.amazonUrl && (
                   <div className="p-4 border-t border-gray-200 bg-gray-50 flex justify-center">
                     <a
                       href={product.amazonUrl}
                       target="_blank"
                       rel="nofollow noreferrer"
-                      className="w-full text-center px-4 py-2 bg-orange-500 text-white rounded text-sm md:text-base hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                    >
+                      className="w-full text-center px-4 py-2 bg-orange-500 text-white rounded text-sm md:text-base hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400">
                       Buy Now
                     </a>
                   </div>
@@ -209,11 +203,6 @@ export default function Home() {
               </div>
             ))}
         </div>
-        {products.filter((p) => p.isBest).length === 0 && (
-          <p className="text-center text-gray-500 mt-4">
-            No best products available right now.
-          </p>
-        )}
       </section>
 
       {/* Lightbox */}
@@ -222,6 +211,47 @@ export default function Home() {
           mainSrc={selectedImage}
           onCloseRequest={() => setLightboxOpen(false)}
         />
+      )}
+
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[9999]">
+          <div className="bg-gradient-to-br from-yellow-100 via-white to-yellow-200 rounded-2xl shadow-2xl max-w-md w-full p-6 relative">
+            <button
+              onClick={closePopup}
+              className="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl font-bold">
+              ✕
+            </button>
+
+            {/* Banner Image */}
+            <Image
+              src="/images/cashback.png"
+              alt="Cashback Offer"
+              width={400}
+              height={200}
+              className="rounded-lg mb-4"
+            />
+
+            {/* Cashback Text */}
+            <h2 className="text-2xl font-extrabold mb-3 text-center text-orange-600">
+              🎉 Up to 100% Cashback!
+            </h2>
+            <p className="text-gray-700 text-center mb-4 font-medium">
+              On every product you purchase from this website  
+              & get it on Amazon.  
+              Don’t miss this **limited-time mega offer!**
+            </p>
+
+            {/* Call to Action */}
+            <div className="flex justify-center">
+              <a
+                href="/baby-products/tricycles-and-kids-cycles"
+                className="px-6 py-3 bg-orange-500 text-white font-bold rounded-full shadow-lg hover:bg-orange-600 transition">
+                Shop Now 🚀
+              </a>
+            </div>
+          </div>
+        </div>
       )}
 
       <Footer />
