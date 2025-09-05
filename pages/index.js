@@ -244,11 +244,10 @@ export default function Home() {
 
             {/* Call to Action */}
             <div className="flex justify-center">
-              <a
-                href="/baby-products/tricycles-and-kids-cycles"
+              <Link href="/baby-products/tricycles-and-kids-cycles"
                 className="px-6 py-3 bg-orange-500 text-white font-bold rounded-full shadow-lg hover:bg-orange-600 transition">
-                Shop Now 🚀
-              </a>
+                  Shop Now 🚀
+              </Link>
             </div>
           </div>
         </div>
