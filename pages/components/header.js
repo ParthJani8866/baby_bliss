@@ -55,6 +55,9 @@ export default function Header() {
               <CategoryDropdown categories={categories} />
             </div>
             <nav className="md:flex space-x-4">
+              <Link href="/motherhood-blogs" className="text-xl font-bold text-orange-500 hover:text-blue-600 transition">
+                Motherhood Blogs
+              </Link>
               {/* New Blogs Menu */}
               <Link href="/blogs" className="text-xl font-bold text-orange-500 hover:text-blue-600 transition">
                 Blogs

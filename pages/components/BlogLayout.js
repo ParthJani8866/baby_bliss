@@ -29,9 +29,16 @@ export default function BlogLayout({
         {/* Main Content */}
         <article className="lg:col-span-3">
           <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
-            <Link href="/" className="hover:text-orange-500 transition-colors duration-200">Home</Link>
+            <Link href="/" className="hover:text-orange-500 transition-colors duration-200">
+              Home
+            </Link>
             <span>/</span>
-            <Link href="/blogs" className="hover:text-orange-500 transition-colors duration-200">Blogs</Link>
+            <Link
+              href={`/${title.toLowerCase().includes("motherhood") ? "motherhood-blogs" : "blogs"}`}
+              className="hover:text-orange-500 transition-colors duration-200"
+            >
+              {title.toLowerCase().includes("motherhood") ? "Motherhood Blogs" : "Blogs"}
+            </Link>
             <span>/</span>
             <span className="text-gray-700 font-medium">{title}</span>
           </nav>
