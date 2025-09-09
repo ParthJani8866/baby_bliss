@@ -5,8 +5,6 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Header from "./components/header";
 import Footer from "./components/Footer";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
 import Image from "next/image";
 import AdBanner from "./components/AdBanner";
 import { NextSeo } from "next-seo";
@@ -16,35 +14,13 @@ import { slugify } from "../utils/slugify";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     fetch("/api/products")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error("Error fetching products:", err));
-
-    // Check if popup was already closed
-    const popupClosed = localStorage.getItem("popupClosed");
-    if (!popupClosed) {
-      const timer = setTimeout(() => {
-        setShowPopup(true);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
   }, []);
-
-  const openLightbox = (imageUrl) => {
-    setSelectedImage(imageUrl);
-    setLightboxOpen(true);
-  };
-
-  const closePopup = () => {
-    setShowPopup(false);
-    localStorage.setItem("popupClosed", "true");
-  };
 
   // JSON-LD Schema Markup for SEO
   const productSchema = {
@@ -121,6 +97,33 @@ export default function Home() {
               educational toys, Baby Bliss ensures safe, high-quality, and
               affordable essentials delivered across India.
             </p>
+
+            {/* 🎉 Cashback Banner */}
+            <div className="mt-6 bg-gradient-to-r from-yellow-100 via-white to-yellow-200 border-l-4 border-orange-500 text-orange-700 p-5 rounded-2xl shadow-lg flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <Image
+                  src="/images/cashback.png"
+                  alt="Cashback Offer"
+                  width={80}
+                  height={80}
+                  className="rounded-lg shadow"
+                />
+                <div>
+                  <h2 className="text-lg md:text-xl font-extrabold text-orange-600">
+                    🎉 Up to 100% Cashback!
+                  </h2>
+                  <p className="text-gray-700 text-sm md:text-base">
+                    On every product you purchase from this website & get it on Amazon.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/baby-products/tricycles-and-kids-cycles"
+                className="ml-4 px-5 py-2 bg-orange-500 text-white font-bold rounded-full shadow-md hover:bg-orange-600 transition"
+              >
+                Shop Now 🚀
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -170,11 +173,10 @@ export default function Home() {
                   <Image
                     src={`/images/${product.image}`}
                     alt={product.name}
-                    className="object-cover transition-transform duration-300 group-hover:scale-105 cursor-zoom-in"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                     width={500}
                     height={500}
                     loading="lazy"
-                    onClick={() => openLightbox(`/images/${product.image}`)}
                   />
                 </div>
                 <div className="p-4 flex-1">
@@ -204,54 +206,6 @@ export default function Home() {
             ))}
         </div>
       </section>
-
-      {/* Lightbox */}
-      {lightboxOpen && (
-        <Lightbox
-          mainSrc={selectedImage}
-          onCloseRequest={() => setLightboxOpen(false)}
-        />
-      )}
-
-      {/* Popup Modal */}
-      {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[9999]">
-          <div className="bg-gradient-to-br from-yellow-100 via-white to-yellow-200 rounded-2xl shadow-2xl max-w-md w-full p-6 relative">
-            <button
-              onClick={closePopup}
-              className="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl font-bold">
-              ✕
-            </button>
-
-            {/* Banner Image */}
-            <Image
-              src="/images/cashback.png"
-              alt="Cashback Offer"
-              width={400}
-              height={200}
-              className="rounded-lg mb-4"
-            />
-
-            {/* Cashback Text */}
-            <h2 className="text-2xl font-extrabold mb-3 text-center text-orange-600">
-              🎉 Up to 100% Cashback!
-            </h2>
-            <p className="text-gray-700 text-center mb-4 font-medium">
-              On every product you purchase from this website  
-              & get it on Amazon.  
-              Don’t miss this **limited-time mega offer!**
-            </p>
-
-            {/* Call to Action */}
-            <div className="flex justify-center">
-              <Link href="/baby-products/tricycles-and-kids-cycles"
-                className="px-6 py-3 bg-orange-500 text-white font-bold rounded-full shadow-lg hover:bg-orange-600 transition">
-                  Shop Now 🚀
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
 
       <Footer />
     </div>
