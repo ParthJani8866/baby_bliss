@@ -37,7 +37,7 @@ const slugify = (text) =>
     .replace(/-+$/, ""); // Trim - from end of text
 
 export default function handler(req, res) {
-  const baseUrl = "https://truevivah.com";
+  const baseUrl = "http://baby-toys.shop";
 
   const staticPages = [
     { url: "", priority: 1.0 },
