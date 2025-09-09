@@ -16,15 +16,81 @@ export default function Blogs() {
       .catch((err) => console.error(err));
   }, []);
 
-  const blogPosts = [
-    {
-      title: "Newborn Baby Clothes: What You Need to Know in 2025",
-      slug: "newborn-baby-clothes",
-      description:
-        "Complete guide to newborn baby clothes, essentials, safety tips, brands, and care instructions.",
-    },
-    // ... other blog posts
-  ];
+ const blogPosts = [
+  {
+    title: "Newborn Baby Clothes: What You Need to Know in 2025",
+    slug: "newborn-baby-clothes",
+    description:
+      "Complete guide to newborn baby clothes, essentials, safety tips, brands, and care instructions.",
+  },
+  {
+    title: "10 Best Baby Diapers: Absorbency, Comfort & Eco-friendly Picks",
+    slug: "best-baby-diapers",
+    description:
+      "Explore the top diapers for babies, including eco-friendly and comfortable options.",
+  },
+  {
+    title: "Breastfeeding vs Formula: Pros & Cons Every Parent Should Consider",
+    slug: "breastfeeding-vs-formula",
+    description:
+      "Learn about breastfeeding and formula feeding, and decide what’s best for your baby.",
+  },
+  {
+    title: "5 Ways to Calm a Crying Baby: Tested and Soothing Remedies",
+    slug: "calm-crying-baby",
+    description:
+      "Effective tips to calm your baby when crying, backed by expert advice.",
+  },
+  {
+    title: "How to Make Your Home Baby-Safe: A Complete Baby-Proofing Guide",
+    slug: "baby-proofing-guide",
+    description:
+      "Step-by-step guide to make your home safe for newborns and toddlers.",
+  },
+  {
+    title: "10 Best Lullabies to Help Your Baby Sleep Peacefully",
+    slug: "best-baby-lullabies",
+    description:
+      "Discover soothing lullabies that help your baby sleep better at night.",
+  },
+  {
+    title: "5 Milestones to Expect in Your Baby’s First Year",
+    slug: "baby-first-year-milestones",
+    description:
+      "Track your baby’s development with these important first-year milestones.",
+  },
+  {
+    title: "How to Swaddle Your Baby: Step-by-Step Techniques for Comfort",
+    slug: "how-to-swaddle",
+    description:
+      "Learn proper swaddling techniques to keep your baby comfortable and secure.",
+  },
+  {
+    title: "What to Expect the First 24 Hours After Giving Birth",
+    slug: "first-24-hours-after-birth",
+    description:
+      "Guide for new parents on what happens in the first 24 hours after birth.",
+  },
+  {
+    title: "Self-Care for Stay-At-Home Moms: Tips for Wellbeing and Balance",
+    slug: "self-care-for-moms",
+    description:
+      "Important self-care tips for stay-at-home moms to maintain health and balance.",
+  },
+  {
+    title: "Baby Diapers: Absorbency, Comfort, Disposable Bags & Diaper Liners",
+    slug: "disposable-bags-and-diaper-liners",
+    description:
+      "Guide on disposable diaper bags and liners for a cleaner, easier diaper-changing routine.",
+  },
+  {
+    title: "Top 10 Must-Have Baby Gear Essentials for New Parents",
+    slug: "baby-gear-essentials",
+    description:
+      "Bringing a newborn home can be overwhelming, but having the right gear can make a huge difference.",
+  },
+];
+
 
   return (
     <div className="bg-white text-gray-800 min-h-screen">
