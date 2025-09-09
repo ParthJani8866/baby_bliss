@@ -34,14 +34,15 @@ export default function BlogLayout({
             </Link>
             <span>/</span>
             <Link
-              href={`/${title.toLowerCase().includes("motherhood") ? "motherhood-blogs" : "blogs"}`}
+              href={`/${title?.toLowerCase().includes("motherhood") ? "motherhood-blogs" : "blogs"}`}
               className="hover:text-orange-500 transition-colors duration-200"
             >
-              {title.toLowerCase().includes("motherhood") ? "Motherhood Blogs" : "Blogs"}
+              {title?.toLowerCase().includes("motherhood") ? "Motherhood Blogs" : "Blogs"}
             </Link>
             <span>/</span>
-            <span className="text-gray-700 font-medium">{title}</span>
+            <span className="text-gray-700 font-medium">{title || "Blog"}</span>
           </nav>
+
 
           <h1 className="text-3xl font-bold mb-6 text-orange-500">{title}</h1>
           <p className="mb-4 leading-relaxed">{description}</p>
