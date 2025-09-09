@@ -5,9 +5,19 @@ import Header from "../components/header"; // adjust path if needed
 import Footer from "../components/Footer"; // adjust path if needed
 import Link from "next/link";
 import Script from "next/script";
-
+import { useEffect, useState } from "react";
+import ProductSidebar from "../components/ProductSidebar";
 
 export default function BabyFirstYearMilestones() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data))
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <div className="bg-white text-gray-800 min-h-screen">
       {/* Site Header */}
@@ -15,80 +25,117 @@ export default function BabyFirstYearMilestones() {
 
       {/* SEO */}
       <Head>
-        <title>5 Milestones to Expect in Your Baby’s First Year | Baby Bliss</title>
+        <title>
+          5 Milestones to Expect in Your Baby’s First Year | Baby Bliss
+        </title>
         <meta
           name="description"
           content="Learn the top 5 milestones your baby will achieve in their first year. Guide to growth, development, and what to expect month by month."
         />
       </Head>
-      <Script type='text/javascript' src='//pl27553777.revenuecpmgate.com/df/af/59/dfaf59384b36255eb7c96260e0fb4db8.js'></Script>
-      <Script async="async" data-cfasync="false" src="//geographicalpaperworkmovie.com/14557498d6b14f90b64bcba955b87ea1/invoke.js"></Script>
-                  <div id="container-14557498d6b14f90b64bcba955b87ea1"></div>
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
-          <Link href="/" className="hover:text-orange-500 transition-colors duration-200">
-            Home
-          </Link>
-          <span>/</span>
-          <Link href="/blogs" className="hover:text-orange-500 transition-colors duration-200">
-            Blogs
-          </Link>
-          <span>/</span>
-          <span className="text-gray-700 font-medium">Baby First Year Milestones</span>
-        </nav>
-        <h1 className="text-3xl font-bold mb-6 text-orange-500">
-          5 Milestones to Expect in Your Baby’s First Year
-        </h1>
+      {/* Main Content + Sidebar */}
+      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Blog Content */}
+        <div className="md:col-span-3">
+          <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
+            <Link
+              href="/"
+              className="hover:text-orange-500 transition-colors duration-200"
+            >
+              Home
+            </Link>
+            <span>/</span>
+            <Link
+              href="/blogs"
+              className="hover:text-orange-500 transition-colors duration-200"
+            >
+              Blogs
+            </Link>
+            <span>/</span>
+            <span className="text-gray-700 font-medium">
+              Baby First Year Milestones
+            </span>
+          </nav>
 
-        <p className="mb-4 leading-relaxed">
-          The first year of a baby’s life is full of growth, learning, and exciting milestones. While every baby develops at their own pace, there are some key milestones most babies achieve during their first year.
-        </p>
+          <h1 className="text-3xl font-bold mb-6 text-orange-500">
+            5 Milestones to Expect in Your Baby’s First Year
+          </h1>
 
-        {/* Milestone 1 */}
-        <h2 className="text-2xl font-semibold mt-6 mb-3">1. Smiling and Social Interaction</h2>
-        <p className="mb-4">
-          By around 6-8 weeks, babies start smiling at familiar faces. This is a major social milestone showing awareness and attachment to caregivers.
-        </p>
+          <p className="mb-4 leading-relaxed">
+            The first year of a baby’s life is full of growth, learning, and
+            exciting milestones. While every baby develops at their own pace,
+            there are some key milestones most babies achieve during their first
+            year.
+          </p>
 
-        {/* Milestone 2 */}
-        <h2 className="text-2xl font-semibold mt-6 mb-3">2. Rolling Over</h2>
-        <p className="mb-4">
-          Typically occurring around 4-6 months, rolling over is one of the first motor skills your baby will achieve. It shows muscle strength and coordination development.
-        </p>
+          {/* Milestones */}
+          <h2 className="text-2xl font-semibold mt-6 mb-3">
+            1. Smiling and Social Interaction
+          </h2>
+          <p className="mb-4">
+            By around 6-8 weeks, babies start smiling at familiar faces. This is
+            a major social milestone showing awareness and attachment to
+            caregivers.
+          </p>
 
-        {/* Milestone 3 */}
-        <h2 className="text-2xl font-semibold mt-6 mb-3">3. Sitting Up Without Support</h2>
-        <p className="mb-4">
-          Between 6-8 months, most babies can sit independently. This milestone indicates improved balance and core strength.
-        </p>
+          <h2 className="text-2xl font-semibold mt-6 mb-3">2. Rolling Over</h2>
+          <p className="mb-4">
+            Typically occurring around 4-6 months, rolling over is one of the
+            first motor skills your baby will achieve. It shows muscle strength
+            and coordination development.
+          </p>
 
-        {/* Milestone 4 */}
-        <h2 className="text-2xl font-semibold mt-6 mb-3">4. Crawling and Exploring</h2>
-        <p className="mb-4">
-          Around 7-10 months, babies begin crawling, scooting, or rolling to explore their environment. This is an important physical and cognitive milestone.
-        </p>
+          <h2 className="text-2xl font-semibold mt-6 mb-3">
+            3. Sitting Up Without Support
+          </h2>
+          <p className="mb-4">
+            Between 6-8 months, most babies can sit independently. This
+            milestone indicates improved balance and core strength.
+          </p>
 
-        {/* Milestone 5 */}
-        <h2 className="text-2xl font-semibold mt-6 mb-3">5. First Words and Communication</h2>
-        <p className="mb-4">
-          By 10-12 months, many babies start saying simple words like “mama” or “dada.” Language development is crucial for social and cognitive growth.
-        </p>
+          <h2 className="text-2xl font-semibold mt-6 mb-3">
+            4. Crawling and Exploring
+          </h2>
+          <p className="mb-4">
+            Around 7-10 months, babies begin crawling, scooting, or rolling to
+            explore their environment. This is an important physical and
+            cognitive milestone.
+          </p>
 
-        {/* Tips for Parents */}
-        <h2 className="text-2xl font-semibold mt-6 mb-3">Tips for Supporting Your Baby’s Development</h2>
-        <ul className="list-disc pl-5 mb-4 space-y-2">
-          <li>Encourage tummy time to strengthen muscles.</li>
-          <li>Talk, sing, and read to your baby daily to support language skills.</li>
-          <li>Provide safe spaces for exploration and play.</li>
-          <li>Celebrate milestones but avoid comparing your baby with others.</li>
-        </ul>
+          <h2 className="text-2xl font-semibold mt-6 mb-3">
+            5. First Words and Communication
+          </h2>
+          <p className="mb-4">
+            By 10-12 months, many babies start saying simple words like “mama”
+            or “dada.” Language development is crucial for social and cognitive
+            growth.
+          </p>
 
-        {/* Conclusion */}
-        <h2 className="text-2xl font-semibold mt-6 mb-3">Conclusion</h2>
-        <p className="mb-4">
-          Every baby’s first year is unique, but these 5 milestones provide a general guide for parents. Observing and encouraging your baby’s development while providing love and safety ensures a happy and healthy first year.
-        </p>
+          <h2 className="text-2xl font-semibold mt-6 mb-3">
+            Tips for Supporting Your Baby’s Development
+          </h2>
+          <ul className="list-disc pl-5 mb-4 space-y-2">
+            <li>Encourage tummy time to strengthen muscles.</li>
+            <li>Talk, sing, and read to your baby daily to support language skills.</li>
+            <li>Provide safe spaces for exploration and play.</li>
+            <li>
+              Celebrate milestones but avoid comparing your baby with others.
+            </li>
+          </ul>
+
+          <h2 className="text-2xl font-semibold mt-6 mb-3">Conclusion</h2>
+          <p className="mb-4">
+            Every baby’s first year is unique, but these 5 milestones provide a
+            general guide for parents. Observing and encouraging your baby’s
+            development while providing love and safety ensures a happy and
+            healthy first year.
+          </p>
+        </div>
+
+        <ProductSidebar category="baby-diapers" limit={8} title="Top Diaper Picks" />
       </div>
+
+      {/* Site Footer */}
       <Footer />
     </div>
   );
