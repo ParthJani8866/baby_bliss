@@ -4,7 +4,14 @@ import { Html, Head, Main, NextScript } from 'next/document';
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
+      <Head>
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-5866918436034267"
+          crossOrigin="anonymous"
+        ></script>
+      </Head>
       <body>
         {/* GTM noscript */}
         <noscript>
