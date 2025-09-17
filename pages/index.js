@@ -97,33 +97,6 @@ export default function Home() {
               educational toys, Baby Bliss ensures safe, high-quality, and
               affordable essentials delivered across India.
             </p>
-
-            {/* 🎉 Cashback Banner */}
-            <div className="mt-6 bg-gradient-to-r from-yellow-100 via-white to-yellow-200 border-l-4 border-orange-500 text-orange-700 p-5 rounded-2xl shadow-lg flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <Image
-                  src="/images/cashback.png"
-                  alt="Cashback Offer"
-                  width={80}
-                  height={80}
-                  className="rounded-lg shadow"
-                />
-                <div>
-                  <h2 className="text-lg md:text-xl font-extrabold text-orange-600">
-                    🎉 Up to 100% Cashback!
-                  </h2>
-                  <p className="text-gray-700 text-sm md:text-base">
-                    On every product you purchase from this website & get it on Amazon.
-                  </p>
-                </div>
-              </div>
-              <Link
-                href="/baby-products/tricycles-and-kids-cycles"
-                className="ml-4 px-5 py-2 bg-orange-500 text-white font-bold rounded-full shadow-md hover:bg-orange-600 transition"
-              >
-                Shop Now 🚀
-              </Link>
-            </div>
           </div>
         </div>
       </section>
