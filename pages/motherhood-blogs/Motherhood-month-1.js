@@ -76,7 +76,7 @@ export default function MotherhoodMonth1() {
   return (
     <BlogLayout
       title="Motherhood Month 1 — Surviving the First 30 Days"
-      description="Tips, feeding schedules, growth milestones, real mom stories, and a checklist for the first month of motherhood."
+      description="Motherhood Month 1, Tips, feeding schedules, growth milestones, real mom stories, and a checklist for the first month of motherhood."
       sections={sections}
       sidebarCategory="motherhood"
       sidebarTitle="Must-Have Essentials"

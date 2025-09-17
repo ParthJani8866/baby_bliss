@@ -90,7 +90,7 @@ export default function MotherhoodMonth9() {
   return (
     <BlogLayout
       title="Motherhood Month 9 — Standing with Support, Stronger Communication & Play"
-      description="At 9 months, babies pull up, cruise, and start purposeful babbling. Learn about feeding, growth milestones, and real mom stories in this exciting stage."
+      description="At Motherhood Month 9, babies pull up, cruise, and start purposeful babbling. Learn about feeding, growth milestones, and real mom stories in this exciting stage."
       sections={sections}
       sidebarCategory="motherhood"
       sidebarTitle="Baby Exploration Essentials"

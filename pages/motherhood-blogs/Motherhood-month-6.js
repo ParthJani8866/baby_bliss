@@ -99,7 +99,7 @@ export default function MotherhoodMonth6() {
   return (
     <BlogLayout
       title="Motherhood Month 6 — Starting Solids & Sitting Up"
-      description="At 6 months, babies begin solids, practice sitting, and start babbling. Learn feeding tips, milestones, and real mom stories for this exciting stage."
+      description="At Motherhood Month 6, babies begin solids, practice sitting, and start babbling. Learn feeding tips, milestones, and real mom stories for this exciting stage."
       sections={sections}
       sidebarCategory="motherhood"
       sidebarTitle="Parenting Essentials"

@@ -91,7 +91,7 @@ export default function MotherhoodMonth7() {
   return (
     <BlogLayout
       title="Motherhood Month 7 — Crawling, Stranger Anxiety & Finger Foods"
-      description="Month 7 brings crawling, babbling, and the introduction of finger foods. Learn about growth milestones, feeding tips, and real mom stories in this exciting stage."
+      description="Motherhood Month 7 brings crawling, babbling, and the introduction of finger foods. Learn about growth milestones, feeding tips, and real mom stories in this exciting stage."
       sections={sections}
       sidebarCategory="motherhood"
       sidebarTitle="Baby Safety Essentials"

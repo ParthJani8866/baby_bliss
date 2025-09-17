@@ -108,10 +108,8 @@ export default function MotherhoodBlogs() {
       <Header />
       <Head>
         <title>Motherhood Blogs | Baby Bliss</title>
-        <meta
-          name="description"
-          content="Explore month-by-month motherhood blogs with practical tips, baby milestones, feeding schedules, and real mom stories."
-        />
+        <meta name="description" content="Explore motherhood month by month – a complete guide from newborn care to toddlerhood. Motherhood Month 1: newborn care, postpartum recovery, breastfeeding struggles, and sleep patterns. Motherhood Month 2: colic relief, bonding tips, postpartum emotions, and daily mom routines. Motherhood Month 3: baby growth spurts, tummy time milestones, new motherhood challenges, and self-care. Motherhood Month 4: first laughs, sleep regression, teething signs, and motherhood adjustments. Motherhood Month 5: feeding tips, baby development milestones, motherhood self-care, and emotional health. Motherhood Month 6: introducing solid foods, crawling preparation, balancing motherhood with household life. Motherhood Month 7: teething remedies, separation anxiety, and playful motherhood activities. Motherhood Month 8: mobility changes, motherhood patience, and sleep schedule struggles. Motherhood Month 9: interactive play ideas, new words, and advanced motherhood bonding. Motherhood Month 10: pulling up, standing practice, and motherhood energy management. Motherhood Month 11: first steps, baby communication, and motherhood routines. Motherhood Month 12: first birthday planning, toddler transitions, and reflections on the first year of motherhood. Plus real mom stories, postpartum recovery, mental health support, feeding schedules, sleep training, diapering, bonding, and practical parenting tips for every stage of motherhood month by month."></meta>
+
       </Head>
 
       <div className="flex max-w-7xl mx-auto px-4 py-12">

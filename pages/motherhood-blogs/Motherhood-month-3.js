@@ -91,7 +91,7 @@ export default function MotherhoodMonth3() {
   return (
     <BlogLayout
       title="Motherhood Month 3 — Giggles & Growing Confidence"
-      description="Month 3 brings more interaction, cooing, and longer sleep stretches. Learn what to expect during this exciting stage of early motherhood."
+      description="Motherhood Month 3 brings more interaction, cooing, and longer sleep stretches. Learn what to expect during this exciting stage of early motherhood."
       sections={sections}
       sidebarCategory="motherhood"
       sidebarTitle="Parenting Essentials"

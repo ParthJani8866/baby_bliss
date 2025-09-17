@@ -101,7 +101,7 @@ export default function MotherhoodMonth4() {
   return (
     <BlogLayout
       title="Motherhood Month 4 — Rolling & Routines"
-      description="By month 4, babies begin rolling, laughing, and showing stronger head control. Learn what to expect, how to adjust routines, and stories from real moms."
+      description="By Motherhood Month 4, babies begin rolling, laughing, and showing stronger head control. Learn what to expect, how to adjust routines, and stories from real moms."
       sections={sections}
       sidebarCategory="motherhood"
       sidebarTitle="Parenting Essentials"

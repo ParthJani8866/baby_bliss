@@ -8,7 +8,8 @@ export default function MyApp({ Component, pageProps }) {
       {/* SEO Meta Tags */}
       <Head>
         <title>Baby Bliss Boutique - Premium Baby Products</title>
-        <meta name="description" content="Baby Bliss Boutique - Premium Baby Products" />
+        <meta name="description" content="Baby Bliss Boutique – your trusted destination for premium baby products, pregnancy blogs, and motherhood guides. Shop baby clothes, swaddles, rompers, onesies, newborn gift sets, baby shower gifts, teething toys, plush toys, feeding bottles, pacifiers, diaper bags, strollers, car seats, cribs, and baby carriers. Explore pregnancy week-by-week tips, trimester care, nutrition, postpartum recovery, breastfeeding support, and motherhood month-by-month blogs with real mom stories, baby milestones, feeding schedules, sleep training, and parenting advice. Everything parents need – from pregnancy to newborn care and toddler essentials – in one place."></meta>
+
         <link rel="icon" href="/favicon_io/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="google-site-verification" content="cABz7WiOmmxhYSWi92HCqRHetXYjBdcGqlVm9VerfRc" />

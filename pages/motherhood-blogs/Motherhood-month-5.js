@@ -97,7 +97,7 @@ export default function MotherhoodMonth5() {
   return (
     <BlogLayout
       title="Motherhood Month 5 — Teething & Playtime"
-      description="By month 5, babies laugh, explore, and begin teething. Learn what to expect, how to soothe discomfort, and enjoy the playful milestones."
+      description="By Motherhood month 5, babies laugh, explore, and begin teething. Learn what to expect, how to soothe discomfort, and enjoy the playful milestones."
       sections={sections}
       sidebarCategory="motherhood"
       sidebarTitle="Parenting Essentials"

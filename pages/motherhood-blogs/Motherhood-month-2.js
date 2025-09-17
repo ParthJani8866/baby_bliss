@@ -89,7 +89,7 @@ export default function MotherhoodMonth2() {
   return (
     <BlogLayout
       title="Motherhood Month 2 — Smiles & Early Connections"
-      description="Month 2 focuses on first smiles, bonding, and early growth milestones. Learn about development, feeding, and real mom stories."
+      description="Motherhood Month 2 focuses on first smiles, bonding, and early growth milestones. Learn about development, feeding, and real mom stories."
       sections={sections}
       sidebarCategory="motherhood"
       sidebarTitle="Helpful Tools"
