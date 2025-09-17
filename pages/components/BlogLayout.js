@@ -6,6 +6,7 @@ import ProductSidebar from "./ProductSidebar";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
+import AdBanner from "./AdBanner";
 
 export default function BlogLayout({
   title,
@@ -64,7 +65,7 @@ export default function BlogLayout({
               <p className="mb-4">{step.content}</p>
             </div>
           ))}
-
+          <AdBanner />
           {/* Render Sections */}
           {sections.map((section, idx) => (
             <div key={`section-${idx}`} className="mb-6">

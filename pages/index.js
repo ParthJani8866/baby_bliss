@@ -83,7 +83,7 @@ export default function Home() {
       />
 
       <Header />
-
+      <AdBanner />
       {/* Hero Section */}
       <section className="hero relative p-6 md:p-10 bg-gray-50 overflow-hidden">
         <div className="container mx-auto flex flex-col md:flex-row items-center gap-6 relative z-10">

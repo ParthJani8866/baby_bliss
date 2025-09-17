@@ -54,6 +54,13 @@ export default function MyApp({ Component, pageProps }) {
           `,
         }}
       />
+      <Script
+        id="adsense-script"
+        async
+        strategy="afterInteractive"
+        src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-5866918436034267"
+        crossOrigin="anonymous"
+      />
       {/* Page Content */}
       <Component {...pageProps} />
     </>
