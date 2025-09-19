@@ -16,6 +16,21 @@ export default function Footer() {
           <p className="text-sm">
             As an Amazon Associate I earn from qualifying purchases.
           </p>
+          <div>
+            <h4 className="text-lg font-semibold mb-3">Explore More</h4>
+            <p className="text-sm leading-relaxed">
+              Pregnancy tips • Motherhood journey • Newborn care • Baby milestones •
+              Breastfeeding guidance • Bottle feeding • Postpartum recovery • Prenatal yoga •
+              Labor and delivery • Cesarean birth • Natural birth • Pregnancy nutrition •
+              Morning sickness relief • Trimester week-by-week • Baby development month-by-month •
+              Sleep training • Infant colic solutions • Baby teething • Diapering and hygiene •
+              Parenting hacks • Working moms • Stay-at-home moms • Baby toys • Baby gear •
+              Hospital bag checklist • Baby shower ideas • Maternity fashion • Emotional health •
+              Postpartum depression support • Bonding with baby • First-time mom tips •
+              Toddler transitions • Baby food introduction • Vaccination schedule •
+              Growth spurts • Baby’s first words • Baby’s first steps
+            </p>
+          </div>
         </div>
 
         {/* Quick Links */}
@@ -43,14 +58,12 @@ export default function Footer() {
         {/* Contact Info */}
         <div>
           <h3 className="text-xl font-bold text-orange-500 mb-3">Contact Us</h3>
-          <p className="text-sm">Email: support@babybliss.com</p>
-          <p className="text-sm">Phone: +91-123-456-7890</p>
-          <p className="text-sm">Address: 123 Baby Bliss Street, Your City, Your Country</p>
+          <p className="text-sm">Email: parthskyward@gmail.com</p>
+          <p className="text-sm">Phone: +91-8866398281</p>
+          <p className="text-sm">Address: Ahmedabad, Gujarat , India</p>
 
           <div className="flex space-x-3 mt-4">
-            <a href="#" className="text-gray-600 hover:text-blue-600 transition">Facebook</a>
-            <a href="#" className="text-gray-600 hover:text-blue-600 transition">Instagram</a>
-            <a href="#" className="text-gray-600 hover:text-blue-600 transition">Twitter</a>
+
           </div>
         </div>
       </div>
