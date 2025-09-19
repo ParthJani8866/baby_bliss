@@ -287,7 +287,7 @@ export default function PregnancyWeekWise() {
         <title>Pregnancy Week-by-Week | Baby Bliss</title>
         <meta
           name="description"
-          content="Explore detailed pregnancy week-by-week blogs with baby’s development, mom’s symptoms, and tips for every stage."
+          content="Pregnancy week-by-week blogs with baby’s development, mom’s symptoms, and tips for every stage."
         />
       </Head>
 

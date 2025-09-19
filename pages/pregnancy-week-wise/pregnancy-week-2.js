@@ -121,7 +121,7 @@ export default function PregnancyWeek2() {
   return (
     <BlogLayout
       title="Pregnancy Week 2 — Ovulation & Fertilization"
-      description="Week 2 of pregnancy is all about ovulation, fertilization, and preparing your body for conception. Learn what’s happening inside and how to boost fertility."
+      description="Pregnancy Week 2 of pregnancy is all about ovulation, fertilization, and preparing your body for conception. Learn what’s happening inside and how to boost fertility."
       sections={sections}
       sidebarCategory="pregnancy"
       sidebarTitle="Recommended Essentials"
