@@ -8,19 +8,37 @@ export default NextAuth({
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            authorization: {
+                params: { prompt: "select_account" }, // forces account selection
+            },
         }),
     ],
     adapter: MongoDBAdapter(clientPromise),
     session: {
         strategy: "jwt",
+        maxAge: 30 * 24 * 60 * 60, // 30 days
     },
     callbacks: {
-        async session({ session, token }) {
-            // Only include name, email, image
-            session.user.name = token.name;
-            session.user.email = token.email;
-            session.user.image = token.picture;
-            return session;
+        async signIn({ user, account, profile }) {
+            const db = (await clientPromise).db();
+            const usersCollection = db.collection("users");
+
+            const existingUser = await usersCollection.findOne({ email: user.email });
+
+            if (existingUser) {
+                // If the provider is different, allow linking by updating the user
+                if (existingUser.email && existingUser.provider !== account.provider) {
+                    await usersCollection.updateOne(
+                        { email: user.email },
+                        { $set: { provider: account.provider, providerAccountId: account.id } }
+                    );
+                }
+            }
+
+            return true; // allow sign in
+        },
+        pages: {
+            error: "/", // custom error page
         },
         async jwt({ token, user }) {
             if (user) {
@@ -29,6 +47,13 @@ export default NextAuth({
                 token.picture = user.image;
             }
             return token;
+        },
+
+        async session({ session, token }) {
+            session.user.name = token.name;
+            session.user.email = token.email;
+            session.user.image = token.picture;
+            return session;
         },
     },
 });

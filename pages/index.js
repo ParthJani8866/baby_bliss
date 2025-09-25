@@ -7,11 +7,32 @@ import Footer from "./components/Footer";
 import AdBanner from "./components/AdBanner";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const { data: session, status } = useSession();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (status === "loading") return;
+
+    if (!session) {
+      setLoading(true);
+      setShowLoginModal(true); // show popup modal
+      handleGoogleLogin();
+    } else {
+      setShowLoginModal(false);
+    }
+  }, [session, status]);
+
+  const handleGoogleLogin = async () => {
+    await signIn("google", { callbackUrl: "/", redirect: true });
+  };
+
   // Pregnancy blogs
   const pregnancyPosts = [
-    // First Trimester
     {
       trimester: "First Trimester (Weeks 1–12)",
       blogs: [
@@ -29,7 +50,6 @@ export default function Home() {
         { week: 12, title: "Pregnancy Week 12 — Welcome to the Second Trimester", slug: "pregnancy-week-12", description: "Critical development is complete; risk of miscarriage decreases and energy may return to mom." }
       ]
     },
-    // Second Trimester
     {
       trimester: "Second Trimester (Weeks 13–27)",
       blogs: [
@@ -68,7 +88,6 @@ export default function Home() {
         { week: 40, title: "Pregnancy Week 40 — Full-Term & Labor Readiness", slug: "pregnancy-week-40", description: "The baby is fully developed; labor can start at any time." }
       ]
     }
-    // You can add Third Trimester similarly
   ];
 
   // Motherhood blogs
@@ -175,8 +194,8 @@ export default function Home() {
           ))}
         </div>
       </section>
-      {/* Pregnancy Blogs */}
 
+      {/* Pregnancy Blogs */}
       <section className="my-12 px-4 md:px-8">
         <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">
           Pregnancy Week-by-Week
@@ -184,7 +203,6 @@ export default function Home() {
 
         {pregnancyPosts.map((trimester, index) => (
           <div key={trimester.trimester} className="mb-8">
-            {/* Trimester Image */}
             <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
               <Image
                 src={`/images/trimester-${index + 1}.jpg`}
@@ -208,9 +226,74 @@ export default function Home() {
           </div>
         ))}
       </section>
-      <AdBanner />
 
+      <AdBanner />
       <Footer />
+
+      {/* Popup modal for Google login */}
+      {showLoginModal && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0,0,0,0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "#fff",
+              padding: "30px",
+              borderRadius: "10px",
+              textAlign: "center",
+              minWidth: "300px",
+            }}
+          >
+            <h2>Login with Google</h2>
+            <button
+              onClick={handleGoogleLogin}
+              style={{
+                padding: "10px 20px",
+                marginTop: "20px",
+                cursor: "pointer",
+                backgroundColor: "#4285F4",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              disabled={loading}
+            >
+              {loading ? (
+                <div className="loader" style={{
+                  border: "3px solid #f3f3f3",
+                  borderTop: "3px solid #fff",
+                  borderRadius: "50%",
+                  width: "18px",
+                  height: "18px",
+                  animation: "spin 1s linear infinite",
+                }} />
+              ) : (
+                "Sign in with Google"
+              )}
+              <style jsx>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
