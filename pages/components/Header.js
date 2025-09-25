@@ -28,7 +28,7 @@ export default function Header() {
           <Link href="/pregnancy-week-wise" className="text-gray-700 hover:text-orange-500 font-medium">
             Pregnancy
           </Link>
-          <Link href="/blog" className="text-gray-700 hover:text-orange-500 font-medium">
+          <Link href="/blogs" className="text-gray-700 hover:text-orange-500 font-medium">
             Blog
           </Link>
 

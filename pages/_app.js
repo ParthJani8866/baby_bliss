@@ -2,10 +2,40 @@ import Head from "next/head";
 import Script from "next/script";
 import "../styles/global.css";
 import { SessionProvider } from "next-auth/react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
+// Loader Component
+function Loader() {
+  return (
+    <div className="fixed inset-0 bg-white bg-opacity-70 flex items-center justify-center z-50">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-orange-500"></div>
+    </div>
+  );
+}
 
 export default function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleStart = () => setLoading(true);
+    const handleComplete = () => setLoading(false);
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleComplete);
+      router.events.off("routeChangeError", handleComplete);
+    };
+  }, [router]);
+
   return (
     <SessionProvider session={session}>
+      {loading && <Loader />}
       <Head>
         <title>Baby Bliss</title>
         <meta
