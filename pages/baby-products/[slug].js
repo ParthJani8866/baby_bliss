@@ -4,7 +4,7 @@ import Head from "next/head";
 import Script from "next/script";
 import { categories } from "../../data/categories";
 import { slugify } from "../../utils/slugify";
-import Header from "../components/header";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import Lightbox from "react-image-lightbox";

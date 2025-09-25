@@ -1,7 +1,7 @@
 "use client";
 
 import Head from "next/head";
-import Header from "../components/header"; // adjust path if needed
+import Header from "../components/Header"; // adjust path if needed
 import Footer from "../components/Footer"; // adjust path if needed
 import Link from "next/link";
 import Script from "next/script";
