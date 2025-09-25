@@ -188,6 +188,7 @@ export default function Home() {
             <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
               <Image
                 src={`/images/trimester-${index + 1}.jpg`}
+                alt={`trimester-${index + 1}`}
                 fill
                 className="object-cover"
               />
