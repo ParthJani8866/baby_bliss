@@ -7,6 +7,7 @@ import Image from "next/image";
 import AdBanner from "./AdBanner";
 import { useEffect, useState } from "react";
 import CommentSection from "./CommentSection"; // <-- custom comment component
+import Link from "next/link";
 
 export default function BlogLayout({
   title,
@@ -42,7 +43,7 @@ export default function BlogLayout({
         <article className="lg:col-span-3">
           {/* Breadcrumb */}
           <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
-            <a href="/" className="hover:text-orange-500">Home</a>
+            <Link href="/" className="hover:text-orange-500">Home</Link>
             <span>/</span>
             <span className="text-gray-700 font-medium">{title}</span>
           </nav>
@@ -135,12 +136,12 @@ export default function BlogLayout({
             <ul className="space-y-2 text-sm">
               {toc.map((item, idx) => (
                 <li key={`toc-${idx}`}>
-                  <a
+                  <Link
                     href={`#${item.id}`}
                     className="text-gray-700 hover:text-orange-500 transition-colors"
                   >
                     {item.text}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
