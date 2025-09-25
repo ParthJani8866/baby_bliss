@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import axios from "axios";
-import Header from "../../pages/components/header";
+import Header from "../../pages/components/Header";
 
 export default function AddProductPage() {
   const [form, setForm] = useState({
