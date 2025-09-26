@@ -20,8 +20,6 @@ export default function Home() {
 
     if (!session) {
       setLoading(true);
-      setShowLoginModal(true); // show popup modal
-      handleGoogleLogin();
     } else {
       setShowLoginModal(false);
     }
