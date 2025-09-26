@@ -29,7 +29,7 @@ export default function Header() {
             Pregnancy
           </Link>
           <Link href="/blogs" className="text-gray-700 hover:text-orange-500 font-medium">
-            Blog
+            Blogs
           </Link>
 
           {session ? (

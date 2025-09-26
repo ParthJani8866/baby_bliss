@@ -194,7 +194,61 @@ export default function Home() {
           ))}
         </div>
       </section>
+      {/* Baby Names Section */}
+      <section className="my-12 px-4 md:px-8">
+        <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Names</h2>
+        <div className="grid gap-6 md:grid-cols-4">
+          {[
+            { name: "Oliver", gender: "Boy", slug: "oliver" },
+            { name: "Emma", gender: "Girl", slug: "emma" },
+            { name: "Liam", gender: "Boy", slug: "liam" },
+            { name: "Ava", gender: "Girl", slug: "ava" },
+            { name: "Noah", gender: "Boy", slug: "noah" },
+            { name: "Sophia", gender: "Girl", slug: "sophia" },
+            { name: "Ethan", gender: "Boy", slug: "ethan" },
+            { name: "Isabella", gender: "Girl", slug: "isabella" }
+          ].map((baby, index) => (
+            <Link
+              key={index}
+              href={`/baby-names/baby-names-search`}
+              className="border rounded-lg shadow hover:shadow-lg p-4 text-center block"
+            >
+              <h3 className="text-lg font-bold text-gray-800">{baby.name}</h3>
+              <p className="text-gray-600">{baby.gender}</p>
+            </Link>
+          ))}
 
+        </div>
+        <div className="flex justify-center">
+          <Link
+            href={`/baby-names/baby-names-search`}
+            className="border rounded-lg shadow hover:shadow-lg p-6 text-center text-lg font-bold text-gray-800 bg-white hover:bg-orange-50 transition"
+          >
+            Search Baby Names
+          </Link>
+        </div>
+      </section>
+
+      {/* Single Gaby Game Section */}
+      <section className="my-12 px-4 md:px-8">
+        <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Game</h2>
+        <div className="flex justify-center">
+          <Link
+            href="/games/guess-baby-animal"
+            className="border rounded-lg shadow hover:shadow-lg overflow-hidden w-full max-w-sm"
+          >
+            <div className="relative w-full h-56">
+              <Image
+                src="/images/baby game image1.jpg"
+                alt="Puzzle Fun"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <h3 className="text-lg font-bold p-4 text-center text-gray-800">Puzzle Fun</h3>
+          </Link>
+        </div>
+      </section>
       {/* Pregnancy Blogs */}
       <section className="my-12 px-4 md:px-8">
         <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">
