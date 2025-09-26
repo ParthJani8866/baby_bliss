@@ -1,13 +1,13 @@
 "use client";
 
-import Header from "./Header";
-import Footer from "./Footer";
 import Head from "next/head";
 import Image from "next/image";
-import AdBanner from "./AdBanner";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import CommentSection from "./CommentSection"; // <-- custom comment component
-import Link from "next/link";
+import AdBanner from "./AdBanner"; // <-- your ad placement
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function BlogLayout({
   title,
@@ -16,7 +16,7 @@ export default function BlogLayout({
   steps = [],
   sections = [],
   tips = [],
-  slug // <-- unique slug for each blog post
+  slug // unique slug for each blog post
 }) {
   const [toc, setToc] = useState([]);
 
@@ -85,7 +85,11 @@ export default function BlogLayout({
             </section>
           ))}
 
-          <AdBanner />
+          {/* Mid-Content Ad */}
+          <div className="my-8 p-4 bg-orange-50 border rounded shadow">
+            <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
+            <AdBanner />
+          </div>
 
           {/* Sections */}
           {sections.map((section, idx) => (
@@ -123,14 +127,21 @@ export default function BlogLayout({
             </section>
           )}
 
-          {/* Custom Comment Section */}
+          {/* End Content Ad */}
+          <div className="my-8 p-4 bg-orange-50 border rounded shadow">
+            <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
+            <AdBanner />
+          </div>
+
+          {/* Comments */}
           <div className="mt-12">
             <CommentSection slug={slug} />
           </div>
         </article>
 
-        {/* Table of Contents Sidebar */}
-        <aside className="hidden lg:block lg:col-span-1 sticky top-24 self-start">
+        {/* Table of Contents & Sidebar Ads */}
+        <aside className="hidden lg:block lg:col-span-1 sticky top-24 self-start space-y-6">
+          {/* TOC */}
           <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg shadow-md">
             <h3 className="text-lg font-semibold mb-3 text-orange-600">Table of Contents</h3>
             <ul className="space-y-2 text-sm">
@@ -145,6 +156,12 @@ export default function BlogLayout({
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Sidebar Ad */}
+          <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg shadow-md">
+            <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
+            <AdBanner />
           </div>
         </aside>
       </main>

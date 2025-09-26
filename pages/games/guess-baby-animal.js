@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import AdBanner from "../components/AdBanner";
 
 const animals = [
     { name: "fry", image: "/images/fry.jpg" },           // baby fish
@@ -74,7 +75,10 @@ export default function GuessBabyAnimalMCQ() {
     return (
         <div className="bg-white text-gray-800 min-h-screen">
             <Header />
-
+            <div className="my-8 p-4 bg-orange-50 border rounded shadow">
+                <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
+                <AdBanner />
+            </div>
             <div className="flex flex-col items-center justify-center min-h-screen bg-yellow-50 p-4">
                 <h1 className="text-3xl font-bold text-orange-500 mb-4">Guess the Baby Animal</h1>
                 <h2 className="text-xl font-semibold mb-6">Score: {score}</h2>
@@ -111,6 +115,10 @@ export default function GuessBabyAnimalMCQ() {
                         </button>
                     </div>
                 )}
+                <div className="my-8 p-4 bg-orange-50 border rounded shadow">
+                    <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
+                    <AdBanner />
+                </div>
                 <Footer />
             </div>
         </div>

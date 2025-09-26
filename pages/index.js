@@ -129,7 +129,10 @@ export default function Home() {
       />
 
       <Header />
-      <AdBanner />
+      <div className="my-8 p-4 bg-orange-50 border rounded shadow">
+        <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
+        <AdBanner />
+      </div>
 
       {/* Hero Section */}
       <section className="hero relative p-8 md:p-16 bg-orange-50">
@@ -143,7 +146,10 @@ export default function Home() {
         </div>
       </section>
 
-      <AdBanner />
+      <div className="my-8 p-4 bg-orange-50 border rounded shadow">
+        <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
+        <AdBanner />
+      </div>
 
       {/* Motherhood Blogs */}
       <section className="my-12 px-4 md:px-8">
@@ -279,7 +285,10 @@ export default function Home() {
         ))}
       </section>
 
-      <AdBanner />
+      <div className="my-8 p-4 bg-orange-50 border rounded shadow">
+        <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
+        <AdBanner />
+      </div>
       <Footer />
 
       {/* Popup modal for Google login */}

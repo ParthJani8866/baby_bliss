@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 
 // Import all names from the generated file
 import babyNames from "../../data/babyNamesArray"; // adjust path if needed
+import AdBanner from "../components/AdBanner";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const genders = ["All", "Boy", "Girl"];
@@ -18,15 +19,19 @@ export default function BabyNamesSearch() {
   // Only filter names if a letter is selected
   const filteredNames = selectedLetter
     ? babyNames.filter(
-        (b) =>
-          b.name.startsWith(selectedLetter) &&
-          (selectedGender === "All" || b.gender === selectedGender)
-      )
+      (b) =>
+        b.name.startsWith(selectedLetter) &&
+        (selectedGender === "All" || b.gender === selectedGender)
+    )
     : [];
 
   return (
     <div className="bg-white text-gray-800 min-h-screen">
       <Header />
+      <div className="my-8 p-4 bg-orange-50 border rounded shadow">
+        <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
+        <AdBanner />
+      </div>
       <Head>
         <title>Baby Names Alphabetical Search | Baby Bliss</title>
         <meta
@@ -47,11 +52,10 @@ export default function BabyNamesSearch() {
             <button
               key={letter}
               onClick={() => setSelectedLetter(letter)}
-              className={`p-2 rounded-lg text-sm font-semibold border shadow-sm transition ${
-                selectedLetter === letter
-                  ? "bg-orange-500 text-white border-orange-600"
-                  : "bg-white hover:bg-gray-100 border-gray-300"
-              }`}
+              className={`p-2 rounded-lg text-sm font-semibold border shadow-sm transition ${selectedLetter === letter
+                ? "bg-orange-500 text-white border-orange-600"
+                : "bg-white hover:bg-gray-100 border-gray-300"
+                }`}
             >
               {letter}
             </button>
@@ -64,11 +68,10 @@ export default function BabyNamesSearch() {
             <button
               key={gender}
               onClick={() => setSelectedGender(gender)}
-              className={`px-4 py-2 rounded-lg font-medium border transition ${
-                selectedGender === gender
-                  ? "bg-orange-500 text-white border-orange-600"
-                  : "bg-white hover:bg-gray-100 border-gray-300"
-              }`}
+              className={`px-4 py-2 rounded-lg font-medium border transition ${selectedGender === gender
+                ? "bg-orange-500 text-white border-orange-600"
+                : "bg-white hover:bg-gray-100 border-gray-300"
+                }`}
             >
               {gender}
             </button>
@@ -92,11 +95,10 @@ export default function BabyNamesSearch() {
                   >
                     <span className="font-medium">{baby.name}</span>
                     <span
-                      className={`text-xs px-2 py-1 rounded-full ${
-                        baby.gender === "Boy"
-                          ? "bg-blue-100 text-blue-700"
-                          : "bg-pink-100 text-pink-700"
-                      }`}
+                      className={`text-xs px-2 py-1 rounded-full ${baby.gender === "Boy"
+                        ? "bg-blue-100 text-blue-700"
+                        : "bg-pink-100 text-pink-700"
+                        }`}
                     >
                       {baby.gender}
                     </span>
@@ -112,7 +114,10 @@ export default function BabyNamesSearch() {
           </div>
         )}
       </main>
-
+      <div className="my-8 p-4 bg-orange-50 border rounded shadow">
+        <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
+        <AdBanner />
+      </div>
       <Footer />
     </div>
   );
