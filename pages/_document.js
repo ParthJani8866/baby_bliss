@@ -1,25 +1,25 @@
 // pages/_document.js
-import { Html, Head, Main, NextScript } from 'next/document';
+import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Google AdSense */}
+        {/* ✅ Google AdSense */}
         <script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-5866918436034267"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5866918436034267"
           crossOrigin="anonymous"
         ></script>
       </Head>
       <body>
-        {/* GTM noscript */}
+        {/* ✅ Google Tag Manager (noscript fallback) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KDKGFBMB"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
 

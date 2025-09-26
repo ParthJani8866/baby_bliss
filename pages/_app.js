@@ -36,6 +36,7 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
   return (
     <SessionProvider session={session}>
       {loading && <Loader />}
+
       <Head>
         <title>Baby Bliss</title>
         <meta
@@ -44,11 +45,17 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
         />
         <link rel="icon" href="/favicon_io/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="google-site-verification" content="cABz7WiOmmxhYSWi92HCqRHetXYjBdcGqlVm9VerfRc" />
+        <meta
+          name="google-site-verification"
+          content="cABz7WiOmmxhYSWi92HCqRHetXYjBdcGqlVm9VerfRc"
+        />
       </Head>
 
-      {/* Google Scripts */}
-      <Script src="https://www.googletagmanager.com/gtag/js?id=AW-693333660" strategy="afterInteractive" />
+      {/* Google Ads Conversion Tracking */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-693333660"
+        strategy="afterInteractive"
+      />
       <Script id="google-ads-tag" strategy="afterInteractive">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -56,7 +63,11 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
         gtag('config', 'AW-693333660');
       `}</Script>
 
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-VQ83YSY2P5" strategy="afterInteractive" />
+      {/* Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-VQ83YSY2P5"
+        strategy="afterInteractive"
+      />
       <Script id="google-analytics" strategy="afterInteractive">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -65,6 +76,7 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
         gtag('config', 'GT-5R6XBDRB');
       `}</Script>
 
+      {/* Google Tag Manager */}
       <Script
         id="gtm-script"
         strategy="afterInteractive"
@@ -77,11 +89,12 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
         }}
       />
 
+      {/* Google AdSense */}
       <Script
         id="adsense-script"
         async
         strategy="afterInteractive"
-        src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-5866918436034267"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5866918436034267"
         crossOrigin="anonymous"
       />
 
