@@ -10,10 +10,10 @@ export default function ProductPage({ product, brand, category, subcategory }) {
   return (
     <div>
       <Head>
-        <title>{product.name} - Baby Bliss Boutique</title>
+        <title>{product.name} - Belly Buds Boutique</title>
         <meta
           name="description"
-          content={`Buy ${product.name} online at Baby Bliss Boutique. Premium quality baby products at the best price.`}
+          content={`Buy ${product.name} online at Belly Buds Boutique. Premium quality baby products at the best price.`}
         />
         <meta
           name="keywords"

@@ -14,7 +14,7 @@ export default function BestBabyLullabies() {
 
       {/* SEO */}
       <Head>
-        <title>10 Best Lullabies to Help Your Baby Sleep Peacefully | Baby Bliss</title>
+        <title>10 Best Lullabies to Help Your Baby Sleep Peacefully | Belly Buds</title>
         <meta
           name="description"
           content="Discover the 10 best lullabies to help your baby sleep peacefully. Soothing songs and tips for calming your newborn and promoting healthy sleep."

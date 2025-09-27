@@ -123,8 +123,8 @@ export default function Home() {
   return (
     <div className="bg-white text-black min-h-screen">
       <NextSeo
-        title="Baby Bliss | Motherhood, Parenting & Pregnancy Blogs"
-        description="Explore Baby Bliss motherhood blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your motherhood journey smoother."
+        title="Belly Buds | Motherhood, Parenting & Pregnancy Blogs"
+        description="Explore Belly Buds motherhood blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your motherhood journey smoother."
         canonical="https://baby-toys.shop/"
       />
 
@@ -138,7 +138,7 @@ export default function Home() {
       <section className="hero relative p-8 md:p-16 bg-orange-50">
         <div className="container mx-auto text-center max-w-3xl">
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-orange-600">
-            Welcome to Baby Bliss
+            Welcome to Belly Buds
           </h1>
           <p className="text-gray-700 text-lg leading-relaxed">
             A trusted space for mothers and families. Discover expert tips, week-by-week pregnancy guidance, and real motherhood experiences. Because raising a child should be a joyful journey, not a stressful one.

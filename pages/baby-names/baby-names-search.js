@@ -33,7 +33,7 @@ export default function BabyNamesSearch() {
         <AdBanner />
       </div>
       <Head>
-        <title>Baby Names Alphabetical Search | Baby Bliss</title>
+        <title>Baby Names Alphabetical Search | Belly Buds</title>
         <meta
           name="description"
           content="Discover unique and popular baby names alphabetically. Browse boy and girl names by letter and find the perfect name for your little one."

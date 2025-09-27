@@ -26,7 +26,7 @@ export default function BabyGearEssentials() {
       {/* SEO */}
       <Head>
         <title>
-          Top 10 Must-Have Baby Gear Essentials for New Parents | Baby Bliss
+          Top 10 Must-Have Baby Gear Essentials for New Parents | Belly Buds
         </title>
         <meta
           name="description"

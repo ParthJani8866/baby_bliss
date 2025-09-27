@@ -31,7 +31,7 @@ export default function NewbornBabyClothes() {
 
             {/* SEO */}
             <Head>
-                <title>Newborn Baby Clothes: What You Need to Know in 2025 | Baby Bliss</title>
+                <title>Newborn Baby Clothes: What You Need to Know in 2025 | Belly Buds</title>
                 <meta
                     name="description"
                     content="Complete guide to newborn baby clothes in 2025. Learn essentials, safety tips, brands, and care instructions for your little one."
@@ -106,7 +106,7 @@ export default function NewbornBabyClothes() {
                     <h2 className="text-2xl font-semibold mt-6 mb-3">6. Where to Buy</h2>
                     <ul className="list-disc pl-5 mb-4 space-y-2">
                         <li>Online Stores: <Link href="https://www.amazon.in" target="_blank" className="text-blue-600 underline">Amazon India</Link>, <Link href="http://baby-toys.shop/" target="_blank" className="text-blue-600 underline">baby-toys.shop</Link>, Flipkart</li>
-                        <li>Specialty Stores: Baby Bliss Boutique, The Moms Co. stores</li>
+                        <li>Specialty Stores: Belly Buds Boutique, The Moms Co. stores</li>
                         <li>Local Malls & Retailers: Trusted brands with organic or soft cotton clothing</li>
                     </ul>
 

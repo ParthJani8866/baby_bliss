@@ -109,7 +109,7 @@ export default function BabyProductsPage({ category }) {
         "description":
           product.shortDescription ||
           `${product.name} available in Ahmedabad. High quality baby products.`,
-        "brand": { "@type": "Brand", "name": "Baby Bliss" },
+        "brand": { "@type": "Brand", "name": "Belly Buds" },
         "offers": {
           "@type": "Offer",
           "url":
@@ -127,10 +127,10 @@ export default function BabyProductsPage({ category }) {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Head>
-        <title>{`${category.name} | Baby Products - Baby Bliss Boutique`}</title>
+        <title>{`${category.name} | Baby Products - Belly Buds Boutique`}</title>
         <meta
           name="description"
-          content={`Shop ${category.name} and other baby products online at Baby Bliss Boutique. Quality baby essentials delivered across India.`}
+          content={`Shop ${category.name} and other baby products online at Belly Buds Boutique. Quality baby essentials delivered across India.`}
         />
         <meta
           name="keywords"
@@ -138,7 +138,7 @@ export default function BabyProductsPage({ category }) {
         />
         <meta
           property="og:title"
-          content={`${category.name} | Baby Products - Baby Bliss Boutique`}
+          content={`${category.name} | Baby Products - Belly Buds Boutique`}
         />
         <meta
           property="og:description"

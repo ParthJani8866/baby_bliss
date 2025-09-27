@@ -34,7 +34,7 @@ export default function Blogs() {
     <div className="bg-gray-50 text-gray-800 min-h-screen">
       <Header />
       <Head>
-        <title>Baby Bliss Blogs | Baby Tips & Guides</title>
+        <title>Belly Buds Blogs | Baby Tips & Guides</title>
         <meta
           name="description"
           content="Read expert blogs and guides on baby products, newborn care, and parenting tips."

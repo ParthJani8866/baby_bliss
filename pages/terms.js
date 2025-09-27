@@ -13,10 +13,10 @@ export default function TermsAndConditions() {
 
             {/* SEO */}
             <Head>
-                <title>Terms & Conditions | Baby Bliss Boutique</title>
+                <title>Terms & Conditions | Belly Buds Boutique</title>
                 <meta
                     name="description"
-                    content="Read the Terms & Conditions for Baby Bliss Boutique. Learn about the rules and guidelines for using our website and services."
+                    content="Read the Terms & Conditions for Belly Buds Boutique. Learn about the rules and guidelines for using our website and services."
                 />
             </Head>
 
@@ -24,7 +24,7 @@ export default function TermsAndConditions() {
                 <h1 className="text-3xl font-bold mb-6 text-orange-500">Terms & Conditions</h1>
 
                 <p className="mb-4 leading-relaxed">
-                    Welcome to Baby Bliss Boutique. By accessing or using our website, you agree to comply with and be bound by the following Terms & Conditions. Please read them carefully.
+                    Welcome to Belly Buds Boutique. By accessing or using our website, you agree to comply with and be bound by the following Terms & Conditions. Please read them carefully.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">1. Use of Website</h2>
@@ -34,7 +34,7 @@ export default function TermsAndConditions() {
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">2. Intellectual Property</h2>
                 <p className="mb-4">
-                    All content on this website, including text, images, graphics, logos, and software, is the property of Baby Bliss Boutique or its licensors and is protected by copyright laws.
+                    All content on this website, including text, images, graphics, logos, and software, is the property of Belly Buds Boutique or its licensors and is protected by copyright laws.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">3. Products and Pricing</h2>
@@ -49,12 +49,12 @@ export default function TermsAndConditions() {
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">5. Disclaimer of Warranties</h2>
                 <p className="mb-4">
-                    This website is provided “as is” without any warranties of any kind, either express or implied. Baby Bliss Boutique does not guarantee that the website will be error-free or uninterrupted.
+                    This website is provided “as is” without any warranties of any kind, either express or implied. Belly Buds Boutique does not guarantee that the website will be error-free or uninterrupted.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">6. Limitation of Liability</h2>
                 <p className="mb-4">
-                    In no event shall Baby Bliss Boutique be liable for any direct, indirect, incidental, or consequential damages arising from the use or inability to use the website or its content.
+                    In no event shall Belly Buds Boutique be liable for any direct, indirect, incidental, or consequential damages arising from the use or inability to use the website or its content.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">7. User Responsibilities</h2>
@@ -74,7 +74,7 @@ export default function TermsAndConditions() {
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">9. Changes to Terms</h2>
                 <p className="mb-4">
-                    Baby Bliss Boutique reserves the right to update or modify these Terms & Conditions at any time. Changes will be posted on this page, and your continued use of the website constitutes acceptance of the updated terms.
+                    Belly Buds Boutique reserves the right to update or modify these Terms & Conditions at any time. Changes will be posted on this page, and your continued use of the website constitutes acceptance of the updated terms.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">10. Governing Law</h2>

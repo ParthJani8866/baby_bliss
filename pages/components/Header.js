@@ -1,62 +1,136 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState } from "react";
+import {
+  HomeIcon,
+  UserIcon,
+  HeartIcon,
+  BookOpenIcon,
+  PuzzlePieceIcon,
+  UserCircleIcon,
+  ChevronDownIcon,
+  ArrowRightOnRectangleIcon,
+  ArrowLeftOnRectangleIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Header() {
   const { data: session } = useSession();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openMobileSubmenu, setOpenMobileSubmenu] = useState(null);
+
+  const toggleMobileSubmenu = (menu) =>
+    setOpenMobileSubmenu(openMobileSubmenu === menu ? null : menu);
+
+  // Motherhood months
+  const motherhoodMonths = Array.from({ length: 12 }, (_, i) => ({
+    label: `Motherhood Month ${i + 1}`,
+    href: `/motherhood-blogs/Motherhood-month-${i + 1}`,
+  }));
+
+  // Pregnancy weeks 1–40
+  const pregnancyWeeks = Array.from({ length: 40 }, (_, i) => ({
+    label: `Pregnancy Week ${i + 1}`,
+    href: `/pregnancy-week-wise/pregnancy-week-${i + 1}`,
+  }));
 
   return (
-    <header className="bg-orange-50 shadow-md sticky top-0 z-50">
+    <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center p-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">
-            B
+        <Link href="/" className="flex items-center gap-3">
+          <div className="w-32 h-16 relative">
+            <Image
+              src="/images/logo.jpg"
+              alt="Belly Buds Logo"
+              fill
+              sizes="(max-width: 768px) 200px, (max-width: 1200px) 256px, 320px"
+              className="object-contain"
+            />
           </div>
-          <h1 className="text-2xl font-bold text-orange-600">Baby Bliss</h1>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-6">
-          <Link href="/motherhood-blogs" className="text-gray-700 hover:text-orange-500 font-medium">
-            Motherhood
-          </Link>
-          <Link href="/pregnancy-week-wise" className="text-gray-700 hover:text-orange-500 font-medium">
-            Pregnancy
-          </Link>
-          <Link href="/blogs" className="text-gray-700 hover:text-orange-500 font-medium">
-            Blogs
+          <Link
+            href="/"
+            className="flex items-center gap-1 text-green-900 hover:text-green-700 font-medium"
+          >
+            <HomeIcon className="w-5 h-5" /> Home
           </Link>
 
+          {/* Motherhood */}
+          <div className="relative group">
+            <button className="flex items-center gap-1 text-green-900 font-medium hover:text-green-700">
+              <UserIcon className="w-5 h-5" /> Motherhood <ChevronDownIcon className="w-4 h-4" />
+            </button>
+            <div className="absolute left-0 top-full mt-2 w-60 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              {motherhoodMonths.map((item, i) => (
+                <Link key={i} href={item.href} className="block px-4 py-2 text-green-900 hover:bg-green-50">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Pregnancy */}
+          <div className="relative group">
+            <button className="flex items-center gap-1 text-green-900 font-medium hover:text-green-700">
+              <HeartIcon className="w-5 h-5" /> Pregnancy <ChevronDownIcon className="w-4 h-4" />
+            </button>
+            <div className="absolute left-0 top-full mt-2 w-64 bg-white border rounded shadow-lg max-h-96 overflow-y-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              {pregnancyWeeks.map((week, i) => (
+                <Link key={i} href={week.href} className="block px-4 py-2 text-green-900 hover:bg-green-50">
+                  {week.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link
+            href="/blogs"
+            className="flex items-center gap-1 text-green-900 hover:text-green-700 font-medium"
+          >
+            <BookOpenIcon className="w-5 h-5" /> Blogs
+          </Link>
+          <Link
+            href="/baby-names/baby-names-search"
+            className="flex items-center gap-1 text-green-900 hover:text-green-700 font-medium"
+          >
+            <UserGroupIcon  className="w-5 h-5" /> Baby names
+          </Link>
+
+          <Link
+            href="/games/guess-baby-animal"
+            className="flex items-center gap-1 text-green-900 hover:text-green-700 font-medium"
+          >
+            <PuzzlePieceIcon className="w-5 h-5" /> Puzzle Fun
+          </Link>
+
+          {/* Login / Logout */}
           {session ? (
-            <div className="relative">
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center gap-2 focus:outline-none text-gray-700 font-medium"
-              >
-                {session.user.name}
+            <div className="relative group">
+              <button className="flex items-center gap-1 text-green-900 font-medium hover:text-green-700">
+                <UserCircleIcon className="w-5 h-5" /> {session.user.name} <ChevronDownIcon className="w-4 h-4" />
               </button>
-              {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-36 bg-white border rounded shadow-lg py-2 z-50">
-                  <button
-                    onClick={() => signOut()}
-                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-orange-50"
-                  >
-                    Logout
-                  </button>
-                </div>
-              )}
+              <div className="absolute right-0 top-full mt-2 w-40 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <button
+                  onClick={() => signOut()}
+                  className="flex items-center gap-2 w-full text-left px-4 py-2 text-green-900 hover:bg-green-50"
+                >
+                  <ArrowLeftOnRectangleIcon className="w-5 h-5" /> Logout
+                </button>
+              </div>
             </div>
           ) : (
             <button
               onClick={() => signIn("google")}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="flex items-center gap-2 bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700"
             >
-              Login with Google
+              <ArrowRightOnRectangleIcon className="w-5 h-5" /> Login with Google
             </button>
           )}
         </nav>
@@ -65,7 +139,7 @@ export default function Header() {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-gray-700 focus:outline-none"
+            className="text-green-900 focus:outline-none"
           >
             <svg
               className="w-6 h-6"
@@ -86,46 +160,93 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-orange-50 border-t border-gray-200">
+        <div className="md:hidden bg-white border-t border-green-200">
           <Link
-            href="/motherhood-blogs"
-            className="block px-4 py-3 text-gray-700 hover:bg-orange-100"
+            href="/"
+            className="flex items-center gap-2 px-4 py-3 text-green-900 hover:bg-green-50"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Motherhood
+            <HomeIcon className="w-5 h-5" /> Home
           </Link>
+
+          <MobileSubmenu
+            title="Motherhood"
+            icon={<UserIcon className="w-5 h-5" />}
+            open={openMobileSubmenu === "motherhood"}
+            onToggle={() => toggleMobileSubmenu("motherhood")}
+            items={motherhoodMonths}
+          />
+
+          <MobileSubmenu
+            title="Pregnancy"
+            icon={<HeartIcon className="w-5 h-5" />}
+            open={openMobileSubmenu === "pregnancy"}
+            onToggle={() => toggleMobileSubmenu("pregnancy")}
+            items={pregnancyWeeks}
+          />
+
           <Link
-            href="/pregnancy-week-wise"
-            className="block px-4 py-3 text-gray-700 hover:bg-orange-100"
+            href="/blogs"
+            className="flex items-center gap-2 px-4 py-3 text-green-900 hover:bg-green-50"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Pregnancy
+            <BookOpenIcon className="w-5 h-5" /> Blogs
           </Link>
+
           <Link
-            href="/blog"
-            className="block px-4 py-3 text-gray-700 hover:bg-orange-100"
+            href="/games"
+            className="flex items-center gap-2 px-4 py-3 text-green-900 hover:bg-green-50"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Blog
+            <PuzzlePieceIcon className="w-5 h-5" /> Games
           </Link>
 
           {session ? (
             <button
               onClick={() => { signOut(); setMobileMenuOpen(false); }}
-              className="w-full text-left px-4 py-3 text-gray-700 hover:bg-orange-100"
+              className="flex items-center gap-2 w-full text-left px-4 py-3 text-green-900 hover:bg-green-50"
             >
-              Logout ({session.user.name})
+              <ArrowLeftOnRectangleIcon className="w-5 h-5" /> Logout ({session.user.name})
             </button>
           ) : (
             <button
               onClick={() => { signIn("google"); setMobileMenuOpen(false); }}
-              className="w-full text-left px-4 py-3 text-gray-700 hover:bg-orange-100"
+              className="flex items-center gap-2 w-full text-left px-4 py-3 text-white bg-green-800 rounded hover:bg-green-700"
             >
-              Login with Google
+              <ArrowRightOnRectangleIcon className="w-5 h-5" /> Login with Google
             </button>
           )}
         </div>
       )}
     </header>
+  );
+}
+
+// Mobile submenu component
+function MobileSubmenu({ title, icon, items, open, onToggle }) {
+  return (
+    <div>
+      <button
+        onClick={onToggle}
+        className="flex items-center justify-between w-full px-4 py-3 text-green-900 hover:bg-green-50"
+      >
+        <div className="flex items-center gap-2">{icon} {title}</div>
+        <ChevronDownIcon className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <div className="pl-8">
+          {items.map((item, i) => (
+            <Link
+              key={i}
+              href={item.href}
+              className="block px-4 py-2 text-green-900 hover:bg-green-50"
+              onClick={onToggle} // close submenu on click
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

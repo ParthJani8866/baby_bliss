@@ -205,7 +205,7 @@ Month 12 is a milestone month of celebration, reflection, and preparation for to
     <div className="bg-white text-gray-800 min-h-screen">
       <Header />
       <Head>
-        <title>Motherhood Blogs | Baby Bliss</title>
+        <title>Motherhood Blogs | Belly Buds</title>
         <meta
           name="description"
           content="Explore motherhood month by month – a complete guide from newborn care to toddlerhood. Detailed month-by-month guide for the first year of motherhood with tips on feeding, sleeping, development, and bonding."

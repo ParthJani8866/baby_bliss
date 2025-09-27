@@ -26,7 +26,7 @@ export default function BabyFirstYearMilestones() {
       {/* SEO */}
       <Head>
         <title>
-          5 Milestones to Expect in Your Baby’s First Year | Baby Bliss
+          5 Milestones to Expect in Your Baby’s First Year | Belly Buds
         </title>
         <meta
           name="description"

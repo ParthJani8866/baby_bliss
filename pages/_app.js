@@ -38,12 +38,12 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
       {loading && <Loader />}
 
       <Head>
-        <title>Baby Bliss</title>
+        <title>Belly Buds</title>
         <meta
           name="description"
-          content="Explore Baby Bliss motherhood blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your motherhood journey smoother."
+          content="Explore Belly Buds motherhood blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your motherhood journey smoother."
         />
-        <link rel="icon" href="/favicon_io/favicon.ico" />
+        <link rel="icon" href="/images/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="google-site-verification"

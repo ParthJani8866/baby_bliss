@@ -34,7 +34,7 @@ export default function BlogLayout({
       <Header />
 
       <Head>
-        <title>{title} | Baby Bliss</title>
+        <title>{title} | Belly Buds</title>
         <meta name="description" content={description} />
       </Head>
 

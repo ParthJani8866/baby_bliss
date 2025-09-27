@@ -8,10 +8,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* About Section */}
         <div>
-          <h3 className="text-xl font-bold text-orange-500 mb-3">Baby Bliss</h3>
+          <h3 className="text-xl font-bold text-orange-500 mb-3">Belly Buds</h3>
 
           <p className="text-sm">
-            Baby Bliss Boutique is your one-stop shop for premium baby products. We care about quality, safety, and comfort for your little ones.
+            Belly Buds Boutique is your one-stop shop for premium baby products. We care about quality, safety, and comfort for your little ones.
           </p>
           <p className="text-sm">
             As an Amazon Associate I earn from qualifying purchases.
@@ -67,7 +67,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="bg-gray-200 text-center py-4 text-sm">
-        &copy; {new Date().getFullYear()} Baby Bliss Boutique. All rights reserved.
+        &copy; {new Date().getFullYear()} Belly Buds Boutique. All rights reserved.
       </div>
     </footer>
   );

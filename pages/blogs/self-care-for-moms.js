@@ -14,7 +14,7 @@ export default function SelfCareForMoms() {
 
       {/* SEO */}
       <Head>
-        <title>Self-Care for Stay-At-Home Moms: Tips for Wellbeing and Balance | Baby Bliss</title>
+        <title>Self-Care for Stay-At-Home Moms: Tips for Wellbeing and Balance | Belly Buds</title>
         <meta
           name="description"
           content="Discover practical self-care tips for stay-at-home moms. Learn how to balance motherhood, personal wellbeing, and daily responsibilities."

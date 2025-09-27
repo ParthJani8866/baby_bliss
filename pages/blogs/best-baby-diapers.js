@@ -37,7 +37,7 @@ export default function BestBabyDiapers() {
 
       {/* SEO */}
       <Head>
-        <title>10 Best Baby Diapers: Comfort & Eco-Friendly Picks | Baby Bliss</title>
+        <title>10 Best Baby Diapers: Comfort & Eco-Friendly Picks | Belly Buds</title>
         <meta
           name="description"
           content="Discover the top 10 baby diapers for absorbency, comfort, and eco-friendliness. Tips for choosing the best diapers for your baby."

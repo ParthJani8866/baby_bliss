@@ -10,10 +10,10 @@ export default function PrivacyPolicy() {
             <Header />
 
             <Head>
-                <title>Privacy Policy | Baby Bliss Boutique</title>
+                <title>Privacy Policy | Belly Buds Boutique</title>
                 <meta
                     name="description"
-                    content="Privacy Policy for Baby Bliss Boutique. Learn how we collect, use, and protect your personal information when you visit our website."
+                    content="Privacy Policy for Belly Buds Boutique. Learn how we collect, use, and protect your personal information when you visit our website."
                 />
             </Head>
 
@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
                 <h1 className="text-3xl font-bold mb-6 text-orange-500">Privacy Policy</h1>
 
                 <p className="mb-4">
-                    At Baby Bliss Boutique, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our website.
+                    At Belly Buds Boutique, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our website.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">1. Information We Collect</h2>
@@ -90,7 +90,7 @@ export default function PrivacyPolicy() {
                     If you have questions or concerns about this Privacy Policy or your personal information, please contact us at:
                 </p>
                 <p className="mb-4 font-semibold">Email: support@babybliss.com</p>
-                <p className="mb-4 font-semibold">Address: 123 Baby Bliss Street, Your City, Your Country</p>
+                <p className="mb-4 font-semibold">Address: 123 Belly Buds Street, Your City, Your Country</p>
 
                 <p className="mt-6">
                     By using our website, you agree to the terms outlined in this Privacy Policy.

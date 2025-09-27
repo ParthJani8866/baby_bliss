@@ -20,7 +20,7 @@ export default function FunnyParentingMemesBlog1() {
             {/* SEO */}
             <Head>
                 <title>
-                    Funny Parenting Memes That Every Parent Will Relate To | Baby Bliss
+                    Funny Parenting Memes That Every Parent Will Relate To | Belly Buds
                 </title>
                 <meta
                     name="description"

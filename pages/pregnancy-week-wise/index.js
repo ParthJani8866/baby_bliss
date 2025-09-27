@@ -78,7 +78,7 @@ export default function PregnancyWeekWise() {
     <div className="bg-gray-50 text-gray-800 min-h-screen">
       <Header />
       <Head>
-        <title>Pregnancy Week-by-Week | Baby Bliss</title>
+        <title>Pregnancy Week-by-Week | Belly Buds</title>
         <meta name="description" content="Pregnancy week-by-week blogs with baby’s development, mom’s symptoms, and tips for every stage." />
       </Head>
 

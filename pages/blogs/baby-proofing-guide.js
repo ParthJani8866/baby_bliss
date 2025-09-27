@@ -32,7 +32,7 @@ export default function BabyProofingGuide() {
 
       {/* SEO */}
       <Head>
-        <title>How to Make Your Home Baby-Safe: Complete Baby-Proofing Guide | Baby Bliss</title>
+        <title>How to Make Your Home Baby-Safe: Complete Baby-Proofing Guide | Belly Buds</title>
         <meta
           name="description"
           content="Step-by-step guide to baby-proof your home. Learn safety tips, essential precautions, and prevent accidents for newborns and toddlers."
