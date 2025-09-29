@@ -13,13 +13,15 @@ export default function AdBanner() {
   }, []);
 
   return (
-    <ins
-      className="adsbygoogle"
-      style={{ display: "block" }}
-      data-ad-client="ca-pub-5866918436034267" // ✅ Your AdSense client ID
-      data-ad-slot="6362861503"               // ✅ Updated Ad slot ID
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-    />
+    <div className="w-full flex justify-center">
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-5866918436034267" // ✅ Your AdSense client ID
+        data-ad-slot="6362861503"               // ✅ Updated Ad slot ID
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+    </div>
   );
 }
