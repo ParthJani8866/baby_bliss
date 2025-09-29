@@ -42,7 +42,7 @@ export default function MotherhoodMonth2() {
       ]
     },
     {
-      title: "Daily Baby Routine - Sample Schedule",
+      title: "Daily Baby Routine - Schedule",
       content: "While every baby is unique, this sample routine can help you establish predictable patterns. Remember to follow your baby's cues rather than watching the clock strictly.",
       subsections: [
         {
@@ -91,6 +91,11 @@ export default function MotherhoodMonth2() {
       ]
     },
     {
+      title: "Visual Inspiration: Health & Safety Baby Pin",
+      content: "Daily Baby Routine - Schedule",
+      image: "https://i.pinimg.com/736x/ed/39/a4/ed39a4231e0a346221eabbd1fae53df7.jpg"
+    },
+    {
       title: "Feeding Schedule and Nutrition",
       content: "Feeding patterns in month 2 continue to be frequent, though you might notice slightly longer intervals between sessions as your baby's stomach capacity increases.",
       subsections: [
@@ -135,6 +140,11 @@ export default function MotherhoodMonth2() {
         "Board Books: Early reading supports language development and creates special bonding moments throughout the day.",
         "Baby Carrier: Keeps baby close and content while freeing your hands for basic tasks and gentle movement."
       ]
+    },
+     {
+      title: "Visual Inspiration: Health & Safety Baby Pin",
+      content: "Essential Items for Month Two babies",
+      image: "https://i.pinimg.com/736x/59/23/8a/59238a436c1e46b666c9c8174fe757be.jpg"
     },
     {
       title: "Establishing Healthy Routines",
