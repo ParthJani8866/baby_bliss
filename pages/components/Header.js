@@ -32,10 +32,16 @@ export default function Header() {
   }));
 
   // Pregnancy weeks 1–40
-  const pregnancyWeeks = Array.from({ length: 40 }, (_, i) => ({
-    label: `Pregnancy Week ${i + 1}`,
-    href: `/pregnancy-week-wise/pregnancy-week-${i + 1}`,
-  }));
+  const pregnancyWeeks = [
+    ...Array.from({ length: 40 }, (_, i) => ({
+      label: `Pregnancy Week ${i + 1}`,
+      href: `/pregnancy-week-wise/pregnancy-week-${i + 1}`,
+    })),
+    {
+      label: "Due Date Calculator",
+      href: "pregnancy/pregnancy-due-date-calculator",
+    },
+  ];
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">

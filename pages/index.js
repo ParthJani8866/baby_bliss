@@ -129,10 +129,6 @@ export default function Home() {
       />
 
       <Header />
-      <div className="my-8 p-4 bg-orange-50 border rounded shadow">
-        <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
-        <AdBanner />
-      </div>
 
       {/* Hero Section */}
       <section className="hero relative p-8 md:p-16 bg-orange-50">
@@ -146,148 +142,180 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="my-8 p-4 bg-orange-50 border rounded shadow">
-        <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
-        <AdBanner />
-      </div>
-
-      {/* Motherhood Blogs */}
-      <section className="my-12 px-4 md:px-8">
-        <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Motherhood Blogs</h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {motherhoodPosts.map((post) => (
-            <div key={post.slug} className="border rounded-lg shadow hover:shadow-lg p-6">
-              <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
-                <Image
-                  src={`/images/motherhood-${post.month}.jpg`}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-gray-800">
-                <Link href={`/motherhood-blogs/${post.slug}`}>{post.title}</Link>
-              </h3>
-              <p className="text-gray-600 text-sm">{post.description}</p>
-              <Link href={`/motherhood-blogs/${post.slug}`} className="text-orange-500 font-medium mt-3 inline-block">Read More →</Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Parenting Blogs */}
-      <section className="my-12 px-4 md:px-8">
-        <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Parenting & Baby Care</h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {blogPosts.map((post) => (
-            <div key={post.slug} className="border rounded-lg shadow hover:shadow-lg p-6">
-              <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
-                <Image
-                  src={`/images/blog-${post.slug}.jpg`}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-gray-800">
-                <Link href={`/blogs/${post.slug}`}>{post.title}</Link>
-              </h3>
-              <p className="text-gray-600 text-sm">{post.description}</p>
-              <Link href={`/blogs/${post.slug}`} className="text-orange-500 font-medium mt-3 inline-block">Read More →</Link>
-            </div>
-          ))}
-        </div>
-      </section>
-      {/* Baby Names Section */}
-      <section className="my-12 px-4 md:px-8">
-        <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Names</h2>
-        <div className="grid gap-6 md:grid-cols-4">
-          {[
-            { name: "Oliver", gender: "Boy", slug: "oliver" },
-            { name: "Emma", gender: "Girl", slug: "emma" },
-            { name: "Liam", gender: "Boy", slug: "liam" },
-            { name: "Ava", gender: "Girl", slug: "ava" },
-            { name: "Noah", gender: "Boy", slug: "noah" },
-            { name: "Sophia", gender: "Girl", slug: "sophia" },
-            { name: "Ethan", gender: "Boy", slug: "ethan" },
-            { name: "Isabella", gender: "Girl", slug: "isabella" }
-          ].map((baby, index) => (
-            <Link
-              key={index}
-              href={`/baby-names/baby-names-search`}
-              className="border rounded-lg shadow hover:shadow-lg p-4 text-center block"
-            >
-              <h3 className="text-lg font-bold text-gray-800">{baby.name}</h3>
-              <p className="text-gray-600">{baby.gender}</p>
-            </Link>
-          ))}
-
-        </div>
-        <div className="flex justify-center">
-          <Link
-            href={`/baby-names/baby-names-search`}
-            className="border rounded-lg shadow hover:shadow-lg p-6 text-center text-lg font-bold text-gray-800 bg-white hover:bg-orange-50 transition"
-          >
-            Search Baby Names
-          </Link>
-        </div>
-      </section>
-
-      {/* Single Gaby Game Section */}
-      <section className="my-12 px-4 md:px-8">
-        <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Game</h2>
-        <div className="flex justify-center">
-          <Link
-            href="/games/guess-baby-animal"
-            className="border rounded-lg shadow hover:shadow-lg overflow-hidden w-full max-w-sm"
-          >
-            <div className="relative w-full h-56">
-              <Image
-                src="/images/baby game image1.jpg"
-                alt="Puzzle Fun"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <h3 className="text-lg font-bold p-4 text-center text-gray-800">Puzzle Fun</h3>
-          </Link>
-        </div>
-      </section>
-      {/* Pregnancy Blogs */}
-      <section className="my-12 px-4 md:px-8">
-        <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">
-          Pregnancy Week-by-Week
-        </h2>
-
-        {pregnancyPosts.map((trimester, index) => (
-          <div key={trimester.trimester} className="mb-8">
-            <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
-              <Image
-                src={`/images/trimester-${index + 1}.jpg`}
-                alt={`trimester-${index + 1}`}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">{trimester.trimester}</h3>
-            <div className="grid gap-4 md:grid-cols-4">
-              {trimester.blogs.map((weekBlog) => (
-                <Link
-                  key={weekBlog.slug}
-                  href={`/pregnancy-week-wise/${weekBlog.slug}`}
-                  className="border rounded-lg shadow hover:shadow-lg p-2 text-center text-sm md:text-base text-gray-800"
-                >
-                  Pregnancy Week {weekBlog.week}
-                </Link>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-4 md:px-8 my-12">
+        <div className="lg:col-span-9 space-y-12">
+          {/* Motherhood Blogs */}
+          <section className="my-12 px-4 md:px-8">
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Motherhood Blogs</h2>
+            <div className="grid gap-6 md:grid-cols-3">
+              {motherhoodPosts.map((post) => (
+                <div key={post.slug} className="border rounded-lg shadow hover:shadow-lg p-6">
+                  <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
+                    <Image
+                      src={`/images/motherhood-${post.month}.jpg`}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2 text-gray-800">
+                    <Link href={`/motherhood-blogs/${post.slug}`}>{post.title}</Link>
+                  </h3>
+                  <p className="text-gray-600 text-sm">{post.description}</p>
+                  <Link href={`/motherhood-blogs/${post.slug}`} className="text-orange-500 font-medium mt-3 inline-block">Read More →</Link>
+                </div>
               ))}
             </div>
-          </div>
-        ))}
-      </section>
+          </section>
 
-      <div className="my-8 p-4 bg-orange-50 border rounded shadow">
-        <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
-        <AdBanner />
+          {/* Parenting Blogs */}
+          <section className="my-12 px-4 md:px-8">
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Parenting & Baby Care</h2>
+            <div className="grid gap-6 md:grid-cols-3">
+              {blogPosts.map((post) => (
+                <div key={post.slug} className="border rounded-lg shadow hover:shadow-lg p-6">
+                  <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
+                    <Image
+                      src={`/images/blog-${post.slug}.jpg`}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2 text-gray-800">
+                    <Link href={`/blogs/${post.slug}`}>{post.title}</Link>
+                  </h3>
+                  <p className="text-gray-600 text-sm">{post.description}</p>
+                  <Link href={`/blogs/${post.slug}`} className="text-orange-500 font-medium mt-3 inline-block">Read More →</Link>
+                </div>
+              ))}
+            </div>
+          </section>
+          <section className="mt-12">
+            <h2 className="text-2xl font-semibold mb-4 text-center text-orange-600">Pregnancy due date calculator</h2>
+            <div className="mt-10 bg-gray-50 p-6 rounded-xl shadow-md space-y-4">
+              <h2 className="text-2xl font-semibold text-orange-600 mb-4">Understanding Due Date Calculations</h2>
+
+              <p className="text-gray-700">
+                <strong>LMP-based:</strong> Pregnancy is calculated from the first day of your last menstrual period, assuming a standard 28-day cycle.
+              </p>
+              <p className="text-gray-700">
+                <strong>Conception date:</strong> Counting 38 weeks from the day of fertilization gives an estimated due date, though conception may not occur exactly on the day of intercourse.
+              </p>
+              <p className="text-gray-700">
+                <strong>Ultrasound:</strong> An early scan can measure your baby and give an accurate gestational age, particularly useful for irregular cycles.
+              </p>
+              <p className="text-gray-700">
+                <strong>IVF:</strong> Exact fertilization or embryo transfer dates allow a very precise due date calculation.
+              </p>
+              <p className="text-gray-700">
+                <strong>Twins/Multiples:</strong> Often delivered earlier than singletons; doctors may adjust the due date accordingly.
+              </p>
+            </div>
+            <div className="text-center mt-4">
+              <Link
+                href="/pregnancy/pregnancy-due-date-calculator"
+                className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition"
+              >
+                Calculate Your Pregnancy Due Date
+              </Link>
+            </div>
+          </section>
+          {/* Baby Names Section */}
+          <section className="my-12 px-4 md:px-8">
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Names</h2>
+            <div className="grid gap-6 md:grid-cols-4">
+              {[
+                { name: "Oliver", gender: "Boy", slug: "oliver" },
+                { name: "Emma", gender: "Girl", slug: "emma" },
+                { name: "Liam", gender: "Boy", slug: "liam" },
+                { name: "Ava", gender: "Girl", slug: "ava" },
+                { name: "Noah", gender: "Boy", slug: "noah" },
+                { name: "Sophia", gender: "Girl", slug: "sophia" },
+                { name: "Ethan", gender: "Boy", slug: "ethan" },
+                { name: "Isabella", gender: "Girl", slug: "isabella" }
+              ].map((baby, index) => (
+                <Link
+                  key={index}
+                  href={`/baby-names/baby-names-search`}
+                  className="border rounded-lg shadow hover:shadow-lg p-4 text-center block"
+                >
+                  <h3 className="text-lg font-bold text-gray-800">{baby.name}</h3>
+                  <p className="text-gray-600">{baby.gender}</p>
+                </Link>
+              ))}
+
+            </div>
+            <div className="flex justify-center">
+              <Link
+                href={`/baby-names/baby-names-search`}
+                className="border rounded-lg shadow hover:shadow-lg p-6 text-center text-lg font-bold text-gray-800 bg-white hover:bg-orange-50 transition"
+              >
+                Search Baby Names
+              </Link>
+            </div>
+          </section>
+
+          {/* Single Gaby Game Section */}
+          <section className="my-12 px-4 md:px-8">
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Game</h2>
+            <div className="flex justify-center">
+              <Link
+                href="/games/guess-baby-animal"
+                className="border rounded-lg shadow hover:shadow-lg overflow-hidden w-full max-w-sm"
+              >
+                <div className="relative w-full h-56">
+                  <Image
+                    src="/images/baby game image1.jpg"
+                    alt="Puzzle Fun"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="text-lg font-bold p-4 text-center text-gray-800">Puzzle Fun</h3>
+              </Link>
+            </div>
+          </section>
+          {/* Pregnancy Blogs */}
+          <section className="my-12 px-4 md:px-8">
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">
+              Pregnancy Week-by-Week
+            </h2>
+
+            {pregnancyPosts.map((trimester, index) => (
+              <div key={trimester.trimester} className="mb-8">
+                <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
+                  <Image
+                    src={`/images/trimester-${index + 1}.jpg`}
+                    alt={`trimester-${index + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">{trimester.trimester}</h3>
+                <div className="grid gap-4 md:grid-cols-4">
+                  {trimester.blogs.map((weekBlog) => (
+                    <Link
+                      key={weekBlog.slug}
+                      href={`/pregnancy-week-wise/${weekBlog.slug}`}
+                      className="border rounded-lg shadow hover:shadow-lg p-2 text-center text-sm md:text-base text-gray-800"
+                    >
+                      Pregnancy Week {weekBlog.week}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </section>
+        </div>
+        <div className="lg:col-span-3 space-y-12">
+          <aside className="hidden lg:block lg:col-span-3 self-start sticky top-24 space-y-6">
+            <div className="bg-white border border-gray-300 rounded-xl shadow-lg p-6">
+              <h3 className="text-center text-gray-500 uppercase font-bold text-sm mb-4">ADVERTISEMENT</h3>
+              <AdBanner />
+            </div>
+          </aside>
+        </div>
       </div>
       <Footer />
 

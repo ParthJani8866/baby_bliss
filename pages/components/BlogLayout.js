@@ -280,9 +280,11 @@ export default function BlogLayout({
         </article>
 
         {/* Ads - Desktop */}
-        <aside className="hidden lg:block lg:col-span-3 self-start space-y-6">
+        <aside className="hidden lg:block lg:col-span-3 self-start space-y-6 sticky top-24">
           <div className="bg-white border border-gray-300 rounded-xl shadow-lg p-6">
-            <h3 className="text-center text-gray-500 uppercase font-bold text-sm mb-4">ADVERTISEMENT</h3>
+            <h3 className="text-center text-gray-500 uppercase font-bold text-sm mb-4">
+              ADVERTISEMENT
+            </h3>
             <AdBanner />
           </div>
         </aside>
