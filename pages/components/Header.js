@@ -44,6 +44,10 @@ export default function Header() {
     {
       label: "Ovulation Calculator",
       href: "pregnancy/ovulation-calculator",
+    },
+    {
+      label: "Pregnancy Weight Calculator",
+      href: "pregnancy/pregnancy-weight-gain-calculator",
     }
   ];
 
