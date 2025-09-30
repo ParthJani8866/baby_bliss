@@ -35,7 +35,7 @@ export default function DueDateCalculatorPage() {
     // Suggested links data
     const suggestedLinks = [
         { title: "Pregnancy Week-by-Week", href: "/pregnancy-week-wise/pregnancy-week-1" },
-        { title: "Motherhood Month 1", href: "/motherhood-blogs/Motherhood-month-1" },
+        { title: "Ovulation Calculator", href: "/pregnancy/ovulation-calculator" },
         { title: "Newborn Baby Clothes", href: "/blogs/newborn-baby-clothes" },
         { title: "Breastfeeding vs Formula", href: "/blogs/breastfeeding-vs-formula" },
         { title: "Baby Names Search", href: "/baby-names/baby-names-search" },

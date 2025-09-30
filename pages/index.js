@@ -215,9 +215,15 @@ export default function Home() {
             <div className="text-center mt-4">
               <Link
                 href="/pregnancy/pregnancy-due-date-calculator"
-                className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition"
+                className="mr-4 inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition"
               >
                 Calculate Your Pregnancy Due Date
+              </Link>
+              <Link
+                href="/pregnancy/ovulation-calculator"
+                className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition"
+              >
+                Calculate Your Ovulation
               </Link>
             </div>
           </section>
