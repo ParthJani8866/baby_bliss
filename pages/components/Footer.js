@@ -44,6 +44,9 @@ export default function Footer() {
               <Link href="/blogs" className="hover:text-blue-600 transition">Blogs</Link>
             </li>
             <li>
+              <Link href="/aboutus" className="hover:text-blue-600 transition">About us</Link>
+            </li>
+            <li>
               <Link href="/privacy-policy" className="hover:text-blue-600 transition">Privacy Policy</Link>
             </li>
             <li>

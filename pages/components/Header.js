@@ -100,7 +100,7 @@ export default function Header() {
             href="/baby-names/baby-names-search"
             className="flex items-center gap-1 text-green-900 hover:text-green-700 font-medium"
           >
-            <UserGroupIcon  className="w-5 h-5" /> Baby names
+            <UserGroupIcon className="w-5 h-5" /> Baby names
           </Link>
 
           <Link
@@ -192,13 +192,20 @@ export default function Header() {
           >
             <BookOpenIcon className="w-5 h-5" /> Blogs
           </Link>
-
           <Link
-            href="/games"
+            href="/baby-names/baby-names-search"
             className="flex items-center gap-2 px-4 py-3 text-green-900 hover:bg-green-50"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <PuzzlePieceIcon className="w-5 h-5" /> Games
+            <UserGroupIcon className="w-5 h-5" /> Baby names
+          </Link>
+
+          <Link
+            href="/games/guess-baby-animal"
+            className="flex items-center gap-2 px-4 py-3 text-green-900 hover:bg-green-50"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <PuzzlePieceIcon className="w-5 h-5" /> Puzzle Fun
           </Link>
 
           {session ? (

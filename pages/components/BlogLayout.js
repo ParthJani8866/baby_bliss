@@ -20,6 +20,10 @@ export default function BlogLayout({
   tips = [],
   faqs = [],
   slug,
+  authorName = "Parth Jani",
+  authorImage = "/images/parthjani.jpg", // fallback image
+  authorEmail = "parthskyward@gmail.com",
+  updatedAt = "09/30/2025",
 }) {
   const [toc, setToc] = useState([]);
   const [likes, setLikes] = useState(0);
@@ -132,6 +136,28 @@ export default function BlogLayout({
 
           {/* Title & Description */}
           <h1 className="text-4xl font-bold mb-6 text-orange-500">{title}</h1>
+          {/* Author Info */}
+          <div className="flex items-center gap-4 mt-6 mb-10 p-4 bg-gray-50 border rounded-lg shadow-sm">
+            <Image
+              src={authorImage}
+              alt={authorName}
+              width={60}
+              height={60}
+              className="rounded-full"
+            />
+            <div>
+              <p className="font-semibold text-gray-800">{authorName}</p>
+              <p className="text-sm text-gray-500">
+                Updated: {new Date(updatedAt).toLocaleDateString()}
+              </p>
+              <a
+                href={`mailto:${authorEmail}`}
+                className="text-sm text-orange-500 hover:underline"
+              >
+                {authorEmail}
+              </a>
+            </div>
+          </div>
           <p className="text-lg leading-relaxed">{description}</p>
 
           {/* Steps */}
