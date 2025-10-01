@@ -130,17 +130,23 @@ export default function Home() {
 
       <Header />
 
-      {/* Hero Section */}
-      <section className="hero relative p-8 md:p-16 bg-orange-50">
-        <div className="container mx-auto text-center max-w-3xl">
+      <section
+        className="hero relative p-8 md:p-16 bg-orange-50 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/main page background.jpg')" }}
+      >
+        <div className="container mx-auto text-center max-w-3xl bg-white/70 rounded-xl p-6">
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-orange-600">
             Welcome to Belly Buds
           </h1>
           <p className="text-gray-700 text-lg leading-relaxed">
-            A trusted space for mothers and families. Discover expert tips, week-by-week pregnancy guidance, and real motherhood (Parenting) experiences. Because raising a child should be a joyful journey, not a stressful one.
+            A trusted space for mothers and families. Discover expert tips,
+            week-by-week pregnancy guidance, and real motherhood (Parenting)
+            experiences. Because raising a child should be a joyful journey, not a
+            stressful one.
           </p>
         </div>
       </section>
+
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-4 md:px-8 my-12">
         <div className="lg:col-span-9 space-y-12">

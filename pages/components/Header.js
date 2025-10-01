@@ -15,6 +15,8 @@ import {
   ArrowRightOnRectangleIcon,
   ArrowLeftOnRectangleIcon,
   UserGroupIcon,
+  ArrowRightIcon,
+  ChevronRightIcon,
 } from "@heroicons/react/24/outline";
 
 export default function Header() {
@@ -26,17 +28,19 @@ export default function Header() {
     setOpenMobileSubmenu(openMobileSubmenu === menu ? null : menu);
 
   // Motherhood months
-  const motherhoodMonths = Array.from({ length: 12 }, (_, i) => ({
-    label: `Motherhood Month ${i + 1}`,
-    href: `/motherhood-blogs/Motherhood-month-${i + 1}`,
-  }));
+  const motherhoodMonths = [
+    {
+      label: "Parenting",
+      href: "/motherhood-blogs",
+    },
+  ]
 
   // Pregnancy weeks 1–40
   const pregnancyWeeks = [
-    ...Array.from({ length: 40 }, (_, i) => ({
-      label: `Pregnancy Week ${i + 1}`,
-      href: `/pregnancy-week-wise/pregnancy-week-${i + 1}`,
-    })),
+    {
+      label: "Pregnancy Week Wise",
+      href: "/pregnancy-week-wise",
+    },
     {
       label: "Due Date Calculator",
       href: "/pregnancy/pregnancy-due-date-calculator",
@@ -81,9 +85,10 @@ export default function Header() {
             <button className="flex items-center gap-1 text-green-900 font-medium hover:text-green-700">
               <UserIcon className="w-5 h-5" /> Motherhood <ChevronDownIcon className="w-4 h-4" />
             </button>
-            <div className="absolute left-0 top-full mt-2 w-60 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div className="absolute left-0 top-full mt-2 w-64 bg-white border rounded shadow-lg max-h-96 overflow-y-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               {motherhoodMonths.map((item, i) => (
-                <Link key={i} href={item.href} className="block px-4 py-2 text-green-900 hover:bg-green-50">
+                <Link key={i} href={item.href} className="flex items-center px-4 py-2 text-green-900 hover:bg-green-50 rounded-md transition">
+                  <ChevronRightIcon className="w-5 h-5 mr-2" />
                   {item.label}
                 </Link>
               ))}
@@ -97,8 +102,13 @@ export default function Header() {
             </button>
             <div className="absolute left-0 top-full mt-2 w-64 bg-white border rounded shadow-lg max-h-96 overflow-y-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               {pregnancyWeeks.map((week, i) => (
-                <Link key={i} href={week.href} className="block px-4 py-2 text-green-900 hover:bg-green-50">
-                  {week.label}
+                <Link
+                  key={i}
+                  href={week.href}
+                  className="flex items-center px-4 py-2 text-green-900 hover:bg-green-50 rounded-md transition"
+                >
+                  <ChevronRightIcon className="w-5 h-5 mr-2" />
+                  <span>{week.label}</span>
                 </Link>
               ))}
             </div>
