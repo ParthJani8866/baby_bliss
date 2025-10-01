@@ -62,7 +62,7 @@ export default function SelfCareForMoms() {
           {/* Conclusion */}
           <h2 className="text-2xl font-semibold mt-6 mb-3">Conclusion</h2>
           <p className="mb-4">
-            Self-care is not a luxury—it’s essential for stay-at-home moms. By prioritizing rest, nutrition, movement, and emotional support, you can maintain balance, stay energized, and enjoy your journey of motherhood fully.
+            Self-care is not a luxury—it’s essential for stay-at-home moms. By prioritizing rest, nutrition, movement, and emotional support, you can maintain balance, stay energized, and enjoy your journey of motherhood (Parenting) fully.
           </p>
         </article>
 

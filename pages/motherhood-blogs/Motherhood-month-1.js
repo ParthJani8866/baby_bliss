@@ -248,7 +248,7 @@ Remember: there is no such thing as a perfect mother, only a real one who is lea
     },
     {
       title: "Final Thoughts: You've Got This",
-      content: `The first month of motherhood is a journey like no other. It's filled with moments of overwhelming love, exhausting nights, and learning experiences that will shape you as a mother. Remember that this phase is temporary—the sleepless nights will gradually ease, the feeding challenges will resolve, and you will find your footing.
+      content: `The first month of motherhood (Parenting) is a journey like no other. It's filled with moments of overwhelming love, exhausting nights, and learning experiences that will shape you as a mother. Remember that this phase is temporary—the sleepless nights will gradually ease, the feeding challenges will resolve, and you will find your footing.
 
 Be gentle with yourself. You are learning to care for your newborn while recovering from a major physical event. There will be good days and challenging days, and both are completely normal. Trust that you are the exact right mother for your baby. You don't need to have all the answers—you just need to show up with love, one moment at a time.
 
@@ -286,7 +286,7 @@ Keep this guide handy, but remember that the most valuable wisdom often comes fr
   return (
     <BlogLayout
       title="Motherhood Month 1: Essential Survival Guide for New Moms with Daily Routine, Feeding Tips & Postpartum Recovery"
-      description="Welcome to the first month of your motherhood journey! The first 30 days with your newborn are full of love, surprises, and challenges. This guide is here to help you navigate the early days with practical advice, realistic daily routines, feeding guidance, sleep tips, and postpartum recovery recommendations. Think of this as a friendly companion, offering tips that you can actually use while caring for your baby and yourself."
+      description="Welcome to the first month of your motherhood (Parenting) journey! The first 30 days with your newborn are full of love, surprises, and challenges. This guide is here to help you navigate the early days with practical advice, realistic daily routines, feeding guidance, sleep tips, and postpartum recovery recommendations. Think of this as a friendly companion, offering tips that you can actually use while caring for your baby and yourself."
       mainImage="/images/motherhood-1.jpg"
       sections={sections}
       faqs={faqs}

@@ -14,7 +14,7 @@ export default function MotherhoodMonth10() {
       list: [
         "By now, moms often feel more confident in routines and handling daily baby care.",
         "Fatigue may persist due to night waking, but joy from milestones outweighs it.",
-        "Balancing work and motherhood may still feel challenging — support and self-care are crucial.",
+        "Balancing work and motherhood (Parenting) may still feel challenging — support and self-care are crucial.",
         "Emotionally, watching your baby communicate and understand you brings immense satisfaction and strengthens the bond."
       ]
     },

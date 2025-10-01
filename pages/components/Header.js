@@ -39,15 +39,15 @@ export default function Header() {
     })),
     {
       label: "Due Date Calculator",
-      href: "pregnancy/pregnancy-due-date-calculator",
+      href: "/pregnancy/pregnancy-due-date-calculator",
     },
     {
       label: "Ovulation Calculator",
-      href: "pregnancy/ovulation-calculator",
+      href: "/pregnancy/ovulation-calculator",
     },
     {
       label: "Pregnancy Weight Calculator",
-      href: "pregnancy/pregnancy-weight-gain-calculator",
+      href: "/pregnancy/pregnancy-weight-gain-calculator",
     }
   ];
 

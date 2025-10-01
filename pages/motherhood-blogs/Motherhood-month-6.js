@@ -15,7 +15,7 @@ export default function MotherhoodMonth6() {
         "Many moms feel stronger and more confident in routines by month 6.",
         "If you had a C-section, your body may feel fully healed now, allowing for more exercise.",
         "Some moms notice postpartum hair loss slowing down.",
-        "Returning to work or balancing career and motherhood may feel overwhelming — remember, it’s okay to ask for support.",
+        "Returning to work or balancing career and motherhood (Parenting) may feel overwhelming — remember, it’s okay to ask for support.",
         "Emotionally, there’s joy in watching your baby become interactive, but fatigue can still linger due to night waking."
       ]
     },

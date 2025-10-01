@@ -11,7 +11,7 @@ export default function MotherhoodBlogs() {
       month: 1,
       title: "Month 1 — Surviving the First 30 Days",
       slug: "Motherhood-month-1",
-      description: `The first month of motherhood is often described as the most overwhelming yet magical period in a parent’s life. During this time, both the baby and the mother are adjusting to a completely new routine. The newborn is adapting to life outside the womb, while the mother is recovering physically and emotionally from childbirth. Sleep deprivation is common, as newborns feed every 2–3 hours, including nighttime. It’s crucial for mothers to prioritize rest whenever possible, even if it means napping while the baby naps.
+      description: `The first month of motherhood (Parenting) is often described as the most overwhelming yet magical period in a parent’s life. During this time, both the baby and the mother are adjusting to a completely new routine. The newborn is adapting to life outside the womb, while the mother is recovering physically and emotionally from childbirth. Sleep deprivation is common, as newborns feed every 2–3 hours, including nighttime. It’s crucial for mothers to prioritize rest whenever possible, even if it means napping while the baby naps.
 
 Feeding is a central focus in Month 1, whether the mother chooses breastfeeding, formula feeding, or a combination of both. Breastfeeding can take time to establish, and it’s normal for both mother and baby to experience challenges in the early days. New mothers are encouraged to seek support from lactation consultants or postpartum support groups. Keeping track of feeding times, diaper changes, and baby cues can help establish a routine and provide reassurance that the baby is thriving.
 
@@ -25,7 +25,7 @@ Overall, Month 1 is about survival, adjustment, and laying the foundation for a 
       month: 2,
       title: "Month 2 — Smiles & Early Connections",
       slug: "Motherhood-month-2",
-      description: `Month 2 of motherhood is often filled with small victories and increasing confidence. Babies begin to show social smiles, respond to familiar voices, and start engaging more with their environment. This period is essential for bonding, as parents can begin to recognize and respond to their baby’s unique cues.
+      description: `Month 2 of motherhood (Parenting) is often filled with small victories and increasing confidence. Babies begin to show social smiles, respond to familiar voices, and start engaging more with their environment. This period is essential for bonding, as parents can begin to recognize and respond to their baby’s unique cues.
 
 Feeding routines continue to be central, with many mothers noticing the baby’s patterns becoming more predictable. Growth spurts may occur, causing increased feeding demands, and parents should remain flexible to accommodate the baby’s needs. Proper nutrition and hydration are also important for the mother, especially if breastfeeding.
 
@@ -35,7 +35,7 @@ Developmentally, babies start tracking objects visually, turning their heads tow
 
 Month 2 is also a time for practical organization. Tracking diapers, sleep patterns, and growth milestones provides reassurance and helps parents notice subtle changes. Pediatric check-ups continue to monitor development, vaccinations, and overall health.
 
-Overall, this month helps build confidence, deepens the parent-baby bond, and sets the foundation for a structured yet flexible routine. Parents start seeing the personality of their little one, and the rewarding smiles and interactions make the challenges of early motherhood more manageable.`
+Overall, this month helps build confidence, deepens the parent-baby bond, and sets the foundation for a structured yet flexible routine. Parents start seeing the personality of their little one, and the rewarding smiles and interactions make the challenges of early motherhood (Parenting) more manageable.`
     },
     {
       month: 3,
@@ -208,7 +208,7 @@ Month 12 is a milestone month of celebration, reflection, and preparation for to
         <title>Motherhood Blogs | Belly Buds</title>
         <meta
           name="description"
-          content="Explore motherhood month by month – a complete guide from newborn care to toddlerhood. Detailed month-by-month guide for the first year of motherhood with tips on feeding, sleeping, development, and bonding."
+          content="Explore motherhood (Parenting) month by month – a complete guide from newborn care to toddlerhood. Detailed month-by-month guide for the first year of motherhood (Parenting) with tips on feeding, sleeping, development, and bonding."
         />
       </Head>
 

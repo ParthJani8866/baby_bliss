@@ -124,7 +124,7 @@ export default function Home() {
     <div className="bg-white text-black min-h-screen">
       <NextSeo
         title="Belly Buds | Motherhood, Parenting & Pregnancy Blogs"
-        description="Explore Belly Buds motherhood blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your motherhood journey smoother."
+        description="Explore Belly Buds motherhood (Parenting) blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your motherhood (Parenting) journey smoother."
         canonical="https://baby-toys.shop/"
       />
 
@@ -137,7 +137,7 @@ export default function Home() {
             Welcome to Belly Buds
           </h1>
           <p className="text-gray-700 text-lg leading-relaxed">
-            A trusted space for mothers and families. Discover expert tips, week-by-week pregnancy guidance, and real motherhood experiences. Because raising a child should be a joyful journey, not a stressful one.
+            A trusted space for mothers and families. Discover expert tips, week-by-week pregnancy guidance, and real motherhood (Parenting) experiences. Because raising a child should be a joyful journey, not a stressful one.
           </p>
         </div>
       </section>
@@ -146,7 +146,7 @@ export default function Home() {
         <div className="lg:col-span-9 space-y-12">
           {/* Motherhood Blogs */}
           <section className="my-12 px-4 md:px-8">
-            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Motherhood Blogs</h2>
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Motherhood (Parenting) Blogs</h2>
             <div className="grid gap-6 md:grid-cols-3">
               {motherhoodPosts.map((post) => (
                 <div key={post.slug} className="border rounded-lg shadow hover:shadow-lg p-6">

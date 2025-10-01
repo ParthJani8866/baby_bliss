@@ -13,7 +13,7 @@ export default function MotherhoodMonth8() {
       title: "💪 Your Body & Emotions",
       list: [
         "By now, many moms feel physically recovered, though fatigue from night waking may continue.",
-        "If you’ve returned to work, juggling professional life and motherhood can feel draining — routines and support systems are vital.",
+        "If you’ve returned to work, juggling professional life and motherhood (Parenting) can feel draining — routines and support systems are vital.",
         "Some moms may feel emotional as their babies become more independent, while also cherishing the deeper bond forming through play and interaction.",
         "Postpartum mood changes can still linger — if anxiety or sadness feels overwhelming, don’t hesitate to seek professional help."
       ]

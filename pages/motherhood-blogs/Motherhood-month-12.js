@@ -83,7 +83,7 @@ export default function MotherhoodMonth12() {
     {
       title: "🌟 Final Thoughts",
       content:
-        "Month 12 is a time of celebration — the first year of motherhood complete! From first steps to first words, your baby has grown immensely. Reflect on the journey, cherish the milestones, and continue supporting your little explorer as they step into the second year with curiosity, confidence, and joy."
+        "Month 12 is a time of celebration — the first year of motherhood (Parenting) complete! From first steps to first words, your baby has grown immensely. Reflect on the journey, cherish the milestones, and continue supporting your little explorer as they step into the second year with curiosity, confidence, and joy."
     }
   ];
 

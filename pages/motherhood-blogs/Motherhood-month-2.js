@@ -160,7 +160,7 @@ export default function MotherhoodMonth2() {
     },
     {
       title: "Looking Ahead",
-      content: "The second month represents a beautiful transition where parenting begins to feel increasingly rewarding. While sleep remains fragmented and challenges persist, the emerging smiles, growing interactions, and deepening bond create moments of pure joy. Embrace this special time, trust your instincts, and know that you're building a strong foundation for the months and years ahead. Each day brings new discoveries and opportunities for connection that make the journey of motherhood truly remarkable."
+      content: "The second month represents a beautiful transition where parenting begins to feel increasingly rewarding. While sleep remains fragmented and challenges persist, the emerging smiles, growing interactions, and deepening bond create moments of pure joy. Embrace this special time, trust your instincts, and know that you're building a strong foundation for the months and years ahead. Each day brings new discoveries and opportunities for connection that make the journey of motherhood (Parenting) truly remarkable."
     }
   ];
 
