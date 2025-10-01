@@ -137,6 +137,7 @@ export default function PregnancyWeek8() {
   return (
     <BlogLayout
       title="Pregnancy Week 8 — Baby’s Fingers, Toes & First Heartbeat"
+      mainImage="/images/Pregnancy week 8.jpg"
       description="Pregnancy Week 8 is the last week of the embryonic stage. Your baby develops tiny fingers, toes, and facial features, while moms may feel stronger symptoms. Learn what to expect."
       sections={sections}
       sidebarCategory="pregnancy"

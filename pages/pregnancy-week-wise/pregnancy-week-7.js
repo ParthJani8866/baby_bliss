@@ -135,6 +135,7 @@ export default function PregnancyWeek7() {
   return (
     <BlogLayout
       title="Pregnancy Week 7 — Baby’s Rapid Growth & Mom’s Changing Body"
+      mainImage="/images/Pregnancy week 7.jpg"
       description="Pregnancy Week 7 brings rapid baby development — arms, legs, and facial features are forming, while moms may experience stronger symptoms. Learn growth, nutrition, and wellness tips."
       sections={sections}
       sidebarCategory="pregnancy"

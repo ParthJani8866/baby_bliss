@@ -113,6 +113,7 @@ export default function PregnancyWeek1() {
     <BlogLayout
       title="Pregnancy Week 1 — Preparing for Conception"
       description="Pregnancy Week 1 is counted from the first day of your last menstrual period. Discover what’s happening in Week 1, how your body prepares, and the best steps to take for a healthy start."
+      mainImage="/images/Pregnancy week 1.jpg"
       sections={sections}
       sidebarCategory="pregnancy"
       sidebarTitle="Recommended Essentials"

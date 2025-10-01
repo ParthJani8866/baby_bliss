@@ -143,6 +143,7 @@ export default function PregnancyWeek6() {
   return (
     <BlogLayout
       title="Pregnancy Week 6 — Heartbeat, Symptoms & First Prenatal Visit"
+      mainImage="/images/Pregnancy week 6.jpg"
       description="Pregnancy Week 6 brings your baby's first heartbeat, stronger symptoms, and often your first prenatal appointment. Learn baby growth, health tips, and real mom stories."
       sections={sections}
       sidebarCategory="pregnancy"

@@ -138,6 +138,7 @@ export default function PregnancyWeek11() {
   return (
     <BlogLayout
       title="Pregnancy Week 11 — Almost Done with First Trimester"
+      mainImage="/images/Pregnancy week 11.jpg"
       description="Pregnancy Week 11 marks the final full week of the first trimester. Baby is lime-sized, organs are forming, and movements are beginning. Learn what to expect this week."
       sections={sections}
       sidebarCategory="pregnancy"

@@ -141,6 +141,7 @@ export default function PregnancyWeek9() {
   return (
     <BlogLayout
       title="Pregnancy Week 9 — Entering the Fetal Stage"
+      mainImage="/images/Pregnancy week 9.jpg"
       description="Pregnancy Week 9 marks the start of the fetal stage. Your baby is grape-sized with tiny fingers, toes, and organs forming rapidly. Learn what to expect for you and your baby."
       sections={sections}
       sidebarCategory="pregnancy"

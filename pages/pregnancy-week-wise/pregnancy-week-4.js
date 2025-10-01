@@ -122,6 +122,7 @@ export default function PregnancyWeek4() {
   return (
     <BlogLayout
       title="Pregnancy Week 4 — Implantation & First Signs"
+      mainImage="/images/Pregnancy week 4.jpg"
       description="Pregnancy Week 4 marks implantation, the first signs of pregnancy, and the possibility of a positive test. Learn about your baby’s development and early symptoms."
       sections={sections}
       sidebarCategory="pregnancy"
