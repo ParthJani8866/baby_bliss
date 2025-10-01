@@ -11,13 +11,6 @@ import Footer from "./Footer";
 import { HandThumbUpIcon } from "@heroicons/react/24/outline";
 import SocialShare from "./SocialShare";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import SwiperCore, { Navigation, Pagination } from "swiper";
-
-SwiperCore.use([Navigation, Pagination]);
 
 export default function BlogLayout({
   title,
@@ -35,30 +28,30 @@ export default function BlogLayout({
 }) {
   const allBlogs = [
     // ----- Motherhood 12 Months -----
-    { title: "Month 1 — Surviving the First 30 Days", slug: "motherhood-blogs/Motherhood-month-1", description: "The first month of motherhood is overwhelming yet magical...", image: "/images/motherhood-1.jpg" },
-    { title: "Month 2 — Smiles & Early Connections", slug: "motherhood-blogs/Motherhood-month-2", description: "Small victories, bonding, and social smiles...", image: "/images/motherhood-2.jpg" },
-    { title: "Month 3 — Baby’s First Laughs", slug: "motherhood-blogs/Motherhood-month-3", description: "Laughter, tummy time progress, and more...", image: "/images/motherhood-3.jpg" },
-    { title: "Month 4 — Rolling & Stronger Bonds", slug: "motherhood-blogs/Motherhood-month-4", description: "Your baby may start rolling and engaging more...", image: "/images/motherhood-4.jpg" },
-    { title: "Month 5 — Sitting with Support", slug: "motherhood-blogs/Motherhood-month-5", description: "Baby starts exploring sitting and solid foods soon...", image: "/images/motherhood-5.jpg" },
-    { title: "Month 6 — Halfway Milestones", slug: "motherhood-blogs/Motherhood-month-6", description: "Solid foods, babbling, and strong connections...", image: "/images/motherhood-6.jpg" },
-    { title: "Month 7 — Crawling Begins", slug: "motherhood-blogs/Motherhood-month-7", description: "Baby starts crawling and exploring surroundings...", image: "/images/motherhood-7.jpg" },
-    { title: "Month 8 — More Mobility", slug: "motherhood-blogs/Motherhood-month-8", description: "Baby pulls to stand and becomes more curious...", image: "/images/motherhood-8.jpg" },
-    { title: "Month 9 — Personality Shines", slug: "motherhood-blogs/Motherhood-month-9", description: "Baby starts showing independence and emotions...", image: "/images/motherhood-9.jpg" },
-    { title: "Month 10 — First Words", slug: "motherhood-blogs/Motherhood-month-10", description: "Hearing mama/dada for the first time...", image: "/images/motherhood-10.jpg" },
-    { title: "Month 11 — Cruising Along", slug: "motherhood-blogs/Motherhood-month-11", description: "Baby may walk while holding furniture...", image: "/images/motherhood-11.jpg" },
-    { title: "Month 12 — Happy First Birthday", slug: "motherhood-blogs/Motherhood-month-12", description: "Celebrating a year full of milestones and love...", image: "/images/motherhood-12.jpg" },
+    { title: "Parenting Month 1 — Surviving the First 30 Days", slug: "motherhood-blogs/Motherhood-month-1", description: "The first month of motherhood is overwhelming yet magical...", image: "/images/motherhood-1.jpg" },
+    { title: "Parenting Month 2 — Smiles & Early Connections", slug: "motherhood-blogs/Motherhood-month-2", description: "Small victories, bonding, and social smiles...", image: "/images/motherhood-2.jpg" },
+    { title: "Parenting Month 3 — Baby’s First Laughs", slug: "motherhood-blogs/Motherhood-month-3", description: "Laughter, tummy time progress, and more...", image: "/images/motherhood-3.jpg" },
+    { title: "Parenting Month 4 — Rolling & Stronger Bonds", slug: "motherhood-blogs/Motherhood-month-4", description: "Your baby may start rolling and engaging more...", image: "/images/motherhood-4.jpg" },
+    { title: "Parenting Month 5 — Sitting with Support", slug: "motherhood-blogs/Motherhood-month-5", description: "Baby starts exploring sitting and solid foods soon...", image: "/images/motherhood-5.jpg" },
+    { title: "Parenting Month 6 — Halfway Milestones", slug: "motherhood-blogs/Motherhood-month-6", description: "Solid foods, babbling, and strong connections...", image: "/images/motherhood-6.jpg" },
+    { title: "Parenting Month 7 — Crawling Begins", slug: "motherhood-blogs/Motherhood-month-7", description: "Baby starts crawling and exploring surroundings...", image: "/images/motherhood-7.jpg" },
+    { title: "Parenting Month 8 — More Mobility", slug: "motherhood-blogs/Motherhood-month-8", description: "Baby pulls to stand and becomes more curious...", image: "/images/motherhood-8.jpg" },
+    { title: "Parenting Month 9 — Personality Shines", slug: "motherhood-blogs/Motherhood-month-9", description: "Baby starts showing independence and emotions...", image: "/images/motherhood-9.jpg" },
+    { title: "Parenting Month 10 — First Words", slug: "motherhood-blogs/Motherhood-month-10", description: "Hearing mama/dada for the first time...", image: "/images/motherhood-10.jpg" },
+    { title: "Parenting Month 11 — Cruising Along", slug: "motherhood-blogs/Motherhood-month-11", description: "Baby may walk while holding furniture...", image: "/images/motherhood-11.jpg" },
+    { title: "Parenting Month 12 — Happy First Birthday", slug: "motherhood-blogs/Motherhood-month-12", description: "Celebrating a year full of milestones and love...", image: "/images/motherhood-12.jpg" },
 
     // ----- Pregnancy Week-by-Week (10 Weeks sample, extend as needed) -----
-    { title: "Week 1 — Preparing Your Body", slug: "pregnancy-week-wise/pregnancy-week-1", description: "Understanding cycle & fertility...", image: "/images/Pregnancy week 1.jpg" },
-    { title: "Week 2 — Ovulation & Conception", slug: "pregnancy-week-wise/pregnancy-week-2", description: "Ovulation occurs, fertilization possible...", image: "/images/Pregnancy week 2.jpg" },
-    { title: "Week 3 — Fertilization", slug: "pregnancy-week-wise/pregnancy-week-3", description: "Baby begins as a cluster of cells...", image: "/images/Pregnancy week 3.jpg" },
-    { title: "Week 4 — Implantation", slug: "pregnancy-week-wise/pregnancy-week-4", description: "The fertilized egg attaches to uterus...", image: "/images/Pregnancy week 4.jpg" },
-    { title: "Week 5 — Early Development", slug: "pregnancy-week-wise/pregnancy-week-5", description: "Heartbeat begins, organs start forming...", image: "/images/Pregnancy week 5.jpg" },
-    { title: "Week 6 — Tiny Heartbeat", slug: "pregnancy-week-wise/pregnancy-week-6", description: "Heartbeat visible in ultrasound...", image: "/images/Pregnancy week 6.jpg" },
-    { title: "Week 7 — Growing Fast", slug: "pregnancy-week-wise/pregnancy-week-7", description: "Baby’s arms and legs begin developing...", image: "/images/Pregnancy week 7.jpg" },
-    { title: "Week 8 — Embryo to Fetus", slug: "pregnancy-week-wise/pregnancy-week-8", description: "Baby officially called a fetus now...", image: "/images/Pregnancy week 8.jpg" },
-    { title: "Week 9 — Facial Features Forming", slug: "pregnancy-week-wise/pregnancy-week-9", description: "Eyes, nose, and mouth begin developing...", image: "/images/Pregnancy week 9.jpg" },
-    { title: "Week 10 — Vital Organs Formed", slug: "pregnancy-week-wise/pregnancy-week-10", description: "All major organs are present...", image: "/images/Pregnancy week 10.jpg" },
+    { title: "Pregnancy Week 1 — Preparing Your Body", slug: "pregnancy-week-wise/pregnancy-week-1", description: "Understanding cycle & fertility...", image: "/images/Pregnancy week 1.jpg" },
+    { title: "Pregnancy Week 2 — Ovulation & Conception", slug: "pregnancy-week-wise/pregnancy-week-2", description: "Ovulation occurs, fertilization possible...", image: "/images/Pregnancy week 2.jpg" },
+    { title: "Pregnancy Week 3 — Fertilization", slug: "pregnancy-week-wise/pregnancy-week-3", description: "Baby begins as a cluster of cells...", image: "/images/Pregnancy week 3.jpg" },
+    { title: "Pregnancy Week 4 — Implantation", slug: "pregnancy-week-wise/pregnancy-week-4", description: "The fertilized egg attaches to uterus...", image: "/images/Pregnancy week 4.jpg" },
+    { title: "Pregnancy Week 5 — Early Development", slug: "pregnancy-week-wise/pregnancy-week-5", description: "Heartbeat begins, organs start forming...", image: "/images/Pregnancy week 5.jpg" },
+    { title: "Pregnancy Week 6 — Tiny Heartbeat", slug: "pregnancy-week-wise/pregnancy-week-6", description: "Heartbeat visible in ultrasound...", image: "/images/Pregnancy week 6.jpg" },
+    { title: "Pregnancy Week 7 — Growing Fast", slug: "pregnancy-week-wise/pregnancy-week-7", description: "Baby’s arms and legs begin developing...", image: "/images/Pregnancy week 7.jpg" },
+    { title: "Pregnancy Week 8 — Embryo to Fetus", slug: "pregnancy-week-wise/pregnancy-week-8", description: "Baby officially called a fetus now...", image: "/images/Pregnancy week 8.jpg" },
+    { title: "Pregnancy Week 9 — Facial Features Forming", slug: "pregnancy-week-wise/pregnancy-week-9", description: "Eyes, nose, and mouth begin developing...", image: "/images/Pregnancy week 9.jpg" },
+    { title: "Pregnancy Week 10 — Vital Organs Formed", slug: "pregnancy-week-wise/pregnancy-week-10", description: "All major organs are present...", image: "/images/Pregnancy week 10.jpg" },
     // Add Weeks 11–40 similarly
   ];
 
@@ -164,7 +157,7 @@ export default function BlogLayout({
             <Image src={authorImage} alt={authorName} width={60} height={60} className="rounded-full" />
             <div>
               <p className="font-semibold text-gray-800">{authorName}</p>
-              <p className="text-sm text-gray-500">Updated: {new Date(updatedAt).toLocaleDateString()}</p>
+              <p className="text-sm text-gray-500">Updated: {updatedAt}</p>
               <a href={`mailto:${authorEmail}`} className="text-sm text-orange-500 hover:underline">{authorEmail}</a>
             </div>
           </div>
@@ -265,35 +258,34 @@ export default function BlogLayout({
           {/* Comments */}
           <div className="mt-12"><CommentSection slug={slug} /></div>
 
-          {/* Random Blogs Slider */}
+          {/* 3x3 Grid - Random Blogs */}
           {randomBlogs.length > 0 && (
-            <section className="mt-16">
-              <h2 className="text-2xl font-bold text-orange-500 mb-6 text-center">You Might Also Like</h2>
-              <Swiper
-                spaceBetween={20}
-                slidesPerView={1}
-                navigation
-                pagination={{ clickable: true }}
-                breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
-              >
-                {randomBlogs.map((blog, i) => (
-                  <SwiperSlide key={i}>
-                    <Link href={`/${blog.slug}`} className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition flex flex-col">
-                      {blog.image && (
-                        <div className="relative w-full h-48">
-                          <Image src={blog.image} alt={blog.title} fill className="object-cover" />
-                        </div>
-                      )}
-                      <div className="p-4 flex flex-col flex-grow">
-                        <h3 className="text-lg font-semibold text-gray-800 line-clamp-2">{blog.title}</h3>
-                        <p className="text-gray-600 text-sm mt-1 line-clamp-2">{blog.description}</p>
+            <div className="mt-10">
+              <h2 className="text-2xl font-bold mb-6 text-green-700">Explore More Blogs</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {randomBlogs.slice(0, 9).map((blog, idx) => (
+                  <div key={idx} className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+                    {blog.image && (
+                      <div className="relative w-full h-48">
+                        <Image src={blog.image} alt={blog.title} fill className="object-cover" />
                       </div>
-                    </Link>
-                  </SwiperSlide>
+                    )}
+                    <div className="p-4">
+                      <h3 className="text-lg font-semibold mb-2">{blog.title}</h3>
+                      {blog.description && <p className="text-gray-600 text-sm line-clamp-3">{blog.description}</p>}
+                      <Link
+                        href={`/${blog.slug}`}
+                        className="text-orange-500 font-medium mt-2 inline-block hover:underline"
+                      >
+                        Read More
+                      </Link>
+                    </div>
+                  </div>
                 ))}
-              </Swiper>
-            </section>
+              </div>
+            </div>
           )}
+
 
           {/* Like Button */}
           <div className="mt-10 flex items-center justify-center">

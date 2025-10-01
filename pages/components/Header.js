@@ -18,6 +18,7 @@ import {
   ArrowRightIcon,
   ChevronRightIcon,
 } from "@heroicons/react/24/outline";
+import Head from "next/head";
 
 export default function Header() {
   const { data: session } = useSession();
@@ -70,7 +71,9 @@ export default function Header() {
             />
           </div>
         </Link>
-
+        <Head>
+          <meta name="p:domain_verify" content="6437eb8cf79f0ac75bc961da816731e7" />
+        </Head>
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-6">
           <Link
