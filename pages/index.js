@@ -9,6 +9,7 @@ import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
+import SocialShare from "./components/SocialShare";
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -144,6 +145,9 @@ export default function Home() {
             experiences. Because raising a child should be a joyful journey, not a
             stressful one.
           </p>
+          <div className="flex justify-center items-center">
+            <SocialShare imageUrl="/images/main page background.jpg" title="Welcome to Belly Buds" />
+          </div>
         </div>
       </section>
 
