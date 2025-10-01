@@ -141,7 +141,7 @@ export default function PregnancyWeek10() {
   return (
     <BlogLayout
       title="Pregnancy Week 10 — Your Baby Looks More Human"
-      mainImage="/images/Pregnancy week 10.jpg"
+      mainImage="/images/Pregnancy Week 10.jpg"
       description="Pregnancy Week 10 marks a huge milestone: your baby is strawberry-sized with tiny nails, bending elbows, and growing organs. Learn what to expect this week for you and your little one."
       sections={sections}
       sidebarCategory="pregnancy"

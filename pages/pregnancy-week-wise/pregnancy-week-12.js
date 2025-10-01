@@ -138,7 +138,7 @@ export default function PregnancyWeek12() {
   return (
     <BlogLayout
       title="Pregnancy Week 12 — Welcome to the Second Trimester"
-      mainImage="/images/Pregnancy week 12.jpg"
+      mainImage="/images/Pregnancy Week 12.jpg"
       description="Pregnancy Week 12 marks the beginning of the second trimester. Baby is lime-sized, symptoms ease, and energy returns. Learn what to expect for you and your baby."
       sections={sections}
       sidebarCategory="pregnancy"

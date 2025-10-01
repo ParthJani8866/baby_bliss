@@ -117,7 +117,7 @@ export default function PregnancyWeek3() {
   return (
     <BlogLayout
       title="Pregnancy Week 3 — Fertilization & Early Cell Division"
-      mainImage="/images/Pregnancy week 3.jpg"
+      mainImage="/images/Pregnancy Week 3.jpg"
       description="Pregnancy Week 3 is when fertilization happens, and your baby begins life as a tiny ball of dividing cells. Learn what’s happening and how to support implantation."
       sections={sections}
       sidebarCategory="pregnancy"

@@ -42,16 +42,16 @@ export default function BlogLayout({
     { title: "Parenting Month 12 — Happy First Birthday", slug: "motherhood-blogs/Motherhood-month-12", description: "Celebrating a year full of milestones and love...", image: "/images/motherhood-12.jpg" },
 
     // ----- Pregnancy Week-by-Week (10 Weeks sample, extend as needed) -----
-    { title: "Pregnancy Week 1 — Preparing Your Body", slug: "pregnancy-week-wise/pregnancy-week-1", description: "Understanding cycle & fertility...", image: "/images/Pregnancy week 1.jpg" },
-    { title: "Pregnancy Week 2 — Ovulation & Conception", slug: "pregnancy-week-wise/pregnancy-week-2", description: "Ovulation occurs, fertilization possible...", image: "/images/Pregnancy week 2.jpg" },
-    { title: "Pregnancy Week 3 — Fertilization", slug: "pregnancy-week-wise/pregnancy-week-3", description: "Baby begins as a cluster of cells...", image: "/images/Pregnancy week 3.jpg" },
-    { title: "Pregnancy Week 4 — Implantation", slug: "pregnancy-week-wise/pregnancy-week-4", description: "The fertilized egg attaches to uterus...", image: "/images/Pregnancy week 4.jpg" },
-    { title: "Pregnancy Week 5 — Early Development", slug: "pregnancy-week-wise/pregnancy-week-5", description: "Heartbeat begins, organs start forming...", image: "/images/Pregnancy week 5.jpg" },
-    { title: "Pregnancy Week 6 — Tiny Heartbeat", slug: "pregnancy-week-wise/pregnancy-week-6", description: "Heartbeat visible in ultrasound...", image: "/images/Pregnancy week 6.jpg" },
-    { title: "Pregnancy Week 7 — Growing Fast", slug: "pregnancy-week-wise/pregnancy-week-7", description: "Baby’s arms and legs begin developing...", image: "/images/Pregnancy week 7.jpg" },
-    { title: "Pregnancy Week 8 — Embryo to Fetus", slug: "pregnancy-week-wise/pregnancy-week-8", description: "Baby officially called a fetus now...", image: "/images/Pregnancy week 8.jpg" },
-    { title: "Pregnancy Week 9 — Facial Features Forming", slug: "pregnancy-week-wise/pregnancy-week-9", description: "Eyes, nose, and mouth begin developing...", image: "/images/Pregnancy week 9.jpg" },
-    { title: "Pregnancy Week 10 — Vital Organs Formed", slug: "pregnancy-week-wise/pregnancy-week-10", description: "All major organs are present...", image: "/images/Pregnancy week 10.jpg" },
+    { title: "Pregnancy Week 1 — Preparing Your Body", slug: "pregnancy-week-wise/pregnancy-week-1", description: "Understanding cycle & fertility...", image: "/images/Pregnancy Week 1.jpg" },
+    { title: "Pregnancy Week 2 — Ovulation & Conception", slug: "pregnancy-week-wise/pregnancy-week-2", description: "Ovulation occurs, fertilization possible...", image: "/images/Pregnancy Week 2.jpg" },
+    { title: "Pregnancy Week 3 — Fertilization", slug: "pregnancy-week-wise/pregnancy-week-3", description: "Baby begins as a cluster of cells...", image: "/images/Pregnancy Week 3.jpg" },
+    { title: "Pregnancy Week 4 — Implantation", slug: "pregnancy-week-wise/pregnancy-week-4", description: "The fertilized egg attaches to uterus...", image: "/images/Pregnancy Week 4.jpg" },
+    { title: "Pregnancy Week 5 — Early Development", slug: "pregnancy-week-wise/pregnancy-week-5", description: "Heartbeat begins, organs start forming...", image: "/images/Pregnancy Week 5.jpg" },
+    { title: "Pregnancy Week 6 — Tiny Heartbeat", slug: "pregnancy-week-wise/pregnancy-week-6", description: "Heartbeat visible in ultrasound...", image: "/images/Pregnancy Week 6.jpg" },
+    { title: "Pregnancy Week 7 — Growing Fast", slug: "pregnancy-week-wise/pregnancy-week-7", description: "Baby’s arms and legs begin developing...", image: "/images/Pregnancy Week 7.jpg" },
+    { title: "Pregnancy Week 8 — Embryo to Fetus", slug: "pregnancy-week-wise/pregnancy-week-8", description: "Baby officially called a fetus now...", image: "/images/Pregnancy Week 8.jpg" },
+    { title: "Pregnancy Week 9 — Facial Features Forming", slug: "pregnancy-week-wise/pregnancy-week-9", description: "Eyes, nose, and mouth begin developing...", image: "/images/Pregnancy Week 9.jpg" },
+    { title: "Pregnancy Week 10 — Vital Organs Formed", slug: "pregnancy-week-wise/pregnancy-week-10", description: "All major organs are present...", image: "/images/Pregnancy Week 10.jpg" },
     // Add Weeks 11–40 similarly
   ];
 

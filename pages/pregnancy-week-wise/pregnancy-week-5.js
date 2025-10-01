@@ -150,7 +150,7 @@ export default function PregnancyWeek5() {
   return (
     <BlogLayout
       title="Pregnancy Week 5 — Positive Test, Symptoms & Baby’s First Developments"
-      mainImage="/images/Pregnancy week 5.jpg"
+      mainImage="/images/Pregnancy Week 5.jpg"
       description="Pregnancy Week 5 is when most women confirm their pregnancy. Learn about baby’s growth, early symptoms, medical advice, nutrition, and real mom experiences."
       sections={sections}
       sidebarCategory="pregnancy"
