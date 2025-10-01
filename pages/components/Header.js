@@ -43,6 +43,10 @@ export default function Header() {
       href: "/pregnancy-week-wise",
     },
     {
+      label: "Healthy Pregnancy",
+      href: "/pregnancy/healthy-pregnancy",
+    },
+    {
       label: "Due Date Calculator",
       href: "/pregnancy/pregnancy-due-date-calculator",
     },
