@@ -170,7 +170,8 @@ export default function BlogLayout({
               {step.image && (
                 <div className="my-4 flex flex-col items-center gap-4">
                   <div className="w-full max-w-md h-72 relative">
-                    <Image src={step.image} alt={step.title} fill className="rounded object-cover" />
+                    <Image src={step.image} alt={step.title} width={400}
+                      height={300} className="rounded object-cover" />
                   </div>
                   <SocialShare imageUrl={step.image} title={step.title} />
                 </div>
@@ -179,7 +180,8 @@ export default function BlogLayout({
               {step.extraImages?.map((img, i) => (
                 <div key={`step-extra-${i}`} className="my-4 flex flex-col items-center gap-4">
                   <div className="w-full max-w-md h-72 relative">
-                    <Image src={img} alt={`extra-${step.title}-${i}`} fill className="rounded object-cover" />
+                    <Image src={img} alt={`extra-${step.title}-${i}`} width={400}
+                      height={300} className="rounded object-cover" />
                   </div>
                   <SocialShare imageUrl={img} title={`Extra ${step.title}`} />
                 </div>
@@ -193,8 +195,9 @@ export default function BlogLayout({
               <h2 className="text-2xl font-semibold mt-6">{section.title}</h2>
               {section.image && (
                 <div className="my-4 flex flex-col items-center gap-4">
-                  <div className="w-full max-w-md h-72 relative">
-                    <Image src={section.image} alt={section.title} fill className="rounded object-cover" />
+                  <div className="w-full max-w-md h-90 relative">
+                    <Image src={section.image} alt={section.title} width={400}
+                      height={300} className="rounded object-cover" />
                   </div>
                   <SocialShare imageUrl={section.image} title={section.title} />
                 </div>
@@ -221,7 +224,8 @@ export default function BlogLayout({
               {section.extraImages?.map((img, i) => (
                 <div key={`section-extra-${i}`} className="my-4 flex flex-col items-center gap-4">
                   <div className="w-full max-w-md h-72 relative">
-                    <Image src={img} alt={`extra-${section.title}-${i}`} fill className="rounded object-cover" />
+                    <Image src={img} alt={`extra-${section.title}-${i}`} width={400}
+                      height={300} className="rounded object-cover" />
                   </div>
                   <SocialShare imageUrl={img} title={`Extra ${section.title}`} />
                 </div>

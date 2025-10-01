@@ -6,6 +6,8 @@ import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AdBanner from "../components/AdBanner";
+import SocialShare from "../components/SocialShare";
+import Image from "next/image";
 
 export default function DueDateCalculatorPage() {
     const [lmp, setLmp] = useState(""); // Last menstrual period
@@ -81,6 +83,13 @@ export default function DueDateCalculatorPage() {
             <section className="container mx-auto px-4 md:px-8 py-12 grid md:grid-cols-3 gap-8">
                 {/* Left/Main Content */}
                 <div className="md:col-span-2">
+                    <div className="my-4 flex flex-col items-center gap-4">
+                        <div className="w-full max-w-md h-90 relative">
+                            <Image src={'https://i.pinimg.com/736x/28/3c/54/283c54f04fb9ecdb9769d7d4cc87279e.jpg'} alt={'Pregnancy Due Date Calculator'} width={400}
+                                height={300} className="rounded object-cover" />
+                        </div>
+                        <SocialShare imageUrl={'https://i.pinimg.com/736x/28/3c/54/283c54f04fb9ecdb9769d7d4cc87279e.jpg'} title={'Pregnancy Due Date Calculator'} />
+                    </div>
                     <h1 className="text-3xl font-bold text-orange-600 mb-6 text-center md:text-left">
                         Pregnancy Due Date Calculator
                     </h1>
