@@ -39,6 +39,10 @@ export default function Header() {
   // Pregnancy weeks 1–40
   const pregnancyWeeks = [
     {
+      label: "Get Pregnant",
+      href: "/pregnancy/how-to-get-pregnant-guide",
+    },
+    {
       label: "Pregnancy Week Wise",
       href: "/pregnancy-week-wise",
     },
