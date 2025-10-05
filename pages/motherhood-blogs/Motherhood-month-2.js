@@ -141,7 +141,7 @@ export default function MotherhoodMonth2() {
         "Baby Carrier: Keeps baby close and content while freeing your hands for basic tasks and gentle movement."
       ]
     },
-     {
+    {
       title: "Visual Inspiration: Health & Safety Baby Pin",
       content: "Essential Items for Month Two babies",
       image: "https://i.pinimg.com/736x/59/23/8a/59238a436c1e46b666c9c8174fe757be.jpg"

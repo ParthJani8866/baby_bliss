@@ -122,7 +122,7 @@ export default function BlogLayout({
             "url": `${baseUrl}/logo.png`
           }
         },
-        "datePublished": "2024-01-01",
+        "datePublished": "2025-09-30",
         "dateModified": new Date(updatedAt).toISOString().split('T')[0],
         "mainEntityOfPage": {
           "@type": "WebPage",
