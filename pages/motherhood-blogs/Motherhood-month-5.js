@@ -170,7 +170,7 @@ export default function MotherhoodMonth5() {
 
   return (
     <BlogLayout
-      title="Motherhood Month 5 — The Age of Discovery: Teething, Laughter & Exploration"
+      title="Parenting (Motherhood) Month 5 — The Age of Discovery: Teething, Laughter & Exploration"
       mainImage="/images/motherhood-5.jpg"
       description="Discover the exciting developments of month five! From teething symptoms and rolling mastery to contagious laughter and growing curiosity. Learn how to support your baby's development while navigating sleep changes and your own emotional journey."
       sections={sections}

@@ -171,9 +171,9 @@ export default function MotherhoodMonth12() {
 
   return (
     <BlogLayout
-      title="Motherhood Month 12 — First Birthday, Walking, Talking & Celebrating Milestones"
+      title="Parenting (Motherhood) Month 12 — First Birthday, Walking, Talking & Celebrating Milestones"
       mainImage="/images/motherhood-12.jpg"
-      description="At Motherhood Month 12, babies start walking, expand vocabulary, and show personality. Learn feeding, milestones, real mom stories, and tips for celebrating the first birthday."
+      description="At Parenting (Motherhood) Month 12, babies start walking, expand vocabulary, and show personality. Learn feeding, milestones, real mom stories, and tips for celebrating the first birthday."
       sections={sections}
       faqs={faqs}
       sidebarCategory="motherhood"

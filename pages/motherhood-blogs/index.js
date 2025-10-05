@@ -214,7 +214,7 @@ Month 12 is a milestone month of celebration, reflection, and preparation for to
 
       <div className="max-w-5xl mx-auto px-4 py-12 space-y-12">
         <h1 className="text-3xl font-bold mb-8 text-orange-500 text-center">
-          Month-by-Month Motherhood Blogs
+          Month-by-Month Parenting Blogs
         </h1>
 
         {motherhoodPosts.map((blog) => (

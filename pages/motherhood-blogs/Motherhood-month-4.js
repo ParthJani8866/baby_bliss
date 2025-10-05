@@ -212,7 +212,7 @@ export default function MotherhoodMonth4() {
 
   return (
     <BlogLayout
-      title="Motherhood Month 4: The Golden Age of Rolling, Laughing & Routines"
+      title="Parenting (Motherhood) Month 4: The Golden Age of Rolling, Laughing & Routines"
       mainImage="/images/motherhood-4.jpg"
       description="Welcome to the 'golden period' of early motherhood. Discover the exciting milestones of month 4, from first rolls and laughs to establishing life-giving routines. Learn how your body is healing and find heartfelt stories from moms who've been there."
       sections={sections}

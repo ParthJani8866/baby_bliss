@@ -95,7 +95,7 @@ export default function PregnancyWeightGainCalculator() {
     const suggestedLinks = [
         { title: "Pregnancy Week-by-Week", href: "/pregnancy-week-wise/pregnancy-week-1" },
         { title: "Pregnancy Due Date Calculator", href: "/pregnancy/ovulation-calculator" },
-        { title: "Motherhood Month 1", href: "/motherhood-blogs/Motherhood-month-1" },
+        { title: "Parenting (Motherhood) Month 1", href: "/motherhood-blogs/Motherhood-month-1" },
         { title: "Baby Nutrition Tips", href: "/blogs/baby-nutrition" },
     ];
 

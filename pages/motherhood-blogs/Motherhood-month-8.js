@@ -175,9 +175,9 @@ export default function MotherhoodMonth8() {
 
   return (
     <BlogLayout
-      title="Motherhood Month 8 — Pulling Up, Teething & Stronger Bonding"
+      title="Parenting (Motherhood) Month 8 — Pulling Up, Teething & Stronger Bonding"
       mainImage="/images/motherhood-8.jpg"
-      description="At Motherhood Month 8, babies pull up, babble more, and experience teething and separation anxiety. Learn about feeding, growth milestones, and real mom stories in this stage."
+      description="At Parenting (Motherhood) Month 8, babies pull up, babble more, and experience teething and separation anxiety. Learn about feeding, growth milestones, and real mom stories in this stage."
       sections={sections}
       faqs={faqs}
       sidebarCategory="motherhood"
