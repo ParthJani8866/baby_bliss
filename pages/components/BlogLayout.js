@@ -63,7 +63,7 @@ export default function BlogLayout({
 
   // Auto-generate all SEO properties
   const generateSEOProperties = () => {
-    const baseUrl = "https://bellybuds.com";
+    const baseUrl = "https://baby-toys.shop";
     const currentUrl = `${baseUrl}/${slug}`;
     
     // Extract keywords from content
@@ -243,7 +243,7 @@ export default function BlogLayout({
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://bellybuds.com"
+                "item": "https://baby-toys.shop/"
               },
               {
                 "@type": "ListItem", 
