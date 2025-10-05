@@ -318,8 +318,6 @@ export default function BlogLayout({
           <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>
             <span aria-hidden="true">/</span>
-            <Link href="/parenting" className="hover:text-orange-500 transition-colors">Parenting</Link>
-            <span aria-hidden="true">/</span>
             <span className="text-gray-700 font-medium" aria-current="page">{title}</span>
           </nav>
 
