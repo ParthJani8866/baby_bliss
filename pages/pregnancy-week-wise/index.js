@@ -95,7 +95,7 @@ export default function PregnancyWeekWise() {
                 className="rounded-lg border object-cover"
               />
               <div>
-                <h2 className="text-2xl font-bold text-blue-700">{section.trimester}</h2>
+                <h1 className="text-2xl font-bold text-blue-700">{section.trimester}</h1>
                 <p className="text-gray-600 mt-1">{section.description}</p>
               </div>
             </div>

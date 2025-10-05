@@ -174,7 +174,7 @@ export default function BlogLayout({
   const seoProperties = generateSEOProperties();
 
   useEffect(() => {
-    const headings = Array.from(document.querySelectorAll("h2, h3")).map((h) => ({
+    const headings = Array.from(document.querySelectorAll("h1")).map((h) => ({
       id: h.id || h.innerText.replace(/\s+/g, "-").toLowerCase(),
       text: h.innerText,
       level: h.tagName.toLowerCase()
@@ -387,7 +387,7 @@ export default function BlogLayout({
           {/* Steps */}
           {steps.map((step, idx) => (
             <section key={`step-${idx}`} id={step.title.replace(/\s+/g, "-").toLowerCase()} className="space-y-4">
-              <h2 className="text-2xl font-semibold mt-6">{idx + 1}. {step.title}</h2>
+              <h1 className="text-2xl font-semibold mt-6">{idx + 1}. {step.title}</h1>
               {step.image && (
                 <div className="my-4 flex flex-col items-center gap-4">
                   <div className="w-full max-w-md h-72 relative">
@@ -402,16 +402,8 @@ export default function BlogLayout({
 
           {/* Sections */}
           {sections.map((section, idx) => (
-            <section 
-              key={`section-${idx}`} 
-              id={section.title.replace(/\s+/g, "-").toLowerCase()} 
-              className="space-y-6 mb-8"
-              itemProp="articleBody"
-            >
-              <h2 className="text-2xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
-                {section.title}
-              </h2>
-              
+            <section key={`section-${idx}`} id={section.title.replace(/\s+/g, "-").toLowerCase()} className="space-y-4">
+              <h1 className="text-2xl font-semibold mt-6">{section.title}</h1>
               {section.image && (
                 <div className="my-6 flex flex-col items-center gap-4">
                   <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden">
@@ -461,7 +453,7 @@ export default function BlogLayout({
           {/* Tips */}
           {tips.length > 0 && (
             <section id="tips" className="space-y-4">
-              <h2 className="text-2xl font-semibold mt-6">Parenting Tips</h2>
+              <h1 className="text-2xl font-semibold mt-6">Tips</h1>
               <ul className="list-disc pl-5 space-y-2">{tips.map((tip, idx) => (<li key={`tip-${idx}`}>{tip}</li>))}</ul>
             </section>
           )}
@@ -469,7 +461,7 @@ export default function BlogLayout({
           {/* FAQ Section */}
           {faqs.length > 0 && (
             <section id="faq" className="space-y-6 mt-10">
-              <h2 className="text-2xl font-semibold text-orange-500">Frequently Asked Questions</h2>
+              <h1 className="text-2xl font-semibold text-orange-500">FAQs</h1>
               <div className="divide-y divide-gray-200">
                 {faqs.map((faq, idx) => (
                   <div key={`faq-${idx}`} className="py-4">
@@ -486,6 +478,35 @@ export default function BlogLayout({
 
           {/* Comments */}
           <div className="mt-12"><CommentSection slug={slug} /></div>
+
+          {/* 3x3 Grid - Random Blogs */}
+          {randomBlogs.length > 0 && (
+            <div className="mt-10">
+              <h1 className="text-2xl font-bold mb-6 text-green-700">Explore More Blogs</h1>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {randomBlogs.slice(0, 9).map((blog, idx) => (
+                  <div key={idx} className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+                    {blog.image && (
+                      <div className="relative w-full h-48">
+                        <Image src={blog.image} alt={blog.title} fill className="object-cover" />
+                      </div>
+                    )}
+                    <div className="p-4">
+                      <h3 className="text-lg font-semibold mb-2">{blog.title}</h3>
+                      {blog.description && <p className="text-gray-600 text-sm line-clamp-3">{blog.description}</p>}
+                      <Link
+                        href={`/${blog.slug}`}
+                        className="text-orange-500 font-medium mt-2 inline-block hover:underline"
+                      >
+                        Read More
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
 
           {/* Like Button */}
           <div className="mt-10 flex items-center justify-center">
