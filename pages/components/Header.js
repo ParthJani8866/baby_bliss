@@ -28,7 +28,7 @@ export default function Header() {
   const toggleMobileSubmenu = (menu) =>
     setOpenMobileSubmenu(openMobileSubmenu === menu ? null : menu);
 
-  // Motherhood months
+  // Parenting (Motherhood) Months
   const motherhoodMonths = [
     {
       label: "Parenting",

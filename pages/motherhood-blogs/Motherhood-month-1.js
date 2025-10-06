@@ -285,7 +285,7 @@ Keep this guide handy, but remember that the most valuable wisdom often comes fr
 
   return (
     <BlogLayout
-      title="Motherhood Month 1: Essential Survival Guide for New Moms with Daily Routine, Feeding Tips & Postpartum Recovery"
+      title="Parenting (Motherhood) Month 1: Essential Survival Guide for New Moms with Daily Routine, Feeding Tips & Postpartum Recovery"
       description="Welcome to the first month of your motherhood (Parenting) journey! The first 30 days with your newborn are full of love, surprises, and challenges. This guide is here to help you navigate the early days with practical advice, realistic daily routines, feeding guidance, sleep tips, and postpartum recovery recommendations. Think of this as a friendly companion, offering tips that you can actually use while caring for your baby and yourself."
       mainImage="/images/motherhood-1.jpg"
       sections={sections}

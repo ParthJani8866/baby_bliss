@@ -170,9 +170,9 @@ export default function MotherhoodMonth11() {
 
   return (
     <BlogLayout
-      title="Motherhood Month 11 — Early Walking, First Words & Playful Independence"
+      title="Parenting (Motherhood) Month 11 — Early Walking, First Words & Playful Independence"
       mainImage="/images/motherhood-11.jpg"
-      description="At Motherhood Month 11, babies start walking, expand vocabulary, and enjoy playful interaction. Learn feeding, milestones, and real mom stories."
+      description="At Parenting (Motherhood) Month 11, babies start walking, expand vocabulary, and enjoy playful interaction. Learn feeding, milestones, and real mom stories."
       sections={sections}
       faqs={faqs}
       sidebarCategory="motherhood"

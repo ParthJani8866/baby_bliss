@@ -141,7 +141,7 @@ export default function MotherhoodMonth2() {
         "Baby Carrier: Keeps baby close and content while freeing your hands for basic tasks and gentle movement."
       ]
     },
-     {
+    {
       title: "Visual Inspiration: Health & Safety Baby Pin",
       content: "Essential Items for Month Two babies",
       image: "https://i.pinimg.com/736x/59/23/8a/59238a436c1e46b666c9c8174fe757be.jpg"
@@ -201,7 +201,7 @@ export default function MotherhoodMonth2() {
 
   return (
     <BlogLayout
-      title="Motherhood Month 2: Smiles, Growth and Early Connections"
+      title="Parenting (Motherhood) Month 2: Smiles, Growth and Early Connections"
       mainImage="/images/motherhood-2.jpg"
       description="Discover the key developments during your baby's second month, including first social smiles, improved neck strength, and establishing feeding routines. Learn about emotional changes and practical tips for new mothers."
       sections={sections}

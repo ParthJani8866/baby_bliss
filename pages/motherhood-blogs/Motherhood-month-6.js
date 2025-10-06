@@ -232,9 +232,9 @@ export default function MotherhoodMonth6() {
 
   return (
     <BlogLayout
-      title="Motherhood Month 6 — Starting Solids & Sitting Up"
+      title="Parenting (Motherhood) Month 6 — Starting Solids & Sitting Up"
       mainImage="/images/motherhood-6.jpg"
-      description="At Motherhood Month 6, babies begin solids, practice sitting, and start babbling. Learn feeding tips, milestones, and real mom stories for this exciting stage."
+      description="At Parenting (Motherhood) Month 6, babies begin solids, practice sitting, and start babbling. Learn feeding tips, milestones, and real mom stories for this exciting stage."
       sections={sections}
       faqs={faqs}
       sidebarCategory="motherhood"

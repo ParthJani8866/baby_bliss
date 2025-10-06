@@ -173,9 +173,9 @@ export default function MotherhoodMonth10() {
 
   return (
     <BlogLayout
-      title="Motherhood Month 10 — First Words, Peek-a-Boo & Stronger Mobility"
+      title="Parenting (Motherhood) Month 10 — First Words, Peek-a-Boo & Stronger Mobility"
       mainImage="/images/motherhood-10.jpg"
-      description="At Motherhood Month 10, babies start speaking first words, cruising, and enjoying interactive games. Learn feeding tips, milestones, and real mom stories."
+      description="At Parenting (Motherhood) Month 10, babies start speaking first words, cruising, and enjoying interactive games. Learn feeding tips, milestones, and real mom stories."
       sections={sections}
       faqs={faqs}
       sidebarCategory="motherhood"

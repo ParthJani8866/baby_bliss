@@ -546,8 +546,8 @@ export default function PregnancyWeek1() {
   return (
     <BlogLayout
       title="Pregnancy Week 1: Your Complete Guide to Preconception Preparation"
-      description="Discover everything you need to know about Pregnancy Week 1 - from understanding why pregnancy starts with your period to optimal nutrition, exercise, daily routines, and environmental preparations. Get evidence-based guidance for setting the foundation for a healthy pregnancy journey with detailed FAQs and practical checklists."
-      mainImage="/images/Pregnancy Week 1.jpg"
+      description="Pregnancy Week 1 - from understanding why pregnancy starts with your period to optimal nutrition, exercise, daily routines, and environmental preparations. Get evidence-based guidance for setting the foundation for a healthy pregnancy journey with detailed FAQs and practical checklists."
+      mainImage="/images/Pregnancy week 1.jpg"
       sections={sections}
       faqs={faqs}
       sidebarCategory="pregnancy"
