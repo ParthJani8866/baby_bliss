@@ -2,7 +2,7 @@ const slugify = require('slugify');
 const { categories } = require('./data/categories');
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-const genders = ['boy', 'girl', 'neutral'];
+const genders = ['boy', 'girl'];
 
 module.exports = {
   siteUrl: 'https://baby-toys.shop',
