@@ -636,7 +636,7 @@ export default function PregnancyWeek2() {
     <BlogLayout
       title="Pregnancy Week 2: Ovulation, Fertility Window, and Conception Preparation"
       description="Comprehensive guide to Pregnancy Week 2 covering ovulation signs, fertility tracking, optimal timing for conception, nutrition for egg health, and lifestyle factors that support successful fertilization. Learn about cervical mucus changes, basal body temperature, and ovulation prediction methods."
-      mainImage="/images/Pregnancy week 2.jpg"
+      mainImage="/images/Pregnancy Week 2.jpg"
       sections={sections}
       faqs={faqs}
       sidebarCategory="pregnancy"

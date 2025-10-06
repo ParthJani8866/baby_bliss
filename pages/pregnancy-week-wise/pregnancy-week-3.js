@@ -490,7 +490,7 @@ export default function PregnancyWeek3() {
     <BlogLayout
       title="Pregnancy Week 3: Conception, Early Cell Division & Implantation Preparation"
       description="Comprehensive guide to Pregnancy Week 3 covering fertilization, zygote development, early symptoms, and essential health practices. Learn about cellular division, implantation process, and how to support early pregnancy before confirmation."
-      mainImage="/images/Pregnancy week 3.jpg"
+      mainImage="/images/Pregnancy Week 3.jpg"
       sections={sections}
       faqs={faqs}
       sidebarCategory="pregnancy"
