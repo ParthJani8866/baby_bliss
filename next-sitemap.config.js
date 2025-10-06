@@ -1,16 +1,33 @@
 const slugify = require('slugify');
 const { categories } = require('./data/categories');
 
+const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const genders = ['boy', 'girl', 'neutral'];
+
 module.exports = {
   siteUrl: 'https://baby-toys.shop',
   generateRobotsTxt: true,
   changefreq: 'daily',
   priority: 0.7,
   additionalPaths: async (config) => {
-    return categories.map((category) => ({
+    const categoryPaths = categories.map((category) => ({
       loc: `/baby-products/${slugify(category.name, { lower: true })}`,
       changefreq: 'daily',
       priority: 0.8,
     }));
+
+    const babyNamePaths = [];
+
+    genders.forEach((gender) => {
+      alphabet.forEach((letter) => {
+        babyNamePaths.push({
+          loc: `/baby-names/${gender}-names-with-${letter}`,
+          changefreq: 'daily',
+          priority: 0.9,
+        });
+      });
+    });
+
+    return [...categoryPaths, ...babyNamePaths];
   },
 };
