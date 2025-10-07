@@ -80,7 +80,7 @@ export default function BlogLayout({
         'parenting', 'pregnancy', 'baby', 'newborn', 'child', 'motherhood', 
         'fatherhood', 'infant', 'toddler', 'development', 'care', 'health',
         'growth', 'milestones', 'feeding', 'sleep', 'nutrition', 'tips',
-        'advice', 'guide', 'stages', 'months', 'weeks'
+        'advice', 'guide', 'stages', 'months', 'weeks', 'pregnancy week by week'
       ];
       
       return parentingKeywords.filter(keyword => 

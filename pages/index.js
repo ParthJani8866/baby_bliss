@@ -123,9 +123,44 @@ export default function Home() {
 
   return (
     <div className="bg-white text-black min-h-screen">
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Belly Buds",
+              "url": "https://baby-toys.shop/",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://baby-toys.shop/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Belly Buds",
+              "url": "https://baby-toys.shop/",
+              "logo": "https://baby-toys.shop/images/logo.png",
+              "sameAs": [
+                "https://www.facebook.com/share/16N9YzqWcc/",
+                "https://www.instagram.com/baby_toys.cycles/",
+                "https://pin.it/4T9lYMXPH"
+              ]
+            })
+          }}
+        />
+      </Head>
       <NextSeo
         title="Belly Buds | Motherhood, Parenting & Pregnancy Blogs"
-        description="Explore Belly Buds parenting blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your parenting journey smoother."
+        description="Belly Buds parenting blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your parenting journey smoother."
         canonical="https://baby-toys.shop/"
       />
 
@@ -153,7 +188,7 @@ export default function Home() {
         <div className="lg:col-span-9 space-y-12">
           {/* Motherhood Blogs */}
           <section className="my-12 px-4 md:px-8">
-            <h1 className="text-2xl font-semibold mb-6 text-center text-orange-600">Motherhood (Parenting) Blogs</h1>
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Parenting Blogs</h2>
             <div className="grid gap-6 md:grid-cols-3">
               {motherhoodPosts.map((post) => (
                 <div key={post.slug} className="border rounded-lg shadow hover:shadow-lg p-6">
@@ -177,7 +212,7 @@ export default function Home() {
 
           {/* Parenting Blogs */}
           <section className="my-12 px-4 md:px-8">
-            <h1 className="text-2xl font-semibold mb-6 text-center text-orange-600">Parenting & Baby Care</h1>
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Parenting & Baby Care</h2>
             <div className="grid gap-6 md:grid-cols-3">
               {blogPosts.map((post) => (
                 <div key={post.slug} className="border rounded-lg shadow hover:shadow-lg p-6">
@@ -199,9 +234,9 @@ export default function Home() {
             </div>
           </section>
           <section className="mt-12">
-            <h1 className="text-2xl font-semibold mb-4 text-center text-orange-600">Pregnancy due date calculator</h1>
+            <h2 className="text-2xl font-semibold mb-4 text-center text-orange-600">Pregnancy due date calculator</h2>
             <div className="mt-10 bg-gray-50 p-6 rounded-xl shadow-md space-y-4">
-              <h1 className="text-2xl font-semibold text-orange-600 mb-4">Understanding Due Date Calculations</h1>
+              <h2 className="text-2xl font-semibold text-orange-600 mb-4">Understanding Due Date Calculations</h2>
 
               <p className="text-gray-700">
                 <strong>LMP-based:</strong> Pregnancy is calculated from the first day of your last menstrual period, assuming a standard 28-day cycle.
@@ -236,7 +271,7 @@ export default function Home() {
           </section>
           {/* Baby Names Section */}
           <section className="my-12 px-4 md:px-8">
-            <h1 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Names</h1>
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Names</h2>
             <div className="grid gap-6 md:grid-cols-4">
               {[
                 { name: "Oliver", gender: "Boy", slug: "oliver" },
@@ -271,7 +306,7 @@ export default function Home() {
 
           {/* Single Gaby Game Section */}
           <section className="my-12 px-4 md:px-8">
-            <h1 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Game</h1>
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Game</h2>
             <div className="flex justify-center">
               <Link
                 href="/games/guess-baby-animal"
@@ -291,9 +326,9 @@ export default function Home() {
           </section>
           {/* Pregnancy Blogs */}
           <section className="my-12 px-4 md:px-8">
-            <h1 className="text-2xl font-semibold mb-6 text-center text-orange-600">
+            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">
               Pregnancy Week-by-Week
-            </h1>
+            </h2>
 
             {pregnancyPosts.map((trimester, index) => (
               <div key={trimester.trimester} className="mb-8">
@@ -357,7 +392,7 @@ export default function Home() {
               minWidth: "300px",
             }}
           >
-            <h1>Login with Google</h1>
+            <h2>Login with Google</h2>
             <button
               onClick={handleGoogleLogin}
               style={{
