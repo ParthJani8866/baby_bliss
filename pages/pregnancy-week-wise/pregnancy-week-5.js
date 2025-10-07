@@ -234,7 +234,7 @@ export default function PregnancyWeek5() {
 
         Practice proactive healthcare by keeping all prenatal appointments and following your provider's recommendations. Don't hesitate to contact your healthcare provider with questions or concerns between appointments. Keep a list of emergency contacts, including your provider's after-hours number, readily available.
 
-        Finally, be patient with yourself and your changing body. Early pregnancy involves significant physical and emotional adjustments. Allow yourself grace as you navigate this new experience, and remember that it's normal to have both excited and anxious feelings about pregnancy and impending parenting.
+        Finally, be patient with yourself and your changing body. Early pregnancy involves significant physical and emotional adjustments. Allow yourself grace as you navigate this new experience, and remember that it's normal to have both excited and anxious feelings about pregnancy and impending motherhood.
       `
     },
     {

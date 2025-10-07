@@ -304,7 +304,7 @@ export default function PregnancyWeek4() {
         
         <p>Remember that every pregnancy is unique, and comparisons to others' experiences are rarely helpful. Trust your body's wisdom, listen to its signals, and don't hesitate to seek support and information when needed. The decisions you make now—from nutrition to lifestyle choices—create the optimal environment for your baby's development.</p>
         
-        <p>As you navigate these early weeks, be gentle with yourself emotionally and physically. The transformation to parenting is a journey, not a destination. Celebrate each small milestone, document your experiences, and build a support network that will sustain you throughout pregnancy and beyond.</p>
+        <p>As you navigate these early weeks, be gentle with yourself emotionally and physically. The transformation to motherhood is a journey, not a destination. Celebrate each small milestone, document your experiences, and build a support network that will sustain you throughout pregnancy and beyond.</p>
         
         <p>The road ahead holds challenges and joys beyond measure. With each passing week, your baby will grow and develop in remarkable ways, and you will grow into your new role as a parent. Embrace this special time with hope, patience, and the knowledge that you are participating in one of life's greatest miracles.</p>
       `

@@ -174,7 +174,7 @@ export default function BlogLayout({
   const seoProperties = generateSEOProperties();
 
   useEffect(() => {
-    const headings = Array.from(document.querySelectorAll("h1")).map((h) => ({
+    const headings = Array.from(document.querySelectorAll("h2")).map((h) => ({
       id: h.id || h.innerText.replace(/\s+/g, "-").toLowerCase(),
       text: h.innerText,
       level: h.tagName.toLowerCase()

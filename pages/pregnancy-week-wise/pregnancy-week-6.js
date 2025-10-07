@@ -266,7 +266,7 @@ Practice proactive healthcare by keeping all prenatal appointments and following
 
 Create a comfortable home environment that supports your changing needs. Consider keeping nausea-relief supplies in multiple locations (bedside, work, car). Ensure your sleeping environment is comfortable and supportive. Stock your kitchen with pregnancy-friendly foods that are easy to prepare.
 
-Finally, be patient with yourself and your changing body. Early pregnancy involves significant physical and emotional adjustments. Allow yourself grace as you navigate this new experience, and remember that it's normal to have both excited and anxious feelings about pregnancy and impending parenting.
+Finally, be patient with yourself and your changing body. Early pregnancy involves significant physical and emotional adjustments. Allow yourself grace as you navigate this new experience, and remember that it's normal to have both excited and anxious feelings about pregnancy and impending motherhood.
       `
     },
     {
