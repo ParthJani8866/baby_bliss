@@ -58,7 +58,7 @@ export default function MotherhoodMonth7() {
     },
     {
       title: "Your Journey: Finding Balance Amid the Motion",
-      content: `As your baby becomes more mobile and independent, your own experience of motherhood continues to evolve in meaningful ways.`,
+      content: `As your baby becomes more mobile and independent, your own experience of parenting continues to evolve in meaningful ways.`,
       list: [
         `Physical Recovery and Strength: By seven months postpartum, most mothers feel significantly recovered from childbirth. Your body has adapted to the physical demands of parenting—lifting, carrying, and bending feel more natural. However, chasing after a mobile baby introduces new physical challenges! You might find yourself spending more time on the floor, kneeling to interact with your baby at their level, and developing what parents jokingly call "the crawl squat"—that quick descent to the floor to prevent your baby from reaching something dangerous. Your core strength continues to improve, but remember to practice good body mechanics when lifting your increasingly heavy baby.`,
 
@@ -176,12 +176,12 @@ export default function MotherhoodMonth7() {
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 7 — Crawling, Stranger Anxiety & Finger Foods"
+      title="Parenting Month 7 — Crawling, Stranger Anxiety & Finger Foods"
       mainImage="/images/motherhood-7.jpg"
-      description="Parenting (Motherhood) Month 7 brings crawling, babbling, and the introduction of finger foods. Learn about growth milestones, feeding tips, and real mom stories in this exciting stage."
+      description="Parenting Month 7 brings crawling, babbling, and the introduction of finger foods. Learn about growth milestones, feeding tips, and real mom stories in this exciting stage."
       sections={sections}
       faqs={faqs}
-      sidebarCategory="motherhood"
+      sidebarCategory="parenting"
       sidebarTitle="Baby Safety Essentials"
     />
   );

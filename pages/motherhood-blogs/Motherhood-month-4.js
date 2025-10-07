@@ -82,7 +82,7 @@ export default function MotherhoodMonth4() {
   const sections = [
     {
       title: "The Golden Glow: Welcoming the Fourth Month",
-      content: `The first three months of motherhood are often a beautiful, chaotic blur—a whirlwind of round-the-clock feedings, deciphering different cries, and surviving on fragmented sleep. You've been in what many call the "fourth trimester," a period of intense adjustment for both you and your baby.
+      content: `The first three months of parenting are often a beautiful, chaotic blur—a whirlwind of round-the-clock feedings, deciphering different cries, and surviving on fragmented sleep. You've been in what many call the "fourth trimester," a period of intense adjustment for both you and your baby.
 
       But then, something magical happens as you cross the threshold into the fourth month. The fog begins to lift. The intense newborn scream-cries start to morph into more distinct, manageable communications. And your baby, who once seemed like a tiny, sleepy bundle of reflexes, suddenly emerges with a personality.
       
@@ -212,12 +212,12 @@ export default function MotherhoodMonth4() {
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 4: The Golden Age of Rolling, Laughing & Routines"
+      title="Parenting Month 4: The Golden Age of Rolling, Laughing & Routines"
       mainImage="/images/motherhood-4.jpg"
-      description="Welcome to the 'golden period' of early motherhood. Discover the exciting milestones of month 4, from first rolls and laughs to establishing life-giving routines. Learn how your body is healing and find heartfelt stories from moms who've been there."
+      description="Welcome to the 'golden period' of early parenting. Discover the exciting milestones of month 4, from first rolls and laughs to establishing life-giving routines. Learn how your body is healing and find heartfelt stories from moms who've been there."
       sections={sections}
       faqs={faqs}
-      sidebarCategory="motherhood"
+      sidebarCategory="parenting"
       sidebarTitle="Parenting Essentials"
     />
   );

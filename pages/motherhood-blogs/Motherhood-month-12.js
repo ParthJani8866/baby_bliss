@@ -56,7 +56,7 @@ export default function MotherhoodMonth12() {
     },
     {
       title: "Your Journey: Reflection, Celebration, and New Beginnings",
-      content: `As you reach the one-year mark, your own experience of motherhood deserves as much celebration and reflection as your baby's developmental achievements.`,
+      content: `As you reach the one-year mark, your own experience of parenting deserves as much celebration and reflection as your baby's developmental achievements.`,
       list: [
         `The Emotional Landscape of the First Birthday: The approach of your baby's first birthday often brings a complex mix of emotions. There's immense pride in every milestone achieved, joy in watching your baby flourish, and excitement about the future. But many mothers also experience what's sometimes called "milestone melancholy"—a bittersweet nostalgia for the tiny, completely dependent newborn who is rapidly disappearing. Looking at photos from the early days, you might marvel at how much has changed while simultaneously feeling like this incredible year has passed in the blink of an eye. These mixed emotions are completely normal and represent the depth of your connection and investment in this journey.`,
 
@@ -132,7 +132,7 @@ export default function MotherhoodMonth12() {
         },
         {
           subtitle: "The Reflection Moment",
-          content: `"The night before my daughter's first birthday, I found myself looking through photos from her birth and early days. The transformation was staggering—from that tiny, sleepy newborn to this vibrant, walking, babbling little person with clear opinions and a mischievous sense of humor. But what struck me most was seeing my own transformation in those photos. The uncertain new mother in the hospital bed had been replaced by a confident, capable parent who could read her daughter's cues and respond to her needs intuitively. Her first birthday became a celebration of both of our growth—her incredible physical and developmental journey, and my journey into motherhood." — Shruti, Bangalore`
+          content: `"The night before my daughter's first birthday, I found myself looking through photos from her birth and early days. The transformation was staggering—from that tiny, sleepy newborn to this vibrant, walking, babbling little person with clear opinions and a mischievous sense of humor. But what struck me most was seeing my own transformation in those photos. The uncertain new mother in the hospital bed had been replaced by a confident, capable parent who could read her daughter's cues and respond to her needs intuitively. Her first birthday became a celebration of both of our growth—her incredible physical and developmental journey, and my journey into parenting." — Shruti, Bangalore`
         }
       ]
     },
@@ -171,12 +171,12 @@ export default function MotherhoodMonth12() {
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 12 — First Birthday, Walking, Talking & Celebrating Milestones"
+      title="Parenting Month 12 — First Birthday, Walking, Talking & Celebrating Milestones"
       mainImage="/images/motherhood-12.jpg"
-      description="At Parenting (Motherhood) Month 12, babies start walking, expand vocabulary, and show personality. Learn feeding, milestones, real mom stories, and tips for celebrating the first birthday."
+      description="At Parenting Month 12, babies start walking, expand vocabulary, and show personality. Learn feeding, milestones, real mom stories, and tips for celebrating the first birthday."
       sections={sections}
       faqs={faqs}
-      sidebarCategory="motherhood"
+      sidebarCategory="parenting"
       sidebarTitle="First Birthday & Milestone Essentials"
     />
   );

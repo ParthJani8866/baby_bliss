@@ -58,7 +58,7 @@ export default function MotherhoodMonth9() {
     },
     {
       title: "Your Journey: Confidence, Fatigue, and the Beauty of Connection",
-      content: `As your baby approaches the nine-month mark, your own experience of motherhood continues to evolve, bringing new challenges and deeper satisfactions.`,
+      content: `As your baby approaches the nine-month mark, your own experience of parenting continues to evolve, bringing new challenges and deeper satisfactions.`,
       list: [
         `Growing Confidence and Rhythm: By nine months postpartum, most mothers have found their parenting rhythm. The uncertainty of the early months has given way to confidence in reading your baby's cues and responding to their needs. You've developed routines that work for your family and learned to trust your instincts in a way that felt impossible just a few months ago. This hard-earned confidence is one of the greatest gifts of this stage, making daily challenges feel more manageable and joys more profound.`,
 
@@ -173,12 +173,12 @@ export default function MotherhoodMonth9() {
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 9 — Standing with Support, Stronger Communication & Play"
+      title="Parenting Month 9 — Standing with Support, Stronger Communication & Play"
       mainImage="/images/motherhood-9.jpg"
-      description="At Parenting (Motherhood) Month 9, babies pull up, cruise, and start purposeful babbling. Learn about feeding, growth milestones, and real mom stories in this exciting stage."
+      description="At Parenting Month 9, babies pull up, cruise, and start purposeful babbling. Learn about feeding, growth milestones, and real mom stories in this exciting stage."
       sections={sections}
       faqs={faqs}
-      sidebarCategory="motherhood"
+      sidebarCategory="parenting"
       sidebarTitle="Baby Exploration Essentials"
     />
   );

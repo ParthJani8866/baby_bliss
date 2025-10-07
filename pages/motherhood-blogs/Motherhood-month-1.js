@@ -14,7 +14,7 @@ export default function MotherhoodMonth1() {
       title: "Your First Month as a Mom: A Complete Survival Guide",
       content: `Welcome to the most beautiful, challenging, and transformative journey of your life. The first month with your newborn, often called the "fourth trimester," is a period of immense adjustment, learning, and bonding. This guide provides you with a realistic daily routine and comprehensive do's and don'ts to help you navigate these precious early weeks with confidence and grace.
 
-Remember: there is no such thing as a perfect mother, only a real one who is learning and growing alongside her baby. This month isn't about sticking to rigid schedules or achieving perfection—it's about finding your rhythm, trusting your instincts, and embracing the beautiful chaos of new motherhood.`,
+Remember: there is no such thing as a perfect mother, only a real one who is learning and growing alongside her baby. This month isn't about sticking to rigid schedules or achieving perfection—it's about finding your rhythm, trusting your instincts, and embracing the beautiful chaos of new parenting.`,
     },
     {
       title: "A Realistic Daily Routine for Your First Month",
@@ -248,7 +248,7 @@ Remember: there is no such thing as a perfect mother, only a real one who is lea
     },
     {
       title: "Final Thoughts: You've Got This",
-      content: `The first month of motherhood (Parenting) is a journey like no other. It's filled with moments of overwhelming love, exhausting nights, and learning experiences that will shape you as a mother. Remember that this phase is temporary—the sleepless nights will gradually ease, the feeding challenges will resolve, and you will find your footing.
+      content: `The first month of parenting is a journey like no other. It's filled with moments of overwhelming love, exhausting nights, and learning experiences that will shape you as a mother. Remember that this phase is temporary—the sleepless nights will gradually ease, the feeding challenges will resolve, and you will find your footing.
 
 Be gentle with yourself. You are learning to care for your newborn while recovering from a major physical event. There will be good days and challenging days, and both are completely normal. Trust that you are the exact right mother for your baby. You don't need to have all the answers—you just need to show up with love, one moment at a time.
 
@@ -285,8 +285,8 @@ Keep this guide handy, but remember that the most valuable wisdom often comes fr
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 1: Essential Survival Guide for New Moms with Daily Routine, Feeding Tips & Postpartum Recovery"
-      description="Welcome to the first month of your motherhood (Parenting) journey! The first 30 days with your newborn are full of love, surprises, and challenges. This guide is here to help you navigate the early days with practical advice, realistic daily routines, feeding guidance, sleep tips, and postpartum recovery recommendations. Think of this as a friendly companion, offering tips that you can actually use while caring for your baby and yourself."
+      title="Parenting Month 1: Essential Survival Guide for New Moms with Daily Routine, Feeding Tips & Postpartum Recovery"
+      description="Welcome to the first month of your parenting journey! The first 30 days with your newborn are full of love, surprises, and challenges. This guide is here to help you navigate the early days with practical advice, realistic daily routines, feeding guidance, sleep tips, and postpartum recovery recommendations. Think of this as a friendly companion, offering tips that you can actually use while caring for your baby and yourself."
       mainImage="/images/motherhood-1.jpg"
       sections={sections}
       faqs={faqs}

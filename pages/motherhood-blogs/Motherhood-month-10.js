@@ -58,7 +58,7 @@ export default function MotherhoodMonth10() {
     },
     {
       title: "Your Journey: Confidence, Connection, and New Challenges",
-      content: `As your baby approaches the ten-month mark, your own experience of motherhood continues to evolve, bringing new satisfactions and considerations.`,
+      content: `As your baby approaches the ten-month mark, your own experience of parenting continues to evolve, bringing new satisfactions and considerations.`,
       list: [
         `Growing Confidence in Your Parenting Identity: By ten months postpartum, most mothers have settled into their parenting identity with a sense of competence and assurance. The frantic uncertainty of the early months has been replaced by a deep, intuitive understanding of your baby's needs and rhythms. You can anticipate their hunger cues, interpret their unique cries, and recognize the subtle signs of tiredness or overstimulation. This hard-won confidence allows you to relax into parenting in a way that wasn't possible earlier, creating space for more joyful, present interactions.`,
 
@@ -173,12 +173,12 @@ export default function MotherhoodMonth10() {
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 10 — First Words, Peek-a-Boo & Stronger Mobility"
+      title="Parenting Month 10 — First Words, Peek-a-Boo & Stronger Mobility"
       mainImage="/images/motherhood-10.jpg"
-      description="At Parenting (Motherhood) Month 10, babies start speaking first words, cruising, and enjoying interactive games. Learn feeding tips, milestones, and real mom stories."
+      description="At Parenting Month 10, babies start speaking first words, cruising, and enjoying interactive games. Learn feeding tips, milestones, and real mom stories."
       sections={sections}
       faqs={faqs}
-      sidebarCategory="motherhood"
+      sidebarCategory="parenting"
       sidebarTitle="Interactive Play Essentials"
     />
   );

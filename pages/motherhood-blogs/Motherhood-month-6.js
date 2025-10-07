@@ -47,7 +47,7 @@ export default function MotherhoodMonth6() {
   ]
   const sections = [
     {
-      title: "Half a Year of Miracles: Celebrating Six Months of Motherhood",
+      title: "Half a Year of Miracles: Celebrating Six Months of parenting",
       content: `Congratulations, amazing mama! You've reached a monumental milestone—six months of nurturing, loving, and growing alongside your little one. This isn't just a chronological marker; it's a celebration of survival, adaptation, and the incredible bond you've built. Remember those early days of uncertainty, when every cry felt like a mystery and sleep was a distant memory? Look at you now—a confident, intuitive mother who can decipher different cries, predict nap times, and recognize the subtle signs of your baby's needs.
 
       The sixth month marks a significant transition from infancy to older babyhood. Your little one is transforming from a primarily reactive newborn into an active, engaged little person with distinct preferences, emerging personality traits, and rapidly developing physical capabilities. This month brings some of the most exciting "firsts"—first tastes of solid food, first attempts at independent sitting, and the emergence of more sophisticated communication through babbling and gestures.
@@ -68,7 +68,7 @@ export default function MotherhoodMonth6() {
 
         `The Work-Life Balancing Act: For many mothers, month six coincides with returning to work or making decisions about career and childcare. This transition can bring a complex mix of emotions: excitement about reconnecting with your professional identity, anxiety about leaving your baby, guilt about both wanting and not wanting to return, and practical worries about pumping, childcare logistics, and time management. These feelings are completely normal. Remember that there's no "right" choice—only what works best for your family. Whether you're returning to work, extending leave, or making other arrangements, give yourself permission to feel all the emotions without judgment. Build your support system, communicate your needs clearly, and know that it's okay to adjust your approach as you navigate this new chapter.`,
 
-        `Emotional Landscape: The intense emotions of early motherhood have likely given way to a more stable but still complex emotional experience. You might find yourself swinging between pride in your baby's developments and nostalgia for their tiny newborn days. Many mothers experience what's sometimes called "milestone melancholy"—the bittersweet feeling of watching your baby grow up too fast. At the same time, the cumulative effect of months of interrupted sleep can take a toll. Be honest with yourself about your emotional state, and don't hesitate to seek support if you're feeling consistently overwhelmed, anxious, or sad. Your mental health is as important as your physical health.`
+        `Emotional Landscape: The intense emotions of early parenting have likely given way to a more stable but still complex emotional experience. You might find yourself swinging between pride in your baby's developments and nostalgia for their tiny newborn days. Many mothers experience what's sometimes called "milestone melancholy"—the bittersweet feeling of watching your baby grow up too fast. At the same time, the cumulative effect of months of interrupted sleep can take a toll. Be honest with yourself about your emotional state, and don't hesitate to seek support if you're feeling consistently overwhelmed, anxious, or sad. Your mental health is as important as your physical health.`
       ]
     },
     {
@@ -137,7 +137,7 @@ export default function MotherhoodMonth6() {
         },
         {
           subtitle: "The Day She Sat Up Solo",
-          content: `"I had been propping pillows around my daughter Anaya for weeks during her sitting practice. She would wobble, lean heavily on her hands, and occasionally topple over despite my cushion fortress. One afternoon, I placed her on her play mat surrounded by her favorite toys and turned to grab my water bottle. When I turned back, she was sitting completely upright, hands playing with a rattle, with the most proud little smile on her face. She had done it—completely independently! I actually burst into tears. In that moment, I saw the tiny dependent newborn transforming into this capable, curious little person. She looked at me with such accomplishment, as if to say, 'Look what I can do, Mama!' It was one of those moments that makes all the sleepless nights and challenges of early motherhood completely worth it." — Radhika, Pune`
+          content: `"I had been propping pillows around my daughter Anaya for weeks during her sitting practice. She would wobble, lean heavily on her hands, and occasionally topple over despite my cushion fortress. One afternoon, I placed her on her play mat surrounded by her favorite toys and turned to grab my water bottle. When I turned back, she was sitting completely upright, hands playing with a rattle, with the most proud little smile on her face. She had done it—completely independently! I actually burst into tears. In that moment, I saw the tiny dependent newborn transforming into this capable, curious little person. She looked at me with such accomplishment, as if to say, 'Look what I can do, Mama!' It was one of those moments that makes all the sleepless nights and challenges of early parenting completely worth it." — Radhika, Pune`
         },
         {
           subtitle: "The Babble Conversation That Melted My Heart",
@@ -226,18 +226,18 @@ export default function MotherhoodMonth6() {
       
       Take photos, record videos, jot down notes in a baby book. These moments are fleeting, and you'll treasure these memories of your baby balanced between infancy and toddlerhood. Most importantly, be present. Put down your phone, turn off the background noise, and soak in the wonder of watching a person discover the world for the first time.
       
-      You've reached half a year of motherhood—a significant accomplishment worth celebrating. Trust yourself, enjoy the journey, and know that the best is yet to come.`
+      You've reached half a year of parenting significant accomplishment worth celebrating. Trust yourself, enjoy the journey, and know that the best is yet to come.`
     }
   ];
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 6 — Starting Solids & Sitting Up"
+      title="Parenting Month 6 — Starting Solids & Sitting Up"
       mainImage="/images/motherhood-6.jpg"
-      description="At Parenting (Motherhood) Month 6, babies begin solids, practice sitting, and start babbling. Learn feeding tips, milestones, and real mom stories for this exciting stage."
+      description="At Parenting Month 6, babies begin solids, practice sitting, and start babbling. Learn feeding tips, milestones, and real mom stories for this exciting stage."
       sections={sections}
       faqs={faqs}
-      sidebarCategory="motherhood"
+      sidebarCategory="parenting"
       sidebarTitle="Parenting Essentials"
     />
   );

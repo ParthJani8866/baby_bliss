@@ -60,7 +60,7 @@ export default function MotherhoodMonth11() {
     },
     {
       title: "Your Journey: Pride, Patience, and the Art of Letting Go",
-      content: `As your baby approaches their first birthday, your own experience of motherhood continues to deepen and evolve in meaningful ways.`,
+      content: `As your baby approaches their first birthday, your own experience of parenting continues to deepen and evolve in meaningful ways.`,
       list: [
         `The Bittersweet Pride of Growing Independence: By eleven months postpartum, most mothers experience complex emotions as they watch their babies transform into toddlers. There's immense pride in every new achievement—each independent step, each new word, each problem solved. But there's also a poignant awareness that the intense physical dependency of infancy is fading. Many mothers describe this stage as both exhilarating and slightly heartbreaking—you're thrilled to see your baby flourish but nostalgic for the tiny, completely dependent newborn they once were. These mixed emotions are completely normal and represent the depth of your connection.`,
 
@@ -170,12 +170,12 @@ export default function MotherhoodMonth11() {
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 11 — Early Walking, First Words & Playful Independence"
+      title="Parenting Month 11 — Early Walking, First Words & Playful Independence"
       mainImage="/images/motherhood-11.jpg"
-      description="At Parenting (Motherhood) Month 11, babies start walking, expand vocabulary, and enjoy playful interaction. Learn feeding, milestones, and real mom stories."
+      description="At Parenting Month 11, babies start walking, expand vocabulary, and enjoy playful interaction. Learn feeding, milestones, and real mom stories."
       sections={sections}
       faqs={faqs}
-      sidebarCategory="motherhood"
+      sidebarCategory="parenting"
       sidebarTitle="Milestone & Play Essentials"
     />
   );

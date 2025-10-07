@@ -156,11 +156,11 @@ export default function MotherhoodMonth2() {
     },
     {
       title: "Caring for Your Own Wellbeing",
-      content: "Remember that taking care of yourself remains essential during this period. Accept help from family and friends when offered. Try to rest when your baby sleeps, even if it means letting household tasks wait. Connect with other new mothers through local groups or online communities. Be patient with yourself as you navigate the learning curve of motherhood, and celebrate the small victories each day brings."
+      content: "Remember that taking care of yourself remains essential during this period. Accept help from family and friends when offered. Try to rest when your baby sleeps, even if it means letting household tasks wait. Connect with other new mothers through local groups or online communities. Be patient with yourself as you navigate the learning curve of parenting, and celebrate the small victories each day brings."
     },
     {
       title: "Looking Ahead",
-      content: "The second month represents a beautiful transition where parenting begins to feel increasingly rewarding. While sleep remains fragmented and challenges persist, the emerging smiles, growing interactions, and deepening bond create moments of pure joy. Embrace this special time, trust your instincts, and know that you're building a strong foundation for the months and years ahead. Each day brings new discoveries and opportunities for connection that make the journey of motherhood (Parenting) truly remarkable."
+      content: "The second month represents a beautiful transition where parenting begins to feel increasingly rewarding. While sleep remains fragmented and challenges persist, the emerging smiles, growing interactions, and deepening bond create moments of pure joy. Embrace this special time, trust your instincts, and know that you're building a strong foundation for the months and years ahead. Each day brings new discoveries and opportunities for connection that make the journey of parenting truly remarkable."
     }
   ];
 
@@ -201,7 +201,7 @@ export default function MotherhoodMonth2() {
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 2: Smiles, Growth and Early Connections"
+      title="Parenting Month 2: Smiles, Growth and Early Connections"
       mainImage="/images/motherhood-2.jpg"
       description="Discover the key developments during your baby's second month, including first social smiles, improved neck strength, and establishing feeding routines. Learn about emotional changes and practical tips for new mothers."
       sections={sections}

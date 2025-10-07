@@ -315,12 +315,12 @@ export default function MotherhoodMonth3() {
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 3 — Smiles, Shots, and Schedules"
+      title="Parenting Month 3 — Smiles, Shots, and Schedules"
       mainImage="/images/motherhood-3.jpg"
-      description="Your complete guide to Month 3 of motherhood. Learn about 3-month vaccinations, a sample daily routine, birth certificate registration, and how to handle your baby's exciting new milestones."
+      description="Your complete guide to Month 3 of parenting. Learn about 3-month vaccinations, a sample daily routine, birth certificate registration, and how to handle your baby's exciting new milestones."
       sections={sections}
       faqs={faqs}
-      sidebarCategory="motherhood"
+      sidebarCategory="parenting"
       sidebarTitle="Parenting Essentials"
     />
   );

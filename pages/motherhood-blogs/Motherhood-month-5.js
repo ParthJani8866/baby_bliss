@@ -16,7 +16,7 @@ export default function MotherhoodMonth5() {
     },
     {
       title: "Navigating Your Postpartum Journey: Body, Mind, and Identity",
-      content: `As your baby grows and changes, so does your experience of motherhood. Month five brings its own set of physical and emotional considerations that deserve attention and care.`,
+      content: `As your baby grows and changes, so does your experience of parenting. Month five brings its own set of physical and emotional considerations that deserve attention and care.`,
       list: [
         `The Evolving Energy Rollercoaster: Many mothers find their energy levels have significantly improved by this point. The intense fatigue of the early postpartum period has lifted, and you're likely feeling more like yourself physically. However, this improvement can be tempered by the return of sleep disruptions if your baby begins teething or experiences growth spurts. The key is to manage your expectations—some nights will be restful, while others will have you feeling like you're back in the newborn phase. Listen to your body and rest when you can, even if it means letting non-essential chores wait.`,
 
@@ -24,7 +24,7 @@ export default function MotherhoodMonth5() {
 
         `The Work Transition Dilemma: For many mothers, month five marks the approach of returning to work, whether that means preparing to go back in the coming weeks or navigating the emotions around this transition. This can bring up complex feelings—excitement about reconnecting with your professional identity, anxiety about leaving your baby, guilt about both wanting and not wanting to return, and worry about logistics like pumping and childcare. These emotions are completely valid. Start preparing gradually: practice with your childcare provider, build up a freezer stash if pumping, and give yourself permission to feel all the emotions without judgment.`,
 
-        `Your Emotional Landscape Deepens: While the "baby blues" should be long gone, the emotional journey of motherhood continues to evolve. You might find yourself experiencing unexpected waves of sadness as you realize how quickly your baby is growing, or feeling overwhelmed by the constant demands of parenting. Many mothers experience what's sometimes called "touch overload"—the feeling of being constantly touched and needed. It's essential to recognize that needing space doesn't make you a bad mother. Taking short breaks for self-care—whether that's a solo walk, reading a book, or simply locking the bathroom door for a peaceful shower—isn't selfish; it's necessary for your wellbeing. If you find yourself feeling persistently sad, anxious, or disconnected, don't hesitate to reach out to your healthcare provider or a mental health professional.`
+        `Your Emotional Landscape Deepens: While the "baby blues" should be long gone, the emotional journey of parenting continues to evolve. You might find yourself experiencing unexpected waves of sadness as you realize how quickly your baby is growing, or feeling overwhelmed by the constant demands of parenting. Many mothers experience what's sometimes called "touch overload"—the feeling of being constantly touched and needed. It's essential to recognize that needing space doesn't make you a bad mother. Taking short breaks for self-care—whether that's a solo walk, reading a book, or simply locking the bathroom door for a peaceful shower—isn't selfish; it's necessary for your wellbeing. If you find yourself feeling persistently sad, anxious, or disconnected, don't hesitate to reach out to your healthcare provider or a mental health professional.`
       ]
     },
     {
@@ -158,11 +158,11 @@ export default function MotherhoodMonth5() {
     },
     {
       title: "Embracing the Journey: Finding Joy in the Fifth Month",
-      content: `Month five is a beautiful, messy, exhilarating stage of motherhood. It's filled with contradictions: the joy of hearing your baby's first real laugh mixed with the exhaustion of teething-induced night wakings; the pride of watching new physical accomplishments alongside the anxiety that comes with increased mobility; the delight in their emerging personality tempered by the realization of how quickly they're growing up.
+      content: `Month five is a beautiful, messy, exhilarating stage of parenting. It's filled with contradictions: the joy of hearing your baby's first real laugh mixed with the exhaustion of teething-induced night wakings; the pride of watching new physical accomplishments alongside the anxiety that comes with increased mobility; the delight in their emerging personality tempered by the realization of how quickly they're growing up.
 
       This month, you'll likely find yourself constantly surprised by your baby's rapid development. One day they're struggling to grasp a toy, the next they're passing it skillfully from hand to hand. One week they're content to lie on their play mat, the next they're rolling across the room. This rapid growth can be both thrilling and disorienting—just when you think you understand your baby, they change again.
       
-      Through all these changes, remember that your presence, your responsiveness, and your love are the constants that provide your baby with the security to explore and learn. The messy high chair sessions, the drool-soaked shirts, the exhausted but happy evenings—these are the real moments of motherhood. They may not be Instagram-perfect, but they're authentic and meaningful.
+      Through all these changes, remember that your presence, your responsiveness, and your love are the constants that provide your baby with the security to explore and learn. The messy high chair sessions, the drool-soaked shirts, the exhausted but happy evenings—these are the real moments of parenting. They may not be Instagram-perfect, but they're authentic and meaningful.
       
       As you navigate the challenges and celebrations of this month, trust your instincts. You know your baby better than any book or expert. Celebrate the small victories, be gentle with yourself during the tough moments, and know that you are exactly the mother your baby needs. The fifth month is not just about your baby's development—it's about your continued growth as a parent, learning to adapt, to find joy in the unexpected, and to appreciate the incredible privilege of witnessing a person discover the world for the first time.`
     }
@@ -170,11 +170,11 @@ export default function MotherhoodMonth5() {
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 5 — The Age of Discovery: Teething, Laughter & Exploration"
+      title="Parenting Month 5 — The Age of Discovery: Teething, Laughter & Exploration"
       mainImage="/images/motherhood-5.jpg"
       description="Discover the exciting developments of month five! From teething symptoms and rolling mastery to contagious laughter and growing curiosity. Learn how to support your baby's development while navigating sleep changes and your own emotional journey."
       sections={sections}
-      sidebarCategory="motherhood"
+      sidebarCategory="parenting"
       sidebarTitle="Parenting Essentials"
     />
   );

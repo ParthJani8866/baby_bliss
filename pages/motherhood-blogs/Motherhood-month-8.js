@@ -58,7 +58,7 @@ export default function MotherhoodMonth8() {
     },
     {
       title: "Your Journey: Navigating New Challenges and Joys",
-      content: `As your baby reaches new heights physically and developmentally, your own experience of motherhood continues to evolve in meaningful ways.`,
+      content: `As your baby reaches new heights physically and developmentally, your own experience of parenting continues to evolve in meaningful ways.`,
       list: [
         `Physical Adaptation to New Demands: By eight months postpartum, your body has largely recovered from childbirth, but new physical demands emerge. You'll find yourself constantly bending to help your baby stand, catching them as they lose balance, and spending more time on the floor engaging at their level. Your back and knees might feel the strain of frequently lifting an increasingly heavy baby (most eight-month-olds weigh between 16-20 pounds). Practice good body mechanics—bend at the knees rather than the waist, and consider incorporating gentle stretching or yoga to maintain flexibility and strength.`,
 
@@ -175,12 +175,12 @@ export default function MotherhoodMonth8() {
 
   return (
     <BlogLayout
-      title="Parenting (Motherhood) Month 8 — Pulling Up, Teething & Stronger Bonding"
+      title="Parenting Month 8 — Pulling Up, Teething & Stronger Bonding"
       mainImage="/images/motherhood-8.jpg"
-      description="At Parenting (Motherhood) Month 8, babies pull up, babble more, and experience teething and separation anxiety. Learn about feeding, growth milestones, and real mom stories in this stage."
+      description="At Parenting Month 8, babies pull up, babble more, and experience teething and separation anxiety. Learn about feeding, growth milestones, and real mom stories in this stage."
       sections={sections}
       faqs={faqs}
-      sidebarCategory="motherhood"
+      sidebarCategory="parenting"
       sidebarTitle="Baby-Proofing Essentials"
     />
   );
