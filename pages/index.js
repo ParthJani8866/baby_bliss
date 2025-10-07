@@ -91,7 +91,7 @@ export default function Home() {
 
   // Motherhood blogs
   const motherhoodPosts = [
-    { month: 1, title: "Month 1 — Surviving the First 30 Days", slug: "Motherhood-month-1", description: "Practical tips, feeding schedules, growth milestones, real mom stories, and checklists for the first month of motherhood." },
+    { month: 1, title: "Month 1 — Surviving the First 30 Days", slug: "Motherhood-month-1", description: "Practical tips, feeding schedules, growth milestones, real mom stories, and checklists for the first month of parenting." },
     { month: 2, title: "Month 2 — Smiles & Early Connections", slug: "Motherhood-month-2", description: "Month 2 focuses on first smiles, bonding, and early growth milestones." },
     { month: 3, title: "Month 3 — Social Smiles & Tummy Time", slug: "Motherhood-month-3", description: "Month 3 emphasizes social interaction, improved motor skills, and strengthening neck muscles." },
     { month: 4, title: "Month 4 — Strengthening Muscles & Interaction", slug: "Motherhood-month-4", description: "Focus on rolling, better head control, and early communication cues." },
@@ -125,7 +125,7 @@ export default function Home() {
     <div className="bg-white text-black min-h-screen">
       <NextSeo
         title="Belly Buds | Motherhood, Parenting & Pregnancy Blogs"
-        description="Explore Belly Buds motherhood (Parenting) blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your motherhood (Parenting) journey smoother."
+        description="Explore Belly Buds parenting blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your parenting journey smoother."
         canonical="https://baby-toys.shop/"
       />
 
@@ -141,7 +141,7 @@ export default function Home() {
           </h1>
           <p className="text-gray-700 text-lg leading-relaxed">
             A trusted space for mothers and families. Discover expert tips,
-            week-by-week pregnancy guidance, and real motherhood (Parenting)
+            week-by-week pregnancy guidance, and real parenting
             experiences. Because raising a child should be a joyful journey, not a
             stressful one.
           </p>

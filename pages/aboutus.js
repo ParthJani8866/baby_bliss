@@ -26,7 +26,7 @@ export default function AboutUs() {
                     <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
                         Welcome to <strong>Belly Buds</strong> – a community-driven platform
                         where we celebrate <em>pregnancy</em>, guide new parents through{" "}
-                        <em>parenting</em>, embrace the journey of <em>motherhood</em>, and
+                        <em>parenting</em>, embrace the journey of <em>parenting</em>, and
                         share beautiful <em>baby names</em> inspirations.
                         Our mission is to support families with trusted advice, engaging
                         stories, and products that nurture every stage of your baby’s life.

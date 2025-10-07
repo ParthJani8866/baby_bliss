@@ -11,7 +11,7 @@ export default function MotherhoodBlogs() {
       month: 1,
       title: "Month 1 — Surviving the First 30 Days",
       slug: "Motherhood-month-1",
-      description: `The first month of motherhood (Parenting) is often described as the most overwhelming yet magical period in a parent’s life. During this time, both the baby and the mother are adjusting to a completely new routine. The newborn is adapting to life outside the womb, while the mother is recovering physically and emotionally from childbirth. Sleep deprivation is common, as newborns feed every 2–3 hours, including nighttime. It’s crucial for mothers to prioritize rest whenever possible, even if it means napping while the baby naps.
+      description: `The first month of parenting is often described as the most overwhelming yet magical period in a parent’s life. During this time, both the baby and the mother are adjusting to a completely new routine. The newborn is adapting to life outside the womb, while the mother is recovering physically and emotionally from childbirth. Sleep deprivation is common, as newborns feed every 2–3 hours, including nighttime. It’s crucial for mothers to prioritize rest whenever possible, even if it means napping while the baby naps.
 
 Feeding is a central focus in Month 1, whether the mother chooses breastfeeding, formula feeding, or a combination of both. Breastfeeding can take time to establish, and it’s normal for both mother and baby to experience challenges in the early days. New mothers are encouraged to seek support from lactation consultants or postpartum support groups. Keeping track of feeding times, diaper changes, and baby cues can help establish a routine and provide reassurance that the baby is thriving.
 
@@ -25,7 +25,7 @@ Overall, Month 1 is about survival, adjustment, and laying the foundation for a 
       month: 2,
       title: "Month 2 — Smiles & Early Connections",
       slug: "Motherhood-month-2",
-      description: `Month 2 of motherhood (Parenting) is often filled with small victories and increasing confidence. Babies begin to show social smiles, respond to familiar voices, and start engaging more with their environment. This period is essential for bonding, as parents can begin to recognize and respond to their baby’s unique cues.
+      description: `Month 2 of parenting is often filled with small victories and increasing confidence. Babies begin to show social smiles, respond to familiar voices, and start engaging more with their environment. This period is essential for bonding, as parents can begin to recognize and respond to their baby’s unique cues.
 
 Feeding routines continue to be central, with many mothers noticing the baby’s patterns becoming more predictable. Growth spurts may occur, causing increased feeding demands, and parents should remain flexible to accommodate the baby’s needs. Proper nutrition and hydration are also important for the mother, especially if breastfeeding.
 
@@ -41,7 +41,7 @@ Overall, this month helps build confidence, deepens the parent-baby bond, and se
       month: 3,
       title: "Month 3 — Social Smiles & Tummy Time",
       slug: "Motherhood-month-3",
-      description: `Month 3 is a period where the baby becomes more interactive and parents begin to notice real personality traits. Social smiles become more frequent, and babies may respond to familiar faces and voices with increased engagement.
+      description: `Month 3 of parenting is a period where the baby becomes more interactive and parents begin to notice real personality traits. Social smiles become more frequent, and babies may respond to familiar faces and voices with increased engagement.
 
 Feeding and sleeping continue to dominate routines. Babies may start to consolidate sleep for longer stretches, but night awakenings remain common. Mothers are encouraged to continue tracking feeding schedules and ensuring adequate rest, while also taking steps to manage their own energy levels.
 
@@ -57,7 +57,7 @@ Month 3 also introduces more predictable patterns, which can help parents feel a
       month: 4,
       title: "Month 4 — Strengthening Muscles & Interaction",
       slug: "Motherhood-month-4",
-      description: `Month 4 marks an exciting period where babies become more active, alert, and socially engaged. Physical milestones such as rolling from tummy to back, holding heads steady, and increased hand coordination begin to emerge.
+      description: `Month 4 of parenting marks an exciting period where babies become more active, alert, and socially engaged. Physical milestones such as rolling from tummy to back, holding heads steady, and increased hand coordination begin to emerge.
 
 Feeding patterns may become more predictable, and many babies start developing stronger sucking reflexes and feeding efficiency. Mothers should monitor growth and ensure the baby receives adequate nutrition, whether through breastfeeding or formula.
 
@@ -75,7 +75,7 @@ Overall, Month 4 blends excitement with continued learning. It’s a month of gr
       month: 5,
       title: "Month 5 — Rolling, Sitting & Exploring",
       slug: "Motherhood-month-5",
-      description: `Month 5 is a phase of discovery and exploration. Babies gain more control over their bodies, begin rolling independently, and may start sitting with support. Their increasing mobility allows for greater interaction with their surroundings and stimulates cognitive development.
+      description: `Month 5 of parenting is a phase of discovery and exploration. Babies gain more control over their bodies, begin rolling independently, and may start sitting with support. Their increasing mobility allows for greater interaction with their surroundings and stimulates cognitive development.
 
 Feeding remains a central focus, with some babies showing interest in solid foods, though milk or formula remains the primary source of nutrition. Mothers should continue monitoring intake, growth, and hydration, ensuring the baby’s needs are met.
 
@@ -93,7 +93,7 @@ Month 5 is characterized by rapid growth, exploration, and interaction. Parents 
       month: 6,
       title: "Month 6 — First Solids & Responsive Play",
       slug: "Motherhood-month-6",
-      description: `Month 6 is a significant milestone in a baby’s first year. Many babies are ready for their first solid foods, complementing breast milk or formula. Introducing pureed fruits, vegetables, and cereals helps babies develop taste preferences and fine motor skills as they begin self-feeding in later months.
+      description: `Month 6 of parenting is a significant milestone in a baby’s first year. Many babies are ready for their first solid foods, complementing breast milk or formula. Introducing pureed fruits, vegetables, and cereals helps babies develop taste preferences and fine motor skills as they begin self-feeding in later months.
 
 Physical development continues with improved coordination, rolling, and beginning to sit independently. Tummy time remains important for strengthening core muscles and encouraging mobility.
 
@@ -109,7 +109,7 @@ Month 6 emphasizes independence, curiosity, and new experiences. Parents witness
       month: 7,
       title: "Month 7 — Sitting Confidently & Babbling",
       slug: "Motherhood-month-7",
-      description: `By Month 7, babies often sit confidently without support and start exploring their surroundings more actively. Crawling may begin, allowing for greater mobility and interaction with objects in their environment.
+      description: `By Month 7 of parenting, babies often sit confidently without support and start exploring their surroundings more actively. Crawling may begin, allowing for greater mobility and interaction with objects in their environment.
 
 Feeding continues to be diverse, with some babies experimenting with finger foods. Milk or formula remains crucial for nutrition. Parents should encourage healthy eating habits while monitoring growth and developmental milestones.
 
@@ -125,7 +125,7 @@ Month 7 is a month of increased independence, exploration, and expressive commun
       month: 8,
       title: "Month 8 — Crawling, Grasping & Social Play",
       slug: "Motherhood-month-8",
-      description: `Month 8 is characterized by enhanced mobility and curiosity. Babies often crawl confidently, explore surroundings, and manipulate objects with greater precision. Fine motor skills, such as picking up small items with a pincer grasp, begin to develop.
+      description: `Month 8 of parenting is characterized by enhanced mobility and curiosity. Babies often crawl confidently, explore surroundings, and manipulate objects with greater precision. Fine motor skills, such as picking up small items with a pincer grasp, begin to develop.
 
 Feeding continues with solids becoming a larger part of the diet. Introducing new textures and flavors encourages healthy eating habits and sensory exploration.
 
@@ -141,7 +141,7 @@ Month 8 is a period of rapid growth, exploration, and social engagement. Parents
       month: 9,
       title: "Month 9 — Standing, Stronger Communication & Play",
       slug: "Motherhood-month-9",
-      description: `Month 9 is a time of increasing independence and communication. Babies often pull themselves up to stand, cruise along furniture, and develop stronger leg muscles in preparation for walking. Hand-eye coordination improves, enabling more precise interaction with toys and objects.
+      description: `Month 9 of parenting is a time of increasing independence and communication. Babies often pull themselves up to stand, cruise along furniture, and develop stronger leg muscles in preparation for walking. Hand-eye coordination improves, enabling more precise interaction with toys and objects.
 
 Feeding becomes more adventurous, with exploration of textures and self-feeding using fingers. Milk or formula remains essential for nutrition. Parents should encourage healthy eating and maintain safe mealtime practices.
 
@@ -157,7 +157,7 @@ Month 9 emphasizes independence, communication, and physical growth. Parents wit
       month: 10,
       title: "Month 10 — First Words, Peek-a-Boo & Mobility",
       slug: "Motherhood-month-10",
-      description: `Month 10 is filled with milestones in mobility, communication, and curiosity. Babies often take first steps while holding furniture, experiment with crawling in new directions, and explore spaces more actively. Increased coordination allows them to reach, grasp, and manipulate objects more skillfully.
+      description: `Month 10 of parenting is filled with milestones in mobility, communication, and curiosity. Babies often take first steps while holding furniture, experiment with crawling in new directions, and explore spaces more actively. Increased coordination allows them to reach, grasp, and manipulate objects more skillfully.
 
 Language development is evident through babbling with intonation, first meaningful words, and attempts to mimic speech sounds. Parents should encourage communication by responding to vocalizations, narrating daily activities, and reading aloud.
 
@@ -173,7 +173,7 @@ Month 10 is a period of independence, exploration, and expressive communication.
       month: 11,
       title: "Month 11 — Early Walking & Playful Independence",
       slug: "Motherhood-month-11",
-      description: `Month 11 is a time of significant physical, cognitive, and emotional milestones. Many babies take their first independent steps, cruise confidently along furniture, and demonstrate increased mobility and coordination. Fine motor skills are further refined, allowing them to grasp objects and explore safely.
+      description: `Month 11 of parenting is a time of significant physical, cognitive, and emotional milestones. Many babies take their first independent steps, cruise confidently along furniture, and demonstrate increased mobility and coordination. Fine motor skills are further refined, allowing them to grasp objects and explore safely.
 
 Feeding continues with increased self-feeding and exploration of new textures. Balanced nutrition is key, and parents should offer a variety of healthy foods while continuing milk or formula.
 
@@ -189,7 +189,7 @@ Month 11 highlights independence, exploration, and emerging personality. Parents
       month: 12,
       title: "Month 12 — First Birthday, Walking & Talking",
       slug: "Motherhood-month-12",
-      description: `Month 12 marks the completion of the first year, a period full of remarkable growth and achievements. Babies often walk independently, expand their vocabulary with first words, and demonstrate cognitive skills such as problem-solving, recognition, and early memory recall.
+      description: `Month 12 of parenting marks the completion of the first year, a period full of remarkable growth and achievements. Babies often walk independently, expand their vocabulary with first words, and demonstrate cognitive skills such as problem-solving, recognition, and early memory recall.
 
 Feeding becomes more advanced, with increased participation in family meals and experimentation with textures. Balanced nutrition remains essential, and parents should encourage self-feeding while monitoring for safety.
 
@@ -208,7 +208,7 @@ Month 12 is a milestone month of celebration, reflection, and preparation for to
         <title>Motherhood Blogs | Belly Buds</title>
         <meta
           name="description"
-          content="Explore motherhood (Parenting) month by month – a complete guide from newborn care to toddlerhood. Detailed month-by-month guide for the first year of motherhood (Parenting) with tips on feeding, sleeping, development, and bonding."
+          content="Explore parenting month by month – a complete guide from newborn care to toddlerhood. Detailed month-by-month guide for the first year of motherhood (Parenting) with tips on feeding, sleeping, development, and bonding."
         />
       </Head>
 
