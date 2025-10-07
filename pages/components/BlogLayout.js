@@ -313,7 +313,7 @@ export default function BlogLayout({
         </aside>
 
         {/* Blog Content */}
-        <article className="lg:col-span-6" itemScope itemType="https://schema.org/BlogPosting">
+        <article className="lg:col-span-6  mt-10" itemScope itemType="https://schema.org/BlogPosting">
           {/* Breadcrumb */}
           <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>

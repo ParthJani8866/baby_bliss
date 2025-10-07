@@ -28,7 +28,8 @@ export default function Blogs() {
     { title: "What to Expect the First 24 Hours After Giving Birth", slug: "first-24-hours-after-birth", description: "Guide for new parents on what happens in the first 24 hours after birth." },
     { title: "Self-Care for Stay-At-Home Moms: Tips for Wellbeing and Balance", slug: "self-care-for-moms", description: "Important self-care tips for stay-at-home moms to maintain health and balance." },
     { title: "Baby Diapers: Absorbency, Comfort, Disposable Bags & Diaper Liners", slug: "disposable-bags-and-diaper-liners", description: "Guide on disposable diaper bags and liners for a cleaner, easier diaper-changing routine." },
-    { title: "Top 10 Must-Have Baby Gear Essentials for New Parents", slug: "baby-gear-essentials", description: "Bringing a newborn home can be overwhelming, but having the right gear can make a huge difference." }
+    { title: "Top 10 Must-Have Baby Gear Essentials for New Parents", slug: "baby-gear-essentials", description: "Bringing a newborn home can be overwhelming, but having the right gear can make a huge difference." },
+    { title: "Is Bad Parenting Based on a True Story?", slug: "is-bad-parenting-based-on-a-true-story", description: "A compassionate, evidence-informed long-form guide exploring whether portrayals of bad parenting reflect reality. Includes practical do’s & don’ts, a 6-week recovery plan, daily tools, and expanded FAQs." }
   ];
   return (
     <div className="bg-gray-50 text-gray-800 min-h-screen">
