@@ -385,7 +385,7 @@ export default function BlogLayout({
           {/* Steps */}
           {steps.map((step, idx) => (
             <section key={`step-${idx}`} id={step.title.replace(/\s+/g, "-").toLowerCase()} className="space-y-4">
-              <h1 className="text-2xl font-semibold mt-6">{idx + 1}. {step.title}</h1>
+              <h2 className="text-2xl font-semibold mt-6">{idx + 1}. {step.title}</h2>
               {step.image && (
                 <div className="my-4 flex flex-col items-center gap-4">
                   <div className="w-full max-w-md h-72 relative">
@@ -401,7 +401,7 @@ export default function BlogLayout({
           {/* Sections */}
           {sections.map((section, idx) => (
             <section key={`section-${idx}`} id={section.title.replace(/\s+/g, "-").toLowerCase()} className="space-y-4">
-              <h1 className="text-2xl font-semibold mt-6">{section.title}</h1>
+              <h2 className="text-2xl font-semibold mt-6">{section.title}</h2>
               {section.image && (
                 <div className="my-6 flex flex-col items-center gap-4">
                   <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden">
@@ -451,7 +451,7 @@ export default function BlogLayout({
           {/* Tips */}
           {tips.length > 0 && (
             <section id="tips" className="space-y-4">
-              <h1 className="text-2xl font-semibold mt-6">Tips</h1>
+              <h2 className="text-2xl font-semibold mt-6">Tips</h2>
               <ul className="list-disc pl-5 space-y-2">{tips.map((tip, idx) => (<li key={`tip-${idx}`}>{tip}</li>))}</ul>
             </section>
           )}
@@ -459,7 +459,7 @@ export default function BlogLayout({
           {/* FAQ Section */}
           {faqs.length > 0 && (
             <section id="faq" className="space-y-6 mt-10">
-              <h1 className="text-2xl font-semibold text-orange-500">FAQs</h1>
+              <h2 className="text-2xl font-semibold text-orange-500">FAQs</h2>
               <div className="divide-y divide-gray-200">
                 {faqs.map((faq, idx) => (
                   <div key={`faq-${idx}`} className="py-4">
@@ -480,7 +480,7 @@ export default function BlogLayout({
           {/* 3x3 Grid - Random Blogs */}
           {randomBlogs.length > 0 && (
             <div className="mt-10">
-              <h1 className="text-2xl font-bold mb-6 text-green-700">Explore More Blogs</h1>
+              <h2 className="text-2xl font-bold mb-6 text-green-700">Explore More Blogs</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {randomBlogs.slice(0, 9).map((blog, idx) => (
                   <div key={idx} className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition">

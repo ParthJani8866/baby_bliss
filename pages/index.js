@@ -131,23 +131,20 @@ export default function Home() {
 
       <Header />
 
-      <section
-        className="hero relative p-8 md:p-16 bg-orange-50 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/main page background.jpg')" }}
-      >
-        <div className="container mx-auto text-center max-w-3xl bg-white/70 rounded-xl p-6">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-orange-600">
-            Welcome to Belly Buds
-          </h1>
+      <section className="hero relative w-full h-[300px] md:h-[500px]">
+        <Image
+          src="/images/main page background.jpg"
+          alt="Belly Buds Hero Image"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 flex flex-col justify-center items-center bg-white/70 p-6 rounded-xl max-w-3xl mx-auto text-center">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-orange-600">Welcome to Belly Buds</h1>
           <p className="text-gray-700 text-lg leading-relaxed">
-            A trusted space for mothers and families. Discover expert tips,
-            week-by-week pregnancy guidance, and real parenting
-            experiences. Because raising a child should be a joyful journey, not a
-            stressful one.
+            A trusted space for mothers and families. Discover expert tips, week-by-week pregnancy guidance, and real parenting experiences.
           </p>
-          <div className="flex justify-center items-center">
-            <SocialShare imageUrl="/images/main page background.jpg" title="Welcome to Belly Buds" />
-          </div>
+          <SocialShare imageUrl="/images/main-page-background.webp" title="Welcome to Belly Buds" />
         </div>
       </section>
 
