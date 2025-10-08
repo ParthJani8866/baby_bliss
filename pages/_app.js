@@ -39,7 +39,7 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
 
       <Head>
         <title>Belly Buds</title>
-        <meta
+        <meta charset='utf-8'
           name="description"
           content="Explore Belly Buds parenting blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your parenting journey smoother."
         />
