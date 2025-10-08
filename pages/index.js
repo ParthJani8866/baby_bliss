@@ -204,7 +204,7 @@ export default function Home() {
                     <Link href={`/motherhood-blogs/${post.slug}`}>{post.title}</Link>
                   </h3>
                   <p className="text-gray-600 text-sm">{post.description}</p>
-                  <Link href={`/motherhood-blogs/${post.slug}`} className="text-orange-500 font-medium mt-3 inline-block">Read More →</Link>
+                  <Link href={`/motherhood-blogs/${post.slug}`} className="text-orange-500 font-medium mt-3 inline-block">{post.slug} →</Link>
                 </div>
               ))}
             </div>
