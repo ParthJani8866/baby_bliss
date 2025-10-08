@@ -1,6 +1,6 @@
 "use client";
 
-import BlogLayout from "../../../pages/components/BlogLayout";
+import BlogLayout from "../../pages/components/BlogLayout";
 
 export default function PregnancyWithoutSymptoms() {
     const sections = [
