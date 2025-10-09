@@ -4,7 +4,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import CommentSection from "./CommentSection";
 import AdBanner from "./AdBanner";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -55,7 +54,7 @@ export default function BlogLayout({
   ];
 
   const optimizeTitle = (title) => {
-    // Trim extra words and add primary keyword
+    if (!title) return ""; // fallback if undefined/null
     return title
       .replace(/—.*$/, '') // Remove dash and everything after
       .trim()
@@ -63,6 +62,7 @@ export default function BlogLayout({
   };
 
   const optimizeDescription = (desc) => {
+    if (!desc) return ""; // fallback if undefined/null
     return desc
       .replace(/\s+/g, ' ')
       .trim()
@@ -510,7 +510,7 @@ export default function BlogLayout({
                         href={`/${blog.slug}`}
                         className="text-orange-500 font-medium mt-2 inline-block hover:underline"
                       >
-                        Read More
+                       {blog.slug} - Read More 
                       </Link>
                     </div>
                   </div>
@@ -532,51 +532,6 @@ export default function BlogLayout({
               {likes > 0 && <span className="ml-1">({likes})</span>}
             </button>
           </div>
-
-          {/* Suggested Parenting & Pregnancy Blogs */}
-          {randomBlogs.length > 0 && (
-            <section className="mt-16" aria-labelledby="suggested-blogs">
-              <h2 id="suggested-blogs" className="text-2xl font-bold mb-6 text-green-700">
-                More Parenting & Pregnancy Resources
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {randomBlogs.map((blog, idx) => (
-                  <article
-                    key={idx}
-                    className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 bg-white"
-                  >
-                    {blog.image && (
-                      <div className="relative w-full h-48">
-                        <Image
-                          src={blog.image}
-                          alt={blog.title}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                      </div>
-                    )}
-                    <div className="p-4">
-                      <h3 className="text-lg font-semibold mb-2 text-gray-800 line-clamp-2">
-                        {blog.title}
-                      </h3>
-                      {blog.description && (
-                        <p className="text-gray-600 text-sm line-clamp-3 mb-3">
-                          {blog.description}
-                        </p>
-                      )}
-                      <Link
-                        href={`/${blog.slug}`}
-                        className="text-orange-500 font-medium hover:underline inline-flex items-center"
-                      >
-                        Read More
-                      </Link>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-          )}
         </article>
 
         {/* Ads - Desktop */}
