@@ -6,8 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AdBanner from "./components/AdBanner";
 import { NextSeo } from "next-seo";
-import Image from "next/image";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
 import SocialShare from "./components/SocialShare";
 
@@ -30,8 +29,7 @@ export default function Home() {
     await signIn("google", { callbackUrl: "/", redirect: true });
   };
 
-  // Pregnancy blogs
-  const pregnancyPosts = [
+ const pregnancyPosts = [
     {
       trimester: "First Trimester (Weeks 1–12)",
       blogs: [
@@ -167,22 +165,14 @@ export default function Home() {
       <Header />
 
       <section className="hero relative w-full h-[300px] md:h-[500px]">
-        <Image
-          src="/images/main page background.jpg"
-          alt="Belly Buds Hero Image"
-          fill
-          className="object-cover"
-          priority
-        />
         <div className="absolute inset-0 flex flex-col justify-center items-center bg-white/70 p-6 rounded-xl max-w-3xl mx-auto text-center">
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-orange-600">The Belly Buds: A trusted space for mothers and families</h1>
           <p className="text-gray-700 text-lg leading-relaxed">
             Discover expert tips, week-by-week pregnancy guidance, and real parenting experiences.
           </p>
-          <SocialShare imageUrl="/images/main-page-background.webp" title="Welcome to Belly Buds" />
+          <SocialShare imageUrl="" title="Welcome to Belly Buds" />
         </div>
       </section>
-
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-4 md:px-8 my-12">
         <div className="lg:col-span-9 space-y-12">
@@ -192,14 +182,6 @@ export default function Home() {
             <div className="grid gap-6 md:grid-cols-3">
               {motherhoodPosts.map((post) => (
                 <div key={post.slug} className="border rounded-lg shadow hover:shadow-lg p-6">
-                  <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
-                    <Image
-                      src={`/images/motherhood-${post.month}.jpg`}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
                   <h3 className="text-lg font-bold mb-2 text-gray-800">
                     <Link href={`/motherhood-blogs/${post.slug}`}>{post.title}</Link>
                   </h3>
@@ -216,14 +198,6 @@ export default function Home() {
             <div className="grid gap-6 md:grid-cols-3">
               {blogPosts.map((post) => (
                 <div key={post.slug} className="border rounded-lg shadow hover:shadow-lg p-6">
-                  <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
-                    <Image
-                      src={`/images/blog-${post.slug}.jpg`}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
                   <h3 className="text-lg font-bold mb-2 text-gray-800">
                     <Link href={`/blogs/${post.slug}`}>{post.title}</Link>
                   </h3>
@@ -233,11 +207,11 @@ export default function Home() {
               ))}
             </div>
           </section>
+
+          {/* Pregnancy Due Date Calculator */}
           <section className="mt-12">
             <h2 className="text-2xl font-semibold mb-4 text-center text-orange-600">Pregnancy due date calculator</h2>
             <div className="mt-10 bg-gray-50 p-6 rounded-xl shadow-md space-y-4">
-              <h2 className="text-2xl font-semibold text-orange-600 mb-4">Understanding Due Date Calculations</h2>
-
               <p className="text-gray-700">
                 <strong>LMP-based:</strong> Pregnancy is calculated from the first day of your last menstrual period, assuming a standard 28-day cycle.
               </p>
@@ -269,93 +243,8 @@ export default function Home() {
               </Link>
             </div>
           </section>
-          {/* Baby Names Section */}
-          <section className="my-12 px-4 md:px-8">
-            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Names</h2>
-            <div className="grid gap-6 md:grid-cols-4">
-              {[
-                { name: "Oliver", gender: "Boy", slug: "oliver" },
-                { name: "Emma", gender: "Girl", slug: "emma" },
-                { name: "Liam", gender: "Boy", slug: "liam" },
-                { name: "Ava", gender: "Girl", slug: "ava" },
-                { name: "Noah", gender: "Boy", slug: "noah" },
-                { name: "Sophia", gender: "Girl", slug: "sophia" },
-                { name: "Ethan", gender: "Boy", slug: "ethan" },
-                { name: "Isabella", gender: "Girl", slug: "isabella" }
-              ].map((baby, index) => (
-                <Link
-                  key={index}
-                  href={`/baby-names/baby-names-search`}
-                  className="border rounded-lg shadow hover:shadow-lg p-4 text-center block"
-                >
-                  <h3 className="text-lg font-bold text-gray-800">{baby.name}</h3>
-                  <p className="text-gray-600">{baby.gender}</p>
-                </Link>
-              ))}
-
-            </div>
-            <div className="flex justify-center">
-              <Link
-                href={`/baby-names/baby-names-search`}
-                className="border rounded-lg shadow hover:shadow-lg p-6 text-center text-lg font-bold text-gray-800 bg-white hover:bg-orange-50 transition"
-              >
-                Search Baby Names
-              </Link>
-            </div>
-          </section>
-
-          {/* Single Gaby Game Section */}
-          <section className="my-12 px-4 md:px-8">
-            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">Baby Game</h2>
-            <div className="flex justify-center">
-              <Link
-                href="/games/guess-baby-animal"
-                className="border rounded-lg shadow hover:shadow-lg overflow-hidden w-full max-w-sm"
-              >
-                <div className="relative w-full h-56">
-                  <Image
-                    src="/images/baby game image1.jpg"
-                    alt="Puzzle Fun"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-lg font-bold p-4 text-center text-gray-800">Puzzle Fun</h3>
-              </Link>
-            </div>
-          </section>
-          {/* Pregnancy Blogs */}
-          <section className="my-12 px-4 md:px-8">
-            <h2 className="text-2xl font-semibold mb-6 text-center text-orange-600">
-              Pregnancy Week-by-Week
-            </h2>
-
-            {pregnancyPosts.map((trimester, index) => (
-              <div key={trimester.trimester} className="mb-8">
-                <div className="relative w-full h-40 md:h-56 rounded overflow-hidden">
-                  <Image
-                    src={`/images/trimester-${index + 1}.jpg`}
-                    alt={`trimester-${index + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">{trimester.trimester}</h3>
-                <div className="grid gap-4 md:grid-cols-4">
-                  {trimester.blogs.map((weekBlog) => (
-                    <Link
-                      key={weekBlog.slug}
-                      href={`/pregnancy-week-wise/${weekBlog.slug}`}
-                      className="border rounded-lg shadow hover:shadow-lg p-2 text-center text-sm md:text-base text-gray-800"
-                    >
-                      Pregnancy Week {weekBlog.week}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </section>
         </div>
+
         <div className="lg:col-span-3 space-y-12">
           <aside className="hidden lg:block lg:col-span-3 self-start sticky top-24 space-y-6">
             <div className="bg-white border border-gray-300 rounded-xl shadow-lg p-6">
@@ -422,11 +311,11 @@ export default function Home() {
                 "Sign in with Google"
               )}
               <style jsx>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
+                @keyframes spin {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+                }
+              `}</style>
             </button>
           </div>
         </div>
