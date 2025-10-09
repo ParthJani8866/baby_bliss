@@ -3,7 +3,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import AdBanner from "./AdBanner";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -23,7 +23,6 @@ export default function BlogLayout({
   authorImage = "/images/parthjani.jpg",
   authorEmail = "parthskyward@gmail.com",
   updatedAt = new Date().toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }),
-  // Remove manual schema props - we'll generate them automatically
 }) {
   const allBlogs = [
     // ----- Parenting 12 Months -----
@@ -53,21 +52,22 @@ export default function BlogLayout({
     { title: "Pregnancy Week 10 — Vital Organs Formed", slug: "pregnancy-week-wise/pregnancy-week-10", description: "Pregnancy organ development, critical growth period, and prenatal testing.", image: "/images/Pregnancy Week 10.jpg" },
   ];
 
-  const optimizeTitle = (title) => {
-    if (!title) return ""; // fallback if undefined/null
+  // SEO Optimization Functions
+  const optimizeTitle = useCallback((title) => {
+    if (!title) return "Parenting & Pregnancy Guide | Belly Buds Expert Advice";
     return title
-      .replace(/—.*$/, '') // Remove dash and everything after
+      .replace(/—.*$/, '')
       .trim()
-      .slice(0, 60); // Limit to 60 chars
-  };
+      .slice(0, 60) + " | Belly Buds";
+  }, []);
 
-  const optimizeDescription = (desc) => {
-    if (!desc) return ""; // fallback if undefined/null
+  const optimizeDescription = useCallback((desc) => {
+    if (!desc) return "Expert parenting and pregnancy advice, tips, and guides for new and expecting parents. Comprehensive resources for baby development and maternal health.";
     return desc
       .replace(/\s+/g, ' ')
       .trim()
-      .slice(0, 160); // Limit to 160 chars
-  };
+      .slice(0, 155);
+  }, []);
 
   const [toc, setToc] = useState([]);
   const [likes, setLikes] = useState(0);
@@ -76,12 +76,13 @@ export default function BlogLayout({
   const [tocOpen, setTocOpen] = useState(false);
   const [randomBlogs, setRandomBlogs] = useState([]);
 
-  // Auto-generate all SEO properties
-  const generateSEOProperties = () => {
+  // Comprehensive SEO Properties Generator
+  const generateSEOProperties = useCallback(() => {
     const baseUrl = "https://baby-toys.shop";
     const currentUrl = `${baseUrl}/${slug}`;
+    const currentDate = new Date().toISOString().split('T')[0];
 
-    // Extract keywords from content
+    // Extract primary and secondary keywords
     const extractKeywords = () => {
       const contentText = [
         title,
@@ -91,35 +92,52 @@ export default function BlogLayout({
         ...(tips || [])
       ].join(' ').toLowerCase();
 
-      const parentingKeywords = [
-        'parenting', 'pregnancy', 'baby', 'newborn', 'child', 'motherhood',
-        'fatherhood', 'infant', 'toddler', 'development', 'care', 'health',
-        'growth', 'milestones', 'feeding', 'sleep', 'nutrition', 'tips',
-        'advice', 'guide', 'stages', 'months', 'weeks', 'pregnancy week by week'
+      const primaryKeywords = [
+        'parenting', 'pregnancy', 'baby care', 'newborn', 'infant development',
+        'motherhood', 'fatherhood', 'child development', 'parenting tips'
       ];
 
-      return parentingKeywords.filter(keyword =>
+      const secondaryKeywords = [
+        'baby milestones', 'pregnancy week by week', 'parenting guide',
+        'new parent advice', 'baby health', 'maternal health', 'parenting stages'
+      ];
+
+      const foundPrimary = primaryKeywords.filter(keyword => 
         contentText.includes(keyword)
-      ).slice(0, 10);
+      ).slice(0, 5);
+
+      const foundSecondary = secondaryKeywords.filter(keyword =>
+        contentText.includes(keyword)
+      ).slice(0, 5);
+
+      return [...foundPrimary, ...foundSecondary];
     };
 
-    // Calculate reading time
+    // Calculate comprehensive reading time
     const calculateReadingTime = () => {
-      const contentLength = [
+      const contentText = [
         description,
         ...sections.map(s => s.content || ''),
         ...sections.flatMap(s => s.list || []),
         ...(tips || [])
-      ].join(' ').length;
+      ].join(' ');
 
-      const words = contentLength / 5;
-      const minutes = Math.ceil(words / 200);
-      return `${minutes} min read`;
+      const wordCount = contentText.split(/\s+/).length;
+      const imagesCount = [mainImage, ...sections.map(s => s.image)].filter(Boolean).length;
+      const readingTimeMinutes = Math.ceil(wordCount / 200 + imagesCount * 0.1);
+      
+      return {
+        minutes: readingTimeMinutes,
+        text: `${readingTimeMinutes} min read`,
+        wordCount: wordCount
+      };
     };
 
-    // Generate schema markup
+    // Generate comprehensive schema markup
     const generateSchemaMarkup = () => {
-      const schema = {
+      const readingData = calculateReadingTime();
+      
+      const baseSchema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": optimizeTitle(title),
@@ -127,32 +145,49 @@ export default function BlogLayout({
         "author": {
           "@type": "Person",
           "name": authorName,
-          "image": `${baseUrl}${authorImage}`
+          "image": `${baseUrl}${authorImage}`,
+          "email": authorEmail,
+          "url": baseUrl
         },
         "publisher": {
           "@type": "Organization",
           "name": "Belly Buds",
+          "url": baseUrl,
           "logo": {
             "@type": "ImageObject",
-            "url": `${baseUrl}/logo.png`
+            "url": `${baseUrl}/logo.png`,
+            "width": 180,
+            "height": 60
           }
         },
-        "datePublished": "2025-09-30",
-        "dateModified": new Date(updatedAt).toISOString().split('T')[0],
+        "datePublished": "2025-01-01",
+        "dateModified": currentDate,
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": currentUrl
-        }
+        },
+        "wordCount": readingData.wordCount,
+        "timeRequired": `PT${readingData.minutes}M`,
+        "inLanguage": "en-US",
+        "copyrightYear": "2025",
+        "accessMode": "textual",
+        "accessModeSufficient": "textual"
       };
 
-      // Add image if available
+      // Add image schema
       if (mainImage) {
-        schema.image = `${baseUrl}${mainImage}`;
+        baseSchema.image = {
+          "@type": "ImageObject",
+          "url": `${baseUrl}${mainImage}`,
+          "width": 1200,
+          "height": 630,
+          "caption": title
+        };
       }
 
-      // Add FAQ schema if FAQs exist
+      // Add FAQ schema if available
       if (faqs && faqs.length > 0) {
-        schema.mainEntity = {
+        baseSchema.mainEntity = {
           "@type": "FAQPage",
           "mainEntity": faqs.map(faq => ({
             "@type": "Question",
@@ -165,183 +200,370 @@ export default function BlogLayout({
         };
       }
 
-      return schema;
+      // Add Article schema for better Google News/Discover
+      baseSchema.articleSection = "Parenting and Pregnancy";
+      baseSchema.articleBody = description + " " + sections.map(s => s.content).join(' ');
+
+      return baseSchema;
     };
 
-    // Generate Open Graph data
-    const generateOpenGraph = () => ({
-      title: optimizeTitle(title),
-      description: optimizeDescription(description),
-      image: mainImage ? `${baseUrl}${mainImage}` : `${baseUrl}/default-og-image.jpg`,
-      url: currentUrl,
-      type: "article"
-    });
+    // Generate Open Graph and Twitter Card data
+    const generateSocialMeta = () => {
+      const socialImage = mainImage ? `${baseUrl}${mainImage}` : `${baseUrl}/default-og-image.jpg`;
+      
+      return {
+        openGraph: {
+          title: optimizeTitle(title),
+          description: optimizeDescription(description),
+          image: socialImage,
+          url: currentUrl,
+          type: "article",
+          site_name: "Belly Buds",
+          published_time: "2025-01-01T00:00:00Z",
+          modified_time: `${currentDate}T00:00:00Z`,
+          author: authorName
+        },
+        twitter: {
+          card: "summary_large_image",
+          title: optimizeTitle(title),
+          description: optimizeDescription(description),
+          image: socialImage,
+          creator: "@bellybuds",
+          site: "@bellybuds"
+        }
+      };
+    };
+
+    const readingData = calculateReadingTime();
+    const keywords = extractKeywords();
 
     return {
       canonicalUrl: currentUrl,
       schemaMarkup: generateSchemaMarkup(),
-      openGraph: generateOpenGraph(),
-      keywords: extractKeywords(),
-      readingTime: calculateReadingTime()
+      socialMeta: generateSocialMeta(),
+      keywords: keywords,
+      readingTime: readingData.text,
+      wordCount: readingData.wordCount,
+      lastModified: currentDate
     };
-  };
+  }, [title, description, mainImage, sections, tips, faqs, slug, authorName, authorImage, authorEmail, optimizeTitle, optimizeDescription]);
 
-  const seoProperties = {
-    ...generateSEOProperties(),
-    title: optimizeTitle(title),
-    description: optimizeDescription(description),
-  };
-  useEffect(() => {
-    const headings = Array.from(document.querySelectorAll("h2")).map((h) => ({
-      id: h.id || h.innerText.replace(/\s+/g, "-").toLowerCase(),
-      text: h.innerText,
-      level: h.tagName.toLowerCase()
-    }));
-    setToc(headings);
-  }, []);
+  const seoProperties = generateSEOProperties();
 
+  // Table of Contents Generation - FIXED VERSION
   useEffect(() => {
-    const filtered = allBlogs.filter(blog => blog.slug !== slug);
-    const shuffled = filtered.sort(() => 0.5 - Math.random());
-    setRandomBlogs(shuffled.slice(0, 12));
-  }, [slug]);
+    // Generate TOC from sections and steps without DOM manipulation
+    const generateStaticTOC = () => {
+      const headings = [];
+      
+      // Add steps as H2 headings
+      steps.forEach((step, index) => {
+        headings.push({
+          id: `step-${index + 1}-${step.title.replace(/\s+/g, "-").toLowerCase()}`,
+          text: step.title,
+          level: 'h2'
+        });
+      });
+
+      // Add sections as H2 headings
+      sections.forEach((section, index) => {
+        headings.push({
+          id: section.title.replace(/\s+/g, "-").toLowerCase(),
+          text: section.title,
+          level: 'h2'
+        });
+
+        // Add subsections as H3 headings
+        if (section.subsections) {
+          section.subsections.forEach((sub, subIndex) => {
+            headings.push({
+              id: `subsection-${index}-${subIndex}-${sub.subtitle.replace(/\s+/g, "-").toLowerCase()}`,
+              text: sub.subtitle,
+              level: 'h3'
+            });
+          });
+        }
+      });
+
+      // Add tips section if exists
+      if (tips.length > 0) {
+        headings.push({
+          id: 'tips',
+          text: 'Helpful Tips',
+          level: 'h2'
+        });
+      }
+
+      // Add FAQ section if exists
+      if (faqs.length > 0) {
+        headings.push({
+          id: 'faq',
+          text: 'Frequently Asked Questions',
+          level: 'h2'
+        });
+      }
+
+      return headings;
+    };
+
+    setToc(generateStaticTOC());
+  }, []); // Only depend on content that affects TOC
+
+  // Related Blogs Logic - FIXED VERSION
+  useEffect(() => {
+    const getRelatedBlogs = () => {
+      const currentBlog = allBlogs.find(blog => blog.slug === slug);
+      if (!currentBlog) return allBlogs.filter(blog => blog.slug !== slug).slice(0, 9);
+
+      // Simple content-based relevance scoring
+      const scoredBlogs = allBlogs
+        .filter(blog => blog.slug !== slug)
+        .map(blog => {
+          let score = 0;
+          const currentTitle = currentBlog.title.toLowerCase();
+          const blogTitle = blog.title.toLowerCase();
+
+          // Score based on keyword matches
+          if (currentTitle.includes('month') && blogTitle.includes('month')) score += 3;
+          if (currentTitle.includes('week') && blogTitle.includes('week')) score += 3;
+          if (currentTitle.includes('pregnancy') && blogTitle.includes('pregnancy')) score += 2;
+          if (currentTitle.includes('parenting') && blogTitle.includes('parenting')) score += 2;
+
+          return { ...blog, score };
+        })
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 9);
+
+      return scoredBlogs.length > 0 ? scoredBlogs : 
+             allBlogs.filter(blog => blog.slug !== slug).slice(0, 9);
+    };
+
+    setRandomBlogs(getRelatedBlogs());
+  }, [slug]); // Only depend on slug
 
   const handleLike = () => {
-    setLikes(liked ? likes - 1 : likes + 1);
-    setLiked(!liked);
+    const newLiked = !liked;
+    const newLikes = newLiked ? likes + 1 : likes - 1;
+    
+    setLiked(newLiked);
+    setLikes(newLikes);
+    
+    localStorage.setItem(`blog-likes-${slug}`, newLikes.toString());
+    localStorage.setItem(`blog-liked-${slug}`, newLiked.toString());
   };
 
   const toggleFAQ = (idx) => setOpenFAQ(openFAQ === idx ? null : idx);
+
+  // Smooth scroll for TOC links
+  const handleTocClick = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+    setTocOpen(false);
+  };
 
   return (
     <div className="bg-white text-gray-800 min-h-screen flex flex-col">
       <Header />
 
       <Head>
-        <title>{seoProperties.title} | Belly Buds - Parenting & Pregnancy Expert Advice</title>
-        <meta name="description" content={seoProperties.description} />
+        {/* Primary Meta Tags */}
+        <title>{seoProperties.schemaMarkup.headline}</title>
+        <meta name="description" content={seoProperties.schemaMarkup.description} />
         <meta name="keywords" content={seoProperties.keywords.join(', ')} />
-
         <link rel="canonical" href={seoProperties.canonicalUrl} />
 
-        <meta property="og:title" content={seoProperties.openGraph.title} />
-        <meta property="og:description" content={seoProperties.openGraph.description} />
-        <meta property="og:type" content={seoProperties.openGraph.type} />
-        <meta property="og:image" content={seoProperties.openGraph.image} />
-        <meta property="og:url" content={seoProperties.openGraph.url} />
-        <meta property="og:site_name" content="Belly Buds" />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content={seoProperties.socialMeta.openGraph.title} />
+        <meta property="og:description" content={seoProperties.socialMeta.openGraph.description} />
+        <meta property="og:image" content={seoProperties.socialMeta.openGraph.image} />
+        <meta property="og:url" content={seoProperties.socialMeta.openGraph.url} />
+        <meta property="og:type" content={seoProperties.socialMeta.openGraph.type} />
+        <meta property="og:site_name" content={seoProperties.socialMeta.openGraph.site_name} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="article:author" content={seoProperties.socialMeta.openGraph.author} />
+        <meta property="article:published_time" content={seoProperties.socialMeta.openGraph.published_time} />
+        <meta property="article:modified_time" content={seoProperties.socialMeta.openGraph.modified_time} />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={seoProperties.openGraph.title} />
-        <meta name="twitter:description" content={seoProperties.openGraph.description} />
-        <meta name="twitter:image" content={seoProperties.openGraph.image} />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content={seoProperties.socialMeta.twitter.card} />
+        <meta name="twitter:title" content={seoProperties.socialMeta.twitter.title} />
+        <meta name="twitter:description" content={seoProperties.socialMeta.twitter.description} />
+        <meta name="twitter:image" content={seoProperties.socialMeta.twitter.image} />
+        <meta name="twitter:creator" content={seoProperties.socialMeta.twitter.creator} />
+        <meta name="twitter:site" content={seoProperties.socialMeta.twitter.site} />
 
+        {/* Additional SEO Meta Tags */}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="author" content={authorName} />
+        <meta name="publisher" content="Belly Buds" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#059669" />
+        
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(seoProperties.schemaMarkup) }}
         />
 
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta name="author" content={authorName} />
-        <meta name="publisher" content="Belly Buds" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#059669" />
+        {/* Breadcrumb Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://baby-toys.shop/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://baby-toys.shop/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": title,
+                  "item": seoProperties.canonicalUrl
+                }
+              ]
+            })
+          }}
+        />
+
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       </Head>
 
-      {/* Breadcrumb Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://baby-toys.shop/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": title,
-                "item": seoProperties.canonicalUrl
-              }
-            ]
-          })
-        }}
-      />
-
-      {/* Mobile TOC */}
-      <div style={{ marginTop: "35px" }} className="lg:hidden fixed top-16 left-0 right-0 z-50 bg-green-800 text-white flex justify-between items-center px-4 py-3 shadow-md">
-        <span className="font-semibold">Table of Contents</span>
-        <button onClick={() => setTocOpen(!tocOpen)} className="text-white font-bold">
-          {tocOpen ? "Close TOC" : "Open TOC"}
+      {/* Mobile Table of Contents */}
+      <div style={{ marginTop: "35px" }} className="lg:hidden fixed top-16 left-0 right-0 z-50 bg-green-800 text-white flex justify-between items-center px-4 py-3 shadow-lg">
+        <span className="font-semibold text-sm">📚 Article Contents</span>
+        <button 
+          onClick={() => setTocOpen(!tocOpen)} 
+          className="text-white font-bold text-sm bg-green-700 px-3 py-1 rounded-lg hover:bg-green-600 transition-colors"
+          aria-expanded={tocOpen}
+          aria-controls="mobile-toc"
+        >
+          {tocOpen ? "✕ Close" : "☰ Menu"}
         </button>
       </div>
 
       {tocOpen && (
-        <div className="lg:hidden fixed top-20 left-0 right-0 z-40 bg-green-700 text-white px-4 py-4 overflow-y-auto max-h-[calc(100vh-5rem)] shadow-md">
-          <ul className="space-y-3">
-            {toc.map((item, idx) => (
-              <li key={`toc-mobile-${idx}`}>
-                <Link
-                  href={`#${item.id}`}
-                  className="block hover:underline py-1 border-l-2 border-green-400 pl-3"
-                  onClick={() => setTocOpen(false)}
-                >
-                  {item.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div 
+          id="mobile-toc"
+          className="lg:hidden fixed top-20 left-0 right-0 z-40 bg-green-700 text-white px-4 py-4 overflow-y-auto max-h-[calc(100vh-5rem)] shadow-xl"
+        >
+          <nav aria-label="Table of contents">
+            <ul className="space-y-2">
+              {toc.map((item, idx) => (
+                <li key={`toc-mobile-${idx}`}>
+                  <button
+                    onClick={() => handleTocClick(item.id)}
+                    className={`block text-left w-full hover:bg-green-600 transition-colors py-2 px-3 rounded-lg border-l-2 ${
+                      item.level === 'h2' 
+                        ? 'border-green-300 font-semibold text-white' 
+                        : 'border-green-200 pl-6 text-green-100'
+                    }`}
+                  >
+                    {item.level === 'h3' && '↳ '}{item.text}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       )}
 
       <main className="max-w-7xl mx-auto px-4 py-8 lg:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left TOC - Desktop */}
+        {/* Desktop Table of Contents */}
         <aside className="hidden lg:block lg:col-span-3 self-start">
-          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 sticky top-24">
-            <h3 className="text-xl font-bold mb-4 text-green-800 border-b border-gray-200 pb-3">Article Contents</h3>
-            <nav className="space-y-3" aria-label="Table of contents">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-6 sticky top-24">
+            <h3 className="text-xl font-bold mb-4 text-green-800 border-b border-gray-200 pb-3">📖 Article Contents</h3>
+            <nav className="space-y-2" aria-label="Table of contents">
               {toc.map((item, idx) => (
-                <div key={`toc-${idx}`} className={`border-l-2 ${item.level === 'h2' ? 'border-green-600 pl-3' : 'border-gray-300 pl-6'}`}>
-                  <Link
-                    href={`#${item.id}`}
-                    className={`hover:text-green-700 transition-colors text-sm font-medium leading-tight block py-1 ${item.level === 'h2' ? 'text-green-900 font-semibold' : 'text-gray-700'
-                      }`}
+                <div 
+                  key={`toc-${idx}`} 
+                  className={`border-l-2 transition-colors hover:border-green-500 ${
+                    item.level === 'h2' 
+                      ? 'border-green-600 pl-3' 
+                      : 'border-gray-300 pl-6'
+                  }`}
+                >
+                  <button
+                    onClick={() => handleTocClick(item.id)}
+                    className={`hover:text-green-700 transition-colors text-sm font-medium leading-tight block py-1.5 text-left w-full ${
+                      item.level === 'h2' 
+                        ? 'text-green-900 font-semibold' 
+                        : 'text-gray-700'
+                    }`}
                   >
-                    {item.level === 'h3' && '• '}{item.text}
-                  </Link>
+                    {item.level === 'h3' && '↳ '}{item.text}
+                  </button>
                 </div>
               ))}
             </nav>
 
-            {/* Reading Time */}
+            {/* Reading Stats */}
             <div className="mt-6 pt-4 border-t border-gray-200">
-              <div className="flex items-center justify-between text-sm text-gray-600">
-                <span>Reading time</span>
+              <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
+                <span>📖 Reading time</span>
                 <span className="font-medium">{seoProperties.readingTime}</span>
               </div>
+              <div className="flex items-center justify-between text-sm text-gray-600">
+                <span>📊 Word count</span>
+                <span className="font-medium">{seoProperties.wordCount.toLocaleString()}</span>
+              </div>
+            </div>
+
+            {/* Like Button */}
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <button
+                onClick={handleLike}
+                className={`flex items-center justify-center gap-2 w-full py-2 px-4 rounded-lg transition-colors ${
+                  liked 
+                    ? 'bg-orange-100 text-orange-600 border border-orange-200' 
+                    : 'bg-gray-100 text-gray-600 border border-gray-200 hover:bg-gray-200'
+                }`}
+                aria-label={liked ? "Unlike this article" : "Like this article"}
+              >
+                <HandThumbUpIcon className="w-5 h-5" />
+                <span className="font-medium">{likes} {likes === 1 ? 'Like' : 'Likes'}</span>
+              </button>
             </div>
           </div>
         </aside>
 
-        {/* Blog Content */}
-        <article className="lg:col-span-6  mt-10" itemScope itemType="https://schema.org/BlogPosting">
-          {/* Breadcrumb */}
+        {/* Main Blog Content */}
+        <article className="lg:col-span-6 mt-10" itemScope itemType="https://schema.org/BlogPosting">
+          {/* Breadcrumb Navigation */}
           <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>
-            <span aria-hidden="true">/</span>
-            <span className="text-gray-700 font-medium" aria-current="page">{title}</span>
+            <Link href="/" className="hover:text-orange-500 transition-colors" itemProp="breadcrumb">Home</Link>
+            <span aria-hidden="true" className="text-gray-300">/</span>
+            <Link href="/blog" className="hover:text-orange-500 transition-colors" itemProp="breadcrumb">Blog</Link>
+            <span aria-hidden="true" className="text-gray-300">/</span>
+            <span className="text-gray-700 font-medium truncate" aria-current="page" itemProp="name">{title}</span>
           </nav>
 
-          {/* Main Image */}
+          {/* Featured Image */}
           {mainImage && (
             <div className="my-6 flex flex-col items-center gap-4">
-              <div className="w-full max-w-2xl h-80 relative rounded-lg overflow-hidden shadow-lg">
+              <div className="w-full max-w-4xl h-96 relative rounded-xl overflow-hidden shadow-2xl">
                 <Image
                   src={mainImage}
                   alt={title}
@@ -349,6 +571,7 @@ export default function BlogLayout({
                   className="object-cover"
                   priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  itemProp="image"
                 />
               </div>
               <SocialShare
@@ -360,13 +583,13 @@ export default function BlogLayout({
             </div>
           )}
 
-          {/* Title & Description */}
+          {/* Article Header */}
           <header className="mb-8">
             <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-orange-500 leading-tight" itemProp="headline">
               {title}
             </h1>
 
-            {/* Author Info */}
+            {/* Author Information */}
             <div className="flex items-center gap-4 mb-6 p-4 bg-gray-50 border rounded-lg shadow-sm">
               <div itemProp="author" itemScope itemType="https://schema.org/Person">
                 <Image
@@ -378,10 +601,10 @@ export default function BlogLayout({
                   itemProp="image"
                 />
               </div>
-              <div>
+              <div className="flex-1">
                 <p className="font-semibold text-gray-800" itemProp="name">{authorName}</p>
                 <p className="text-sm text-gray-500">
-                  Updated: <time itemProp="dateModified" dateTime={updatedAt}>{updatedAt}</time>
+                  Updated: <time itemProp="dateModified" dateTime={seoProperties.lastModified}>{updatedAt}</time>
                 </p>
                 <p className="text-sm text-gray-500">Reading time: {seoProperties.readingTime}</p>
                 <a
@@ -399,29 +622,61 @@ export default function BlogLayout({
             </p>
           </header>
 
-          {/* Steps */}
-          {steps.map((step, idx) => (
-            <section key={`step-${idx}`} id={step.title.replace(/\s+/g, "-").toLowerCase()} className="space-y-4">
-              <h2 className="text-2xl font-semibold mt-6">{idx + 1}. {step.title}</h2>
-              {step.image && (
-                <div className="my-4 flex flex-col items-center gap-4">
-                  <div className="w-full max-w-md h-72 relative">
-                    <Image src={step.image} alt={step.title} width={400}
-                      height={300} className="rounded object-cover" />
-                  </div>
-                </div>
-              )}
-              <p className="text-gray-700 leading-relaxed">{step.content}</p>
+          {/* Steps Section */}
+          {steps.length > 0 && (
+            <section className="space-y-8">
+              {steps.map((step, idx) => (
+                <section 
+                  key={`step-${idx}`} 
+                  id={`step-${idx + 1}-${step.title.replace(/\s+/g, "-").toLowerCase()}`}
+                  className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
+                  itemProp="step" itemScope itemType="https://schema.org/HowToStep"
+                >
+                  <h2 className="text-2xl font-semibold mb-4 text-green-800" itemProp="name">
+                    <span className="bg-green-100 text-green-800 rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">
+                      {idx + 1}
+                    </span>
+                    {step.title}
+                  </h2>
+                  
+                  {step.image && (
+                    <div className="my-4 flex flex-col items-center gap-4">
+                      <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden shadow-md">
+                        <Image 
+                          src={step.image} 
+                          alt={step.title} 
+                          width={400}
+                          height={300} 
+                          className="object-cover"
+                          itemProp="image"
+                        />
+                      </div>
+                    </div>
+                  )}
+                  
+                  <p className="text-gray-700 leading-relaxed text-lg" itemProp="text">
+                    {step.content}
+                  </p>
+                </section>
+              ))}
             </section>
-          ))}
+          )}
 
-          {/* Sections */}
+          {/* Main Content Sections */}
           {sections.map((section, idx) => (
-            <section key={`section-${idx}`} id={section.title.replace(/\s+/g, "-").toLowerCase()} className="space-y-4">
-              <h2 className="text-2xl font-semibold mt-6">{section.title}</h2>
+            <section 
+              key={`section-${idx}`} 
+              id={section.title.replace(/\s+/g, "-").toLowerCase()}
+              className="space-y-6 mt-8"
+              itemProp="articleBody"
+            >
+              <h2 className="text-2xl font-semibold text-green-800 border-b border-gray-200 pb-2">
+                {section.title}
+              </h2>
+              
               {section.image && (
                 <div className="my-6 flex flex-col items-center gap-4">
-                  <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden">
+                  <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src={section.image}
                       alt={section.title}
@@ -435,13 +690,13 @@ export default function BlogLayout({
               )}
 
               {section.content && (
-                <div className="text-gray-700 leading-relaxed text-lg">
+                <div className="text-gray-700 leading-relaxed text-lg prose prose-lg max-w-none">
                   {section.content}
                 </div>
               )}
 
               {section.list && (
-                <ul className="list-disc pl-6 space-y-3 text-gray-700">
+                <ul className="list-disc pl-6 space-y-3 text-gray-700 text-lg">
                   {section.list.map((item, i) => (
                     <li key={`section-${idx}-item-${i}`} className="leading-relaxed">
                       {item}
@@ -452,12 +707,16 @@ export default function BlogLayout({
 
               {/* Subsections */}
               {section.subsections?.map((sub, i) => (
-                <div key={`subsection-${i}`} className="pl-5 mt-4">
-                  <h3 className="text-xl font-semibold">{sub.subtitle}</h3>
-                  {sub.content && <p className="text-gray-700 mt-1">{sub.content}</p>}
+                <div key={`subsection-${i}`} className="pl-5 mt-6 border-l-4 border-green-200">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3" id={`subsection-${idx}-${i}-${sub.subtitle.replace(/\s+/g, "-").toLowerCase()}`}>
+                    {sub.subtitle}
+                  </h3>
+                  {sub.content && <p className="text-gray-700 mt-2 leading-relaxed">{sub.content}</p>}
                   {sub.list && (
-                    <ul className="list-disc pl-5 space-y-1 mt-1">
-                      {sub.list.map((item, j) => (<li key={`sublist-${j}`}>{item}</li>))}
+                    <ul className="list-disc pl-5 space-y-2 mt-2 text-gray-700">
+                      {sub.list.map((item, j) => (
+                        <li key={`sublist-${j}`} className="leading-relaxed">{item}</li>
+                      ))}
                     </ul>
                   )}
                 </div>
@@ -465,73 +724,131 @@ export default function BlogLayout({
             </section>
           ))}
 
-          {/* Tips */}
+          {/* Tips Section */}
           {tips.length > 0 && (
-            <section id="tips" className="space-y-4">
-              <h2 className="text-2xl font-semibold mt-6">Tips</h2>
-              <ul className="list-disc pl-5 space-y-2">{tips.map((tip, idx) => (<li key={`tip-${idx}`}>{tip}</li>))}</ul>
+            <section id="tips" className="mt-10 bg-orange-50 border border-orange-200 rounded-xl p-6">
+              <h2 className="text-2xl font-semibold text-orange-800 mb-4">💡 Helpful Tips</h2>
+              <ul className="space-y-3">
+                {tips.map((tip, idx) => (
+                  <li key={`tip-${idx}`} className="flex items-start gap-3 text-gray-700">
+                    <span className="bg-orange-100 text-orange-600 rounded-full w-6 h-6 inline-flex items-center justify-center text-sm font-bold mt-0.5 flex-shrink-0">
+                      {idx + 1}
+                    </span>
+                    <span className="leading-relaxed">{tip}</span>
+                  </li>
+                ))}
+              </ul>
             </section>
           )}
 
           {/* FAQ Section */}
           {faqs.length > 0 && (
-            <section id="faq" className="space-y-6 mt-10">
-              <h2 className="text-2xl font-semibold text-orange-500">FAQs</h2>
+            <section id="faq" className="space-y-6 mt-10 bg-white border border-gray-200 rounded-xl p-6">
+              <h2 className="text-2xl font-semibold text-orange-500">❓ Frequently Asked Questions</h2>
               <div className="divide-y divide-gray-200">
                 {faqs.map((faq, idx) => (
-                  <div key={`faq-${idx}`} className="py-4">
-                    <button onClick={() => toggleFAQ(idx)} className="w-full flex justify-between items-center text-left">
-                      <span className="text-lg font-medium text-gray-800">{faq.q}</span>
-                      <span className="text-xl text-orange-500">{openFAQ === idx ? "− View Less" : "+ View More"}</span>
+                  <div key={`faq-${idx}`} className="py-4" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                    <button 
+                      onClick={() => toggleFAQ(idx)} 
+                      className="w-full flex justify-between items-center text-left"
+                      aria-expanded={openFAQ === idx}
+                      aria-controls={`faq-answer-${idx}`}
+                    >
+                      <span className="text-lg font-medium text-gray-800" itemProp="name">{faq.q}</span>
+                      <span className="text-xl text-orange-500 font-bold ml-4 flex-shrink-0">
+                        {openFAQ === idx ? "−" : "+"}
+                      </span>
                     </button>
-                    {openFAQ === idx && <p className="text-gray-600 mt-2">{faq.a}</p>}
+                    {openFAQ === idx && (
+                      <div 
+                        id={`faq-answer-${idx}`}
+                        className="text-gray-600 mt-3 leading-relaxed"
+                        itemScope
+                        itemProp="acceptedAnswer"
+                        itemType="https://schema.org/Answer"
+                      >
+                        <div itemProp="text">{faq.a}</div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
             </section>
           )}
 
-          {/* 3x3 Grid - Random Blogs */}
+          {/* Related Blogs Section */}
           {randomBlogs.length > 0 && (
-            <div className="mt-10">
-              <h2 className="text-2xl font-bold mb-6 text-green-700">Explore More Blogs</h2>
+            <section className="mt-12">
+              <h2 className="text-2xl font-bold mb-6 text-green-700 border-b border-gray-200 pb-3">
+                📚 Continue Reading
+              </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {randomBlogs.slice(0, 9).map((blog, idx) => (
-                  <div key={idx} className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+                {randomBlogs.map((blog, idx) => (
+                  <article 
+                    key={idx} 
+                    className="border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white group"
+                    itemScope
+                    itemType="https://schema.org/BlogPosting"
+                  >
                     {blog.image && (
-                      <div className="relative w-full h-48">
-                        <Image src={blog.image} alt={blog.title} fill className="object-cover" />
+                      <div className="relative w-full h-48 overflow-hidden">
+                        <Image 
+                          src={blog.image} 
+                          alt={blog.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          itemProp="image"
+                        />
                       </div>
                     )}
                     <div className="p-4">
-                      <h3 className="text-lg font-semibold mb-2">{blog.title}</h3>
-                      {blog.description && <p className="text-gray-600 text-sm line-clamp-3">{blog.description}</p>}
+                      <h3 className="text-lg font-semibold mb-2 text-gray-800 line-clamp-2 group-hover:text-orange-500 transition-colors" itemProp="headline">
+                        {blog.title}
+                      </h3>
+                      {blog.description && (
+                        <p className="text-gray-600 text-sm line-clamp-3 mb-3" itemProp="description">
+                          {blog.description}
+                        </p>
+                      )}
                       <Link
                         href={`/${blog.slug}`}
-                        className="text-orange-500 font-medium mt-2 inline-block hover:underline"
+                        className="text-orange-500 font-medium text-sm inline-flex items-center gap-1 hover:underline group-hover:text-orange-600 transition-colors"
+                        itemProp="url"
                       >
-                       {blog.slug} - Read More 
+                        Read More →
                       </Link>
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
-            </div>
+            </section>
           )}
         </article>
 
-        {/* Ads - Desktop */}
+        {/* Sidebar Ads */}
         <aside className="hidden lg:block lg:col-span-3 self-start space-y-6 sticky top-24">
           <div className="bg-white border border-gray-300 rounded-xl shadow-lg p-6">
-            <h3 className="text-center text-gray-500 uppercase font-bold text-sm mb-4">ADVERTISEMENT</h3>
+            <h3 className="text-center text-gray-500 uppercase font-bold text-xs mb-4 tracking-wider">ADVERTISEMENT</h3>
             <AdBanner />
+          </div>
+          
+          {/* Additional sidebar content can go here */}
+          <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+            <h3 className="font-semibold text-green-800 mb-3">💌 Stay Updated</h3>
+            <p className="text-sm text-green-700 mb-3">
+              Get the latest parenting tips and pregnancy advice delivered to your inbox.
+            </p>
+            <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors text-sm font-medium">
+              Subscribe Now
+            </button>
           </div>
         </aside>
 
-        {/* Ads - Mobile */}
+        {/* Mobile Ads */}
         <div className="lg:hidden mt-8">
           <div className="bg-white border border-gray-300 rounded-xl shadow-lg p-4">
-            <h3 className="text-center text-gray-500 uppercase font-bold text-sm mb-4">ADVERTISEMENT</h3>
+            <h3 className="text-center text-gray-500 uppercase font-bold text-xs mb-4 tracking-wider">ADVERTISEMENT</h3>
             <AdBanner />
           </div>
         </div>
