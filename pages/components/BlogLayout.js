@@ -54,6 +54,21 @@ export default function BlogLayout({
     { title: "Pregnancy Week 10 — Vital Organs Formed", slug: "pregnancy-week-wise/pregnancy-week-10", description: "Pregnancy organ development, critical growth period, and prenatal testing.", image: "/images/Pregnancy Week 10.jpg" },
   ];
 
+  const optimizeTitle = (title) => {
+    // Trim extra words and add primary keyword
+    return title
+      .replace(/—.*$/, '') // Remove dash and everything after
+      .trim()
+      .slice(0, 60); // Limit to 60 chars
+  };
+
+  const optimizeDescription = (desc) => {
+    return desc
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 160); // Limit to 160 chars
+  };
+
   const [toc, setToc] = useState([]);
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
@@ -65,7 +80,7 @@ export default function BlogLayout({
   const generateSEOProperties = () => {
     const baseUrl = "https://baby-toys.shop";
     const currentUrl = `${baseUrl}/${slug}`;
-    
+
     // Extract keywords from content
     const extractKeywords = () => {
       const contentText = [
@@ -75,15 +90,15 @@ export default function BlogLayout({
         ...sections.map(s => s.title || ''),
         ...(tips || [])
       ].join(' ').toLowerCase();
-      
+
       const parentingKeywords = [
-        'parenting', 'pregnancy', 'baby', 'newborn', 'child', 'motherhood', 
+        'parenting', 'pregnancy', 'baby', 'newborn', 'child', 'motherhood',
         'fatherhood', 'infant', 'toddler', 'development', 'care', 'health',
         'growth', 'milestones', 'feeding', 'sleep', 'nutrition', 'tips',
         'advice', 'guide', 'stages', 'months', 'weeks', 'pregnancy week by week'
       ];
-      
-      return parentingKeywords.filter(keyword => 
+
+      return parentingKeywords.filter(keyword =>
         contentText.includes(keyword)
       ).slice(0, 10);
     };
@@ -96,7 +111,7 @@ export default function BlogLayout({
         ...sections.flatMap(s => s.list || []),
         ...(tips || [])
       ].join(' ').length;
-      
+
       const words = contentLength / 5;
       const minutes = Math.ceil(words / 200);
       return `${minutes} min read`;
@@ -107,8 +122,8 @@ export default function BlogLayout({
       const schema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": title,
-        "description": description,
+        "headline": optimizeTitle(title),
+        "description": optimizeDescription(description),
         "author": {
           "@type": "Person",
           "name": authorName,
@@ -155,8 +170,8 @@ export default function BlogLayout({
 
     // Generate Open Graph data
     const generateOpenGraph = () => ({
-      title: title,
-      description: description,
+      title: optimizeTitle(title),
+      description: optimizeDescription(description),
       image: mainImage ? `${baseUrl}${mainImage}` : `${baseUrl}/default-og-image.jpg`,
       url: currentUrl,
       type: "article"
@@ -171,8 +186,11 @@ export default function BlogLayout({
     };
   };
 
-  const seoProperties = generateSEOProperties();
-
+  const seoProperties = {
+    ...generateSEOProperties(),
+    title: optimizeTitle(title),
+    description: optimizeDescription(description),
+  };
   useEffect(() => {
     const headings = Array.from(document.querySelectorAll("h2")).map((h) => ({
       id: h.id || h.innerText.replace(/\s+/g, "-").toLowerCase(),
@@ -200,24 +218,24 @@ export default function BlogLayout({
       <Header />
 
       <Head>
-        <title>{title} | Belly Buds - Parenting & Pregnancy Expert Advice</title>
-        <meta name="description" content={description} />
+        <title>{seoProperties.title} | Belly Buds - Parenting & Pregnancy Expert Advice</title>
+        <meta name="description" content={seoProperties.description} />
         <meta name="keywords" content={seoProperties.keywords.join(', ')} />
-        
+
         <link rel="canonical" href={seoProperties.canonicalUrl} />
-        
+
         <meta property="og:title" content={seoProperties.openGraph.title} />
         <meta property="og:description" content={seoProperties.openGraph.description} />
         <meta property="og:type" content={seoProperties.openGraph.type} />
         <meta property="og:image" content={seoProperties.openGraph.image} />
         <meta property="og:url" content={seoProperties.openGraph.url} />
         <meta property="og:site_name" content="Belly Buds" />
-        
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoProperties.openGraph.title} />
         <meta name="twitter:description" content={seoProperties.openGraph.description} />
         <meta name="twitter:image" content={seoProperties.openGraph.image} />
-        
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(seoProperties.schemaMarkup) }}
@@ -246,7 +264,7 @@ export default function BlogLayout({
                 "item": "https://baby-toys.shop/"
               },
               {
-                "@type": "ListItem", 
+                "@type": "ListItem",
                 "position": 2,
                 "name": title,
                 "item": seoProperties.canonicalUrl
@@ -269,8 +287,8 @@ export default function BlogLayout({
           <ul className="space-y-3">
             {toc.map((item, idx) => (
               <li key={`toc-mobile-${idx}`}>
-                <Link 
-                  href={`#${item.id}`} 
+                <Link
+                  href={`#${item.id}`}
                   className="block hover:underline py-1 border-l-2 border-green-400 pl-3"
                   onClick={() => setTocOpen(false)}
                 >
@@ -290,18 +308,17 @@ export default function BlogLayout({
             <nav className="space-y-3" aria-label="Table of contents">
               {toc.map((item, idx) => (
                 <div key={`toc-${idx}`} className={`border-l-2 ${item.level === 'h2' ? 'border-green-600 pl-3' : 'border-gray-300 pl-6'}`}>
-                  <Link 
+                  <Link
                     href={`#${item.id}`}
-                    className={`hover:text-green-700 transition-colors text-sm font-medium leading-tight block py-1 ${
-                      item.level === 'h2' ? 'text-green-900 font-semibold' : 'text-gray-700'
-                    }`}
+                    className={`hover:text-green-700 transition-colors text-sm font-medium leading-tight block py-1 ${item.level === 'h2' ? 'text-green-900 font-semibold' : 'text-gray-700'
+                      }`}
                   >
                     {item.level === 'h3' && '• '}{item.text}
                   </Link>
                 </div>
               ))}
             </nav>
-            
+
             {/* Reading Time */}
             <div className="mt-6 pt-4 border-t border-gray-200">
               <div className="flex items-center justify-between text-sm text-gray-600">
@@ -325,8 +342,8 @@ export default function BlogLayout({
           {mainImage && (
             <div className="my-6 flex flex-col items-center gap-4">
               <div className="w-full max-w-2xl h-80 relative rounded-lg overflow-hidden shadow-lg">
-                <Image 
-                  src={mainImage} 
+                <Image
+                  src={mainImage}
                   alt={title}
                   fill
                   className="object-cover"
@@ -334,8 +351,8 @@ export default function BlogLayout({
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
-              <SocialShare 
-                imageUrl={mainImage} 
+              <SocialShare
+                imageUrl={mainImage}
                 title={title}
                 description={description}
                 url={seoProperties.canonicalUrl}
@@ -348,15 +365,15 @@ export default function BlogLayout({
             <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-orange-500 leading-tight" itemProp="headline">
               {title}
             </h1>
-            
+
             {/* Author Info */}
             <div className="flex items-center gap-4 mb-6 p-4 bg-gray-50 border rounded-lg shadow-sm">
               <div itemProp="author" itemScope itemType="https://schema.org/Person">
-                <Image 
-                  src={authorImage} 
+                <Image
+                  src={authorImage}
                   alt={authorName}
-                  width={60} 
-                  height={60} 
+                  width={60}
+                  height={60}
                   className="rounded-full"
                   itemProp="image"
                 />
@@ -367,8 +384,8 @@ export default function BlogLayout({
                   Updated: <time itemProp="dateModified" dateTime={updatedAt}>{updatedAt}</time>
                 </p>
                 <p className="text-sm text-gray-500">Reading time: {seoProperties.readingTime}</p>
-                <a 
-                  href={`mailto:${authorEmail}`} 
+                <a
+                  href={`mailto:${authorEmail}`}
                   className="text-sm text-orange-500 hover:underline"
                   itemProp="email"
                 >
@@ -405,8 +422,8 @@ export default function BlogLayout({
               {section.image && (
                 <div className="my-6 flex flex-col items-center gap-4">
                   <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden">
-                    <Image 
-                      src={section.image} 
+                    <Image
+                      src={section.image}
                       alt={section.title}
                       width={400}
                       height={300}
@@ -416,13 +433,13 @@ export default function BlogLayout({
                   </div>
                 </div>
               )}
-              
+
               {section.content && (
                 <div className="text-gray-700 leading-relaxed text-lg">
                   {section.content}
                 </div>
               )}
-              
+
               {section.list && (
                 <ul className="list-disc pl-6 space-y-3 text-gray-700">
                   {section.list.map((item, i) => (
@@ -432,7 +449,7 @@ export default function BlogLayout({
                   ))}
                 </ul>
               )}
-              
+
               {/* Subsections */}
               {section.subsections?.map((sub, i) => (
                 <div key={`subsection-${i}`} className="pl-5 mt-4">
@@ -474,9 +491,6 @@ export default function BlogLayout({
             </section>
           )}
 
-          {/* Comments */}
-          <div className="mt-12"><CommentSection slug={slug} /></div>
-
           {/* 3x3 Grid - Random Blogs */}
           {randomBlogs.length > 0 && (
             <div className="mt-10">
@@ -508,11 +522,10 @@ export default function BlogLayout({
 
           {/* Like Button */}
           <div className="mt-10 flex items-center justify-center">
-            <button 
-              onClick={handleLike} 
-              className={`flex items-center space-x-2 px-6 py-3 rounded-full shadow-md transition-colors ${
-                liked ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-700 hover:bg-orange-100"
-              }`}
+            <button
+              onClick={handleLike}
+              className={`flex items-center space-x-2 px-6 py-3 rounded-full shadow-md transition-colors ${liked ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-700 hover:bg-orange-100"
+                }`}
             >
               <HandThumbUpIcon className="w-5 h-5" />
               <span>{liked ? "Liked" : "Like"}</span>
@@ -528,14 +541,14 @@ export default function BlogLayout({
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {randomBlogs.map((blog, idx) => (
-                  <article 
-                    key={idx} 
+                  <article
+                    key={idx}
                     className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 bg-white"
                   >
                     {blog.image && (
                       <div className="relative w-full h-48">
-                        <Image 
-                          src={blog.image} 
+                        <Image
+                          src={blog.image}
                           alt={blog.title}
                           fill
                           className="object-cover"
