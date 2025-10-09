@@ -224,8 +224,8 @@ Month 12 is a milestone month of celebration, reflection, and preparation for to
               alt={blog.title}
               className="w-full h-64 object-cover rounded mb-4"
             />
-            <h1 className="text-2xl font-semibold text-gray-800 mb-2">{blog.title}</h1>
-            <p className="text-gray-700 whitespace-pre-line">{blog.description}</p>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-2">{blog.title}</h2>
+            <h3 className="text-gray-700 whitespace-pre-line">{blog.description}</h3>
             <Link href={`/motherhood-blogs/${blog.slug}`} className="text-orange-500 font-medium mt-2 inline-block">
               Read More →
             </Link>

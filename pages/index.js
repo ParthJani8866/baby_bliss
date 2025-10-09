@@ -175,9 +175,9 @@ export default function Home() {
           priority
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center bg-white/70 p-6 rounded-xl max-w-3xl mx-auto text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-orange-600">The Belly Buds</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-orange-600">The Belly Buds: A trusted space for mothers and families</h1>
           <p className="text-gray-700 text-lg leading-relaxed">
-            A trusted space for mothers and families. Discover expert tips, week-by-week pregnancy guidance, and real parenting experiences.
+            Discover expert tips, week-by-week pregnancy guidance, and real parenting experiences.
           </p>
           <SocialShare imageUrl="/images/main-page-background.webp" title="Welcome to Belly Buds" />
         </div>

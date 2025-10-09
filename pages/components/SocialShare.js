@@ -1,44 +1,55 @@
 "use client";
 
-import { FaPinterest, FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa"; // <-- React Icons
+import { FaPinterest, FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
 
 export default function SocialShare() {
+  const pageUrl = typeof window !== "undefined" ? window.location.href : "https://baby-toys.shop"; // fallback
+  const pageTitle = "Explore Parenting Month by Month – Complete Guide";
+
   return (
     <div className="flex space-x-4 mt-2">
-      {/* Pinterest account */}
+      {/* Pinterest Share */}
       <a
-        href="https://pin.it/4T9lYMXPH" // replace with your account
+        href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(pageUrl)}&description=${encodeURIComponent(pageTitle)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center space-x-1 text-red-500 hover:text-red-600"
-        title="Visit our Pinterest"
+        className="flex items-center text-red-500 hover:text-red-600"
+        title="Share on Pinterest"
       >
         <FaPinterest className="w-5 h-5" />
-        <span></span>
       </a>
 
-      {/* Instagram account */}
+      {/* Instagram Link (Instagram doesn’t support direct share, keeps your account link) */}
       <a
-        href="https://www.instagram.com/baby_toys.cycles/" // replace with your account
+        href="https://www.instagram.com/baby_toys.cycles/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center space-x-1 text-pink-500 hover:text-pink-600"
+        className="flex items-center text-pink-500 hover:text-pink-600"
         title="Visit our Instagram"
       >
         <FaInstagram className="w-5 h-5" />
-        <span></span>
       </a>
 
-       {/* Instagram account */}
+      {/* Facebook Share */}
       <a
-        href="https://www.facebook.com/share/16N9YzqWcc/" // replace with your account
+        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center space-x-1 text-blue-500 hover:text-blue-600"
-        title="Visit our FaceBook"
+        className="flex items-center text-blue-500 hover:text-blue-600"
+        title="Share on Facebook"
       >
         <FaFacebookF className="w-5 h-5" />
-        <span></span>
+      </a>
+
+      {/* Twitter Share */}
+      <a
+        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(pageTitle)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center text-blue-400 hover:text-blue-500"
+        title="Share on Twitter"
+      >
+        <FaTwitter className="w-5 h-5" />
       </a>
     </div>
   );
