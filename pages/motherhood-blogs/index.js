@@ -227,7 +227,7 @@ Month 12 is a milestone month of celebration, reflection, and preparation for to
             <h2 className="text-2xl font-semibold text-gray-800 mb-2">{blog.title}</h2>
             <h3 className="text-gray-700 whitespace-pre-line">{blog.description}</h3>
             <Link href={`/motherhood-blogs/${blog.slug}`} className="text-orange-500 font-medium mt-2 inline-block">
-              Read More →
+              Read More About : {blog.slug} →
             </Link>
           </div>
         ))}
