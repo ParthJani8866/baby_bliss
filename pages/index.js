@@ -164,7 +164,7 @@ export default function Home() {
 
       <Header />
 
-      <section className="hero relative w-full h-[300px] md:h-[500px]">
+      <section className="hero relative w-full h-[300px] md:h-[300px]">
         <div className="absolute inset-0 flex flex-col justify-center items-center bg-white/70 p-6 rounded-xl max-w-3xl mx-auto text-center">
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-orange-600">The Belly Buds: A trusted space for mothers and families</h1>
           <p className="text-gray-700 text-lg leading-relaxed">
