@@ -278,7 +278,7 @@ export default function BlogLayout({
       <div style={{ marginTop: "35px" }} className="lg:hidden fixed top-16 left-0 right-0 z-50 bg-green-800 text-white flex justify-between items-center px-4 py-3 shadow-md">
         <span className="font-semibold">Table of Contents</span>
         <button onClick={() => setTocOpen(!tocOpen)} className="text-white font-bold">
-          {tocOpen ? "Close" : "Open"}
+          {tocOpen ? "Close TOC" : "Open TOC"}
         </button>
       </div>
 
@@ -482,7 +482,7 @@ export default function BlogLayout({
                   <div key={`faq-${idx}`} className="py-4">
                     <button onClick={() => toggleFAQ(idx)} className="w-full flex justify-between items-center text-left">
                       <span className="text-lg font-medium text-gray-800">{faq.q}</span>
-                      <span className="text-xl text-orange-500">{openFAQ === idx ? "−" : "+"}</span>
+                      <span className="text-xl text-orange-500">{openFAQ === idx ? "− View Less" : "+ View More"}</span>
                     </button>
                     {openFAQ === idx && <p className="text-gray-600 mt-2">{faq.a}</p>}
                   </div>
@@ -518,20 +518,6 @@ export default function BlogLayout({
               </div>
             </div>
           )}
-
-
-          {/* Like Button */}
-          <div className="mt-10 flex items-center justify-center">
-            <button
-              onClick={handleLike}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-full shadow-md transition-colors ${liked ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-700 hover:bg-orange-100"
-                }`}
-            >
-              <HandThumbUpIcon className="w-5 h-5" />
-              <span>{liked ? "Liked" : "Like"}</span>
-              {likes > 0 && <span className="ml-1">({likes})</span>}
-            </button>
-          </div>
         </article>
 
         {/* Ads - Desktop */}
