@@ -3,6 +3,42 @@
 import BlogLayout from "../components/BlogLayout";
 
 export default function MotherhoodMonth5() {
+
+  const faqs =
+    [
+      {
+        question: "My baby is drooling excessively but no teeth are appearing. Is this normal?",
+        answer: "Yes, completely normal! Excessive drooling often begins weeks or even months before the first tooth actually erupts. The drooling is triggered by increased saliva production as the teeth move beneath the gums. Some babies drool heavily for several months before any teeth appear. The drool serves an important purpose—it contains enzymes that help break down bacteria and protect those emerging pearly whites."
+      },
+      {
+        question: "How can I tell if my baby's fussiness is from teething or something else?",
+        answer: "Teething discomfort typically comes with specific signs: red/swollen gums, increased biting/chewing, drooling, flushed cheeks, and mild irritability that comes and goes. Symptoms like high fever (over 101°F/38.3°C), diarrhea, vomiting, or rash on the body are NOT normal teething symptoms and warrant a call to your pediatrician. If your baby seems consistently miserable rather than intermittently uncomfortable, it's worth ruling out other causes like ear infections or illness."
+      },
+      {
+        question: "My baby was sleeping well but now wakes every 2 hours again. What's happening?",
+        answer: "This is very common around five months! Several factors can contribute: teething discomfort, growth spurts requiring more frequent feeding, cognitive leaps that make it harder to settle, or the development of object permanence (understanding that you exist even when they can't see you, which can cause separation anxiety). This phase usually passes in a few weeks. Stick to consistent bedtime routines, offer extra comfort, and know that this is a normal developmental stage, not a permanent sleep setback."
+      },
+      {
+        question: "When should I baby-proof my home?",
+        answer: "Now is the perfect time! Once babies start rolling, their mobility increases rapidly. Get down on your hands and knees to see your home from your baby's perspective. Secure furniture to walls, cover electrical outlets, install safety gates at stairways, and remove small objects from low surfaces. Remember that anything within reach will eventually end up in your baby's mouth. It's much easier to baby-proof before your baby is mobile rather than trying to catch up afterward."
+      },
+      {
+        question: "Can I give my baby water or teething biscuits?",
+        answer: "Most pediatricians recommend waiting until six months to introduce water, and even then only small amounts (1-2 ounces per day). Breast milk or formula provides all the hydration your baby needs. Avoid teething biscuits as they can be a choking hazard and often contain sugar. Instead, offer chilled (not frozen) teething toys, a clean wet washcloth, or silicone teethers. Always supervise your baby with anything they're chewing on."
+      },
+      {
+        question: "My baby seems frustrated during playtime. Why?",
+        answer: "This is a sign of growing cognitive awareness! Your baby understands more than they can physically accomplish. They might see a toy just out of reach and feel frustrated that they can't crawl to it yet, or they might struggle to manipulate a toy in the way they envision. This frustration is actually a positive developmental sign—it indicates ambition and understanding. Help by placing toys within reach and celebrating small accomplishments. This phase of frustration often precedes major physical breakthroughs."
+      },
+      {
+        question: "How can I encourage my baby's language development?",
+        answer: "Talk to your baby constantly throughout the day—describe what you're doing, name objects, and read books together. When your baby babbles, respond as if you're having a conversation: 'Oh really? Tell me more about that!' Imitate their sounds and add new ones. Sing songs with simple gestures. Narrate your actions: 'Mommy is cutting vegetables now. Chop, chop, chop!' Your responsive interactions are the most powerful language stimulation your baby can receive."
+      },
+      {
+        question: "Is it normal for my baby to prefer standing or bouncing?",
+        answer: "Yes! Many five-month-olds love being held in a standing position and will bounce enthusiastically. This helps strengthen their leg muscles in preparation for crawling and eventually walking. However, their bones and joints are still developing, so limit standing/bouncing sessions to 10-15 minutes at a time and always support their torso. Make sure their activities are mostly floor-based to allow for free movement and rolling practice."
+      }
+    ]
   const sections = [
     {
       title: "The Age of Discovery: Welcoming Month Five",
@@ -120,43 +156,6 @@ export default function MotherhoodMonth5() {
       ]
     },
     {
-      title: "Frequently Asked Questions (Month 5)",
-      faqs: [
-        {
-          question: "My baby is drooling excessively but no teeth are appearing. Is this normal?",
-          answer: "Yes, completely normal! Excessive drooling often begins weeks or even months before the first tooth actually erupts. The drooling is triggered by increased saliva production as the teeth move beneath the gums. Some babies drool heavily for several months before any teeth appear. The drool serves an important purpose—it contains enzymes that help break down bacteria and protect those emerging pearly whites."
-        },
-        {
-          question: "How can I tell if my baby's fussiness is from teething or something else?",
-          answer: "Teething discomfort typically comes with specific signs: red/swollen gums, increased biting/chewing, drooling, flushed cheeks, and mild irritability that comes and goes. Symptoms like high fever (over 101°F/38.3°C), diarrhea, vomiting, or rash on the body are NOT normal teething symptoms and warrant a call to your pediatrician. If your baby seems consistently miserable rather than intermittently uncomfortable, it's worth ruling out other causes like ear infections or illness."
-        },
-        {
-          question: "My baby was sleeping well but now wakes every 2 hours again. What's happening?",
-          answer: "This is very common around five months! Several factors can contribute: teething discomfort, growth spurts requiring more frequent feeding, cognitive leaps that make it harder to settle, or the development of object permanence (understanding that you exist even when they can't see you, which can cause separation anxiety). This phase usually passes in a few weeks. Stick to consistent bedtime routines, offer extra comfort, and know that this is a normal developmental stage, not a permanent sleep setback."
-        },
-        {
-          question: "When should I baby-proof my home?",
-          answer: "Now is the perfect time! Once babies start rolling, their mobility increases rapidly. Get down on your hands and knees to see your home from your baby's perspective. Secure furniture to walls, cover electrical outlets, install safety gates at stairways, and remove small objects from low surfaces. Remember that anything within reach will eventually end up in your baby's mouth. It's much easier to baby-proof before your baby is mobile rather than trying to catch up afterward."
-        },
-        {
-          question: "Can I give my baby water or teething biscuits?",
-          answer: "Most pediatricians recommend waiting until six months to introduce water, and even then only small amounts (1-2 ounces per day). Breast milk or formula provides all the hydration your baby needs. Avoid teething biscuits as they can be a choking hazard and often contain sugar. Instead, offer chilled (not frozen) teething toys, a clean wet washcloth, or silicone teethers. Always supervise your baby with anything they're chewing on."
-        },
-        {
-          question: "My baby seems frustrated during playtime. Why?",
-          answer: "This is a sign of growing cognitive awareness! Your baby understands more than they can physically accomplish. They might see a toy just out of reach and feel frustrated that they can't crawl to it yet, or they might struggle to manipulate a toy in the way they envision. This frustration is actually a positive developmental sign—it indicates ambition and understanding. Help by placing toys within reach and celebrating small accomplishments. This phase of frustration often precedes major physical breakthroughs."
-        },
-        {
-          question: "How can I encourage my baby's language development?",
-          answer: "Talk to your baby constantly throughout the day—describe what you're doing, name objects, and read books together. When your baby babbles, respond as if you're having a conversation: 'Oh really? Tell me more about that!' Imitate their sounds and add new ones. Sing songs with simple gestures. Narrate your actions: 'Mommy is cutting vegetables now. Chop, chop, chop!' Your responsive interactions are the most powerful language stimulation your baby can receive."
-        },
-        {
-          question: "Is it normal for my baby to prefer standing or bouncing?",
-          answer: "Yes! Many five-month-olds love being held in a standing position and will bounce enthusiastically. This helps strengthen their leg muscles in preparation for crawling and eventually walking. However, their bones and joints are still developing, so limit standing/bouncing sessions to 10-15 minutes at a time and always support their torso. Make sure their activities are mostly floor-based to allow for free movement and rolling practice."
-        }
-      ]
-    },
-    {
       title: "Embracing the Journey: Finding Joy in the Fifth Month",
       content: `Month five is a beautiful, messy, exhilarating stage of parenting. It's filled with contradictions: the joy of hearing your baby's first real laugh mixed with the exhaustion of teething-induced night wakings; the pride of watching new physical accomplishments alongside the anxiety that comes with increased mobility; the delight in their emerging personality tempered by the realization of how quickly they're growing up.
 
@@ -174,6 +173,7 @@ export default function MotherhoodMonth5() {
       mainImage="/images/motherhood-5.jpg"
       description="Discover the exciting developments of month five! From teething symptoms and rolling mastery to contagious laughter and growing curiosity. Learn how to support your baby's development while navigating sleep changes and your own emotional journey."
       sections={sections}
+      faqs={faqs}
       sidebarCategory="parenting"
       sidebarTitle="Parenting Essentials"
     />
