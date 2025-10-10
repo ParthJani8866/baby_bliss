@@ -9,6 +9,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { HandThumbUpIcon } from "@heroicons/react/24/outline";
 import SocialShare from "./SocialShare";
+import BreadcrumbSchema from "./BreadcrumbSchema";
 
 export default function BlogLayout({
   title,
@@ -102,7 +103,7 @@ export default function BlogLayout({
         'new parent advice', 'baby health', 'maternal health', 'parenting stages'
       ];
 
-      const foundPrimary = primaryKeywords.filter(keyword => 
+      const foundPrimary = primaryKeywords.filter(keyword =>
         contentText.includes(keyword)
       ).slice(0, 5);
 
@@ -125,7 +126,7 @@ export default function BlogLayout({
       const wordCount = contentText.split(/\s+/).length;
       const imagesCount = [mainImage, ...sections.map(s => s.image)].filter(Boolean).length;
       const readingTimeMinutes = Math.ceil(wordCount / 200 + imagesCount * 0.1);
-      
+
       return {
         minutes: readingTimeMinutes,
         text: `${readingTimeMinutes} min read`,
@@ -136,7 +137,7 @@ export default function BlogLayout({
     // Generate comprehensive schema markup
     const generateSchemaMarkup = () => {
       const readingData = calculateReadingTime();
-      
+
       const baseSchema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
@@ -210,7 +211,7 @@ export default function BlogLayout({
     // Generate Open Graph and Twitter Card data
     const generateSocialMeta = () => {
       const socialImage = mainImage ? `${baseUrl}${mainImage}` : `${baseUrl}/default-og-image.jpg`;
-      
+
       return {
         openGraph: {
           title: optimizeTitle(title),
@@ -255,7 +256,7 @@ export default function BlogLayout({
     // Generate TOC from sections and steps without DOM manipulation
     const generateStaticTOC = () => {
       const headings = [];
-      
+
       // Add steps as H2 headings
       steps.forEach((step, index) => {
         headings.push({
@@ -334,8 +335,8 @@ export default function BlogLayout({
         .sort((a, b) => b.score - a.score)
         .slice(0, 9);
 
-      return scoredBlogs.length > 0 ? scoredBlogs : 
-             allBlogs.filter(blog => blog.slug !== slug).slice(0, 9);
+      return scoredBlogs.length > 0 ? scoredBlogs :
+        allBlogs.filter(blog => blog.slug !== slug).slice(0, 9);
     };
 
     setRandomBlogs(getRelatedBlogs());
@@ -344,10 +345,10 @@ export default function BlogLayout({
   const handleLike = () => {
     const newLiked = !liked;
     const newLikes = newLiked ? likes + 1 : likes - 1;
-    
+
     setLiked(newLiked);
     setLikes(newLikes);
-    
+
     localStorage.setItem(`blog-likes-${slug}`, newLikes.toString());
     localStorage.setItem(`blog-liked-${slug}`, newLiked.toString());
   };
@@ -407,55 +408,23 @@ export default function BlogLayout({
         <meta name="publisher" content="Belly Buds" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#059669" />
-        
+
         {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(seoProperties.schemaMarkup) }}
         />
-
-        {/* Breadcrumb Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://baby-toys.shop/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Blog",
-                  "item": "https://baby-toys.shop/blog"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": title,
-                  "item": seoProperties.canonicalUrl
-                }
-              ]
-            })
-          }}
-        />
-
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       </Head>
-
+      <BreadcrumbSchema title={title} seoProperties={seoProperties} />
       {/* Mobile Table of Contents */}
       <div style={{ marginTop: "35px" }} className="lg:hidden fixed top-16 left-0 right-0 z-50 bg-green-800 text-white flex justify-between items-center px-4 py-3 shadow-lg">
         <span className="font-semibold text-sm">📚 Article Contents</span>
-        <button 
-          onClick={() => setTocOpen(!tocOpen)} 
+        <button
+          onClick={() => setTocOpen(!tocOpen)}
           className="text-white font-bold text-sm bg-green-700 px-3 py-1 rounded-lg hover:bg-green-600 transition-colors"
           aria-expanded={tocOpen}
           aria-controls="mobile-toc"
@@ -465,7 +434,7 @@ export default function BlogLayout({
       </div>
 
       {tocOpen && (
-        <div 
+        <div
           id="mobile-toc"
           className="lg:hidden fixed top-20 left-0 right-0 z-40 bg-green-700 text-white px-4 py-4 overflow-y-auto max-h-[calc(100vh-5rem)] shadow-xl"
         >
@@ -475,11 +444,10 @@ export default function BlogLayout({
                 <li key={`toc-mobile-${idx}`}>
                   <button
                     onClick={() => handleTocClick(item.id)}
-                    className={`block text-left w-full hover:bg-green-600 transition-colors py-2 px-3 rounded-lg border-l-2 ${
-                      item.level === 'h2' 
-                        ? 'border-green-300 font-semibold text-white' 
+                    className={`block text-left w-full hover:bg-green-600 transition-colors py-2 px-3 rounded-lg border-l-2 ${item.level === 'h2'
+                        ? 'border-green-300 font-semibold text-white'
                         : 'border-green-200 pl-6 text-green-100'
-                    }`}
+                      }`}
                   >
                     {item.level === 'h3' && '↳ '}{item.text}
                   </button>
@@ -497,21 +465,19 @@ export default function BlogLayout({
             <h3 className="text-xl font-bold mb-4 text-green-800 border-b border-gray-200 pb-3">📖 Article Contents</h3>
             <nav className="space-y-2" aria-label="Table of contents">
               {toc.map((item, idx) => (
-                <div 
-                  key={`toc-${idx}`} 
-                  className={`border-l-2 transition-colors hover:border-green-500 ${
-                    item.level === 'h2' 
-                      ? 'border-green-600 pl-3' 
+                <div
+                  key={`toc-${idx}`}
+                  className={`border-l-2 transition-colors hover:border-green-500 ${item.level === 'h2'
+                      ? 'border-green-600 pl-3'
                       : 'border-gray-300 pl-6'
-                  }`}
+                    }`}
                 >
                   <button
                     onClick={() => handleTocClick(item.id)}
-                    className={`hover:text-green-700 transition-colors text-sm font-medium leading-tight block py-1.5 text-left w-full ${
-                      item.level === 'h2' 
-                        ? 'text-green-900 font-semibold' 
+                    className={`hover:text-green-700 transition-colors text-sm font-medium leading-tight block py-1.5 text-left w-full ${item.level === 'h2'
+                        ? 'text-green-900 font-semibold'
                         : 'text-gray-700'
-                    }`}
+                      }`}
                   >
                     {item.level === 'h3' && '↳ '}{item.text}
                   </button>
@@ -535,11 +501,10 @@ export default function BlogLayout({
             <div className="mt-4 pt-4 border-t border-gray-200">
               <button
                 onClick={handleLike}
-                className={`flex items-center justify-center gap-2 w-full py-2 px-4 rounded-lg transition-colors ${
-                  liked 
-                    ? 'bg-orange-100 text-orange-600 border border-orange-200' 
+                className={`flex items-center justify-center gap-2 w-full py-2 px-4 rounded-lg transition-colors ${liked
+                    ? 'bg-orange-100 text-orange-600 border border-orange-200'
                     : 'bg-gray-100 text-gray-600 border border-gray-200 hover:bg-gray-200'
-                }`}
+                  }`}
                 aria-label={liked ? "Unlike this article" : "Like this article"}
               >
                 <HandThumbUpIcon className="w-5 h-5" />
@@ -626,8 +591,8 @@ export default function BlogLayout({
           {steps.length > 0 && (
             <section className="space-y-8">
               {steps.map((step, idx) => (
-                <section 
-                  key={`step-${idx}`} 
+                <section
+                  key={`step-${idx}`}
                   id={`step-${idx + 1}-${step.title.replace(/\s+/g, "-").toLowerCase()}`}
                   className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
                   itemProp="step" itemScope itemType="https://schema.org/HowToStep"
@@ -638,22 +603,22 @@ export default function BlogLayout({
                     </span>
                     {step.title}
                   </h2>
-                  
+
                   {step.image && (
                     <div className="my-4 flex flex-col items-center gap-4">
                       <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden shadow-md">
-                        <Image 
-                          src={step.image} 
-                          alt={step.title} 
+                        <Image
+                          src={step.image}
+                          alt={step.title}
                           width={400}
-                          height={300} 
+                          height={300}
                           className="object-cover"
                           itemProp="image"
                         />
                       </div>
                     </div>
                   )}
-                  
+
                   <p className="text-gray-700 leading-relaxed text-lg" itemProp="text">
                     {step.content}
                   </p>
@@ -664,8 +629,8 @@ export default function BlogLayout({
 
           {/* Main Content Sections */}
           {sections.map((section, idx) => (
-            <section 
-              key={`section-${idx}`} 
+            <section
+              key={`section-${idx}`}
               id={section.title.replace(/\s+/g, "-").toLowerCase()}
               className="space-y-6 mt-8"
               itemProp="articleBody"
@@ -673,7 +638,7 @@ export default function BlogLayout({
               <h2 className="text-2xl font-semibold text-green-800 border-b border-gray-200 pb-2">
                 {section.title}
               </h2>
-              
+
               {section.image && (
                 <div className="my-6 flex flex-col items-center gap-4">
                   <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden shadow-lg">
@@ -748,8 +713,8 @@ export default function BlogLayout({
               <div className="divide-y divide-gray-200">
                 {faqs.map((faq, idx) => (
                   <div key={`faq-${idx}`} className="py-4" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                    <button 
-                      onClick={() => toggleFAQ(idx)} 
+                    <button
+                      onClick={() => toggleFAQ(idx)}
                       className="w-full flex justify-between items-center text-left"
                       aria-expanded={openFAQ === idx}
                       aria-controls={`faq-answer-${idx}`}
@@ -760,7 +725,7 @@ export default function BlogLayout({
                       </span>
                     </button>
                     {openFAQ === idx && (
-                      <div 
+                      <div
                         id={`faq-answer-${idx}`}
                         className="text-gray-600 mt-3 leading-relaxed"
                         itemScope
@@ -784,16 +749,16 @@ export default function BlogLayout({
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {randomBlogs.map((blog, idx) => (
-                  <article 
-                    key={idx} 
+                  <article
+                    key={idx}
                     className="border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white group"
                     itemScope
                     itemType="https://schema.org/BlogPosting"
                   >
                     {blog.image && (
                       <div className="relative w-full h-48 overflow-hidden">
-                        <Image 
-                          src={blog.image} 
+                        <Image
+                          src={blog.image}
                           alt={blog.title}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -832,7 +797,7 @@ export default function BlogLayout({
             <h3 className="text-center text-gray-500 uppercase font-bold text-xs mb-4 tracking-wider">ADVERTISEMENT</h3>
             <AdBanner />
           </div>
-          
+
           {/* Additional sidebar content can go here */}
           <div className="bg-green-50 border border-green-200 rounded-xl p-6">
             <h3 className="font-semibold text-green-800 mb-3">💌 Stay Updated</h3>
