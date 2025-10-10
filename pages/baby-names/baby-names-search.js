@@ -163,11 +163,10 @@ export default function BabyNamesSearch() {
         {selectedLetter && (
           <div className="mb-16">
             <h2 className="text-xl font-semibold mb-4 text-gray-800 text-center">
-              Names starting with "{selectedLetter}"{" "}
+              Names starting with &quot;{selectedLetter}&quot;{" "}
               {selectedGender !== "All" ? `(${selectedGender})` : ""}
             </h2>
 
-            {/* Results Count */}
             <div className="text-center mb-6">
               <p className="text-gray-600">
                 Found <strong>{filteredNames.length}</strong> {selectedGender.toLowerCase()} name{filteredNames.length !== 1 ? 's' : ''} starting with <strong>{selectedLetter}</strong>
