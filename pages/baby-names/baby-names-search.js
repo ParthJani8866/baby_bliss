@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import babyNames from "../../data/babyNamesArray"; // adjust path if needed
 import AdBanner from "../components/AdBanner";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import Link from "next/link";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const genders = ["All", "Boy", "Girl"];
