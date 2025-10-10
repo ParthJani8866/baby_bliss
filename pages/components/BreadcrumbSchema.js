@@ -4,6 +4,7 @@ import Head from "next/head";
 
 export default function BreadcrumbSchema({ title, seoProperties }) {
   const pathname = usePathname();
+  const canonicalUrl = `https://baby-toys.shop${pathname}`;
 
   let breadcrumbs = [
     {
@@ -41,7 +42,7 @@ export default function BreadcrumbSchema({ title, seoProperties }) {
     "@type": "ListItem",
     position: 3,
     name: title,
-    item: seoProperties?.canonicalUrl || "",
+    item: canonicalUrl,
   });
 
   const breadcrumbJson = {
