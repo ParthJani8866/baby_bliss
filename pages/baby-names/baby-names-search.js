@@ -44,8 +44,8 @@ const generateSEOProperties = (selectedLetter = null, selectedGender = "All") =>
       { name: "Baby Names", url: `${baseUrl}/baby-names` },
       {
         name: selectedLetter
-          ? `Names ${selectedLetter}${selectedGender !== "All" ? ` (${selectedGender})` : ''}`
-          : "Search",
+          ? `Search Results ${selectedLetter}${selectedGender !== "All" ? ` (${selectedGender})` : ''}`
+          : "Baby Name Search",
         url: currentUrl
       }
     ]
@@ -55,28 +55,90 @@ const generateSEOProperties = (selectedLetter = null, selectedGender = "All") =>
 // FAQ Data
 const faqData = [
   {
-    question: "How do I search for baby names?",
-    answer: "Simply click on any letter from A to Z to see all names starting with that letter. You can then filter the results by gender using the 'All', 'Boy', or 'Girl' buttons above the results."
+    question: "How do I use the baby name search feature?",
+    answer: "Our baby name search is simple to use! Click on any letter from A to Z to view all names starting with that letter. You can then filter the results by gender using the 'Boy', 'Girl', or 'All' buttons. This allows you to quickly find names that match your preferences."
   },
   {
-    question: "Are the baby names in this database popular names?",
-    answer: "Yes, our database includes a mix of popular, traditional, and unique baby names from various cultures and origins. We regularly update our collection to include trending names as well as timeless classics."
+    question: "Are these baby names popular and modern?",
+    answer: "Yes! Our database includes a carefully curated mix of popular modern names, timeless classics, and unique traditional names from various cultures. We regularly update our collection to include trending names while maintaining a comprehensive selection of traditional favorites."
   },
   {
-    question: "Can I see name meanings and origins?",
-    answer: "While this search page shows the names and genders, our detailed name pages include comprehensive information about name meanings, origins, cultural significance, and popularity trends for each name."
+    question: "Can I find name meanings and cultural origins?",
+    answer: "Absolutely! While this search page displays names and genders, each name in our detailed database includes comprehensive information about its meaning, cultural origin, historical significance, and current popularity trends to help you make an informed decision."
   },
   {
-    question: "How many names are in your database?",
-    answer: "We have thousands of baby names in our database, covering a wide range of cultures, origins, and styles. Each name is carefully researched and includes proper gender classification."
+    question: "How comprehensive is your baby names database?",
+    answer: "We maintain an extensive database with thousands of carefully researched baby names spanning multiple cultures, languages, and traditions. Each name is properly classified by gender and includes detailed background information to help you find the perfect name for your baby."
   },
   {
-    question: "Do you include unisex/gender-neutral names?",
-    answer: "Yes, our database includes gender-neutral names that are classified appropriately. When browsing, you can select 'All' to see every name regardless of gender, or filter by specific gender to narrow your search."
+    question: "Do you include gender-neutral and unisex names?",
+    answer: "Yes, we have a comprehensive collection of gender-neutral and unisex names. When browsing, you can select 'All' to view every name regardless of gender classification, or use the gender filters to narrow your search to specifically boy or girl names."
   },
   {
-    question: "How often is the baby names list updated?",
-    answer: "We regularly update our baby names database with new and trending names, ensuring you have access to both traditional favorites and modern naming trends from around the world."
+    question: "How often do you update your baby names collection?",
+    answer: "We continuously update our baby names database to reflect current naming trends and include new popular names. Our team regularly researches naming patterns, cultural influences, and emerging trends to ensure you have access to both contemporary favorites and timeless classics."
+  },
+  {
+    question: "Can I search for names from specific cultures?",
+    answer: "While this alphabetical search organizes names by letter, our detailed name pages include comprehensive cultural and origin information. You can explore names from various backgrounds including European, Asian, African, Latin, and Middle Eastern origins, each with their unique meanings and significance."
+  },
+  {
+    question: "Are there names suitable for twins or siblings?",
+    answer: "Yes! Many parents use our search to find complementary names for twins or siblings. You can browse names starting with the same letter or explore different letters to find names that sound harmonious together while maintaining individual character."
+  }
+];
+
+// Article Tags
+const articleTags = [
+  "Baby Names 2024", "Popular Names", "Unique Names", "Traditional Names", 
+  "Modern Names", "Name Meanings", "Cultural Names", "Name Origins",
+  "Boy Names", "Girl Names", "Unisex Names", "Name Trends",
+  "Naming Tips", "Baby Name Ideas", "Name Search", "Alphabetical Names"
+];
+
+// Related Articles Data
+const relatedArticles = [
+  {
+    title: "Top 100 Baby Names of 2024: Trending & Popular",
+    slug: "blogs/top-100-baby-names-2024",
+    description: "Discover the most popular and trending baby names for boys and girls this year with detailed meanings and origins.",
+    category: "Popular Names",
+    readTime: "5 min read"
+  },
+  {
+    title: "Unique Baby Names with Beautiful Meanings",
+    slug: "blogs/unique-baby-names-meanings",
+    description: "Explore rare and meaningful baby names that stand out from the crowd with special significance.",
+    category: "Unique Names",
+    readTime: "4 min read"
+  },
+  {
+    title: "Traditional & Classic Baby Names That Never Fade",
+    slug: "blogs/traditional-classic-baby-names",
+    description: "Timeless names that have stood the test of generations and continue to be beloved choices.",
+    category: "Classic Names",
+    readTime: "6 min read"
+  },
+  {
+    title: "How to Choose the Perfect Baby Name: Expert Guide",
+    slug: "blogs/how-to-choose-baby-name",
+    description: "Comprehensive tips and considerations for selecting the ideal name that your child will love.",
+    category: "Naming Tips",
+    readTime: "7 min read"
+  },
+  {
+    title: "Cultural Baby Names from Around the World",
+    slug: "blogs/cultural-baby-names-world",
+    description: "Beautiful names from different cultures with their special meanings and traditions.",
+    category: "Cultural Names",
+    readTime: "8 min read"
+  },
+  {
+    title: "Modern & Trendy Baby Names for Contemporary Parents",
+    slug: "blogs/modern-trendy-baby-names",
+    description: "Contemporary names that are gaining popularity among new parents in the digital age.",
+    category: "Modern Names",
+    readTime: "5 min read"
   }
 ];
 
@@ -202,6 +264,111 @@ export default function BabyNamesSearch() {
               </p>
             )}
 
+            {/* Article Tags */}
+            <section className="max-w-4xl mx-auto mb-12">
+              <h2 className="text-2xl font-bold text-center mb-6 text-orange-500">
+                📚 Explore Baby Name Topics
+              </h2>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {articleTags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm border border-gray-200 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 transition-colors cursor-pointer"
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="max-w-4xl mx-auto mb-12">
+              <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
+                ❓ Frequently Asked Questions
+              </h2>
+              <div className="space-y-4 bg-white border border-gray-200 rounded-xl p-6">
+                {faqData.map((faq, idx) => (
+                  <div key={idx} className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0">
+                    <button
+                      onClick={() => toggleFAQ(idx)}
+                      className="w-full flex justify-between items-center text-left"
+                      aria-expanded={openFAQ === idx}
+                      aria-controls={`faq-answer-${idx}`}
+                    >
+                      <span className="text-lg font-medium text-gray-800">{faq.question}</span>
+                      <span className="text-xl text-orange-500 font-bold ml-4 flex-shrink-0">
+                        {openFAQ === idx ? "−" : "+"}
+                      </span>
+                    </button>
+                    {openFAQ === idx && (
+                      <div
+                        id={`faq-answer-${idx}`}
+                        className="text-gray-600 mt-3 leading-relaxed pl-2"
+                      >
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Related Articles */}
+            <section className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
+                📖 Continue Reading
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedArticles.map((article, index) => (
+                  <Link
+                    key={index}
+                    href={`/${article.slug}`}
+                    className="block border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white group"
+                  >
+                    <div className="p-5">
+                      <div className="flex justify-between items-start mb-3">
+                        <span className="inline-block bg-orange-100 text-orange-600 text-xs font-medium px-2 py-1 rounded">
+                          {article.category}
+                        </span>
+                        <span className="text-xs text-gray-500">{article.readTime}</span>
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2 text-gray-800 line-clamp-2 group-hover:text-orange-500 transition-colors">
+                        {article.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm line-clamp-3 mb-3">
+                        {article.description}
+                      </p>
+                      <span className="text-orange-500 font-medium text-sm inline-flex items-center gap-1 group-hover:text-orange-600 transition-colors">
+                        Read More →
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          </div>
+        )}
+
+        {/* Default content when no letter selected */}
+        {!selectedLetter && (
+          <div className="space-y-16">
+            {/* Article Tags */}
+            <section className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-center mb-6 text-orange-500">
+                📚 Explore Baby Name Topics
+              </h2>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {articleTags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm border border-gray-200 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 transition-colors cursor-pointer"
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </section>
+
             {/* FAQ Section */}
             <section className="max-w-4xl mx-auto">
               <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
@@ -233,41 +400,41 @@ export default function BabyNamesSearch() {
                 ))}
               </div>
             </section>
-          </div>
-        )}
 
-        {/* Default FAQ when no letter selected */}
-        {!selectedLetter && (
-          <section className="max-w-4xl mx-auto mt-12">
-            <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
-              ❓ Frequently Asked Questions
-            </h2>
-            <div className="space-y-4 bg-white border border-gray-200 rounded-xl p-6">
-              {faqData.map((faq, idx) => (
-                <div key={idx} className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0">
-                  <button
-                    onClick={() => toggleFAQ(idx)}
-                    className="w-full flex justify-between items-center text-left"
-                    aria-expanded={openFAQ === idx}
-                    aria-controls={`faq-answer-${idx}`}
+            {/* Related Articles */}
+            <section className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
+                📖 Popular Baby Name Articles
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedArticles.map((article, index) => (
+                  <Link
+                    key={index}
+                    href={`/${article.slug}`}
+                    className="block border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white group"
                   >
-                    <span className="text-lg font-medium text-gray-800">{faq.question}</span>
-                    <span className="text-xl text-orange-500 font-bold ml-4 flex-shrink-0">
-                      {openFAQ === idx ? "−" : "+"}
-                    </span>
-                  </button>
-                  {openFAQ === idx && (
-                    <div
-                      id={`faq-answer-${idx}`}
-                      className="text-gray-600 mt-3 leading-relaxed pl-2"
-                    >
-                      {faq.answer}
+                    <div className="p-5">
+                      <div className="flex justify-between items-start mb-3">
+                        <span className="inline-block bg-orange-100 text-orange-600 text-xs font-medium px-2 py-1 rounded">
+                          {article.category}
+                        </span>
+                        <span className="text-xs text-gray-500">{article.readTime}</span>
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2 text-gray-800 line-clamp-2 group-hover:text-orange-500 transition-colors">
+                        {article.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm line-clamp-3 mb-3">
+                        {article.description}
+                      </p>
+                      <span className="text-orange-500 font-medium text-sm inline-flex items-center gap-1 group-hover:text-orange-600 transition-colors">
+                        Read More →
+                      </span>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </section>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          </div>
         )}
       </main>
 

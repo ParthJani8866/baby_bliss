@@ -12,29 +12,240 @@ import Link from "next/link";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-// SEO Properties function
-const generateSEOProperties = (selectedGender, selectedLetter) => {
+// Helper function for example names
+const getExampleNames = (gender, letter) => {
+  const examples = {
+    'Boy': {
+      'A': 'Alexander, Aaron, Adam',
+      'B': 'Benjamin, Brandon, Brayden',
+      'C': 'Caleb, Christopher, Carter',
+      'D': 'Daniel, David, Dylan',
+      'E': 'Ethan, Elijah, Evan',
+      'F': 'Finn, Felix, Franklin',
+      'G': 'Gabriel, Gavin, George',
+      'H': 'Henry, Hunter, Hayden',
+      'I': 'Isaac, Ian, Ivan',
+      'J': 'James, Jacob, Jackson',
+      'K': 'Kai, Kevin, Kyle',
+      'L': 'Liam, Lucas, Logan',
+      'M': 'Mason, Michael, Matthew',
+      'N': 'Noah, Nathan, Nicholas',
+      'O': 'Oliver, Owen, Oscar',
+      'P': 'Peter, Parker, Patrick',
+      'Q': 'Quinn, Quentin, Quincy',
+      'R': 'Ryan, Robert, Riley',
+      'S': 'Samuel, Sebastian, Simon',
+      'T': 'Thomas, Tyler, Theodore',
+      'U': 'Uriah, Uriel, Ulysses',
+      'V': 'Victor, Vincent, Vance',
+      'W': 'William, Wyatt, Wesley',
+      'X': 'Xavier, Xander, Xavi',
+      'Y': 'Yusuf, Yosef, Yael',
+      'Z': 'Zachary, Zion, Zane'
+    },
+    'Girl': {
+      'A': 'Ava, Amelia, Abigail',
+      'B': 'Bella, Brooke, Brianna',
+      'C': 'Chloe, Charlotte, Camila',
+      'D': 'Daisy, Delilah, Diana',
+      'E': 'Emma, Emily, Ella',
+      'F': 'Faith, Fiona, Freya',
+      'G': 'Grace, Gabriella, Genevieve',
+      'H': 'Hannah, Harper, Hazel',
+      'I': 'Isabella, Ivy, Iris',
+      'J': 'Jessica, Julia, Jasmine',
+      'K': 'Katherine, Kayla, Kennedy',
+      'L': 'Lily, Lucy, Leah',
+      'M': 'Mia, Madison, Maya',
+      'N': 'Nora, Natalie, Naomi',
+      'O': 'Olivia, Oakley, Ophelia',
+      'P': 'Penelope, Paige, Phoebe',
+      'Q': 'Quinn, Queen, Quest',
+      'R': 'Riley, Ruby, Rose',
+      'S': 'Sophia, Scarlett, Stella',
+      'T': 'Taylor, Trinity, Tessa',
+      'U': 'Uma, Unity, Ursula',
+      'V': 'Victoria, Violet, Vanessa',
+      'W': 'Willow, Winter, Wendy',
+      'X': 'Ximena, Xena, Xylie',
+      'Y': 'Yara, Yasmine, Yvonne',
+      'Z': 'Zoe, Zara, Zelda'
+    },
+    'All': {
+      'A': 'Alexander, Ava, Aaron, Amelia',
+      'B': 'Benjamin, Bella, Brandon, Brooke',
+      'C': 'Caleb, Chloe, Christopher, Charlotte',
+      'D': 'Daniel, Daisy, David, Delilah',
+      'E': 'Ethan, Emma, Elijah, Emily',
+      'F': 'Finn, Faith, Felix, Fiona',
+      'G': 'Gabriel, Grace, Gavin, Gabriella',
+      'H': 'Henry, Hannah, Hunter, Harper',
+      'I': 'Isaac, Isabella, Ian, Ivy',
+      'J': 'James, Jessica, Jacob, Julia',
+      'K': 'Kai, Katherine, Kevin, Kayla',
+      'L': 'Liam, Lily, Lucas, Lucy',
+      'M': 'Mason, Mia, Michael, Madison',
+      'N': 'Noah, Nora, Nathan, Natalie',
+      'O': 'Oliver, Olivia, Owen, Oakley',
+      'P': 'Peter, Penelope, Parker, Paige',
+      'Q': 'Quinn, Queen, Quentin, Quest',
+      'R': 'Ryan, Riley, Robert, Ruby',
+      'S': 'Samuel, Sophia, Sebastian, Scarlett',
+      'T': 'Thomas, Taylor, Tyler, Trinity',
+      'U': 'Uriah, Uma, Uriel, Unity',
+      'V': 'Victor, Victoria, Vincent, Violet',
+      'W': 'William, Willow, Wyatt, Winter',
+      'X': 'Xavier, Ximena, Xander, Xena',
+      'Y': 'Yusuf, Yara, Yosef, Yasmine',
+      'Z': 'Zachary, Zoe, Zion, Zara'
+    }
+  };
+  
+  return examples[gender]?.[letter] || 'popular names';
+};
+
+// Enhanced FAQ Data
+const faqData = (selectedGender, selectedLetter, nameCount) => [
+  {
+    question: `How many ${selectedGender.toLowerCase()} names start with ${selectedLetter}?`,
+    answer: `Our database contains ${nameCount} ${selectedGender.toLowerCase()} names starting with ${selectedLetter}, including popular, traditional, and unique names from various cultures and origins. We regularly update our collection with new and trending names.`
+  },
+  {
+    question: `Are ${selectedGender.toLowerCase()} names starting with ${selectedLetter} currently popular?`,
+    answer: `Many ${selectedGender.toLowerCase()} names starting with ${selectedLetter} are currently trending. Names like ${getExampleNames(selectedGender, selectedLetter)} have seen significant popularity in recent years. However, popularity varies by region and culture.`
+  },
+  {
+    question: "Do you provide name meanings and origins for these names?",
+    answer: "Yes! Each name in our detailed name pages includes comprehensive information about its meaning, origin, cultural significance, pronunciation, and popularity trends. This helps you make an informed decision based on more than just the sound of the name."
+  },
+  {
+    question: `Can I find ${selectedGender.toLowerCase()} names from specific cultures starting with ${selectedLetter}?`,
+    answer: `Absolutely! Our database includes ${selectedGender.toLowerCase()} names starting with ${selectedLetter} from various cultures including English, Spanish, Arabic, Hebrew, Indian, African, and Asian origins. Each name page specifies the cultural background and meaning.`
+  },
+  {
+    question: "How often is your baby names database updated?",
+    answer: "We update our baby names database quarterly with new trending names, popularity statistics, and cultural variations. We also add names based on user requests and emerging naming trends from around the world."
+  },
+  {
+    question: `What are some unique ${selectedGender.toLowerCase()} names starting with ${selectedLetter}?`,
+    answer: `We feature both classic and unique ${selectedGender.toLowerCase()} names starting with ${selectedLetter}. While popular names are common choices, we also highlight rare and distinctive names that stand out while maintaining beautiful meanings and cultural significance.`
+  },
+  {
+    question: "Can I save or shortlist names I like?",
+    answer: "Currently, we recommend taking screenshots or noting down your favorite names. We're working on a name shortlisting feature that will allow you to save and compare names across different letters and genders."
+  }
+];
+
+// Enhanced SEO Properties function
+const generateSEOProperties = (selectedGender, selectedLetter, nameCount) => {
   const baseUrl = "https://baby-toys.shop";
   const currentUrl = `${baseUrl}/baby-names/${selectedGender.toLowerCase()}-names-with-${selectedLetter.toLowerCase()}`;
+  const currentDate = new Date().toISOString().split('T')[0];
   
   const title = selectedGender === "All" 
-    ? `Baby Names Starting with ${selectedLetter} | Belly Buds`
-    : `${selectedGender} Names Starting with ${selectedLetter} | Belly Buds`;
+    ? `Baby Names Starting with ${selectedLetter} | Complete List & Meanings`
+    : `${selectedGender} Names Starting with ${selectedLetter} | Popular & Unique Names`;
   
   const description = selectedGender === "All"
-    ? `Browse all baby names starting with ${selectedLetter}. Discover unique, popular, and traditional names for boys and girls. Find meanings, origins, and popularity trends.`
-    : `Discover ${selectedGender.toLowerCase()} names starting with ${selectedLetter}. Browse popular, unique, and traditional ${selectedGender.toLowerCase()} names with meanings and origins.`;
+    ? `Browse ${nameCount} baby names starting with ${selectedLetter}. Discover unique, popular, and traditional names for boys and girls with meanings, origins, and popularity trends.`
+    : `Discover ${nameCount} ${selectedGender.toLowerCase()} names starting with ${selectedLetter}. Browse popular, unique, and traditional names with meanings, origins, and cultural significance.`;
+
+  // Generate FAQ Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData(selectedGender, selectedLetter, nameCount).map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  // Generate Article Schema for this listing page
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "author": {
+      "@type": "Person",
+      "name": "Parth Jani",
+      "url": baseUrl,
+      "email": "parthskyward@gmail.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Belly Buds",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/logo.png`,
+        "width": 180,
+        "height": 60
+      }
+    },
+    "datePublished": "2024-01-01T00:00:00Z",
+    "dateModified": `${currentDate}T00:00:00Z`,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": currentUrl
+    },
+    "articleSection": "Baby Names",
+    "keywords": `Baby Names, ${selectedGender} Names, Names Starting with ${selectedLetter}, Name Meanings, Baby Name Search, Popular Names, Unique Names`,
+    "inLanguage": "en-US",
+    "wordCount": 1500
+  };
+
+  // Generate Breadcrumb Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": baseUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Baby Names",
+        "item": `${baseUrl}/baby-names`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": `${selectedGender} Names ${selectedLetter}`,
+        "item": currentUrl
+      }
+    ]
+  };
 
   return {
     title,
     description,
     canonical: currentUrl,
+    schemaMarkup: [faqSchema, articleSchema, breadcrumbSchema],
     openGraph: {
       title,
       description,
       url: currentUrl,
-      type: "website",
-      site_name: "Belly Buds"
+      type: "article",
+      site_name: "Belly Buds",
+      locale: "en_US",
+      published_time: "2024-01-01T00:00:00Z",
+      modified_time: `${currentDate}T00:00:00Z`,
+      author: "Parth Jani"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+      creator: "@bellybuds",
+      site: "@bellybuds"
     },
     breadcrumbs: [
       { name: "Home", url: baseUrl },
@@ -46,30 +257,6 @@ const generateSEOProperties = (selectedGender, selectedLetter) => {
     ]
   };
 };
-
-// FAQ Data
-const faqData = (selectedGender, selectedLetter) => [
-  {
-    question: `How many ${selectedGender.toLowerCase()} names start with ${selectedLetter}?`,
-    answer: `Our database contains a comprehensive collection of ${selectedGender.toLowerCase()} names starting with ${selectedLetter}, including popular, traditional, and unique names from various cultures and origins.`
-  },
-  {
-    question: `Are these ${selectedGender.toLowerCase()} names currently popular?`,
-    answer: `We include both classic and trending names. Many names starting with ${selectedLetter} have seen recent popularity, while others are timeless classics that never go out of style.`
-  },
-  {
-    question: "Do you provide name meanings and origins?",
-    answer: "Yes! Each name in our database includes detailed information about its meaning, origin, cultural significance, and popularity trends to help you make an informed decision."
-  },
-  {
-    question: `Can I search for ${selectedGender.toLowerCase()} names from specific cultures?`,
-    answer: `While this page shows all ${selectedGender.toLowerCase()} names starting with ${selectedLetter}, our detailed name pages include cultural and origin information to help you find names from specific backgrounds.`
-  },
-  {
-    question: "How often is the names list updated?",
-    answer: "We regularly update our baby names database with new and trending names, ensuring you have access to both traditional favorites and modern naming trends."
-  }
-];
 
 // Related Articles Data
 const relatedArticles = [
@@ -115,7 +302,8 @@ const relatedArticles = [
 const articleTags = [
   "Baby Names", "Name Meanings", "Boy Names", "Girl Names", "Popular Names",
   "Unique Names", "Traditional Names", "Modern Names", "Name Origins",
-  "Naming Tips", "Baby Name Search", "Alphabetical Names", "Name Trends"
+  "Naming Tips", "Baby Name Search", "Alphabetical Names", "Name Trends",
+  "Parenting", "Newborn", "Baby Care", "Name Inspiration"
 ];
 
 export default function BabyNamesSlugPage() {
@@ -143,8 +331,8 @@ export default function BabyNamesSlugPage() {
       )
     : [];
 
-  const seoProperties = selectedLetter ? generateSEOProperties(selectedGender, selectedLetter) : null;
-  const currentFaqData = selectedLetter ? faqData(selectedGender, selectedLetter) : [];
+  const seoProperties = selectedLetter ? generateSEOProperties(selectedGender, selectedLetter, filteredNames.length) : null;
+  const currentFaqData = selectedLetter ? faqData(selectedGender, selectedLetter, filteredNames.length) : [];
 
   const toggleFAQ = (idx) => setOpenFAQ(openFAQ === idx ? null : idx);
 
@@ -156,14 +344,55 @@ export default function BabyNamesSlugPage() {
           name="description"
           content={seoProperties?.description || "Browse baby names by letter and gender."}
         />
+        <meta name="keywords" content={`baby names, ${selectedGender} names, names starting with ${selectedLetter}, name meanings, baby name search, popular names, unique names`} />
+        
+        {/* Additional SEO Meta Tags */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#F97316" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta name="author" content="Parth Jani" />
+        <meta name="publisher" content="Belly Buds" />
+
+        {/* Favicon Links */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
         {seoProperties && (
           <>
+            {/* Open Graph Meta Tags */}
             <meta property="og:title" content={seoProperties.openGraph.title} />
             <meta property="og:description" content={seoProperties.openGraph.description} />
             <meta property="og:url" content={seoProperties.openGraph.url} />
             <meta property="og:type" content={seoProperties.openGraph.type} />
             <meta property="og:site_name" content={seoProperties.openGraph.site_name} />
+            <meta property="og:locale" content={seoProperties.openGraph.locale} />
+            <meta property="og:published_time" content={seoProperties.openGraph.published_time} />
+            <meta property="og:modified_time" content={seoProperties.openGraph.modified_time} />
+            <meta property="article:author" content={seoProperties.openGraph.author} />
+            
+            {/* Twitter Card Meta Tags */}
+            <meta name="twitter:card" content={seoProperties.twitter.card} />
+            <meta name="twitter:title" content={seoProperties.twitter.title} />
+            <meta name="twitter:description" content={seoProperties.twitter.description} />
+            <meta name="twitter:creator" content={seoProperties.twitter.creator} />
+            <meta name="twitter:site" content={seoProperties.twitter.site} />
+            
+            {/* Canonical URL */}
             <link rel="canonical" href={seoProperties.canonical} />
+            
+            {/* Structured Data */}
+            {seoProperties.schemaMarkup.map((schema, index) => (
+              <script
+                key={index}
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+              />
+            ))}
           </>
         )}
       </Head>
@@ -290,16 +519,31 @@ export default function BabyNamesSlugPage() {
                 <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
                   ❓ Frequently Asked Questions
                 </h2>
-                <div className="space-y-4 bg-white border border-gray-200 rounded-xl p-6">
+                <div 
+                  className="space-y-4 bg-white border border-gray-200 rounded-xl p-6"
+                  itemScope
+                  itemType="https://schema.org/FAQPage"
+                >
                   {currentFaqData.map((faq, idx) => (
-                    <div key={idx} className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0">
+                    <div 
+                      key={idx} 
+                      className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0"
+                      itemScope
+                      itemProp="mainEntity"
+                      itemType="https://schema.org/Question"
+                    >
                       <button
                         onClick={() => toggleFAQ(idx)}
                         className="w-full flex justify-between items-center text-left"
                         aria-expanded={openFAQ === idx}
                         aria-controls={`faq-answer-${idx}`}
                       >
-                        <span className="text-lg font-medium text-gray-800">{faq.question}</span>
+                        <span 
+                          className="text-lg font-medium text-gray-800"
+                          itemProp="name"
+                        >
+                          {faq.question}
+                        </span>
                         <span className="text-xl text-orange-500 font-bold ml-4 flex-shrink-0">
                           {openFAQ === idx ? "−" : "+"}
                         </span>
@@ -308,8 +552,11 @@ export default function BabyNamesSlugPage() {
                         <div
                           id={`faq-answer-${idx}`}
                           className="text-gray-600 mt-3 leading-relaxed pl-2"
+                          itemScope
+                          itemProp="acceptedAnswer"
+                          itemType="https://schema.org/Answer"
                         >
-                          {faq.answer}
+                          <div itemProp="text">{faq.answer}</div>
                         </div>
                       )}
                     </div>
