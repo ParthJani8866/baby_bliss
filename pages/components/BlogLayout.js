@@ -520,7 +520,7 @@ export default function BlogLayout({
           <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-orange-500 transition-colors" itemProp="breadcrumb">Home</Link>
             <span aria-hidden="true" className="text-gray-300">/</span>
-            <Link href="/blog" className="hover:text-orange-500 transition-colors" itemProp="breadcrumb">Blog</Link>
+            <Link href="/blogs" className="hover:text-orange-500 transition-colors" itemProp="breadcrumb">Blogs</Link>
             <span aria-hidden="true" className="text-gray-300">/</span>
             <span className="text-gray-700 font-medium truncate" aria-current="page" itemProp="name">{title}</span>
           </nav>

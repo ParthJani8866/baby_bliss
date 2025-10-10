@@ -83,6 +83,7 @@ const faqData = [
 export default function BabyNamesSearch() {
   const [selectedLetter, setSelectedLetter] = useState(null);
   const [selectedGender, setSelectedGender] = useState("All");
+  const [openFAQ, setOpenFAQ] = useState(null);
 
   // Only filter names if a letter is selected
   const filteredNames = selectedLetter
@@ -94,6 +95,8 @@ export default function BabyNamesSearch() {
     : [];
 
   const seoProperties = generateSEOProperties(selectedLetter, selectedGender);
+
+  const toggleFAQ = (idx) => setOpenFAQ(openFAQ === idx ? null : idx);
 
   return (
     <div className="bg-white text-gray-800 min-h-screen">
@@ -193,27 +196,39 @@ export default function BabyNamesSearch() {
                 ))}
               </div>
             ) : (
-              <h2 className="text-xl font-semibold mb-4 text-gray-800 text-center">
-                Names starting with &quot;{selectedLetter}&quot;{" "}
-                {selectedGender !== "All" ? `(${selectedGender})` : ""}
-              </h2>
-
+              <p className="text-gray-500 italic text-center mb-12">
+                No names found for {selectedLetter}{" "}
+                {selectedGender !== "All" ? `(${selectedGender})` : ""}.
+              </p>
             )}
 
             {/* FAQ Section */}
             <section className="max-w-4xl mx-auto">
               <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
-                Frequently Asked Questions
+                ❓ Frequently Asked Questions
               </h2>
-              <div className="space-y-6">
-                {faqData.map((faq, index) => (
-                  <div key={index} className="bg-gray-50 rounded-lg p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                      {faq.question}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </p>
+              <div className="space-y-4 bg-white border border-gray-200 rounded-xl p-6">
+                {faqData.map((faq, idx) => (
+                  <div key={idx} className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0">
+                    <button
+                      onClick={() => toggleFAQ(idx)}
+                      className="w-full flex justify-between items-center text-left"
+                      aria-expanded={openFAQ === idx}
+                      aria-controls={`faq-answer-${idx}`}
+                    >
+                      <span className="text-lg font-medium text-gray-800">{faq.question}</span>
+                      <span className="text-xl text-orange-500 font-bold ml-4 flex-shrink-0">
+                        {openFAQ === idx ? "−" : "+"}
+                      </span>
+                    </button>
+                    {openFAQ === idx && (
+                      <div
+                        id={`faq-answer-${idx}`}
+                        className="text-gray-600 mt-3 leading-relaxed pl-2"
+                      >
+                        {faq.answer}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -225,17 +240,30 @@ export default function BabyNamesSearch() {
         {!selectedLetter && (
           <section className="max-w-4xl mx-auto mt-12">
             <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
-              Frequently Asked Questions
+              ❓ Frequently Asked Questions
             </h2>
-            <div className="space-y-6">
-              {faqData.map((faq, index) => (
-                <div key={index} className="bg-gray-50 rounded-lg p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                    {faq.question}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {faq.answer}
-                  </p>
+            <div className="space-y-4 bg-white border border-gray-200 rounded-xl p-6">
+              {faqData.map((faq, idx) => (
+                <div key={idx} className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0">
+                  <button
+                    onClick={() => toggleFAQ(idx)}
+                    className="w-full flex justify-between items-center text-left"
+                    aria-expanded={openFAQ === idx}
+                    aria-controls={`faq-answer-${idx}`}
+                  >
+                    <span className="text-lg font-medium text-gray-800">{faq.question}</span>
+                    <span className="text-xl text-orange-500 font-bold ml-4 flex-shrink-0">
+                      {openFAQ === idx ? "−" : "+"}
+                    </span>
+                  </button>
+                  {openFAQ === idx && (
+                    <div
+                      id={`faq-answer-${idx}`}
+                      className="text-gray-600 mt-3 leading-relaxed pl-2"
+                    >
+                      {faq.answer}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
