@@ -363,17 +363,11 @@ export default function BabyNamesHome() {
             ❓ Frequently Asked Questions
           </h2>
           <div 
-            className="space-y-4 bg-white border border-gray-200 rounded-xl p-6"
-            itemScope
-            itemType="https://schema.org/FAQPage"
-          >
+            className="space-y-4 bg-white border border-gray-200 rounded-xl p-6" >
             {faqData.map((faq, idx) => (
               <div 
                 key={idx} 
                 className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0"
-                itemScope
-                itemProp="mainEntity"
-                itemType="https://schema.org/Question"
               >
                 <button
                   onClick={() => toggleFAQ(idx)}
@@ -395,9 +389,6 @@ export default function BabyNamesHome() {
                   <div
                     id={`faq-answer-${idx}`}
                     className="text-gray-600 mt-3 leading-relaxed pl-2"
-                    itemScope
-                    itemProp="acceptedAnswer"
-                    itemType="https://schema.org/Answer"
                   >
                     <div itemProp="text">{faq.answer}</div>
                   </div>
