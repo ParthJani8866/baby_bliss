@@ -195,9 +195,10 @@ export default function BabyNamesSearch() {
               </div>
             ) : (
               <h2 className="text-xl font-semibold mb-4 text-gray-800 text-center">
-                Names starting with &ldquo;{selectedLetter}&rdquo;{" "}
+                Names starting with &quot;{selectedLetter}&quot;{" "}
                 {selectedGender !== "All" ? `(${selectedGender})` : ""}
               </h2>
+
             )}
 
             {/* FAQ Section */}
