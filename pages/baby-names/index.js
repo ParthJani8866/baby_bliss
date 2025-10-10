@@ -75,7 +75,7 @@ export default function BabyNamesHome() {
 
       <Header />
       <BreadcrumbSchema title={seoProperties.title} breadcrumbs={seoProperties.breadcrumbs} />
-      
+
       {/* Sponsored Ad - Top */}
       <div className="my-8 p-4 bg-orange-50 border rounded shadow">
         <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
@@ -121,14 +121,13 @@ export default function BabyNamesHome() {
           ))}
         </div>
 
-        {/* SEO Intro Text */}
-        <div className="text-center text-gray-700 max-w-3xl mx-auto mb-16">
+        <div className="text-center text-gray-700 max-w-3xl mx-auto">
           <p className="mb-4">
             Welcome to the ultimate A–Z baby name search! Choose a letter above
             to explore <strong>popular, rare, and modern baby names</strong> for
-            boys and girls. Whether you're looking for traditional favorites or
+            boys and girls. Whether you&apos;re looking for traditional favorites or
             trendy new ideas, our list helps you find meaningful names that fit
-            your baby's unique personality.
+            your baby&apos;s unique personality.
           </p>
           <p>
             Each page includes detailed lists of{" "}

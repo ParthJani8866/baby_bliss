@@ -16,7 +16,7 @@ const genders = ["All", "Boy", "Girl"];
 // SEO Properties function
 const generateSEOProperties = (selectedLetter = null, selectedGender = "All") => {
   const baseUrl = "https://baby-toys.shop";
-  const currentUrl = selectedLetter 
+  const currentUrl = selectedLetter
     ? `${baseUrl}/baby-names/search?letter=${selectedLetter}&gender=${selectedGender}`
     : `${baseUrl}/baby-names/search`;
 
@@ -42,11 +42,11 @@ const generateSEOProperties = (selectedLetter = null, selectedGender = "All") =>
     breadcrumbs: [
       { name: "Home", url: baseUrl },
       { name: "Baby Names", url: `${baseUrl}/baby-names` },
-      { 
-        name: selectedLetter 
+      {
+        name: selectedLetter
           ? `Names ${selectedLetter}${selectedGender !== "All" ? ` (${selectedGender})` : ''}`
-          : "Search", 
-        url: currentUrl 
+          : "Search",
+        url: currentUrl
       }
     ]
   };
@@ -110,7 +110,7 @@ export default function BabyNamesSearch() {
 
       <Header />
       <BreadcrumbSchema title={seoProperties.title} breadcrumbs={seoProperties.breadcrumbs} />
-      
+
       {/* Sponsored Ad - Top */}
       <div className="my-8 p-4 bg-orange-50 border rounded shadow">
         <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
@@ -146,11 +146,11 @@ export default function BabyNamesSearch() {
               key={gender}
               onClick={() => setSelectedGender(gender)}
               className={`px-6 py-2 rounded-lg font-medium border shadow-sm transition ${selectedGender === gender
-                ? gender === "Boy" 
+                ? gender === "Boy"
                   ? "bg-blue-500 text-white border-blue-600"
                   : gender === "Girl"
-                  ? "bg-pink-500 text-white border-pink-600"
-                  : "bg-orange-500 text-white border-orange-600"
+                    ? "bg-pink-500 text-white border-pink-600"
+                    : "bg-orange-500 text-white border-orange-600"
                 : "bg-white hover:bg-gray-100 border-gray-300"
                 }`}
             >
@@ -194,10 +194,10 @@ export default function BabyNamesSearch() {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500 italic text-center mb-12">
-                No names found for {selectedLetter}{" "}
-                {selectedGender !== "All" ? `(${selectedGender})` : ""}.
-              </p>
+              <h2 className="text-xl font-semibold mb-4 text-gray-800 text-center">
+                Names starting with &ldquo;{selectedLetter}&rdquo;{" "}
+                {selectedGender !== "All" ? `(${selectedGender})` : ""}
+              </h2>
             )}
 
             {/* FAQ Section */}

@@ -238,7 +238,7 @@ export default function BabyNamesSlugPage() {
             </>
           ) : (
             <p className="text-gray-500 italic text-center mb-16">
-              No {selectedGender.toLowerCase()} names found for "{selectedLetter}".
+              No {selectedGender.toLowerCase()} names found for &ldquo;{selectedLetter}&rdquo;.
             </p>
           )
         ) : (
