@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useState } from "next/navigation";
 import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -70,9 +70,57 @@ const faqData = (selectedGender, selectedLetter) => [
   }
 ];
 
+// Related Articles Data
+const relatedArticles = [
+  {
+    title: "Top 100 Baby Names of 2024",
+    slug: "blogs/top-100-baby-names-2024",
+    description: "Discover the most popular and trending baby names for boys and girls this year.",
+    category: "Popular Names"
+  },
+  {
+    title: "Unique Baby Names with Beautiful Meanings",
+    slug: "blogs/unique-baby-names-meanings",
+    description: "Explore rare and meaningful baby names that stand out from the crowd.",
+    category: "Unique Names"
+  },
+  {
+    title: "Traditional & Classic Baby Names",
+    slug: "blogs/traditional-classic-baby-names",
+    description: "Timeless names that have stood the test of time and never go out of style.",
+    category: "Classic Names"
+  },
+  {
+    title: "Modern & Trendy Baby Names",
+    slug: "blogs/modern-trendy-baby-names",
+    description: "Contemporary names that are gaining popularity among new parents.",
+    category: "Modern Names"
+  },
+  {
+    title: "Cultural Baby Names from Around the World",
+    slug: "blogs/cultural-baby-names-world",
+    description: "Beautiful names from different cultures and their special meanings.",
+    category: "Cultural Names"
+  },
+  {
+    title: "How to Choose the Perfect Baby Name",
+    slug: "blogs/how-to-choose-baby-name",
+    description: "Expert tips and considerations for selecting the ideal name for your baby.",
+    category: "Naming Tips"
+  }
+];
+
+// Article Tags
+const articleTags = [
+  "Baby Names", "Name Meanings", "Boy Names", "Girl Names", "Popular Names",
+  "Unique Names", "Traditional Names", "Modern Names", "Name Origins",
+  "Naming Tips", "Baby Name Search", "Alphabetical Names", "Name Trends"
+];
+
 export default function BabyNamesSlugPage() {
   const params = useParams();
   const slug = params?.slug ?? "default";
+  const [openFAQ, setOpenFAQ] = useState(null);
 
   // Parse slug, e.g. "girl-names-with-a"
   const lowerSlug = slug.toLowerCase();
@@ -96,6 +144,8 @@ export default function BabyNamesSlugPage() {
 
   const seoProperties = selectedLetter ? generateSEOProperties(selectedGender, selectedLetter) : null;
   const currentFaqData = selectedLetter ? faqData(selectedGender, selectedLetter) : [];
+
+  const toggleFAQ = (idx) => setOpenFAQ(openFAQ === idx ? null : idx);
 
   return (
     <div className="bg-white text-gray-800 min-h-screen">
@@ -197,7 +247,7 @@ export default function BabyNamesSlugPage() {
         {selectedLetter ? (
           filteredNames.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-12">
                 {filteredNames.map((baby, i) => (
                   <div
                     key={i}
@@ -217,21 +267,82 @@ export default function BabyNamesSlugPage() {
                 ))}
               </div>
 
+              {/* Article Tags */}
+              <section className="max-w-4xl mx-auto mb-12">
+                <h2 className="text-2xl font-bold text-center mb-6 text-orange-500">
+                  📚 Related Topics
+                </h2>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {articleTags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm border border-gray-200 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 transition-colors cursor-pointer"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </section>
+
               {/* FAQ Section */}
+              <section className="max-w-4xl mx-auto mb-12">
+                <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
+                  ❓ Frequently Asked Questions
+                </h2>
+                <div className="space-y-4 bg-white border border-gray-200 rounded-xl p-6">
+                  {currentFaqData.map((faq, idx) => (
+                    <div key={idx} className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0">
+                      <button
+                        onClick={() => toggleFAQ(idx)}
+                        className="w-full flex justify-between items-center text-left"
+                        aria-expanded={openFAQ === idx}
+                        aria-controls={`faq-answer-${idx}`}
+                      >
+                        <span className="text-lg font-medium text-gray-800">{faq.question}</span>
+                        <span className="text-xl text-orange-500 font-bold ml-4 flex-shrink-0">
+                          {openFAQ === idx ? "−" : "+"}
+                        </span>
+                      </button>
+                      {openFAQ === idx && (
+                        <div
+                          id={`faq-answer-${idx}`}
+                          className="text-gray-600 mt-3 leading-relaxed pl-2"
+                        >
+                          {faq.answer}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* Related Articles */}
               <section className="max-w-4xl mx-auto">
                 <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
-                  Frequently Asked Questions
+                  📖 Continue Reading
                 </h2>
-                <div className="space-y-6">
-                  {currentFaqData.map((faq, index) => (
-                    <div key={index} className="bg-gray-50 rounded-lg p-6 shadow-sm">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                        {faq.question}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {relatedArticles.map((article, index) => (
+                    <Link
+                      key={index}
+                      href={`/${article.slug}`}
+                      className="block border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white group"
+                    >
+                      <div className="p-5">
+                        <span className="inline-block bg-orange-100 text-orange-600 text-xs font-medium px-2 py-1 rounded mb-3">
+                          {article.category}
+                        </span>
+                        <h3 className="text-lg font-semibold mb-2 text-gray-800 line-clamp-2 group-hover:text-orange-500 transition-colors">
+                          {article.title}
+                        </h3>
+                        <p className="text-gray-600 text-sm line-clamp-3 mb-3">
+                          {article.description}
+                        </p>
+                        <span className="text-orange-500 font-medium text-sm inline-flex items-center gap-1 group-hover:text-orange-600 transition-colors">
+                          Read More →
+                        </span>
+                      </div>
+                    </Link>
                   ))}
                 </div>
               </section>
