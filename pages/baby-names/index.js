@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useParams } from "next/navigation";
 import Head from "next/head";
 import Link from "next/link";
 import Header from "../components/Header";
