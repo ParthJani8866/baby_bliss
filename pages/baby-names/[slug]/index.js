@@ -100,7 +100,7 @@ const getExampleNames = (gender, letter) => {
       'Z': 'Zachary, Zoe, Zion, Zara'
     }
   };
-  
+
   return examples[gender]?.[letter] || 'popular names';
 };
 
@@ -141,11 +141,11 @@ const generateSEOProperties = (selectedGender, selectedLetter, nameCount) => {
   const baseUrl = "https://baby-toys.shop";
   const currentUrl = `${baseUrl}/baby-names/${selectedGender.toLowerCase()}-names-with-${selectedLetter.toLowerCase()}`;
   const currentDate = new Date().toISOString().split('T')[0];
-  
-  const title = selectedGender === "All" 
+
+  const title = selectedGender === "All"
     ? `Baby Names Starting with ${selectedLetter} | Complete List & Meanings`
     : `${selectedGender} Names Starting with ${selectedLetter} | Popular & Unique Names`;
-  
+
   const description = selectedGender === "All"
     ? `Browse ${nameCount} baby names starting with ${selectedLetter}. Discover unique, popular, and traditional names for boys and girls with meanings, origins, and popularity trends.`
     : `Discover ${nameCount} ${selectedGender.toLowerCase()} names starting with ${selectedLetter}. Browse popular, unique, and traditional names with meanings, origins, and cultural significance.`;
@@ -250,9 +250,9 @@ const generateSEOProperties = (selectedGender, selectedLetter, nameCount) => {
     breadcrumbs: [
       { name: "Home", url: baseUrl },
       { name: "Baby Names", url: `${baseUrl}/baby-names` },
-      { 
-        name: `${selectedGender} Names ${selectedLetter}`, 
-        url: currentUrl 
+      {
+        name: `${selectedGender} Names ${selectedLetter}`,
+        url: currentUrl
       }
     ]
   };
@@ -311,6 +311,21 @@ export default function BabyNamesSlugPage() {
   const slug = params?.slug ?? "default";
   const [openFAQ, setOpenFAQ] = useState(null);
 
+
+  const loadLikedNames = () => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("likedNames");
+      return stored ? JSON.parse(stored) : {};
+    }
+    return {};
+  };
+  const [likedNames, setLikedNames] = useState(loadLikedNames());
+  const toggleLike = (name) => {
+    setLikedNames((prev) => ({
+      ...prev,
+      [name]: !prev[name]
+    }));
+  };
   // Parse slug, e.g. "girl-names-with-a"
   const lowerSlug = slug.toLowerCase();
 
@@ -325,10 +340,10 @@ export default function BabyNamesSlugPage() {
 
   const filteredNames = selectedLetter
     ? babyNames.filter(
-        (b) =>
-          b.name.startsWith(selectedLetter) &&
-          (selectedGender === "All" || b.gender === selectedGender)
-      )
+      (b) =>
+        b.name.startsWith(selectedLetter) &&
+        (selectedGender === "All" || b.gender === selectedGender)
+    )
     : [];
 
   const seoProperties = selectedLetter ? generateSEOProperties(selectedGender, selectedLetter, filteredNames.length) : null;
@@ -345,7 +360,7 @@ export default function BabyNamesSlugPage() {
           content={seoProperties?.description || "Browse baby names by letter and gender."}
         />
         <meta name="keywords" content={`baby names, ${selectedGender} names, names starting with ${selectedLetter}, name meanings, baby name search, popular names, unique names`} />
-        
+
         {/* Additional SEO Meta Tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#F97316" />
@@ -374,17 +389,17 @@ export default function BabyNamesSlugPage() {
             <meta property="og:published_time" content={seoProperties.openGraph.published_time} />
             <meta property="og:modified_time" content={seoProperties.openGraph.modified_time} />
             <meta property="article:author" content={seoProperties.openGraph.author} />
-            
+
             {/* Twitter Card Meta Tags */}
             <meta name="twitter:card" content={seoProperties.twitter.card} />
             <meta name="twitter:title" content={seoProperties.twitter.title} />
             <meta name="twitter:description" content={seoProperties.twitter.description} />
             <meta name="twitter:creator" content={seoProperties.twitter.creator} />
             <meta name="twitter:site" content={seoProperties.twitter.site} />
-            
+
             {/* Canonical URL */}
             <link rel="canonical" href={seoProperties.canonical} />
-            
+
             {/* Structured Data */}
             {seoProperties.schemaMarkup.map((schema, index) => (
               <script
@@ -399,7 +414,7 @@ export default function BabyNamesSlugPage() {
 
       <Header />
       {seoProperties && <BreadcrumbSchema title={seoProperties.title} breadcrumbs={seoProperties.breadcrumbs} />}
-      
+
       {/* Sponsored Ad - Top */}
       <div className="my-8 p-4 bg-orange-50 border rounded shadow">
         <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
@@ -419,11 +434,10 @@ export default function BabyNamesSlugPage() {
             <Link
               key={letter}
               href={`/baby-names/${selectedGender.toLowerCase()}-names-with-${letter.toLowerCase()}`}
-              className={`p-2 rounded-lg text-sm font-semibold border shadow-sm transition ${
-                selectedLetter === letter
-                  ? "bg-orange-500 text-white border-orange-600"
-                  : "bg-white hover:bg-gray-100 border-gray-300"
-              }`}
+              className={`p-2 rounded-lg text-sm font-semibold border shadow-sm transition ${selectedLetter === letter
+                ? "bg-orange-500 text-white border-orange-600"
+                : "bg-white hover:bg-gray-100 border-gray-300"
+                }`}
             >
               {letter}
             </Link>
@@ -434,31 +448,28 @@ export default function BabyNamesSlugPage() {
         <div className="flex justify-center gap-4 mb-8">
           <Link
             href={`/baby-names/boy-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-            className={`px-6 py-2 rounded-lg font-medium border shadow-sm transition ${
-              selectedGender === "Boy" 
-                ? "bg-blue-500 text-white border-blue-600" 
-                : "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100"
-            }`}
+            className={`px-6 py-2 rounded-lg font-medium border shadow-sm transition ${selectedGender === "Boy"
+              ? "bg-blue-500 text-white border-blue-600"
+              : "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100"
+              }`}
           >
             Boy Names
           </Link>
           <Link
             href={`/baby-names/girl-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-            className={`px-6 py-2 rounded-lg font-medium border shadow-sm transition ${
-              selectedGender === "Girl" 
-                ? "bg-pink-500 text-white border-pink-600" 
-                : "bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100"
-            }`}
+            className={`px-6 py-2 rounded-lg font-medium border shadow-sm transition ${selectedGender === "Girl"
+              ? "bg-pink-500 text-white border-pink-600"
+              : "bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100"
+              }`}
           >
             Girl Names
           </Link>
           <Link
             href={`/baby-names/baby-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-            className={`px-6 py-2 rounded-lg font-medium border shadow-sm transition ${
-              selectedGender === "All" 
-                ? "bg-gray-500 text-white border-gray-600" 
-                : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
-            }`}
+            className={`px-6 py-2 rounded-lg font-medium border shadow-sm transition ${selectedGender === "All"
+              ? "bg-gray-500 text-white border-gray-600"
+              : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
+              }`}
           >
             All Names
           </Link>
@@ -470,7 +481,14 @@ export default function BabyNamesSlugPage() {
             <p className="text-gray-600">
               Found <strong>{filteredNames.length}</strong> {selectedGender.toLowerCase()} name{filteredNames.length !== 1 ? 's' : ''} starting with <strong>{selectedLetter}</strong>
             </p>
+            <p className="text-gray-600">
+              <strong>Your favorite names: </strong>{" "}
+              {Object.keys(likedNames)
+                .filter((name) => likedNames[name])
+                .join(", ") || "None"}
+            </p>
           </div>
+
         )}
 
         {/* Results */}
@@ -485,14 +503,22 @@ export default function BabyNamesSlugPage() {
                   >
                     <span className="font-medium">{baby.name}</span>
                     <span
-                      className={`text-xs px-2 py-1 rounded-full ${
-                        baby.gender === "Boy"
-                          ? "bg-blue-100 text-blue-700"
-                          : "bg-pink-100 text-pink-700"
-                      }`}
+                      className={`text-xs px-2 py-1 rounded-full ${baby.gender === "Boy"
+                        ? "bg-blue-100 text-blue-700"
+                        : "bg-pink-100 text-pink-700"
+                        }`}
                     >
                       {baby.gender}
                     </span>
+                    <button
+                      onClick={() => toggleLike(baby.name)}
+                      className={`px-2 py-1 rounded text-white text-sm font-semibold transition ${likedNames[baby.name]
+                        ? "bg-red-500 hover:bg-red-600"
+                        : "bg-gray-400 hover:bg-gray-500"
+                        }`}
+                    >
+                      {likedNames[baby.name] ? "♥" : "♡"}
+                    </button>
                   </div>
                 ))}
               </div>
@@ -519,15 +545,15 @@ export default function BabyNamesSlugPage() {
                 <h2 className="text-2xl font-bold text-center mb-8 text-orange-500">
                   ❓ Frequently Asked Questions
                 </h2>
-                <div 
+                <div
                   className="space-y-4 bg-white border border-gray-200 rounded-xl p-6"
-                 
+
                 >
                   {currentFaqData.map((faq, idx) => (
-                    <div 
-                      key={idx} 
+                    <div
+                      key={idx}
                       className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0"
-                     
+
                     >
                       <button
                         onClick={() => toggleFAQ(idx)}
@@ -535,7 +561,7 @@ export default function BabyNamesSlugPage() {
                         aria-expanded={openFAQ === idx}
                         aria-controls={`faq-answer-${idx}`}
                       >
-                        <span 
+                        <span
                           className="text-lg font-medium text-gray-800"
                         >
                           {faq.question}
@@ -548,7 +574,7 @@ export default function BabyNamesSlugPage() {
                         <div
                           id={`faq-answer-${idx}`}
                           className="text-gray-600 mt-3 leading-relaxed pl-2"
-                       
+
                         >
                           <div itemProp="text">{faq.answer}</div>
                         </div>

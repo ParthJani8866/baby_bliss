@@ -137,7 +137,7 @@ export default function Header() {
             <BookOpenIcon className="w-5 h-5" /> Blogs
           </Link>
           <Link
-            href="/baby-names/baby-names-search"
+            href="/baby-names"
             className="flex items-center gap-1 text-green-900 hover:text-green-700 font-medium"
           >
             <UserGroupIcon className="w-5 h-5" /> Baby names
