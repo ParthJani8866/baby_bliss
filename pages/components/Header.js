@@ -61,7 +61,12 @@ export default function Header() {
     {
       label: "Pregnancy Weight Calculator",
       href: "/pregnancy/pregnancy-weight-gain-calculator",
-    }
+    },
+    {
+      label: "Chinese Gender Prediction",
+      href: "/pregnancy/chinese-gender-prediction",
+    },
+    
   ];
 
   return (
