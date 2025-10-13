@@ -16,7 +16,7 @@ export default function Blogs() {
     return () => clearTimeout(timer);
   }, []);
 
-   const blogPosts = [
+  const blogPosts = [
     { title: "Newborn Baby Clothes: What You Need to Know in 2025", slug: "newborn-baby-clothes", description: "Complete guide to newborn baby clothes, essentials, safety tips, brands, and care instructions." },
     { title: "10 Best Baby Diapers: Absorbency, Comfort & Eco-friendly Picks", slug: "best-baby-diapers", description: "Explore the top diapers for babies, including eco-friendly and comfortable options." },
     { title: "Breastfeeding vs Formula: Pros & Cons Every Parent Should Consider", slug: "breastfeeding-vs-formula", description: "Learn about breastfeeding and formula feeding, and decide what’s best for your baby." },
@@ -29,7 +29,10 @@ export default function Blogs() {
     { title: "Self-Care for Stay-At-Home Moms: Tips for Wellbeing and Balance", slug: "self-care-for-moms", description: "Important self-care tips for stay-at-home moms to maintain health and balance." },
     { title: "Baby Diapers: Absorbency, Comfort, Disposable Bags & Diaper Liners", slug: "disposable-bags-and-diaper-liners", description: "Guide on disposable diaper bags and liners for a cleaner, easier diaper-changing routine." },
     { title: "Top 10 Must-Have Baby Gear Essentials for New Parents", slug: "baby-gear-essentials", description: "Bringing a newborn home can be overwhelming, but having the right gear can make a huge difference." },
-    { title: "Is Bad Parenting Based on a True Story?", slug: "is-bad-parenting-based-on-a-true-story", description: "A compassionate, evidence-informed long-form guide exploring whether portrayals of bad parenting reflect reality. Includes practical do’s & don’ts, a 6-week recovery plan, daily tools, and expanded FAQs." }
+    { title: "Is Bad Parenting Based on a True Story?", slug: "is-bad-parenting-based-on-a-true-story", description: "A compassionate, evidence-informed long-form guide exploring whether portrayals of bad parenting reflect reality. Includes practical do’s & don’ts, a 6-week recovery plan, daily tools, and expanded FAQs." },
+    
+    { title: "Parental Opt-Out Rights: An Overview", slug: "parental-opt-out-rights-in-education", description: "Parental opt-out rights refer to the legal authority of parents to exempt their children from specific parts of their public school education that they find objectionable. This can include certain curricula, standardized tests, health services, and data collection activities. The concept is rooted in the fundamental belief that parents have the primary role in directing the upbringing and education of their children." },
+    { title: "Parenting Styles: The Blueprint for Child Development", slug: "parenting-styles", description: "Your parenting style is more than just a collection of habits—it's the emotional climate you create and the strategic framework you use to raise your child. Developed from the groundbreaking work of psychologist Diana Baumrind in the 1960s and later expanded by others, parenting styles are categorized based on two crucial dimensions: responsiveness (warmth and support) and demandingness (control and expectations)." }
   ];
   return (
     <div className="bg-gray-50 text-gray-800 min-h-screen">
