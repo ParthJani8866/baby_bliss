@@ -27,13 +27,15 @@ export default function SimpleJoditEditor({ value = '', onChange }) {
 
   return (
     <JoditEditor
+      id="postContent"    // ✅ add id
+      name="content"      // ✅ add name
       value={content}
       config={config}
       onBlur={(newContent) => {
         setContent(newContent)
         onChange && onChange(newContent)
       }}
-      onChange={() => {}}
+      onChange={() => { }}
     />
   )
 }

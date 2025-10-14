@@ -485,6 +485,8 @@ function CreatePostModal({ onClose, onSubmit, loading }) {
   });
 
   const handleSubmit = (e) => {
+    console.log('dfsdff');
+
     e.preventDefault();
     if (formData.title.trim() && isContentValid) {
       onSubmit(formData);
@@ -519,6 +521,8 @@ function CreatePostModal({ onClose, onSubmit, loading }) {
             <input
               type="text"
               required
+              id="postTitle"         // ✅ add id
+              name="title"           // ✅ add name
               value={formData.title}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, title: e.target.value }))
@@ -538,6 +542,8 @@ function CreatePostModal({ onClose, onSubmit, loading }) {
               Content *
             </label>
             <SimpleJoditEditor
+              id="postContent"    // ✅ add id
+              name="content"      // ✅ add name
               value={formData.content}
               onChange={(html) => setFormData({ ...formData, content: html })}
             />
