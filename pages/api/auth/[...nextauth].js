@@ -1,57 +1,65 @@
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-
-// Simple in-memory user store for demo purposes
-const users = [
-  {
-    id: '1',
-    name: 'Demo User',
-    email: 'demo@example.com',
-    password: 'password',
-  },
-];
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "../../../lib/mongodb";
 
 export const authOptions = {
   providers: [
-    CredentialsProvider({
-      name: 'Credentials',
-      credentials: {
-        email: { label: 'Email', type: 'email' },
-        password: { label: 'Password', type: 'password' },
-      },
-      async authorize(credentials) {
-        const user = users.find(
-          (u) => u.email === credentials.email && u.password === credentials.password
-        );
-
-        if (user) {
-          return {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-          };
-        }
-        return null;
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      authorization: {
+        params: { prompt: "select_account" }, // forces account selection
       },
     }),
   ],
+  adapter: MongoDBAdapter(clientPromise),
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  pages: {
+    signIn: "/auth/signin", // custom sign-in page
+    error: "/", // redirect on error
   },
   callbacks: {
+    async signIn({ user, account }) {
+      try {
+        const db = (await clientPromise).db();
+        const usersCollection = db.collection("users");
+
+        const existingUser = await usersCollection.findOne({ email: user.email });
+
+        if (existingUser) {
+          if (existingUser.provider !== account.provider) {
+            await usersCollection.updateOne(
+              { email: user.email },
+              { $set: { provider: account.provider, providerAccountId: account.id } }
+            );
+          }
+        }
+        return true;
+      } catch (error) {
+        console.error("SignIn callback error:", error);
+        return false;
+      }
+    },
+
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+        token.picture = user.image;
       }
       return token;
     },
+
     async session({ session, token }) {
-      session.user.id = token.id;
+      session.user.name = token.name;
+      session.user.email = token.email;
+      session.user.image = token.picture;
       return session;
     },
-  },
-  pages: {
-    signIn: '/auth/signin',
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
