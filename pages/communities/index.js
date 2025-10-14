@@ -374,23 +374,20 @@ function CommunityCard({ community, session, onJoin, onLeave, isMember }) {
   );
 }
 
-// Server-side rendering for initial data (public access)
 export async function getServerSideProps(context) {
-  const session = await getSession(context);
-  
   try {
-    // For public access, we'll fetch communities without auth
-    // You might want to create a separate public API route
-    const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/communities`);
+    const client = await clientPromise;
+    const db = client.db();
+    const session = await getSession(context);
     
     let communities = [];
-    if (response.ok) {
-      const data = await response.json();
-      communities = data.data;
-    } else {
-      // If auth fails, return empty array - client will handle public fetch
-      communities = [];
+    
+    try {
+      communities = await db.collection('communities')
+        .find({})
+        .toArray();
+    } catch (error) {
+      console.error('Error fetching communities:', error);
     }
 
     return {
@@ -400,10 +397,10 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-    console.error('Error fetching communities:', error);
+    console.error('Database connection failed:', error);
     return {
       props: {
-        session,
+        session: null,
         initialCommunities: [],
       },
     };
