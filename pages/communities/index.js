@@ -3,6 +3,7 @@ import { useSession, getSession } from 'next-auth/react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Header from "../components/Header";
 
 export default function CommunitiesList({ initialCommunities }) {
   const { data: session, status } = useSession();
@@ -153,20 +154,12 @@ export default function CommunitiesList({ initialCommunities }) {
         <meta name="description" content="Browse all communities" />
       </Head>
 
-      <div className="min-h-screen bg-gray-50 py-8">
+      <div className="min-h-screen bg-gray-50">
+        <Header></Header>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              All Communities
-            </h1>
-            <p className="text-gray-600">
-              Discover and join communities that interest you
-            </p>
-          </div>
-
           {/* Search and Filter Bar */}
-          <div className="bg-white rounded-lg shadow p-6 mb-8">
+          <div className="bg-white rounded-lg shadow p-6 mb-8" >
             <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
               <div className="flex-1">
                 <div className="relative">
@@ -277,94 +270,80 @@ export default function CommunitiesList({ initialCommunities }) {
 // Separate component for community card
 function CommunityCard({ community, session, onJoin, onLeave, isMember }) {
   return (
-    <div className="bg-white rounded-lg shadow hover:shadow-md transition-shadow duration-200">
-      <div className="p-6">
-        {/* Community Header */}
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex-1">
-            <Link 
-              href={`/communities/${community._id}`}
-              className="hover:no-underline"
-            >
-              <h3 className="text-xl font-semibold text-gray-900 hover:text-blue-600 transition-colors">
-                r/{community.name}
-              </h3>
-            </Link>
-            <p className="text-sm text-gray-500 mt-1">
-              Created by {community.creator?.name || 'Unknown'}
-            </p>
-          </div>
-          
-          {/* Member Count */}
-          <div className="flex items-center text-sm text-gray-500 bg-gray-50 px-2 py-1 rounded">
-            <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-            </svg>
-            {community.members?.length || 0}
-          </div>
-        </div>
-
-        {/* Description */}
-        <p className="text-gray-600 mb-4 line-clamp-3">
-          {community.description}
-        </p>
-
-        {/* Rules Preview */}
-        {community.rules && community.rules.length > 0 && (
-          <div className="mb-4">
-            <h4 className="text-sm font-medium text-gray-900 mb-2">Rules:</h4>
-            <ul className="text-sm text-gray-600 space-y-1">
-              {community.rules.slice(0, 2).map((rule, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-blue-500 mr-2">•</span>
-                  <span className="line-clamp-2">{rule}</span>
-                </li>
-              ))}
-              {community.rules.length > 2 && (
-                <li className="text-gray-500 text-xs">
-                  +{community.rules.length - 2} more rules
-                </li>
-              )}
-            </ul>
+    <div className="bg-white rounded-lg shadow hover:shadow-md transition-all duration-200 overflow-hidden border border-gray-100">
+      {/* Image Header */}
+      <div className="relative h-24 bg-gradient-to-br from-blue-400 to-purple-500">
+        {community.backgroundImage?.url ? (
+          <img
+            src={community.backgroundImage.url}
+            alt={`${community.name} background`}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-400 to-purple-500">
+            <span className="text-white text-xl font-bold">r/</span>
           </div>
         )}
+        {/* Community Avatar Overlay */}
+        <div className="absolute -bottom-4 left-4 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-md border">
+          <span className="text-blue-600 font-bold text-sm">r/</span>
+        </div>
+      </div>
 
-        {/* Created Date */}
-        <div className="text-xs text-gray-500 mb-4">
-          Created {new Date(community.createdAt).toLocaleDateString()}
+      <div className="pt-6 pb-4 px-4">
+        {/* Community Info */}
+        <div className="mb-3">
+          <Link 
+            href={`/communities/${community._id}`}
+            className="hover:no-underline"
+          >
+            <h3 className="text-lg font-bold text-gray-900 hover:text-blue-600 transition-colors line-clamp-1">
+              r/{community.name}
+            </h3>
+          </Link>
+          <p className="text-gray-600 text-sm mt-1 line-clamp-2">
+            {community.description}
+          </p>
+        </div>
+
+        {/* Stats */}
+        <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
+          <span>👥 {community.members?.length || 0} members</span>
+          <span>📅 {new Date(community.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex space-x-3">
+        <div className="flex space-x-2">
           <Link
             href={`/communities/${community._id}`}
-            className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md text-sm font-medium text-center transition-colors"
+            className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-2 rounded text-sm font-medium text-center transition-colors"
           >
-            View Community
+            Visit
           </Link>
           
-          {session && isMember ? (
-            <button
-              onClick={() => onLeave(community._id)}
-              className="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              Leave
-            </button>
-          ) : session ? (
-            <button
-              onClick={() => onJoin(community._id)}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              Join
-            </button>
-          ) : null}
+          {session && (
+            isMember ? (
+              <button
+                onClick={() => onLeave(community._id)}
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-sm font-medium transition-colors"
+              >
+                Leave
+              </button>
+            ) : (
+              <button
+                onClick={() => onJoin(community._id)}
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm font-medium transition-colors"
+              >
+                Join
+              </button>
+            )
+          )}
         </div>
 
-        {/* Sign in prompt for non-auth users */}
         {!session && (
           <button
             onClick={() => onJoin(community._id)}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors mt-3"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm font-medium transition-colors mt-2"
           >
             Sign in to Join
           </button>
@@ -375,10 +354,13 @@ function CommunityCard({ community, session, onJoin, onLeave, isMember }) {
 }
 
 export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  
   try {
+    // Import MongoDB only on server-side
+    const { default: clientPromise } = await import('../../lib/dbConnect');
     const client = await clientPromise;
     const db = client.db();
-    const session = await getSession(context);
     
     let communities = [];
     
@@ -400,7 +382,7 @@ export async function getServerSideProps(context) {
     console.error('Database connection failed:', error);
     return {
       props: {
-        session: null,
+        session,
         initialCommunities: [],
       },
     };

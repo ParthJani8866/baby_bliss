@@ -1,6 +1,6 @@
-import clientPromise from '../../../lib/dbConnect';
+import clientPromise from '../../../../lib/dbConnect';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../api/auth/[...nextauth]';
+import { authOptions } from '../../auth/[...nextauth]';
 import { ObjectId } from 'mongodb';
 
 export default async function handler(req, res) {
