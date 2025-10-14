@@ -1,5 +1,5 @@
 import dbConnect from '../../../lib/dbConnect';
-import Community from '../../../pages/models/Community';
+import Community from '../../../models/Community';
 import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {

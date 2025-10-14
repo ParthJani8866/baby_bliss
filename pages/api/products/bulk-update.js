@@ -1,4 +1,4 @@
-import dbConnect from "../../../ui/libs/mongodb";
+import dbConnect from "../../../lib/mongodb";
 import Product from "../../../ui/models/product";
 import fs from "fs";
 import path from "path";

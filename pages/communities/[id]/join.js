@@ -1,7 +1,7 @@
 import dbConnect from '../../../lib/dbConnect';
 import Community from '../../../models/Community';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../auth/[...nextauth]';
+import { authOptions } from '../../api/auth/[...nextauth]';
 
 export default async function handler(req, res) {
   await dbConnect();
