@@ -24,7 +24,7 @@ export default function Header() {
   const { data: session } = useSession();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState(null);
-
+  const [showCommunityModal, setShowCommunityModal] = useState(false);
   const toggleMobileSubmenu = (menu) =>
     setOpenMobileSubmenu(openMobileSubmenu === menu ? null : menu);
 
@@ -66,12 +66,12 @@ export default function Header() {
       label: "Chinese Gender Prediction",
       href: "/pregnancy/chinese-gender-prediction",
     },
-    
+
   ];
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <div className="max-w-7xl mx-auto flex justify-between items-center p-1">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className="w-32 h-16 relative">
@@ -143,11 +143,8 @@ export default function Header() {
             <UserGroupIcon className="w-5 h-5" /> Baby names
           </Link>
 
-          <Link
-            href="/games/guess-baby-animal"
-            className="flex items-center gap-1 text-green-900 hover:text-green-700 font-medium"
-          >
-            <PuzzlePieceIcon className="w-5 h-5" /> Puzzle Fun
+          <Link href="/communities" className="flex items-center gap-1 text-green-900 hover:text-green-700 font-medium">
+              <UserGroupIcon className="w-5 h-5" />Communities
           </Link>
 
           {/* Login / Logout */}
