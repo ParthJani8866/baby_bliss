@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import Header from "../components/Header";
-import TipTapRichEditor from '../components/TipTapEditor';
+import SimpleJoditEditor from '../components/SimpleJoditEditor';
 
 
 export default function CommunityDetail({ initialCommunity, initialPosts, error: serverError }) {
@@ -37,7 +37,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          
+
           setIsMember(data.isMember);
         } else {
           setIsMember(false);
@@ -440,19 +440,13 @@ function PostCard({ post }) {
           </div>
         </div>
 
-        {/* Post Content */}
         <div className="mb-4">
-          <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
-            {showFullContent ? post.content : contentPreview}
-          </p>
-          {post.content && post.content.length > 200 && (
-            <button
-              onClick={() => setShowFullContent(!showFullContent)}
-              className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2"
-            >
-              {showFullContent ? 'Show less' : 'Read more'}
-            </button>
-          )}
+          <div
+            className="text-gray-700 whitespace-pre-wrap leading-relaxed"
+            dangerouslySetInnerHTML={{
+              __html: post.content,
+            }}
+          />
         </div>
 
         {/* Post Actions */}
@@ -484,32 +478,32 @@ function PostCard({ post }) {
 }
 
 // Create Post Modal Component (keep the same as before)
- function CreatePostModal({ onClose, onSubmit, loading }) {
+function CreatePostModal({ onClose, onSubmit, loading }) {
   const [formData, setFormData] = useState({
-    title: '',
-    content: ''
-  })
+    title: "",
+    content: "",
+  });
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    if (formData.title.trim() && formData.content.trim()) {
-      onSubmit(formData)
+    e.preventDefault();
+    if (formData.title.trim() && isContentValid) {
+      onSubmit(formData);
     }
-  }
+  };
 
   const handleContentChange = (content) => {
-    setFormData(prev => ({ ...prev, content }))
-  }
+    setFormData((prev) => ({ ...prev, content }));
+  };
 
-  // Extract plain text from HTML to validate empty content
+  // Convert HTML to plain text for validation
   const getPlainText = (html) => {
-    if (typeof document === 'undefined') return html.replace(/<[^>]*>/g, '')
-    const tempDiv = document.createElement('div')
-    tempDiv.innerHTML = html
-    return tempDiv.textContent || tempDiv.innerText || ''
-  }
+    if (typeof document === "undefined") return html.replace(/<[^>]*>/g, "");
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    return tempDiv.textContent || tempDiv.innerText || "";
+  };
 
-  const isContentValid = getPlainText(formData.content).trim().length > 0
+  const isContentValid = getPlainText(formData.content).trim().length > 0;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
@@ -538,15 +532,14 @@ function PostCard({ post }) {
             </p>
           </div>
 
-          {/* Rich Text Content */}
+          {/* CKEditor Content */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Content *
             </label>
-            <TipTapRichEditor
-              content={formData.content}
-              onChange={handleContentChange}
-              placeholder="Write your post content... You can format text, add images, videos, or links!"
+            <SimpleJoditEditor
+              value={formData.content}
+              onChange={(html) => setFormData({ ...formData, content: html })}
             />
             <div className="flex justify-between items-center mt-2">
               <p className="text-xs text-gray-500">
@@ -557,19 +550,6 @@ function PostCard({ post }) {
               </p>
             </div>
           </div>
-
-          {/* Live Preview */}
-          {formData.content && (
-            <div className="border-t pt-4">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">
-                Preview:
-              </h3>
-              <div
-                className="prose max-w-none p-4 border rounded-md bg-gray-50 max-h-60 overflow-y-auto"
-                dangerouslySetInnerHTML={{ __html: formData.content }}
-              />
-            </div>
-          )}
 
           {/* Buttons */}
           <div className="flex justify-end space-x-3 pt-4 border-t">
@@ -585,15 +565,14 @@ function PostCard({ post }) {
               disabled={loading || !formData.title.trim() || !isContentValid}
               className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Creating...' : 'Create Post'}
+              {loading ? "Creating..." : "Create Post"}
             </button>
           </div>
         </form>
       </div>
     </div>
-  )
+  );
 }
-
 
 export async function getServerSideProps(context) {
   try {
