@@ -5,6 +5,39 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Header from "../components/Header";
 import SimpleJoditEditor from '../components/SimpleJoditEditor';
+import {
+  FaUsers,
+  FaCalendarAlt,
+  FaPlus,
+  FaSignInAlt,
+  FaEye,
+  FaSignOutAlt,
+  FaUserPlus,
+  FaUserCheck,
+  FaExclamationTriangle,
+  FaComments,
+  FaHeart,
+  FaShare,
+  FaReply,
+  FaArrowLeft,
+  FaTimes,
+  FaEdit,
+  FaTrash,
+  FaChevronDown,
+  FaChevronUp,
+  FaRegHeart,
+  FaRegComment,
+  FaRegShareSquare,
+  FaBaby,
+  FaHandHoldingHeart,
+  FaUserFriends,
+  FaHome,
+  FaSeedling,
+  FaChartLine,
+  FaInfoCircle,
+  FaLock,
+  FaUnlock
+} from 'react-icons/fa';
 
 export default function CommunityDetail({ initialCommunity, initialPosts, error: serverError }) {
   const { data: session, status } = useSession();
@@ -241,17 +274,17 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
 
   if (router.isFallback) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-teal-50/30">
         <Header />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-center h-64">
             <div className="animate-pulse flex space-x-4">
-              <div className="rounded-full bg-blue-200 h-12 w-12"></div>
+              <div className="rounded-full bg-teal-200 h-12 w-12"></div>
               <div className="flex-1 space-y-4 py-1">
-                <div className="h-4 bg-blue-200 rounded w-3/4"></div>
+                <div className="h-4 bg-teal-200 rounded w-3/4"></div>
                 <div className="space-y-2">
-                  <div className="h-4 bg-blue-200 rounded"></div>
-                  <div className="h-4 bg-blue-200 rounded w-5/6"></div>
+                  <div className="h-4 bg-teal-200 rounded"></div>
+                  <div className="h-4 bg-teal-200 rounded w-5/6"></div>
                 </div>
               </div>
             </div>
@@ -263,24 +296,20 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
 
   if (!community) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-teal-50/30">
         <Header />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
             <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center">
-              <svg className="w-10 h-10 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-              </svg>
+              <FaExclamationTriangle className="w-10 h-10 text-red-400" />
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-4">Community Not Found</h1>
-            <p className="text-gray-600 mb-6">  The community you{"'"}re looking for doesn{"'"}t exist or may have been removed.</p>
+            <p className="text-gray-600 mb-6">The community you{"'"}re looking for doesn{"'"}t exist or may have been removed.</p>
             <Link
               href="/communities"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 shadow-sm hover:shadow-md"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-teal-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
+              <FaArrowLeft className="w-5 h-5" />
               Back to Communities
             </Link>
           </div>
@@ -292,20 +321,20 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
   return (
     <>
       <Head>
-        <title>r/{community.name} | CommunityApp</title>
+        <title>{community.name} | Belly Buds Parenting Community</title>
         <meta name="description" content={community.description} />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-teal-50/30">
         <Header />
 
         {/* Enhanced Community Header */}
         <div
-          className="relative bg-cover bg-center bg-no-repeat py-12 shadow-sm border-b border-white/20"
+          className="relative bg-cover bg-center bg-no-repeat py-16 shadow-lg border-b border-white/20"
           style={{
             backgroundImage: community.backgroundImage?.url
               ? `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${community.backgroundImage.url})`
-              : 'linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(147, 51, 234, 0.9))'
+              : 'linear-gradient(135deg, rgba(20, 184, 166, 0.9), rgba(59, 130, 246, 0.9))'
           }}
         >
           <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
@@ -313,29 +342,23 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
             <div className="flex flex-col md:flex-row md:items-start md:justify-between">
               <div className="flex-1">
                 <div className="flex items-start space-x-6">
-                  <div className="bg-white/20 backdrop-blur-sm text-white rounded-2xl w-20 h-20 flex items-center justify-center text-3xl font-bold border border-white/30 shadow-lg">
-                    r/
+                  <div className="bg-white/20 backdrop-blur-sm text-white rounded-2xl w-24 h-24 flex items-center justify-center text-4xl font-bold border border-white/30 shadow-2xl">
+                    <FaComments className="w-10 h-10" />
                   </div>
                   <div className="flex-1">
-                    <h1 className="text-3xl font-bold text-white mb-3">r/{community.name}</h1>
+                    <h1 className="text-4xl font-bold text-white mb-4">#{community.name}</h1>
                     <p className="text-white/90 text-lg leading-relaxed max-w-2xl">{community.description}</p>
-                    <div className="flex items-center space-x-6 mt-4 text-sm text-white/80">
-                      <div className="flex items-center gap-2">
-                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
+                    <div className="flex items-center space-x-6 mt-6 text-sm text-white/80">
+                      <div className="flex items-center gap-3">
+                        <FaUserFriends className="w-5 h-5" />
                         <span>Created by {community.creator?.name || 'Unknown'}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
+                      <div className="flex items-center gap-3">
+                        <FaUsers className="w-5 h-5" />
                         <span>{community.members?.length || 0} members</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
+                      <div className="flex items-center gap-3">
+                        <FaCalendarAlt className="w-5 h-5" />
                         <span>Created {community.createdAt}</span>
                       </div>
                     </div>
@@ -349,21 +372,17 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
                     <div className="flex flex-col sm:flex-row gap-3">
                       <button
                         onClick={() => setShowCreatePost(true)}
-                        className="flex items-center gap-2 bg-white text-blue-600 hover:bg-gray-50 px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl border border-white/30"
+                        className="flex items-center gap-3 bg-white text-teal-600 hover:bg-gray-50 px-6 py-4 rounded-xl font-semibold transition-all duration-300 shadow-2xl hover:shadow-xl border border-white/30"
                       >
-                        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                        </svg>
+                        <FaPlus className="w-5 h-5" />
                         Create Post
                       </button>
                       <button
                         onClick={leaveCommunity}
                         disabled={loading}
-                        className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl text-sm font-medium disabled:opacity-50 transition-all duration-200 shadow-lg hover:shadow-xl border border-red-500/30"
+                        className="flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-6 py-4 rounded-xl font-semibold disabled:opacity-50 transition-all duration-300 shadow-2xl hover:shadow-xl border border-red-500/30"
                       >
-                        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
+                        <FaSignOutAlt className="w-5 h-5" />
                         {loading ? 'Leaving...' : 'Leave'}
                       </button>
                     </div>
@@ -371,22 +390,18 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
                     <button
                       onClick={joinCommunity}
                       disabled={loading}
-                      className="flex items-center gap-2 bg-white text-blue-600 hover:bg-gray-50 px-8 py-3 rounded-xl text-sm font-medium disabled:opacity-50 transition-all duration-200 shadow-lg hover:shadow-xl border border-white/30"
+                      className="flex items-center gap-3 bg-white text-teal-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-semibold disabled:opacity-50 transition-all duration-300 shadow-2xl hover:shadow-xl border border-white/30"
                     >
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                      </svg>
+                      <FaUserPlus className="w-5 h-5" />
                       {loading ? 'Joining...' : 'Join Community'}
                     </button>
                   )
                 ) : (
                   <button
                     onClick={() => router.push('/auth/signin')}
-                    className="flex items-center gap-2 bg-white text-blue-600 hover:bg-gray-50 px-8 py-3 rounded-xl text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl border border-white/30"
+                    className="flex items-center gap-3 bg-white text-teal-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-2xl hover:shadow-xl border border-white/30"
                   >
-                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
+                    <FaSignInAlt className="w-5 h-5" />
                     Sign in to Join
                   </button>
                 )}
@@ -400,10 +415,8 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
           {error && (
             <div className="bg-red-50/80 backdrop-blur-sm border border-red-200 rounded-2xl p-6 mb-8">
               <div className="flex items-center">
-                <svg className="h-6 w-6 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span className="text-red-800 font-medium">{error}</span>
+                <FaExclamationTriangle className="h-6 w-6 text-red-400 mr-3" />
+                <span className="text-red-800 font-semibold">{error}</span>
               </div>
             </div>
           )}
@@ -415,9 +428,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
               {session && !isMember ? (
                 <div className="bg-yellow-50/80 backdrop-blur-sm border border-yellow-200 rounded-2xl p-8 text-center">
                   <div className="w-16 h-16 mx-auto mb-4 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <svg className="w-8 h-8 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
+                    <FaLock className="w-8 h-8 text-yellow-600" />
                   </div>
                   <h3 className="text-xl font-semibold text-yellow-800 mb-3">Join to Participate</h3>
                   <p className="text-yellow-700 mb-6">
@@ -425,20 +436,16 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
                   </p>
                   <button
                     onClick={joinCommunity}
-                    className="inline-flex items-center gap-2 bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 shadow-sm hover:shadow-md"
+                    className="inline-flex items-center gap-3 bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
-                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                    </svg>
+                    <FaUserPlus className="w-5 h-5" />
                     Join Community
                   </button>
                 </div>
               ) : posts.length === 0 ? (
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm border border-gray-100 p-12 text-center">
-                  <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center">
-                    <svg className="w-10 h-10 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-teal-100 p-12 text-center">
+                  <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-teal-100 to-blue-100 rounded-full flex items-center justify-center">
+                    <FaEdit className="w-10 h-10 text-teal-400" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">No posts yet</h3>
                   <p className="text-gray-600 mb-8 text-lg">
@@ -447,11 +454,9 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
                   {session && isMember && (
                     <button
                       onClick={() => setShowCreatePost(true)}
-                      className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center gap-3 bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-2xl hover:shadow-xl"
                     >
-                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                      </svg>
+                      <FaPlus className="w-6 h-6" />
                       Create First Post
                     </button>
                   )}
@@ -459,15 +464,13 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
               ) : (
                 <div>
                   {/* Enhanced Posts Header */}
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-teal-100 p-6 mb-6">
                     <div className="flex items-center justify-between">
                       <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
-                        <svg className="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                        </svg>
+                        <FaComments className="w-6 h-6 text-teal-500" />
                         Community Posts
                       </h2>
-                      <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
+                      <span className="bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-semibold">
                         {posts.length} {posts.length === 1 ? 'post' : 'posts'}
                       </span>
                     </div>
@@ -493,11 +496,9 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
 
             {/* Enhanced Sidebar */}
             <div className="lg:col-span-1">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-4">
-                <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-teal-100 p-6 sticky top-4">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-3">
+                  <FaInfoCircle className="w-5 h-5 text-teal-500" />
                   About Community
                 </h3>
 
@@ -506,12 +507,10 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
                     <p className="text-sm text-gray-600 leading-relaxed">{community.description}</p>
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-500 flex items-center gap-2">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
+                        <FaUsers className="w-4 h-4" />
                         Members
                       </span>
                       <span className="font-semibold text-gray-900">{community.members?.length || 0}</span>
@@ -519,12 +518,18 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
 
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-500 flex items-center gap-2">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
+                        <FaCalendarAlt className="w-4 h-4" />
                         Created
                       </span>
                       <span className="font-semibold text-gray-900">{community.createdAt}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-500 flex items-center gap-2">
+                        <FaUnlock className="w-4 h-4" />
+                        Status
+                      </span>
+                      <span className="font-semibold text-teal-600">Public</span>
                     </div>
                   </div>
 
@@ -532,11 +537,9 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
                   {session && isMember && (
                     <button
                       onClick={() => setShowCreatePost(true)}
-                      className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 rounded-xl text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md"
+                      className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                      </svg>
+                      <FaPlus className="w-5 h-5" />
                       Create Post
                     </button>
                   )}
@@ -611,10 +614,9 @@ function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment
     ) || [];
   };
 
-  // Rest of your component remains the same...
   return (
     <div 
-      className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 hover:border-blue-200/50 transition-all duration-300 overflow-hidden"
+      className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl border border-teal-100 hover:border-teal-200 transition-all duration-300 overflow-hidden transform hover:-translate-y-1"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -622,20 +624,16 @@ function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment
         {/* Enhanced Post Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-gray-900 hover:text-blue-600 cursor-pointer mb-3 transition-colors duration-200">
+            <h3 className="text-xl font-bold text-gray-900 hover:text-teal-600 cursor-pointer mb-3 transition-colors duration-200">
               {post.title}
             </h3>
             <div className="flex items-center space-x-4 text-sm text-gray-500">
-              <span className="flex items-center gap-1">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
+              <span className="flex items-center gap-2">
+                <FaUserFriends className="w-4 h-4" />
                 {post.author?.name || 'Unknown'}
               </span>
-              <span className="flex items-center gap-1">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
+              <span className="flex items-center gap-2">
+                <FaCalendarAlt className="w-4 h-4" />
                 {post.createdAt}
               </span>
             </div>
@@ -653,23 +651,21 @@ function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment
         </div>
 
         {/* Enhanced Post Actions */}
-        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+        <div className="flex items-center justify-between pt-4 border-t border-teal-100">
           <div className="flex items-center space-x-4">
             {/* Like Button */}
             <button 
               onClick={handleLike}
               className="flex items-center gap-2 text-gray-500 hover:text-green-600 transition-colors duration-200 group/upvote"
             >
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-200 ${
                 isLiked 
                   ? 'bg-green-100 text-green-600' 
                   : 'bg-gray-100 group-hover/upvote:bg-green-50'
               }`}>
-                <svg className="w-5 h-5" fill={isLiked ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                </svg>
+                <FaHeart className={`w-5 h-5 ${isLiked ? 'fill-current' : ''}`} />
               </div>
-              <span className="font-medium text-sm">{post.upvotes?.length || 0}</span>
+              <span className="font-semibold text-sm">{post.upvotes?.length || 0}</span>
             </button>
 
             {/* Dislike Button */}
@@ -677,29 +673,25 @@ function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment
               onClick={handleDislike}
               className="flex items-center gap-2 text-gray-500 hover:text-red-600 transition-colors duration-200 group/downvote"
             >
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-200 ${
                 isDisliked 
                   ? 'bg-red-100 text-red-600' 
                   : 'bg-gray-100 group-hover/downvote:bg-red-50'
               }`}>
-                <svg className="w-5 h-5" fill={isDisliked ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018c.163 0 .326.02.485.06L17 4m-7 10v6a2 2 0 002 2h.095c.5 0 .905-.405-.905.905 0-.714.211-1.412.608-2.006L17 13V4m-7 10h2m-7 0H4a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                </svg>
+                <FaHeart className={`w-5 h-5 transform rotate-180 ${isDisliked ? 'fill-current' : ''}`} />
               </div>
-              <span className="font-medium text-sm">{post.downvotes?.length || 0}</span>
+              <span className="font-semibold text-sm">{post.downvotes?.length || 0}</span>
             </button>
 
             {/* Comment Button */}
             <button 
               onClick={() => setShowComments(!showComments)}
-              className="flex items-center gap-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 group/comment"
+              className="flex items-center gap-2 text-gray-500 hover:text-teal-600 transition-colors duration-200 group/comment"
             >
-              <div className="w-10 h-10 bg-gray-100 group-hover/comment:bg-blue-50 rounded-xl flex items-center justify-center transition-colors duration-200">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                </svg>
+              <div className="w-12 h-12 bg-gray-100 group-hover/comment:bg-teal-50 rounded-xl flex items-center justify-center transition-colors duration-200">
+                <FaRegComment className="w-5 h-5" />
               </div>
-              <span className="font-medium text-sm">{post.comments?.length || 0}</span>
+              <span className="font-semibold text-sm">{post.comments?.length || 0}</span>
             </button>
           </div>
 
@@ -708,22 +700,18 @@ function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment
             onClick={onShare}
             className="flex items-center gap-2 text-gray-500 hover:text-purple-600 transition-colors duration-200 group/share"
           >
-            <div className="w-10 h-10 bg-gray-100 group-hover/share:bg-purple-50 rounded-xl flex items-center justify-center transition-colors duration-200">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-              </svg>
+            <div className="w-12 h-12 bg-gray-100 group-hover/share:bg-purple-50 rounded-xl flex items-center justify-center transition-colors duration-200">
+              <FaShare className="w-5 h-5" />
             </div>
-            <span className="font-medium text-sm">Share</span>
+            <span className="font-semibold text-sm">Share</span>
           </button>
         </div>
 
         {/* Comments Section */}
         {showComments && (
-          <div className="mt-6 pt-6 border-t border-gray-100">
-            <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-              </svg>
+          <div className="mt-6 pt-6 border-t border-teal-100">
+            <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-3">
+              <FaRegComment className="w-5 h-5 text-teal-500" />
               Comments ({post.comments?.length || 0})
             </h4>
 
@@ -732,8 +720,8 @@ function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment
               <div className="mb-6">
                 <div className="flex space-x-3">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                      <span className="text-blue-600 text-sm font-medium">
+                    <div className="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
+                      <span className="text-teal-600 text-sm font-semibold">
                         {session.user.name?.charAt(0).toUpperCase()}
                       </span>
                     </div>
@@ -743,18 +731,18 @@ function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment
                       value={commentText}
                       onChange={(e) => setCommentText(e.target.value)}
                       placeholder={replyingTo ? "Write your reply..." : "Add a comment..."}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                      className="w-full px-4 py-3 border border-teal-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-none bg-white/50"
                       rows="3"
                     />
-                    <div className="flex justify-between items-center mt-2">
+                    <div className="flex justify-between items-center mt-3">
                       <span className="text-sm text-gray-500">
                         {replyingTo && 'Replying to comment'}
                       </span>
-                      <div className="flex space-x-2">
+                      <div className="flex space-x-3">
                         {replyingTo && (
                           <button
                             onClick={() => setReplyingTo(null)}
-                            className="text-sm text-gray-500 hover:text-gray-700"
+                            className="text-sm text-gray-500 hover:text-gray-700 font-medium"
                           >
                             Cancel
                           </button>
@@ -762,7 +750,7 @@ function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment
                         <button
                           onClick={handleAddComment}
                           disabled={!commentText.trim()}
-                          className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="bg-teal-600 text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                         >
                           {replyingTo ? 'Reply' : 'Comment'}
                         </button>
@@ -789,9 +777,7 @@ function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment
 
             {(!post.comments || post.comments.length === 0) && (
               <div className="text-center py-8 text-gray-500">
-                <svg className="w-12 h-12 mx-auto text-gray-300 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                </svg>
+                <FaRegComment className="w-12 h-12 mx-auto text-gray-300 mb-3" />
                 <p>No comments yet. Be the first to comment!</p>
               </div>
             )}
@@ -801,7 +787,7 @@ function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment
     </div>
   );
 }
-// Comment Component
+
 // Comment Component
 function Comment({ comment, session, onReply, onLike, replies = [] }) {
   const [showReplies, setShowReplies] = useState(false);
@@ -815,45 +801,44 @@ function Comment({ comment, session, onReply, onLike, replies = [] }) {
   };
 
   return (
-    <div className="bg-gray-50 rounded-lg p-4">
+    <div className="bg-teal-50 rounded-xl p-4">
       <div className="flex items-start space-x-3">
         <div className="flex-shrink-0">
-          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-            <span className="text-blue-600 text-sm font-medium">
+          <div className="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
+            <span className="text-teal-600 text-sm font-semibold">
               {comment.author?.name?.charAt(0).toUpperCase() || 'U'}
             </span>
           </div>
         </div>
         <div className="flex-1">
-          <div className="flex items-center space-x-2 mb-1">
-            <span className="font-medium text-gray-900 text-sm">
+          <div className="flex items-center space-x-2 mb-2">
+            <span className="font-semibold text-gray-900 text-sm">
               {comment.author?.name || 'Unknown'}
             </span>
             <span className="text-gray-500 text-xs">
               {comment.createdAt}
             </span>
           </div>
-          <p className="text-gray-700 text-sm mb-2">{comment.content}</p>
+          <p className="text-gray-700 text-sm mb-3">{comment.content}</p>
           
           <div className="flex items-center space-x-4 text-xs">
             <button 
               onClick={handleLike}
-              className={`flex items-center space-x-1 ${
-                isLiked ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'
+              className={`flex items-center space-x-2 ${
+                isLiked ? 'text-teal-600' : 'text-gray-500 hover:text-teal-600'
               }`}
             >
-              <svg className="w-4 h-4" fill={isLiked ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-              </svg>
-              <span>{comment.likes?.length || 0}</span>
+              <FaRegHeart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
+              <span className="font-medium">{comment.likes?.length || 0}</span>
             </button>
             
             {session && (
               <button 
                 onClick={() => onReply(comment._id)}
-                className="text-gray-500 hover:text-blue-600"
+                className="flex items-center space-x-2 text-gray-500 hover:text-teal-600"
               >
-                Reply
+                <FaReply className="w-4 h-4" />
+                <span>Reply</span>
               </button>
             )}
           </div>
@@ -863,17 +848,18 @@ function Comment({ comment, session, onReply, onLike, replies = [] }) {
             <div className="mt-3">
               <button 
                 onClick={() => setShowReplies(!showReplies)}
-                className="text-sm text-blue-600 hover:text-blue-700 mb-2"
+                className="flex items-center space-x-2 text-sm text-teal-600 hover:text-teal-700 mb-2 font-medium"
               >
-                {showReplies ? 'Hide' : 'Show'} {replies.length} {replies.length === 1 ? 'reply' : 'replies'}
+                {showReplies ? <FaChevronUp className="w-3 h-3" /> : <FaChevronDown className="w-3 h-3" />}
+                <span>{showReplies ? 'Hide' : 'Show'} {replies.length} {replies.length === 1 ? 'reply' : 'replies'}</span>
               </button>
               
               {showReplies && (
-                <div className="space-y-3 mt-2 ml-4 pl-4 border-l-2 border-gray-200">
+                <div className="space-y-3 mt-2 ml-4 pl-4 border-l-2 border-teal-200">
                   {replies.map((reply) => (
-                    <div key={reply._id} className="bg-white rounded p-3">
-                      <div className="flex items-center space-x-2 mb-1">
-                        <span className="font-medium text-gray-900 text-sm">
+                    <div key={reply._id} className="bg-white rounded-xl p-3">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <span className="font-semibold text-gray-900 text-sm">
                           {reply.author?.name || 'Unknown'}
                         </span>
                         <span className="text-gray-500 text-xs">
@@ -922,21 +908,17 @@ function EnhancedCreatePostModal({ onClose, onSubmit, loading }) {
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-2xl max-w-4xl w-full p-8 max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-200">
+      <div className="bg-white rounded-2xl max-w-4xl w-full p-8 max-h-[90vh] overflow-y-auto shadow-2xl border border-teal-100">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
-            <svg className="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
+            <FaEdit className="w-6 h-6 text-teal-500" />
             Create New Post
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
+            className="text-gray-400 hover:text-gray-600 transition-colors duration-200 p-2 rounded-lg hover:bg-gray-100"
           >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <FaTimes className="w-6 h-6" />
           </button>
         </div>
 
@@ -955,7 +937,7 @@ function EnhancedCreatePostModal({ onClose, onSubmit, loading }) {
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, title: e.target.value }))
               }
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white/50 backdrop-blur-sm transition-all duration-200"
+              className="w-full px-4 py-3 border border-teal-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white/50 backdrop-blur-sm transition-all duration-200"
               placeholder="What would you like to share with the community?"
               maxLength={200}
             />
@@ -974,7 +956,7 @@ function EnhancedCreatePostModal({ onClose, onSubmit, loading }) {
             <label className="block text-sm font-semibold text-gray-700 mb-3">
               Post Content *
             </label>
-            <div className="border border-gray-300 rounded-xl overflow-hidden">
+            <div className="border border-teal-200 rounded-xl overflow-hidden">
               <SimpleJoditEditor
                 id="postContent"
                 name="content"
@@ -993,35 +975,28 @@ function EnhancedCreatePostModal({ onClose, onSubmit, loading }) {
           </div>
 
           {/* Enhanced Action Buttons */}
-          <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+          <div className="flex justify-end space-x-4 pt-6 border-t border-teal-200">
             <button
               type="button"
               onClick={onClose}
-              className="flex items-center gap-2 px-6 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-200"
+              className="flex items-center gap-3 px-6 py-3 text-sm font-semibold text-gray-700 hover:text-gray-900 border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-200"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <FaTimes className="w-5 h-5" />
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading || !formData.title.trim() || !isContentValid}
-              className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-medium rounded-xl hover:from-blue-700 hover:to-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm hover:shadow-md"
+              className="flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-teal-600 to-blue-600 text-white text-sm font-semibold rounded-xl hover:from-teal-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               {loading ? (
                 <>
-                  <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
                   Creating...
                 </>
               ) : (
                 <>
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+                  <FaEdit className="w-5 h-5" />
                   Publish Post
                 </>
               )}
