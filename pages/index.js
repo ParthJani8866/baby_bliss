@@ -457,7 +457,7 @@ export default function Home() {
                           </div>
                           <div>
                             <h4 className="font-semibold text-gray-900">Fertility Insights</h4>
-                            <p className="text-gray-600 text-sm">Understand your body's natural fertility patterns</p>
+                            <p className="text-gray-600 text-sm">Understand your natural fertility patterns</p>
                           </div>
                         </div>
                       </div>
