@@ -25,8 +25,57 @@ export default async function handler(req, res) {
           }
 
           const posts = await db.collection('posts')
-            .find(query)
-            .sort({ createdAt: -1 })
+            .aggregate([
+              { $match: query },
+              { $sort: { createdAt: -1 } },
+              // Lookup author details
+              {
+                $lookup: {
+                  from: 'users',
+                  localField: 'author',
+                  foreignField: '_id',
+                  as: 'authorDetails'
+                }
+              },
+              {
+                $unwind: {
+                  path: '$authorDetails',
+                  preserveNullAndEmptyArrays: true
+                }
+              },
+              // Lookup community details
+              {
+                $lookup: {
+                  from: 'communities',
+                  localField: 'community',
+                  foreignField: '_id',
+                  as: 'communityDetails'
+                }
+              },
+              {
+                $unwind: {
+                  path: '$communityDetails',
+                  preserveNullAndEmptyArrays: true
+                }
+              },
+              // Project the fields we need
+              {
+                $project: {
+                  title: 1,
+                  content: 1,
+                  upvotes: 1,
+                  downvotes: 1,
+                  comments: 1,
+                  createdAt: 1,
+                  updatedAt: 1,
+                  'author.name': '$authorDetails.name',
+                  'author.email': '$authorDetails.email',
+                  'author._id': '$authorDetails._id',
+                  'community.name': '$communityDetails.name',
+                  'community._id': '$communityDetails._id'
+                }
+              }
+            ])
             .toArray();
           
           res.status(200).json({ success: true, data: posts });
@@ -80,6 +129,7 @@ export default async function handler(req, res) {
             community: new ObjectId(communityId),
             upvotes: [],
             downvotes: [],
+            comments: [], // Add empty comments array
             createdAt: new Date(),
             updatedAt: new Date(),
           };
@@ -87,10 +137,59 @@ export default async function handler(req, res) {
           const result = await db.collection('posts')
             .insertOne(post);
 
-          const newPost = {
-            _id: result.insertedId,
-            ...post
-          };
+          // Get the created post with populated author and community
+          const newPost = await db.collection('posts')
+            .aggregate([
+              { $match: { _id: result.insertedId } },
+              // Lookup author details
+              {
+                $lookup: {
+                  from: 'users',
+                  localField: 'author',
+                  foreignField: '_id',
+                  as: 'authorDetails'
+                }
+              },
+              {
+                $unwind: {
+                  path: '$authorDetails',
+                  preserveNullAndEmptyArrays: true
+                }
+              },
+              // Lookup community details
+              {
+                $lookup: {
+                  from: 'communities',
+                  localField: 'community',
+                  foreignField: '_id',
+                  as: 'communityDetails'
+                }
+              },
+              {
+                $unwind: {
+                  path: '$communityDetails',
+                  preserveNullAndEmptyArrays: true
+                }
+              },
+              // Project the fields we need
+              {
+                $project: {
+                  title: 1,
+                  content: 1,
+                  upvotes: 1,
+                  downvotes: 1,
+                  comments: 1,
+                  createdAt: 1,
+                  updatedAt: 1,
+                  'author.name': '$authorDetails.name',
+                  'author.email': '$authorDetails.email',
+                  'author._id': '$authorDetails._id',
+                  'community.name': '$communityDetails.name',
+                  'community._id': '$communityDetails._id'
+                }
+              }
+            ])
+            .next();
 
           res.status(201).json({ success: true, data: newPost });
         } catch (error) {

@@ -28,10 +28,8 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
       }
 
       setCheckingMembership(true);
-
       try {
         const response = await fetch(`/api/communities/${id}/check-membership`);
-        
         if (response.ok) {
           const data = await response.json();
           setIsMember(data.isMember);
@@ -58,7 +56,6 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
     try {
       setLoading(true);
       setError('');
-
       const response = await fetch(`/api/communities/${id}/join`, {
         method: 'POST',
         headers: {
@@ -67,7 +64,6 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
       });
 
       const responseData = await response.json();
-
       if (response.ok) {
         setCommunity(responseData.data);
         setIsMember(true);
@@ -89,7 +85,6 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
     try {
       setLoading(true);
       setError('');
-
       const response = await fetch(`/api/communities/${id}/leave`, {
         method: 'POST',
         headers: {
@@ -98,7 +93,6 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
       });
 
       const responseData = await response.json();
-
       if (response.ok) {
         setCommunity(responseData.data);
         setIsMember(false);
@@ -129,6 +123,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
         },
         body: JSON.stringify({
           ...postData,
+          comments:[],
           communityId: id
         }),
       });
@@ -147,6 +142,101 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
     } finally {
       setLoading(false);
     }
+  };
+
+  // Handle post interactions
+  const handlePostInteraction = async (postId, action) => {
+    if (!session) {
+      router.push('/auth/signin');
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/posts/${postId}/${action}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        // Update the post in the local state
+        setPosts(prev => prev.map(post =>
+          post._id === postId ? result.data : post
+        ));
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error || `Failed to ${action} post`);
+      }
+    } catch (error) {
+      console.error(`Error ${action} post:`, error);
+      setError(`Error ${action} post`);
+    }
+  };
+
+  // Handle comment actions
+  const handleCommentAction = async (postId, commentId, data = {}) => {
+    if (!session) {
+      router.push('/auth/signin');
+      return;
+    }
+
+    try {
+      let url = `/api/posts/${postId}/comments/create`;
+      if (commentId) {
+        url = `/api/posts/${postId}/comments/${commentId}/like`;
+      }
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setPosts(prev => prev.map(post =>
+          post._id === postId ? result.data : post
+        ));
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error || 'Failed to handle comment');
+      }
+    } catch (error) {
+      console.error('Error handling comment:', error);
+      setError('Error handling comment');
+    }
+  };
+
+  // Share post functionality
+  const sharePost = async (post) => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: post.title,
+          text: post.content ? getPlainText(post.content).substring(0, 100) + '...' : '',
+          url: `${window.location.origin}/posts/${post._id}`,
+        });
+      } catch (error) {
+        console.log('Sharing cancelled');
+      }
+    } else {
+      // Fallback: copy to clipboard
+      const postUrl = `${window.location.origin}/posts/${post._id}`;
+      navigator.clipboard.writeText(postUrl).then(() => {
+        alert('Post link copied to clipboard!');
+      });
+    }
+  };
+
+  const getPlainText = (html) => {
+    if (typeof document === "undefined") return html.replace(/<[^>]*>/g, "");
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    return tempDiv.textContent || tempDiv.innerText || "";
   };
 
   if (router.isFallback) {
@@ -184,8 +274,8 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-4">Community Not Found</h1>
             <p className="text-gray-600 mb-6">The community you're looking for doesn't exist or may have been removed.</p>
-            <Link 
-              href="/communities" 
+            <Link
+              href="/communities"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 shadow-sm hover:shadow-md"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -202,7 +292,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
   return (
     <>
       <Head>
-        <title>b/{community.name} | CommunityApp</title>
+        <title>r/{community.name} | CommunityApp</title>
         <meta name="description" content={community.description} />
       </Head>
 
@@ -224,10 +314,10 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
               <div className="flex-1">
                 <div className="flex items-start space-x-6">
                   <div className="bg-white/20 backdrop-blur-sm text-white rounded-2xl w-20 h-20 flex items-center justify-center text-3xl font-bold border border-white/30 shadow-lg">
-                    b/
+                    r/
                   </div>
                   <div className="flex-1">
-                    <h1 className="text-3xl font-bold text-white mb-3">b/{community.name}</h1>
+                    <h1 className="text-3xl font-bold text-white mb-3">r/{community.name}</h1>
                     <p className="text-white/90 text-lg leading-relaxed max-w-2xl">{community.description}</p>
                     <div className="flex items-center space-x-6 mt-4 text-sm text-white/80">
                       <div className="flex items-center gap-2">
@@ -251,29 +341,8 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
                     </div>
                   </div>
                 </div>
-
-                {/* Enhanced Rules Section */}
-                {community.rules && community.rules.length > 0 && (
-                  <div className="mt-8 bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                      Community Guidelines
-                    </h3>
-                    <ul className="space-y-3">
-                      {community.rules.map((rule, index) => (
-                        <li key={index} className="flex items-start text-white/90">
-                          <span className="text-blue-300 mr-3 mt-1">•</span>
-                          <span className="leading-relaxed">{rule}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
               </div>
 
-              {/* Enhanced Action Buttons */}
               <div className="mt-6 md:mt-0">
                 {session ? (
                   isMember ? (
@@ -407,7 +476,15 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
                   {/* Enhanced Posts List */}
                   <div className="space-y-6">
                     {posts.map((post) => (
-                      <EnhancedPostCard key={post._id} post={post} />
+                      <EnhancedPostCard
+                        key={post._id}
+                        post={post}
+                        session={session}
+                        onLike={() => handlePostInteraction(post._id, 'like')}
+                        onDislike={() => handlePostInteraction(post._id, 'dislike')}
+                        onShare={() => sharePost(post)}
+                        onComment={handleCommentAction}
+                      />
                     ))}
                   </div>
                 </div>
@@ -482,10 +559,59 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
   );
 }
 
-// Enhanced Post Card Component
-function EnhancedPostCard({ post }) {
+// Enhanced Post Card Component with Comments, Likes, and Share
+function EnhancedPostCard({ post, session, onLike, onDislike, onShare, onComment }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+  const [commentText, setCommentText] = useState('');
+  const [replyingTo, setReplyingTo] = useState(null);
 
+  // FIXED: Simplified like/dislike checks
+  const isLiked = session && post.upvotes && post.upvotes.includes(session.user.id);
+  const isDisliked = session && post.downvotes && post.downvotes.includes(session.user.id);
+
+  const handleLike = () => {
+    if (!session) return;
+    onLike();
+  };
+
+  const handleDislike = () => {
+    if (!session) return;
+    onDislike();
+  };
+
+  const handleAddComment = async () => {
+    if (!commentText.trim() || !session) return;
+
+    await onComment(post._id, null, { 
+      content: commentText,
+      parentId: replyingTo 
+    });
+    
+    setCommentText('');
+    setReplyingTo(null);
+  };
+
+  const handleReply = (commentId) => {
+    setReplyingTo(commentId);
+    setShowComments(true);
+  };
+
+  const handleLikeComment = (commentId) => {
+    onComment(post._id, commentId);
+  };
+
+  // Get top-level comments (no parentId)
+  const topLevelComments = post.comments?.filter(comment => !comment.parentId) || [];
+
+  // Get replies for a specific comment
+  const getReplies = (commentId) => {
+    return post.comments?.filter(comment => 
+      comment.parentId && comment.parentId.toString() === commentId.toString()
+    ) || [];
+  };
+
+  // Rest of your component remains the same...
   return (
     <div 
       className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 hover:border-blue-200/50 transition-all duration-300 overflow-hidden"
@@ -527,35 +653,61 @@ function EnhancedPostCard({ post }) {
         </div>
 
         {/* Enhanced Post Actions */}
-        <div className="flex items-center space-x-6 pt-4 border-t border-gray-100">
-          <button className="flex items-center gap-2 text-gray-500 hover:text-green-600 transition-colors duration-200 group/upvote">
-            <div className="w-10 h-10 bg-gray-100 group-hover/upvote:bg-green-50 rounded-xl flex items-center justify-center transition-colors duration-200">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-              </svg>
-            </div>
-            <span className="font-medium text-sm">{post.upvotes?.length || 0}</span>
-          </button>
+        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+          <div className="flex items-center space-x-4">
+            {/* Like Button */}
+            <button 
+              onClick={handleLike}
+              className="flex items-center gap-2 text-gray-500 hover:text-green-600 transition-colors duration-200 group/upvote"
+            >
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${
+                isLiked 
+                  ? 'bg-green-100 text-green-600' 
+                  : 'bg-gray-100 group-hover/upvote:bg-green-50'
+              }`}>
+                <svg className="w-5 h-5" fill={isLiked ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                </svg>
+              </div>
+              <span className="font-medium text-sm">{post.upvotes?.length || 0}</span>
+            </button>
 
-          <button className="flex items-center gap-2 text-gray-500 hover:text-red-600 transition-colors duration-200 group/downvote">
-            <div className="w-10 h-10 bg-gray-100 group-hover/downvote:bg-red-50 rounded-xl flex items-center justify-center transition-colors duration-200">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018c.163 0 .326.02.485.06L17 4m-7 10v6a2 2 0 002 2h.095c.5 0 .905-.405-.905.905 0-.714.211-1.412.608-2.006L17 13V4m-7 10h2m-7 0H4a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-              </svg>
-            </div>
-            <span className="font-medium text-sm">{post.downvotes?.length || 0}</span>
-          </button>
+            {/* Dislike Button */}
+            <button 
+              onClick={handleDislike}
+              className="flex items-center gap-2 text-gray-500 hover:text-red-600 transition-colors duration-200 group/downvote"
+            >
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${
+                isDisliked 
+                  ? 'bg-red-100 text-red-600' 
+                  : 'bg-gray-100 group-hover/downvote:bg-red-50'
+              }`}>
+                <svg className="w-5 h-5" fill={isDisliked ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018c.163 0 .326.02.485.06L17 4m-7 10v6a2 2 0 002 2h.095c.5 0 .905-.405-.905.905 0-.714.211-1.412.608-2.006L17 13V4m-7 10h2m-7 0H4a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                </svg>
+              </div>
+              <span className="font-medium text-sm">{post.downvotes?.length || 0}</span>
+            </button>
 
-          <button className="flex items-center gap-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 group/comment">
-            <div className="w-10 h-10 bg-gray-100 group-hover/comment:bg-blue-50 rounded-xl flex items-center justify-center transition-colors duration-200">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-              </svg>
-            </div>
-            <span className="font-medium text-sm">Comment</span>
-          </button>
+            {/* Comment Button */}
+            <button 
+              onClick={() => setShowComments(!showComments)}
+              className="flex items-center gap-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 group/comment"
+            >
+              <div className="w-10 h-10 bg-gray-100 group-hover/comment:bg-blue-50 rounded-xl flex items-center justify-center transition-colors duration-200">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+              </div>
+              <span className="font-medium text-sm">{post.comments?.length || 0}</span>
+            </button>
+          </div>
 
-          <button className="flex items-center gap-2 text-gray-500 hover:text-purple-600 transition-colors duration-200 group/share">
+          {/* Share Button */}
+          <button 
+            onClick={onShare}
+            className="flex items-center gap-2 text-gray-500 hover:text-purple-600 transition-colors duration-200 group/share"
+          >
             <div className="w-10 h-10 bg-gray-100 group-hover/share:bg-purple-50 rounded-xl flex items-center justify-center transition-colors duration-200">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
@@ -563,6 +715,178 @@ function EnhancedPostCard({ post }) {
             </div>
             <span className="font-medium text-sm">Share</span>
           </button>
+        </div>
+
+        {/* Comments Section */}
+        {showComments && (
+          <div className="mt-6 pt-6 border-t border-gray-100">
+            <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+              </svg>
+              Comments ({post.comments?.length || 0})
+            </h4>
+
+            {/* Add Comment Form */}
+            {session && (
+              <div className="mb-6">
+                <div className="flex space-x-3">
+                  <div className="flex-shrink-0">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <span className="text-blue-600 text-sm font-medium">
+                        {session.user.name?.charAt(0).toUpperCase()}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <textarea
+                      value={commentText}
+                      onChange={(e) => setCommentText(e.target.value)}
+                      placeholder={replyingTo ? "Write your reply..." : "Add a comment..."}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                      rows="3"
+                    />
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="text-sm text-gray-500">
+                        {replyingTo && 'Replying to comment'}
+                      </span>
+                      <div className="flex space-x-2">
+                        {replyingTo && (
+                          <button
+                            onClick={() => setReplyingTo(null)}
+                            className="text-sm text-gray-500 hover:text-gray-700"
+                          >
+                            Cancel
+                          </button>
+                        )}
+                        <button
+                          onClick={handleAddComment}
+                          disabled={!commentText.trim()}
+                          className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          {replyingTo ? 'Reply' : 'Comment'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Comments List */}
+            <div className="space-y-4">
+              {topLevelComments.map((comment) => (
+                <Comment 
+                  key={comment._id} 
+                  comment={comment} 
+                  session={session}
+                  onReply={handleReply}
+                  onLike={() => handleLikeComment(comment._id)}
+                  replies={getReplies(comment._id)}
+                />
+              ))}
+            </div>
+
+            {(!post.comments || post.comments.length === 0) && (
+              <div className="text-center py-8 text-gray-500">
+                <svg className="w-12 h-12 mx-auto text-gray-300 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+                <p>No comments yet. Be the first to comment!</p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+// Comment Component
+// Comment Component
+function Comment({ comment, session, onReply, onLike, replies = [] }) {
+  const [showReplies, setShowReplies] = useState(false);
+  
+  // FIXED: Simplified like check
+  const isLiked = session && comment.likes && comment.likes.includes(session.user.id);
+
+  const handleLike = () => {
+    if (!session) return;
+    onLike();
+  };
+
+  return (
+    <div className="bg-gray-50 rounded-lg p-4">
+      <div className="flex items-start space-x-3">
+        <div className="flex-shrink-0">
+          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+            <span className="text-blue-600 text-sm font-medium">
+              {comment.author?.name?.charAt(0).toUpperCase() || 'U'}
+            </span>
+          </div>
+        </div>
+        <div className="flex-1">
+          <div className="flex items-center space-x-2 mb-1">
+            <span className="font-medium text-gray-900 text-sm">
+              {comment.author?.name || 'Unknown'}
+            </span>
+            <span className="text-gray-500 text-xs">
+              {comment.createdAt}
+            </span>
+          </div>
+          <p className="text-gray-700 text-sm mb-2">{comment.content}</p>
+          
+          <div className="flex items-center space-x-4 text-xs">
+            <button 
+              onClick={handleLike}
+              className={`flex items-center space-x-1 ${
+                isLiked ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'
+              }`}
+            >
+              <svg className="w-4 h-4" fill={isLiked ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+              </svg>
+              <span>{comment.likes?.length || 0}</span>
+            </button>
+            
+            {session && (
+              <button 
+                onClick={() => onReply(comment._id)}
+                className="text-gray-500 hover:text-blue-600"
+              >
+                Reply
+              </button>
+            )}
+          </div>
+
+          {/* Replies */}
+          {replies.length > 0 && (
+            <div className="mt-3">
+              <button 
+                onClick={() => setShowReplies(!showReplies)}
+                className="text-sm text-blue-600 hover:text-blue-700 mb-2"
+              >
+                {showReplies ? 'Hide' : 'Show'} {replies.length} {replies.length === 1 ? 'reply' : 'replies'}
+              </button>
+              
+              {showReplies && (
+                <div className="space-y-3 mt-2 ml-4 pl-4 border-l-2 border-gray-200">
+                  {replies.map((reply) => (
+                    <div key={reply._id} className="bg-white rounded p-3">
+                      <div className="flex items-center space-x-2 mb-1">
+                        <span className="font-medium text-gray-900 text-sm">
+                          {reply.author?.name || 'Unknown'}
+                        </span>
+                        <span className="text-gray-500 text-xs">
+                          {reply.createdAt}
+                        </span>
+                      </div>
+                      <p className="text-gray-700 text-sm">{reply.content}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -711,17 +1035,59 @@ function EnhancedCreatePostModal({ onClose, onSubmit, loading }) {
 
 export async function getServerSideProps(context) {
   try {
-    const { default: clientPromise } = await import('../../lib/dbConnect');
-    const { ObjectId } = await import('mongodb');
-
+    const clientPromise = (await import('../../lib/dbConnect')).default;
     const client = await clientPromise;
     const db = client.db();
+    const { ObjectId } = await import('mongodb');
 
     const { id } = context.params;
 
     try {
+      // Get community with aggregation
       const community = await db.collection('communities')
-        .findOne({ _id: new ObjectId(id) });
+        .aggregate([
+          { $match: { _id: new ObjectId(id) } },
+          // Lookup creator details
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'creator',
+              foreignField: '_id',
+              as: 'creatorDetails'
+            }
+          },
+          {
+            $unwind: {
+              path: '$creatorDetails',
+              preserveNullAndEmptyArrays: true
+            }
+          },
+          // Lookup member details
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'members',
+              foreignField: '_id',
+              as: 'memberDetails'
+            }
+          },
+          // Project the fields we need
+          {
+            $project: {
+              name: 1,
+              description: 1,
+              backgroundImage: 1,
+              rules: 1,
+              createdAt: 1,
+              updatedAt: 1,
+              'creator.name': '$creatorDetails.name',
+              'creator.email': '$creatorDetails.email',
+              'creator._id': '$creatorDetails._id',
+              members: '$memberDetails._id'
+            }
+          }
+        ])
+        .next();
 
       if (!community) {
         return {
@@ -729,10 +1095,106 @@ export async function getServerSideProps(context) {
         };
       }
 
+      // Get posts for this community with aggregation
       const posts = await db.collection('posts')
-        .find({ community: new ObjectId(id) })
-        .sort({ createdAt: -1 })
-        .limit(20)
+        .aggregate([
+          { $match: { community: new ObjectId(id) } },
+          { $sort: { createdAt: -1 } },
+          // Lookup author details
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'author',
+              foreignField: '_id',
+              as: 'authorDetails'
+            }
+          },
+          {
+            $unwind: {
+              path: '$authorDetails',
+              preserveNullAndEmptyArrays: true
+            }
+          },
+          // Lookup upvotes user details
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'upvotes',
+              foreignField: '_id',
+              as: 'upvoteDetails'
+            }
+          },
+          // Lookup downvotes user details
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'downvotes',
+              foreignField: '_id',
+              as: 'downvoteDetails'
+            }
+          },
+          // Lookup comment author details
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'comments.author.id',
+              foreignField: '_id',
+              as: 'commentAuthorDetails'
+            }
+          },
+          // Lookup comment likes user details
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'comments.likes',
+              foreignField: '_id',
+              as: 'commentLikeDetails'
+            }
+          },
+          // Project the fields we need
+          {
+            $project: {
+              title: 1,
+              content: 1,
+              createdAt: 1,
+              updatedAt: 1,
+              'author.name': '$authorDetails.name',
+              'author.email': '$authorDetails.email',
+              'author._id': '$authorDetails._id',
+              upvotes: '$upvoteDetails._id',
+              downvotes: '$downvoteDetails._id',
+              comments: {
+                $map: {
+                  input: '$comments',
+                  as: 'comment',
+                  in: {
+                    _id: '$$comment._id',
+                    content: '$$comment.content',
+                    author: {
+                      name: { 
+                        $arrayElemAt: [
+                          '$commentAuthorDetails.name',
+                          { $indexOfArray: ['$commentAuthorDetails._id', '$$comment.author.id'] }
+                        ]
+                      },
+                      email: {
+                        $arrayElemAt: [
+                          '$commentAuthorDetails.email',
+                          { $indexOfArray: ['$commentAuthorDetails._id', '$$comment.author.id'] }
+                        ]
+                      },
+                      _id: '$$comment.author.id'
+                    },
+                    likes: '$$comment.likes',
+                    parentId: '$$comment.parentId',
+                    createdAt: '$$comment.createdAt',
+                    updatedAt: '$$comment.updatedAt'
+                  }
+                }
+              }
+            }
+          }
+        ])
         .toArray();
 
       return {

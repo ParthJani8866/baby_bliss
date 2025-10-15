@@ -2,6 +2,10 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['mongodb'],
   },
+  images: {
+    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", 'i.pinimg.com'],
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // Don't attempt to load these modules in the browser
