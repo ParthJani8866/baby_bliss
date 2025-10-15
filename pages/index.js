@@ -208,7 +208,7 @@ export default function Home() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="#pregnancy-guide"
+              href="/communities/my-community-posts"
               className="bg-white text-teal-700 hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2"
             >
               <FaRocket className="w-5 h-5" />
