@@ -386,7 +386,7 @@ export default function MyCommunityPosts() {
                     onClick={() => setShowCreatePost(true)}
                     className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-500 rounded-full py-2 px-4 text-left transition-colors"
                   >
-                    What's on your mind, {session.user.name?.split(' ')[0]}?
+                    What is on your mind, {session.user.name?.split(' ')[0]}?
                   </button>
                 </div>
               </div>
@@ -649,7 +649,7 @@ function CreatePostModal({ onClose, onSubmit, loading, communities, session }) {
             {/* Content Textarea */}
             <div>
               <textarea
-                placeholder={`What's on your mind, ${session.user.name?.split(' ')[0]}?`}
+                placeholder={`What is on your mind, ${session.user.name?.split(' ')[0]}?`}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
