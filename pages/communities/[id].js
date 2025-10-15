@@ -273,7 +273,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
               </svg>
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-4">Community Not Found</h1>
-            <p className="text-gray-600 mb-6">The community you're looking for doesn't exist or may have been removed.</p>
+            <p className="text-gray-600 mb-6">  The community you{"'"}re looking for doesn{"'"}t exist or may have been removed.</p>
             <Link
               href="/communities"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 shadow-sm hover:shadow-md"
