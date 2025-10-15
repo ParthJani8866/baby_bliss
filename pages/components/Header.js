@@ -200,7 +200,7 @@ export default function Header() {
               className="flex items-center gap-3 bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <FaSignInAlt className="w-5 h-5" />
-              <span>Login with Google</span>
+              <span>SignIn</span>
             </button>
           )}
         </nav>
@@ -306,7 +306,7 @@ export default function Header() {
                 className="flex items-center gap-3 w-full mx-2 mt-4 px-6 py-4 bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg"
               >
                 <FaSignInAlt className="w-5 h-5" />
-                <span>Login with Google</span>
+                <span>SignIn</span>
               </button>
             )}
           </div>

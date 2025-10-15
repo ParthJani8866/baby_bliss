@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -82,7 +82,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
 
   const joinCommunity = async () => {
     if (!session) {
-      router.push('/auth/signin');
+      signIn("google");
       return;
     }
 
@@ -102,7 +102,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
         setIsMember(true);
         setError('');
       } else if (response.status === 401) {
-        router.push('/auth/signin');
+        signIn("google");
       } else {
         setError(responseData.error || 'Failed to join community');
       }
@@ -143,7 +143,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
 
   const createPost = async (postData) => {
     if (!session) {
-      router.push('/auth/signin');
+      signIn("google");
       return;
     }
 
@@ -180,7 +180,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
   // Handle post interactions
   const handlePostInteraction = async (postId, action) => {
     if (!session) {
-      router.push('/auth/signin');
+      signIn("google");
       return;
     }
 
@@ -211,7 +211,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
   // Handle comment actions
   const handleCommentAction = async (postId, commentId, data = {}) => {
     if (!session) {
-      router.push('/auth/signin');
+      signIn("google");
       return;
     }
 
@@ -398,7 +398,7 @@ export default function CommunityDetail({ initialCommunity, initialPosts, error:
                   )
                 ) : (
                   <button
-                    onClick={() => router.push('/auth/signin')}
+                    onClick={() => signIn("google")}
                     className="flex items-center gap-3 bg-white text-teal-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-2xl hover:shadow-xl border border-white/30"
                   >
                     <FaSignInAlt className="w-5 h-5" />

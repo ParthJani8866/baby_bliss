@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSession, getSession } from 'next-auth/react';
+import { useSession, getSession, signIn } from 'next-auth/react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -47,7 +47,7 @@ export default function CommunitiesList({ initialCommunities }) {
     try {
       setLoading(true);
       const response = await fetch('/api/communities');
-      
+
       if (response.ok) {
         const data = await response.json();
         setCommunities(data.data);
@@ -71,7 +71,7 @@ export default function CommunitiesList({ initialCommunities }) {
         const data = await response.json();
         setCommunities(data.data);
       } else {
-        setError('Unable to load communities');
+        //setError('Unable to load communities');
       }
     } catch (error) {
       setError('Error loading communities');
@@ -79,7 +79,7 @@ export default function CommunitiesList({ initialCommunities }) {
   };
 
   const filteredAndSortedCommunities = communities
-    .filter(community => 
+    .filter(community =>
       community.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       community.description.toLowerCase().includes(searchTerm.toLowerCase())
     )
@@ -100,7 +100,7 @@ export default function CommunitiesList({ initialCommunities }) {
 
   const joinCommunity = async (communityId) => {
     if (!session) {
-      router.push('/auth/signin');
+      signIn("google");
       return;
     }
 
@@ -149,7 +149,7 @@ export default function CommunitiesList({ initialCommunities }) {
 
   const isMember = (community) => {
     if (!session) return false;
-    return community.members.some(member => 
+    return community.members.some(member =>
       typeof member === 'object' ? member._id === session.user.id : member === session.user.id
     );
   };
@@ -215,7 +215,7 @@ export default function CommunitiesList({ initialCommunities }) {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex gap-3 items-center">
                 <div className="flex items-center gap-2 bg-white/50 rounded-lg px-3 py-2 border border-teal-200">
                   <FaFilter className="h-4 w-4 text-teal-500" />
@@ -230,7 +230,7 @@ export default function CommunitiesList({ initialCommunities }) {
                     <option value="oldest">Oldest First</option>
                   </select>
                 </div>
-                
+
                 {session ? (
                   <Link
                     href="/communities/create"
@@ -241,7 +241,7 @@ export default function CommunitiesList({ initialCommunities }) {
                   </Link>
                 ) : (
                   <button
-                    onClick={() => router.push('/auth/signin')}
+                    onClick={() => signIn("google")}
                     className="flex items-center gap-3 bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     <FaSignInAlt className="w-5 h-5" />
@@ -340,7 +340,7 @@ function CommunityCard({ community, session, onJoin, onLeave, isMember }) {
   };
 
   return (
-    <div 
+    <div
       className="group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl border border-teal-100 hover:border-teal-200 transition-all duration-300 overflow-hidden transform hover:-translate-y-1"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -362,7 +362,7 @@ function CommunityCard({ community, session, onJoin, onLeave, isMember }) {
             </div>
           </div>
         )}
-        
+
         {/* Member Status Badge */}
         <div className="absolute top-3 right-3">
           {isMember ? (
@@ -382,7 +382,7 @@ function CommunityCard({ community, session, onJoin, onLeave, isMember }) {
       <div className="p-6">
         {/* Community Info */}
         <div className="mb-4">
-          <Link 
+          <Link
             href={`/communities/${community._id}`}
             className="hover:no-underline block"
           >
@@ -421,7 +421,7 @@ function CommunityCard({ community, session, onJoin, onLeave, isMember }) {
             </div>
             <span className="text-sm font-semibold">Visit</span>
           </Link>
-          
+
           {session ? (
             isMember ? (
               <button
@@ -466,14 +466,14 @@ function CommunityCard({ community, session, onJoin, onLeave, isMember }) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-  
+
   try {
     const { default: clientPromise } = await import('../../lib/dbConnect');
     const client = await clientPromise;
     const db = client.db();
-    
+
     let communities = [];
-    
+
     try {
       communities = await db.collection('communities')
         .find({})
