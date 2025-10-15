@@ -377,7 +377,7 @@ export default function MyCommunityPosts() {
             {/* Main Feed */}
             <div className="lg:col-span-2 space-y-4">
               {/* Create Post Card */}
-              <div className="bg-white rounded-lg shadow-sm p-4">
+              <div className="hidden lg:block bg-white rounded-lg shadow-sm p-4">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="h-10 w-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
                     {session.user.name?.charAt(0).toUpperCase()}
@@ -827,21 +827,9 @@ function FacebookPostCard({ post, session, onLike, onDislike, onShare, onAddComm
           <div
             className="text-gray-900 prose prose-sm max-w-none"
             dangerouslySetInnerHTML={{
-              __html: isExpanded
-                ? post.content
-                : post.content.length > 500
-                  ? post.content.substring(0, 500) + '...'
-                  : post.content
+              __html: post.content
             }}
           />
-          {post.content.length > 500 && (
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="text-gray-500 text-sm font-medium mt-2 hover:text-gray-700"
-            >
-              {isExpanded ? 'See less' : 'See more'}
-            </button>
-          )}
         </div>
       </div>
 
