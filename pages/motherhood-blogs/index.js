@@ -225,7 +225,7 @@ export default function MotherhoodBlogs() {
               Month-by-Month Parenting Journey
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Your Comprehensive Guide to Baby's First Year
+              Your Comprehensive Guide to Babys First Year
             </p>
             <p className="text-lg max-w-3xl mx-auto opacity-80">
               From newborn care to toddler milestones - expert tips, developmental guidance, 
@@ -323,10 +323,10 @@ export default function MotherhoodBlogs() {
                             <div className="bg-orange-50 rounded-xl p-4">
                               <h3 className="font-semibold text-orange-800 mb-3">Quick Tips</h3>
                               <ul className="text-orange-700 text-sm space-y-1">
-                                <li>• Follow baby's feeding cues</li>
+                                <li>• Follow babys feeding cues</li>
                                 <li>• Prioritize tummy time daily</li>
                                 <li>• Track developmental milestones</li>
-                                <li>• Don't forget self-care</li>
+                                <li>• Dont forget self-care</li>
                               </ul>
                             </div>
                           </div>

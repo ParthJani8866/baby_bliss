@@ -655,10 +655,10 @@ export default function BabyNamesHome() {
         <section className="text-center mb-16">
           <div className="bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl p-8 text-white">
             <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-              Ready to Find Your Baby's Name?
+              Ready to Find Your Babys Name?
             </h2>
             <p className="text-orange-100 text-lg mb-6 max-w-2xl mx-auto">
-              Start your journey with our comprehensive A-Z directory and discover the perfect name that tells your baby's story.
+              Start your journey with our comprehensive A-Z directory and discover the perfect name that tells your babys story.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

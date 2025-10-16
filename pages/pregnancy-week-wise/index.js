@@ -201,11 +201,11 @@ export default function PregnancyWeekWise() {
               Pregnancy Week-by-Week Journey
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Track Your Baby's Development Every Step of the Way
+              Track Your Babys Development Every Step of the Way
             </p>
             <p className="text-lg max-w-3xl mx-auto opacity-80">
               From conception to delivery - expert guidance, developmental milestones, 
-              and mother's wellness tips for all 40 weeks of pregnancy.
+              and mothers wellness tips for all 40 weeks of pregnancy.
             </p>
           </div>
         </section>
@@ -340,7 +340,7 @@ export default function PregnancyWeekWise() {
                   <div className="p-6 md:p-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                       <div className="bg-gray-50 rounded-xl p-4">
-                        <h3 className="font-semibold text-gray-800 mb-3">This Week's Highlights</h3>
+                        <h3 className="font-semibold text-gray-800 mb-3">This Weeks Highlights</h3>
                         <div className="space-y-2">
                           {currentWeek.keyPoints.map((point, index) => (
                             <div key={index} className="flex items-center space-x-2">
