@@ -20,7 +20,6 @@ export default function AdBanner() {
 
   return (
     <div className="w-full flex justify-center my-4">
-      {/* This is where Adsterra will inject the ad */}
       <div id="container-6ecac58554a85ebd45aa5bb9ab11a5ae"></div>
     </div>
   );
