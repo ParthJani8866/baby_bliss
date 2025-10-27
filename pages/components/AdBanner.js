@@ -3,25 +3,24 @@ import { useEffect } from "react";
 
 export default function AdBanner() {
   useEffect(() => {
-    try {
-      if (typeof window !== "undefined" && window.adsbygoogle) {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      }
-    } catch (err) {
-      console.warn("AdSense error:", err);
-    }
+    // Dynamically load the EffectiveGate script
+    const script = document.createElement("script");
+    script.src = "//pl27936159.effectivegatecpm.com/6ecac58554a85ebd45aa5bb9ab11a5ae/invoke.js";
+    script.async = true;
+    script.setAttribute("data-cfasync", "false");
+
+    // Append script to body
+    document.body.appendChild(script);
+
+    // Cleanup to remove script if component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
 
   return (
     <div className="w-full flex justify-center">
-      <ins
-        className="adsbygoogle"
-        style={{ display: "block" }}
-        data-ad-client="ca-pub-5866918436034267" // ✅ Your AdSense client ID
-        data-ad-slot="6362861503"               // ✅ Updated Ad slot ID
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
+      <div id="container-6ecac58554a85ebd45aa5bb9ab11a5ae"></div>
     </div>
   );
 }
