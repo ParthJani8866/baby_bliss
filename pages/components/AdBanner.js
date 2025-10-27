@@ -3,24 +3,34 @@ import { useEffect } from "react";
 
 export default function AdBanner() {
   useEffect(() => {
-    // Create Adsterra script dynamically
-    const script = document.createElement("script");
-    script.src = "//pl27936159.effectivegatecpm.com/6ecac58554a85ebd45aa5bb9ab11a5ae/invoke.js";
-    script.async = true;
-    script.setAttribute("data-cfasync", "false");
+    // ✅ Define the Adsterra/HighPerformanceFormat configuration
+    window.atOptions = {
+      key: "093e8d96e7dabca4975f64b708eb9796",
+      format: "iframe",
+      height: 300,
+      width: 160,
+      params: {},
+    };
 
-    // Append to document body
+    // ✅ Create the script dynamically
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "//www.highperformanceformat.com/093e8d96e7dabca4975f64b708eb9796/invoke.js";
+
+    // ✅ Append the script to the document
     document.body.appendChild(script);
 
-    // Cleanup script on unmount
+    // Cleanup when the component unmounts
     return () => {
       document.body.removeChild(script);
     };
   }, []);
 
   return (
-    <div className="w-full flex justify-center my-4">
-      <div id="container-6ecac58554a85ebd45aa5bb9ab11a5ae"></div>
-    </div>
+    <div
+      className="flex justify-center my-4"
+      style={{ width: "160px", height: "300px" }}
+      id="ad-container"
+    ></div>
   );
 }
