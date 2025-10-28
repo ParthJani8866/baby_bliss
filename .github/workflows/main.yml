@@ -1,4 +1,4 @@
-name: Deploy Next.js App to AWS Server
+name: CI/CD Deploy Next.js to AWS EC2
 
 on:
   push:
@@ -6,42 +6,42 @@ on:
       - master
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
 
-      - name: Install dependencies
-        run: npm ci  --legacy-peer-deps
+    - name: Install dependencies
+      run: npm install --legacy-peer-deps
 
-      - name: Build Next.js app
-        run: npm run build
+    - name: Build Next.js
+      run: npm run build
 
-      # 👇 Debug step to confirm what exists
-      - name: List files after build
-        run: |
-          echo "Current path:"
-          pwd
-          echo "Files in directory:"
-          ls -R
+    - name: Copy files to EC2
+      uses: appleboy/scp-action@v0.1.5
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_KEY }}
+        source: "."
+        target: "/var/www/baby_bliss/baby_bliss"
 
-      # 👇 Upload built files to your server
-      - name: Deploy via SCP
-        uses: appleboy/scp-action@v0.1.5
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
-          port: 22
-          # ✅ IMPORTANT: Use ./* to send everything from root directory
-          source: "./*"
-          target: "/var/www/baby_bliss/baby_bliss"
-          overwrite: true
-          debug: true
+    - name: SSH and restart app
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_KEY }}
+        script: |
+          cd /var/www/baby_bliss/baby_bliss
+          npm install --production
+          pm2 delete baby_bliss || true
+          pm2 start npm --name "baby_bliss" -- start
+          pm2 save
