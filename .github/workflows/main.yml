@@ -18,20 +18,13 @@ jobs:
       with:
         node-version: 20
 
-    - name: Move into project folder
-      run: cd baby_bliss && pwd
-      working-directory: ./baby_bliss
-
     - name: Install dependencies
-      working-directory: ./baby_bliss
       run: npm ci --legacy-peer-deps
 
     - name: Build Next.js app
-      working-directory: ./baby_bliss
       run: npm run build
 
     - name: Verify build output
-      working-directory: ./baby_bliss
       run: |
         echo "Listing build output:"
         ls -R .next || echo ".next folder missing!"
@@ -44,11 +37,11 @@ jobs:
         key: ${{ secrets.EC2_KEY }}
         port: 22
         source: |
-          baby_bliss/.next/**
-          baby_bliss/public/**
-          baby_bliss/package.json
-          baby_bliss/package-lock.json
-          baby_bliss/next.config.js
+          .next/**
+          public/**
+          package.json
+          package-lock.json
+          next.config.js
         target: /var/www/baby_bliss/baby_bliss
         overwrite: true
         strip_components: 0
