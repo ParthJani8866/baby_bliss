@@ -18,36 +18,43 @@ jobs:
       with:
         node-version: 20
 
+    - name: Move into project folder
+      run: cd baby_bliss && pwd
+      working-directory: ./baby_bliss
+
     - name: Install dependencies
+      working-directory: ./baby_bliss
       run: npm ci --legacy-peer-deps
 
     - name: Build Next.js app
+      working-directory: ./baby_bliss
       run: npm run build
 
-    - name: List output files (debug)
+    - name: Verify build output
+      working-directory: ./baby_bliss
       run: |
-        echo "📁 Current directory contents:"
-        ls -la
-        echo "📁 Build output (.next):"
-        ls -la .next || echo ".next not found"
+        echo "Listing build output:"
+        ls -R .next || echo ".next folder missing!"
 
-    # 🔥 FIX: Copy only verified, existing files
     - name: Copy build files to EC2
       uses: appleboy/scp-action@v0.1.5
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_KEY }}
+        port: 22
         source: |
-          .next/**
-          public/**
-          package.json
-          package-lock.json
-          next.config.js
+          baby_bliss/.next/**
+          baby_bliss/public/**
+          baby_bliss/package.json
+          baby_bliss/package-lock.json
+          baby_bliss/next.config.js
         target: /var/www/baby_bliss/baby_bliss
         overwrite: true
         strip_components: 0
         debug: true
+        timeout: 120s
+        command_timeout: 10m
 
     - name: SSH and restart PM2 app
       uses: appleboy/ssh-action@v0.1.7
@@ -55,11 +62,12 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_KEY }}
+        port: 22
         script: |
           cd /var/www/baby_bliss/baby_bliss
           echo "Installing production dependencies..."
           npm install --production --legacy-peer-deps
-          echo "Restarting PM2 app..."
+          echo "Restarting PM2..."
           pm2 delete baby_bliss || true
           pm2 start npm --name "baby_bliss" -- start
           pm2 save
