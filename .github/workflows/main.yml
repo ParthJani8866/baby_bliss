@@ -3,7 +3,7 @@ name: CI/CD Deploy Next.js to AWS EC2
 on:
   push:
     branches:
-      - master  # Run only when master is updated
+      - master
 
 jobs:
   build-and-deploy:
@@ -19,18 +19,20 @@ jobs:
         node-version: 20
 
     - name: Install dependencies
-      run: npm install --legacy-peer-deps
+      run: npm ci --legacy-peer-deps
 
-    - name: Build Next.js app
+    - name: Build Next.js
       run: npm run build
 
-    - name: Upload build to EC2
+    - name: Verify build output
+      run: ls -la .next
+
+    - name: Copy build files to EC2
       uses: appleboy/scp-action@v0.1.5
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_KEY }}
-        # Copy only necessary files to reduce upload size
         source: |
           .next
           public
@@ -38,8 +40,12 @@ jobs:
           package-lock.json
           next.config.js
         target: /var/www/baby_bliss/baby_bliss
+        strip_components: 0
+        overwrite: true
+        rm: false
+        debug: true
 
-    - name: SSH into EC2 and restart app
+    - name: SSH and restart PM2 app
       uses: appleboy/ssh-action@v0.1.7
       with:
         host: ${{ secrets.EC2_HOST }}
@@ -48,7 +54,7 @@ jobs:
         script: |
           cd /var/www/baby_bliss/baby_bliss
           echo "Installing production dependencies..."
-          npm install --production
+          npm install --production --legacy-peer-deps
           echo "Restarting PM2 app..."
           pm2 delete baby_bliss || true
           pm2 start npm --name "baby_bliss" -- start
