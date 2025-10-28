@@ -11,7 +11,7 @@ export default function AdBanner() {
       width: 160,
       params: {},
     };
-
+    //new 
     // ✅ Create the script dynamically
     const script = document.createElement("script");
     script.type = "text/javascript";
