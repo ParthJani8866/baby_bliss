@@ -1,36 +1,38 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function AdBanner() {
+  const adRef = useRef(null);
+
   useEffect(() => {
-    // ✅ Define the Adsterra/HighPerformanceFormat configuration
-    window.atOptions = {
-      key: "093e8d96e7dabca4975f64b708eb9796",
-      format: "iframe",
-      height: 300,
-      width: 160,
-      params: {},
-    };
-    //new 
-    // ✅ Create the script dynamically
+    // Clear any existing content
+    if (adRef.current) adRef.current.innerHTML = "";
+
+    // Create the ad script dynamically
     const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "//www.highperformanceformat.com/093e8d96e7dabca4975f64b708eb9796/invoke.js";
+    script.async = true;
+    script.setAttribute("data-cfasync", "false");
+    script.src =
+      "//pl27936159.effectivegatecpm.com/6ecac58554a85ebd45aa5bb9ab11a5ae/invoke.js";
 
-    // ✅ Append the script to the document
-    document.body.appendChild(script);
+    // Create the ad container
+    const container = document.createElement("div");
+    container.id = "container-6ecac58554a85ebd45aa5bb9ab11a5ae";
 
-    // Cleanup when the component unmounts
+    // Append inside the component’s div
+    adRef.current?.appendChild(container);
+    adRef.current?.appendChild(script);
+
     return () => {
-      document.body.removeChild(script);
+      if (adRef.current) adRef.current.innerHTML = "";
     };
   }, []);
 
   return (
     <div
+      ref={adRef}
       className="flex justify-center my-4"
       style={{ width: "160px", height: "300px" }}
-      id="ad-container"
-    ></div>
+    />
   );
 }
