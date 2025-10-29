@@ -1,40 +1,40 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-export default function AdBanner() {
+export default function TopAdBanner() {
   const adRef = useRef(null);
 
   useEffect(() => {
     if (!adRef.current) return;
 
-    // Clear any existing ad
+    // Clear existing ad content
     adRef.current.innerHTML = "";
 
-    // Create Adsterra atOptions script
+    // Create the "atOptions" script
     const atOptionsScript = document.createElement("script");
     atOptionsScript.type = "text/javascript";
     atOptionsScript.innerHTML = `
       atOptions = {
-        'key' : '093e8d96e7dabca4975f64b708eb9796',
+        'key' : 'af29d7d46e4295f296b46b98c8262d41',
         'format' : 'iframe',
-        'height' : 300,
-        'width' : 160,
+        'height' : 60,
+        'width' : 468,
         'params' : {}
       };
     `;
 
-    // Create Adsterra invoke script
+    // Create the invoke script
     const invokeScript = document.createElement("script");
     invokeScript.type = "text/javascript";
     invokeScript.src =
-      "//www.highperformanceformat.com/093e8d96e7dabca4975f64b708eb9796/invoke.js";
+      "//www.highperformanceformat.com/af29d7d46e4295f296b46b98c8262d41/invoke.js";
     invokeScript.async = true;
 
-    // Append both scripts in order
+    // Append both scripts
     adRef.current.appendChild(atOptionsScript);
     adRef.current.appendChild(invokeScript);
 
-    // Cleanup when unmounted (safe check)
+    // Safe cleanup when unmounted
     return () => {
       if (adRef.current) {
         adRef.current.innerHTML = "";
@@ -43,13 +43,17 @@ export default function AdBanner() {
   }, []);
 
   return (
-    <div
-      ref={adRef}
-      className="flex justify-center my-4"
-      style={{
-        width: "160px",
-        height: "300px",
-      }}
-    />
+    <div className="w-full flex justify-center mt-4 mb-6">
+      <div
+        ref={adRef}
+        className="flex justify-center"
+        style={{
+          width: "468px",
+          height: "60px",
+          maxWidth: "100%",
+          overflow: "hidden",
+        }}
+      />
+    </div>
   );
 }

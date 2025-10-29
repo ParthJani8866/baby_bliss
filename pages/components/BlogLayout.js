@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import { HandThumbUpIcon } from "@heroicons/react/24/outline";
 import SocialShare from "./SocialShare";
 import BreadcrumbSchema from "./BreadcrumbSchema";
+import NativeAdBanner from "./NativeAdBanner";
 
 export default function BlogLayout({
   title,
@@ -445,8 +446,8 @@ export default function BlogLayout({
                   <button
                     onClick={() => handleTocClick(item.id)}
                     className={`block text-left w-full hover:bg-green-600 transition-colors py-2 px-3 rounded-lg border-l-2 ${item.level === 'h2'
-                        ? 'border-green-300 font-semibold text-white'
-                        : 'border-green-200 pl-6 text-green-100'
+                      ? 'border-green-300 font-semibold text-white'
+                      : 'border-green-200 pl-6 text-green-100'
                       }`}
                   >
                     {item.level === 'h3' && '↳ '}{item.text}
@@ -468,15 +469,15 @@ export default function BlogLayout({
                 <div
                   key={`toc-${idx}`}
                   className={`border-l-2 transition-colors hover:border-green-500 ${item.level === 'h2'
-                      ? 'border-green-600 pl-3'
-                      : 'border-gray-300 pl-6'
+                    ? 'border-green-600 pl-3'
+                    : 'border-gray-300 pl-6'
                     }`}
                 >
                   <button
                     onClick={() => handleTocClick(item.id)}
                     className={`hover:text-green-700 transition-colors text-sm font-medium leading-tight block py-1.5 text-left w-full ${item.level === 'h2'
-                        ? 'text-green-900 font-semibold'
-                        : 'text-gray-700'
+                      ? 'text-green-900 font-semibold'
+                      : 'text-gray-700'
                       }`}
                   >
                     {item.level === 'h3' && '↳ '}{item.text}
@@ -502,8 +503,8 @@ export default function BlogLayout({
               <button
                 onClick={handleLike}
                 className={`flex items-center justify-center gap-2 w-full py-2 px-4 rounded-lg transition-colors ${liked
-                    ? 'bg-orange-100 text-orange-600 border border-orange-200'
-                    : 'bg-gray-100 text-gray-600 border border-gray-200 hover:bg-gray-200'
+                  ? 'bg-orange-100 text-orange-600 border border-orange-200'
+                  : 'bg-gray-100 text-gray-600 border border-gray-200 hover:bg-gray-200'
                   }`}
                 aria-label={liked ? "Unlike this article" : "Like this article"}
               >
@@ -545,6 +546,7 @@ export default function BlogLayout({
                 description={description}
                 url={seoProperties.canonicalUrl}
               />
+              <NativeAdBanner />
             </div>
           )}
 
@@ -603,7 +605,7 @@ export default function BlogLayout({
                     </span>
                     {step.title}
                   </h2>
-
+                  
                   {step.image && (
                     <div className="my-4 flex flex-col items-center gap-4">
                       <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden shadow-md">
@@ -792,12 +794,15 @@ export default function BlogLayout({
         </article>
 
         {/* Sidebar Ads */}
-        <aside className="hidden lg:block lg:col-span-3 self-start space-y-6 sticky top-24">
+        <aside className="hidden lg:block lg:col-span-3 self-start space-y-6 top-24">
           <div className="bg-white border border-gray-300 rounded-xl shadow-lg p-6">
             <h3 className="text-center text-gray-500 uppercase font-bold text-xs mb-4 tracking-wider">ADVERTISEMENT</h3>
             <AdBanner />
+            <AdBanner />
+            <AdBanner />
+            <AdBanner />
+            <AdBanner />
           </div>
-
           {/* Additional sidebar content can go here */}
           <div className="bg-green-50 border border-green-200 rounded-xl p-6">
             <h3 className="font-semibold text-green-800 mb-3">💌 Stay Updated</h3>
