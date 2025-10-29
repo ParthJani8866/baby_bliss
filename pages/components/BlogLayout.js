@@ -11,6 +11,7 @@ import { HandThumbUpIcon } from "@heroicons/react/24/outline";
 import SocialShare from "./SocialShare";
 import BreadcrumbSchema from "./BreadcrumbSchema";
 import NativeAdBanner from "./NativeAdBanner";
+import { FaBell } from "react-icons/fa";
 
 export default function BlogLayout({
   title,
@@ -546,7 +547,6 @@ export default function BlogLayout({
                 description={description}
                 url={seoProperties.canonicalUrl}
               />
-              <NativeAdBanner />
             </div>
           )}
 
@@ -558,6 +558,7 @@ export default function BlogLayout({
 
             {/* Author Information */}
             <div className="flex items-center gap-4 mb-6 p-4 bg-gray-50 border rounded-lg shadow-sm">
+
               <div itemProp="author" itemScope itemType="https://schema.org/Person">
                 <Image
                   src={authorImage}
@@ -588,7 +589,6 @@ export default function BlogLayout({
               {description}
             </p>
           </header>
-
           {/* Steps Section */}
           {steps.length > 0 && (
             <section className="space-y-8">
@@ -605,7 +605,7 @@ export default function BlogLayout({
                     </span>
                     {step.title}
                   </h2>
-                  
+
                   {step.image && (
                     <div className="my-4 flex flex-col items-center gap-4">
                       <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden shadow-md">
@@ -643,6 +643,7 @@ export default function BlogLayout({
 
               {section.image && (
                 <div className="my-6 flex flex-col items-center gap-4">
+                  <NativeAdBanner />
                   <div className="w-full max-w-md h-72 relative rounded-lg overflow-hidden shadow-lg">
                     <Image
                       src={section.image}
@@ -713,6 +714,7 @@ export default function BlogLayout({
             <section id="faq" className="space-y-6 mt-10 bg-white border border-gray-200 rounded-xl p-6">
               <h2 className="text-2xl font-semibold text-orange-500">❓ Frequently Asked Questions</h2>
               <div className="divide-y divide-gray-200">
+                <NativeAdBanner />
                 {faqs.map((faq, idx) => (
                   <div key={`faq-${idx}`} className="py-4" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                     <button
@@ -795,10 +797,11 @@ export default function BlogLayout({
 
         {/* Sidebar Ads */}
         <aside className="hidden lg:block lg:col-span-3 self-start space-y-6 top-24">
-          <div className="bg-white border border-gray-300 rounded-xl shadow-lg p-6">
-            <h3 className="text-center text-gray-500 uppercase font-bold text-xs mb-4 tracking-wider">ADVERTISEMENT</h3>
-            <AdBanner />
-            <AdBanner />
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 sticky top-24">
+            <h3 className="text-center text-gray-500 uppercase font-bold text-sm mb-4 flex items-center justify-center gap-2">
+              <FaBell className="w-4 h-4" />
+              ADVERTISEMENT
+            </h3>
             <AdBanner />
             <AdBanner />
             <AdBanner />

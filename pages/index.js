@@ -478,11 +478,13 @@ export default function Home() {
 
           {/* Sidebar */}
           <div className="lg:col-span-3 space-y-6">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 sticky top-24">
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 top-24">
               <h3 className="text-center text-gray-500 uppercase font-bold text-sm mb-4 flex items-center justify-center gap-2">
                 <FaBell className="w-4 h-4" />
                 ADVERTISEMENT
               </h3>
+              <AdBanner />
+              <AdBanner />
               <AdBanner />
             </div>
             

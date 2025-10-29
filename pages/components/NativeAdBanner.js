@@ -7,38 +7,33 @@ export default function TopAdBanner() {
   useEffect(() => {
     if (!adRef.current) return;
 
-    // Clear existing ad content
+    // Clean up any previous ad content
     adRef.current.innerHTML = "";
 
-    // Create the "atOptions" script
-    const atOptionsScript = document.createElement("script");
-    atOptionsScript.type = "text/javascript";
-    atOptionsScript.innerHTML = `
-      atOptions = {
-        'key' : 'af29d7d46e4295f296b46b98c8262d41',
-        'format' : 'iframe',
-        'height' : 60,
-        'width' : 468,
-        'params' : {}
-      };
-    `;
+    // Define atOptions globally (important)
+    window.atOptions = {
+      key: "af29d7d46e4295f296b46b98c8262d41",
+      format: "iframe",
+      height: 60,
+      width: 468,
+      params: {},
+    };
 
-    // Create the invoke script
-    const invokeScript = document.createElement("script");
-    invokeScript.type = "text/javascript";
-    invokeScript.src =
+    // Load invoke script dynamically
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src =
       "//www.highperformanceformat.com/af29d7d46e4295f296b46b98c8262d41/invoke.js";
-    invokeScript.async = true;
+    script.async = true;
 
-    // Append both scripts
-    adRef.current.appendChild(atOptionsScript);
-    adRef.current.appendChild(invokeScript);
+    adRef.current.appendChild(script);
 
-    // Safe cleanup when unmounted
+    // Cleanup when unmounted
     return () => {
       if (adRef.current) {
         adRef.current.innerHTML = "";
       }
+      delete window.atOptions;
     };
   }, []);
 
