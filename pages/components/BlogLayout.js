@@ -459,7 +459,7 @@ export default function BlogLayout({
         </div>
       )}
 
-      <main className="max-w-7xl mx-auto px-4 py-8 lg:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <main className="max-w-12xl mx-auto px-4 py-8 lg:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Desktop Table of Contents */}
         <aside className="hidden lg:block lg:col-span-3 self-start">
           <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-6 sticky top-24">
