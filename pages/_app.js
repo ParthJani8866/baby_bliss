@@ -38,10 +38,10 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
       {loading && <Loader />}
 
       <Head>
-        <title>Belly Buds</title>
+        <title>The Belly Buds</title>
         <meta charset='utf-8'
           name="description"
-          content="Explore Belly Buds parenting blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your parenting journey smoother."
+          content="Explore The Belly Buds parenting blogs, pregnancy week-wise guides, and parenting tips. Learn from experts and real experiences to make your parenting journey smoother."
         />
         <link rel="icon" href="/images/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -74,15 +74,6 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-KDKGFBMB');`,
         }}
-      />
-
-      {/* Google AdSense */}
-      <Script
-        id="adsense-script"
-        async
-        strategy="afterInteractive"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5866918436034267"
-        crossOrigin="anonymous"
       />
 
       <Component {...pageProps} />
