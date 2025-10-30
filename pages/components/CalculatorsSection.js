@@ -114,7 +114,7 @@ export default function CalculatorsSection() {
                 <FaHeart className="w-5 h-5 text-blue-600" />
               </div>
               <h4 className="font-semibold text-gray-900 mb-2">Kick Counter</h4>
-              <p className="text-gray-600 text-xs">Monitor your baby's movements</p>
+              <p className="text-gray-600 text-xs">Monitor your baby movements</p>
             </Link>
 
             <Link

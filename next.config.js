@@ -1,6 +1,7 @@
 const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['mongodb'],
+    optimizeCss: true,
   },
   images: {
     domains: ["res.cloudinary.com"],
