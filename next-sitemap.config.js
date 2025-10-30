@@ -10,12 +10,6 @@ module.exports = {
   changefreq: 'daily',
   priority: 0.7,
   additionalPaths: async (config) => {
-    const categoryPaths = categories.map((category) => ({
-      loc: `/baby-products/${slugify(category.name, { lower: true })}`,
-      changefreq: 'daily',
-      priority: 0.8,
-    }));
-
     const babyNamePaths = [];
 
     genders.forEach((gender) => {
@@ -28,6 +22,6 @@ module.exports = {
       });
     });
 
-    return [...categoryPaths, ...babyNamePaths];
+    return [...babyNamePaths];
   },
 };

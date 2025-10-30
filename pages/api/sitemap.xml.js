@@ -42,19 +42,7 @@ export default function handler(req, res) {
   const staticPages = [
     { url: "", priority: 1.0 },
     { url: "blogs", priority: 0.8 },
-    { url: "baby-products", priority: 0.9 },
   ];
-
-  // Add category pages dynamically
-  const categoryUrls = categories.map(
-    (cat) => `
-      <url>
-        <loc>${baseUrl}/baby-products/${slugify(cat.name)}</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-      </url>
-    `
-  );
 
   // Add blog posts dynamically
   const blogUrls = BLOG_POSTS.map(
@@ -77,7 +65,6 @@ export default function handler(req, res) {
       </url>
     `
     ),
-    ...categoryUrls,
     ...blogUrls,
   ];
 
