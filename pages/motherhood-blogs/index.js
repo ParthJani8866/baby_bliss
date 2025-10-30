@@ -161,7 +161,7 @@ export default function MotherhoodBlogs() {
         <meta property="og:title" content="Month-by-Month Parenting Guide | First Year Development | Belly Buds" />
         <meta property="og:description" content="Complete parenting guide for baby's first year with expert tips on development, feeding, sleep, and mother's well-being." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://bellybuds.com/motherhood-blogs" />
+        <meta property="og:url" content="https://baby-toys.shop/motherhood-blogs" />
         <meta property="og:image" content="/images/motherhood-og.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Month-by-Month Parenting Guide | Belly Buds" />
@@ -181,13 +181,13 @@ export default function MotherhoodBlogs() {
               "name": "Belly Buds",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://bellybuds.com/logo.png"
+                "url": "https://baby-toys.shop/public/images/logo.png"
               }
             },
             "datePublished": "2024-01-01",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://bellybuds.com/motherhood-blogs"
+              "@id": "https://baby-toys.shop/motherhood-blogs"
             }
           })}
         </script>
@@ -226,10 +226,6 @@ export default function MotherhoodBlogs() {
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90">
               Your Comprehensive Guide to Babys First Year
-            </p>
-            <p className="text-lg max-w-3xl mx-auto opacity-80">
-              From newborn care to toddler milestones - expert tips, developmental guidance, 
-              and support for every step of your parenting journey.
             </p>
           </div>
         </section>

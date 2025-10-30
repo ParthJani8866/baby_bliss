@@ -527,28 +527,7 @@ export default function BlogLayout({
             <span className="text-gray-700 font-medium truncate" aria-current="page" itemProp="name">{title}</span>
           </nav>
 
-          {/* Featured Image */}
-          {mainImage && (
-            <div className="my-6 flex flex-col items-center gap-4">
-              <div className="w-full max-w-4xl h-96 relative rounded-xl overflow-hidden shadow-2xl">
-                <Image
-                  src={mainImage}
-                  alt={title}
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  itemProp="image"
-                />
-              </div>
-              <SocialShare
-                imageUrl={mainImage}
-                title={title}
-                description={description}
-                url={seoProperties.canonicalUrl}
-              />
-            </div>
-          )}
+
 
           {/* Article Header */}
           <header className="mb-8">
@@ -589,6 +568,28 @@ export default function BlogLayout({
               {description}
             </p>
           </header>
+          {/* Featured Image */}
+          {mainImage && (
+            <div className="my-6 flex flex-col items-center gap-4">
+              <div className="w-full max-w-4xl h-96 relative rounded-xl overflow-hidden shadow-2xl">
+                <Image
+                  src={mainImage}
+                  alt={title}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  itemProp="image"
+                />
+              </div>
+              <SocialShare
+                imageUrl={mainImage}
+                title={title}
+                description={description}
+                url={seoProperties.canonicalUrl}
+              />
+            </div>
+          )}
           {/* Steps Section */}
           {steps.length > 0 && (
             <section className="space-y-8">

@@ -137,7 +137,7 @@ export default function PregnancyWeekWise() {
         <meta property="og:title" content="Pregnancy Week-by-Week Guide | Baby Development & Tips | Belly Buds" />
         <meta property="og:description" content="Complete pregnancy guide with weekly baby development milestones, mother's symptoms, and expert tips for all trimesters." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://bellybuds.com/pregnancy-week-wise" />
+        <meta property="og:url" content="https://baby-toys.shop/pregnancy-week-wise" />
         <meta property="og:image" content="/images/pregnancy-og.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Pregnancy Week-by-Week Guide | Belly Buds" />
@@ -157,13 +157,13 @@ export default function PregnancyWeekWise() {
               "name": "Belly Buds",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://bellybuds.com/logo.png"
+                "url": "https://baby-toys.shop/logo.png"
               }
             },
             "datePublished": "2024-01-01",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://bellybuds.com/pregnancy-week-wise"
+              "@id": "https://baby-toys.shop/pregnancy-week-wise"
             }
           })}
         </script>

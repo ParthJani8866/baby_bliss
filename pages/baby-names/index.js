@@ -370,16 +370,6 @@ export default function BabyNamesHome() {
         </div>
       </section>
 
-      {/* Sponsored Ad - Top */}
-      <div className="bg-white border-y border-gray-200 py-8">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl p-6 border border-orange-200">
-            <h3 className="text-lg font-semibold mb-4 text-orange-600 text-center">✨ Sponsored</h3>
-            <AdBanner />
-          </div>
-        </div>
-      </div>
-
       <main className="max-w-6xl mx-auto px-4 py-12">
         {/* A–Z Letter Navigation */}
         <section id="name-search" className="mb-16">

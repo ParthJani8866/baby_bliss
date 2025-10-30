@@ -415,12 +415,6 @@ export default function BabyNamesSlugPage() {
       <Header />
       {seoProperties && <BreadcrumbSchema title={seoProperties.title} breadcrumbs={seoProperties.breadcrumbs} />}
 
-      {/* Sponsored Ad - Top */}
-      <div className="my-8 p-4 bg-orange-50 border rounded shadow">
-        <h3 className="text-lg font-semibold mb-3 text-orange-600">Sponsored</h3>
-        <AdBanner />
-      </div>
-
       <main className="max-w-6xl mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold mb-8 text-orange-500 text-center">
           {selectedGender === "All"

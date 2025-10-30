@@ -189,40 +189,6 @@ export default function Home() {
 
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative py-16 md:py-20 bg-gradient-to-r from-teal-600 to-blue-700 text-white">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-            <FaStar className="w-4 h-4 text-yellow-300" />
-            <span className="text-sm font-medium">Trusted by 10,000+ Parents</span>
-          </div>
-          
-          <h1 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            Your Journey Through
-            <span className="block text-teal-200 mt-2">Motherhood</span>
-          </h1>
-          <p className="text-lg md:text-xl mb-8 text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Expert-guided pregnancy week-by-week, parenting tips, and supportive community for every step of your journey
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/communities/my-community-posts"
-              className="bg-white text-teal-700 hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2"
-            >
-              <FaRocket className="w-5 h-5" />
-              Start Your Journey
-            </Link>
-            <SocialShare 
-              imageUrl=""
-              title="Welcome to Belly Buds - Your Parenting Companion"
-              className="bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm px-6 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/30"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* Navigation Tabs */}
       <div className="sticky top-16 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4">
