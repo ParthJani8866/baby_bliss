@@ -792,7 +792,7 @@ export default function BabyNamesSlugPage() {
             <section className="text-center py-16">
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
                 <p className="text-gray-500 text-lg mb-4">
-                  No {selectedGender.toLowerCase()} names found starting with "{selectedLetter}".
+                  No {selectedGender.toLowerCase()} names found starting with {selectedLetter}.
                 </p>
                 <p className="text-gray-600">
                   Try browsing other letters or check our complete name directory.
