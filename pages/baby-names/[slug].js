@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect, useMemo } from "react";
 import Head from "next/head";
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 // Lazy load components
 const Header = dynamic(() => import("../components/Header"), {
