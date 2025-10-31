@@ -307,29 +307,29 @@ const articleTags = [
 // Pagination Component
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pages = [];
-  
+
   // Always show first page
   pages.push(1);
-  
+
   // Calculate range around current page
   const startPage = Math.max(2, currentPage - 2);
   const endPage = Math.min(totalPages - 1, currentPage + 2);
-  
+
   // Add ellipsis after first page if needed
   if (startPage > 2) {
     pages.push('...');
   }
-  
+
   // Add pages around current page
   for (let i = startPage; i <= endPage; i++) {
     pages.push(i);
   }
-  
+
   // Add ellipsis before last page if needed
   if (endPage < totalPages - 1) {
     pages.push('...');
   }
-  
+
   // Always show last page if there's more than one page
   if (totalPages > 1) {
     pages.push(totalPages);
@@ -341,11 +341,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${
-          currentPage === 1
+        className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${currentPage === 1
             ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
             : "bg-white text-blue-600 border-blue-300 hover:bg-blue-50 hover:border-blue-500 hover:shadow-md"
-        }`}
+          }`}
       >
         ← Previous
       </button>
@@ -355,13 +354,12 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <button
           key={index}
           onClick={() => typeof page === 'number' && onPageChange(page)}
-          className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${
-            page === currentPage
+          className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${page === currentPage
               ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent shadow-lg"
               : typeof page === 'number'
-              ? "bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-blue-300 hover:shadow-md"
-              : "bg-transparent text-gray-500 border-transparent cursor-default"
-          }`}
+                ? "bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-blue-300 hover:shadow-md"
+                : "bg-transparent text-gray-500 border-transparent cursor-default"
+            }`}
           disabled={page === '...'}
         >
           {page}
@@ -372,11 +370,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${
-          currentPage === totalPages
+        className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${currentPage === totalPages
             ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
             : "bg-white text-blue-600 border-blue-300 hover:bg-blue-50 hover:border-blue-500 hover:shadow-md"
-        }`}
+          }`}
       >
         Next →
       </button>
@@ -470,7 +467,7 @@ export default function BabyNamesSlugPage() {
       [name]: !likedNames[name]
     };
     setLikedNames(newLikedNames);
-    
+
     // Save to localStorage
     if (typeof window !== "undefined") {
       localStorage.setItem("likedNames", JSON.stringify(newLikedNames));
@@ -562,63 +559,6 @@ export default function BabyNamesSlugPage() {
           </p>
         </section>
 
-        {/* Navigation Links */}
-        <section className="mb-8">
-          <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-13 gap-2 mb-6">
-            {alphabet.map((letter) => (
-              <Link
-                key={letter}
-                href={`/baby-names/${selectedGender.toLowerCase()}-names-with-${letter.toLowerCase()}`}
-                className={`p-3 rounded-xl text-center font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${
-                  selectedLetter === letter
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent shadow-lg"
-                    : "bg-white border-gray-200 hover:border-blue-300 hover:shadow-md"
-                }`}
-                prefetch={false}
-              >
-                {letter}
-              </Link>
-            ))}
-          </div>
-
-          {/* Gender Navigation */}
-          <div className="flex flex-wrap justify-center gap-3 mb-6">
-            <Link
-              href={`/baby-names/boy-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${
-                selectedGender === "Boy"
-                  ? "bg-gradient-to-r from-blue-500 to-cyan-600 text-white border-transparent shadow-lg"
-                  : "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100 hover:border-blue-300"
-              }`}
-              prefetch={false}
-            >
-              👦 Boy Names
-            </Link>
-            <Link
-              href={`/baby-names/girl-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300 ${
-                selectedGender === "Girl"
-                  ? "bg-gradient-to-r from-pink-500 to-rose-600 text-white border-transparent shadow-lg"
-                  : "bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100 hover:border-pink-300"
-              }`}
-              prefetch={false}
-            >
-              👧 Girl Names
-            </Link>
-            <Link
-              href={`/baby-names/baby-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 ${
-                selectedGender === "All"
-                  ? "bg-gradient-to-r from-gray-500 to-gray-700 text-white border-transparent shadow-lg"
-                  : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100 hover:border-gray-300"
-              }`}
-              prefetch={false}
-            >
-              👶 All Names
-            </Link>
-          </div>
-        </section>
-
         {/* Results Count */}
         {selectedLetter && (
           <section className="text-center mb-8">
@@ -658,22 +598,20 @@ export default function BabyNamesSlugPage() {
                         </span>
                         <button
                           onClick={() => toggleLike(baby.name)}
-                          className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-300 ${
-                            likedNames[baby.name]
+                          className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-300 ${likedNames[baby.name]
                               ? "bg-red-500 text-white shadow-lg"
                               : "bg-gray-200 text-gray-500 hover:bg-gray-300"
-                          }`}
+                            }`}
                           aria-label={likedNames[baby.name] ? `Unlike ${baby.name}` : `Like ${baby.name}`}
                         >
                           {likedNames[baby.name] ? "♥" : "♡"}
                         </button>
                       </div>
                       <span
-                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                          baby.gender === "Boy"
+                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${baby.gender === "Boy"
                             ? "bg-blue-100 text-blue-700 border border-blue-200"
                             : "bg-pink-100 text-pink-700 border border-pink-200"
-                        }`}
+                          }`}
                       >
                         {baby.gender}
                       </span>
@@ -800,6 +738,58 @@ export default function BabyNamesSlugPage() {
             </div>
           </section>
         )}
+        {/* Navigation Links */}
+        <section className="mb-8">
+          <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-13 gap-2 mb-6">
+            {alphabet.map((letter) => (
+              <Link
+                key={letter}
+                href={`/baby-names/${selectedGender.toLowerCase()}-names-with-${letter.toLowerCase()}`}
+                className={`p-3 rounded-xl text-center font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${selectedLetter === letter
+                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent shadow-lg"
+                    : "bg-white border-gray-200 hover:border-blue-300 hover:shadow-md"
+                  }`}
+                prefetch={false}
+              >
+                {letter}
+              </Link>
+            ))}
+          </div>
+
+          {/* Gender Navigation */}
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            <Link
+              href={`/baby-names/boy-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
+              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${selectedGender === "Boy"
+                  ? "bg-gradient-to-r from-blue-500 to-cyan-600 text-white border-transparent shadow-lg"
+                  : "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100 hover:border-blue-300"
+                }`}
+              prefetch={false}
+            >
+              👦 Boy Names
+            </Link>
+            <Link
+              href={`/baby-names/girl-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
+              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300 ${selectedGender === "Girl"
+                  ? "bg-gradient-to-r from-pink-500 to-rose-600 text-white border-transparent shadow-lg"
+                  : "bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100 hover:border-pink-300"
+                }`}
+              prefetch={false}
+            >
+              👧 Girl Names
+            </Link>
+            <Link
+              href={`/baby-names/baby-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
+              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 ${selectedGender === "All"
+                  ? "bg-gradient-to-r from-gray-500 to-gray-700 text-white border-transparent shadow-lg"
+                  : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100 hover:border-gray-300"
+                }`}
+              prefetch={false}
+            >
+              👶 All Names
+            </Link>
+          </div>
+        </section>
       </main>
 
       {/* Sponsored Ad - Bottom */}
