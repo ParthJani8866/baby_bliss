@@ -138,6 +138,14 @@ export default function Blogs() {
       category: "Parenting",
       readTime: "12 min",
       image: "/images/blog-parenting-styles.jpg"
+    },
+    { 
+      title: "Sinners Parents Guide : Comprehensive Analysis of Age Appropriateness and Content Warnings", 
+      slug: "sinners-parents-guide", 
+      description: "Sinners Parents Guide : Your parenting style is more than just a collection of habits—it's the emotional climate you create and the strategic framework you use to raise your child.",
+      category: "Parenting",
+      readTime: "21 min",
+      image: "/images/sinners-movie-poster.jpg"
     }
   ];
 

@@ -12,7 +12,7 @@ export default function BadParentingStoryFull() {
   const sections = [
     {
       title: 'Is "Bad Parenting" Based on a True Story? — Short Answer & What This Article Does',
-      content: `Short answer: sometimes — but most often what you see in books, films, games, and articles is a mixture of factual inspiration and creative shaping. People ask “is bad parenting based on a true story?” for two reasons: they want to know if a specific narrative retells one real life case, and they want to know whether the broader portrayals of harmful parenting reflect true lived experience.
+      content: `Short answer: Is Bad Parenting Based on a True Story?, sometimes — but most often what you see in books, films, games, and articles is a mixture of factual inspiration and creative shaping. People ask “is bad parenting based on a true story?” for two reasons: they want to know if a specific narrative retells one real life case, and they want to know whether the broader portrayals of harmful parenting reflect true lived experience.
 
 This article does three things:
 1) explains what people usually mean by “bad parenting” and the many real-life causes behind harmful caregiving behaviors;
@@ -273,7 +273,7 @@ Critical consumers should ask: does the work point to systemic contributors? Doe
   return (
     <BlogLayout
       title='Is Bad Parenting Based on a True Story? — Full Guide, Do’s & Don’ts, Tips & FAQs'
-      description='A compassionate, evidence-informed long-form guide exploring whether portrayals of bad parenting reflect reality. Includes practical do’s & don’ts, a 6-week recovery plan, daily tools, and expanded FAQs.'
+      description='Is Bad Parenting Based on a True Story?, A compassionate, evidence-informed long-form guide exploring whether portrayals of bad parenting reflect reality. Includes practical do’s & don’ts, a 6-week recovery plan, daily tools, and expanded FAQs.'
       mainImage="/images/blog-is-bad-parenting-based-on-a-true-story.jpg"
       sections={sections}
       faqs={faqs}

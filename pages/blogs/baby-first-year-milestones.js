@@ -5,8 +5,8 @@ import BlogLayout from "../components/BlogLayout";
 export default function BabyFirstYearMilestones() {
   const sections = [
     {
-      title: "The Incredible Journey: Understanding Your Baby's First Year Development",
-      content: `The first year of your baby's life is a period of breathtaking transformation—a journey from a completely dependent newborn to an active, communicative little person on the verge of walking. Each milestone represents not just a new skill, but a complex integration of physical, cognitive, and social-emotional development. Understanding these milestones helps parents support their baby's growth while recognizing the beautiful individuality of each child's developmental timeline.
+      title: "Baby's First Year Milestones, The Incredible Journey: Understanding Your Baby's First Year Development",
+      content: `Baby's First Year Milestones: The first year of your baby's life is a period of breathtaking transformation—a journey from a completely dependent newborn to an active, communicative little person on the verge of walking. Each milestone represents not just a new skill, but a complex integration of physical, cognitive, and social-emotional development. Understanding these milestones helps parents support their baby's growth while recognizing the beautiful individuality of each child's developmental timeline.
 
       In 2025, our understanding of infant development continues to evolve, blending traditional milestone markers with new insights into brain development and attachment. This comprehensive guide goes beyond simply listing when babies typically achieve certain skills—it explores the science behind development, provides practical strategies for support, and helps parents distinguish between normal variations and potential concerns. Whether you're a first-time parent marveling at every new development or an experienced caregiver seeking updated information, this guide offers evidence-based insights to navigate your baby's remarkable first year with confidence and joy.`
     },
@@ -237,7 +237,7 @@ export default function BabyFirstYearMilestones() {
     <BlogLayout
       title="Baby's First Year Milestones: Complete Month-by-Month Development Guide 2025"
       mainImage="/images/blog-baby-first-year-milestones.jpg"
-      description="Comprehensive guide to your baby's first year milestones. Learn about month-by-month development, get expert tips, understand developmental variations, and discover how to support your baby's growth through their incredible first year."
+      description="Baby's First Year Milestones, Comprehensive guide to your baby's first year milestones. Learn about month-by-month development, get expert tips, understand developmental variations, and discover how to support your baby's growth through their incredible first year."
       sections={sections}
       tips={tips}
       faqs={faqs}

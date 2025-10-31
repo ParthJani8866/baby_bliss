@@ -5,7 +5,7 @@ import BlogLayout from "../components/BlogLayout";
 export default function BabyProofingGuide() {
   const sections = [
     {
-      title: "The Complete Baby-Proofing Guide: Creating a Safe Haven for Your Little Explorer",
+      title: "Baby-Proofing Guide: Creating a Safe Haven for Your Little Explorer",
       content: `Baby-proofing is one of the most crucial responsibilities of parenthood—a proactive process of transforming your home from a landscape of potential dangers into a secure environment where curiosity can flourish safely. As babies transition from immobile newborns to active explorers, their innate drive to touch, taste, and investigate everything becomes both wonderful and worrisome. Proper baby-proofing doesn't mean creating a sterile, padded cell; rather, it's about strategically managing risks while preserving your home's functionality and your child's developmental opportunities.
 
       In 2025, baby-proofing has evolved beyond basic outlet covers and cabinet locks. Modern approaches integrate smart home technology, evidence-based safety research, and developmental psychology to create environments that protect while still encouraging appropriate risk-taking and learning. This comprehensive guide covers everything from newborn safety considerations to toddler-proofing strategies, helping you anticipate hazards before they become emergencies and creating layers of protection that grow with your child.`
