@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import Head from "next/head";
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -20,13 +20,19 @@ const AdBanner = dynamic(() => import("../components/AdBanner"), {
 
 const BreadcrumbSchema = dynamic(() => import("../components/BreadcrumbSchema"));
 
-// Lazy load heavy data
-let babyNames = [];
+// Lazy load heavy data - use a ref to store the loaded data
+let babyNamesData = null;
 const loadBabyNames = async () => {
-  if (typeof window !== 'undefined') {
-    const module = await import("../../data/babyNamesArray");
-    babyNames = module.default || module;
+  if (typeof window !== 'undefined' && !babyNamesData) {
+    try {
+      const module = await import("../../data/babyNamesArray");
+      babyNamesData = module.default || module;
+    } catch (error) {
+      console.error('Failed to load baby names:', error);
+      babyNamesData = [];
+    }
   }
+  return babyNamesData || [];
 };
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -325,7 +331,7 @@ const articleTags = [
   "Parenting", "Newborn", "Baby Care", "Name Inspiration"
 ];
 
-// Optimized Pagination Component with memo
+// Optimized Pagination Component
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pages = useMemo(() => {
     const pageArray = [];
@@ -415,7 +421,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 };
 
 // Optimized Name Card Component
-const NameCard = React.memo(({ baby, isLiked, onToggleLike }) => (
+const NameCard = ({ baby, isLiked, onToggleLike }) => (
   <div className="group bg-white rounded-xl p-4 shadow-lg border-2 border-gray-100 hover:border-blue-300 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
     <div className="flex justify-between items-center mb-2">
       <span className="font-bold text-gray-800 text-lg group-hover:text-blue-600 transition-colors">
@@ -443,12 +449,10 @@ const NameCard = React.memo(({ baby, isLiked, onToggleLike }) => (
       {baby.gender}
     </span>
   </div>
-));
-
-NameCard.displayName = 'NameCard';
+);
 
 // Optimized FAQ Item Component
-const FAQItem = React.memo(({ faq, isOpen, onToggle, index }) => (
+const FAQItem = ({ faq, isOpen, onToggle, index }) => (
   <div className="border-b border-gray-200 last:border-b-0">
     <button
       onClick={() => onToggle(index)}
@@ -474,9 +478,7 @@ const FAQItem = React.memo(({ faq, isOpen, onToggle, index }) => (
       </div>
     )}
   </div>
-));
-
-FAQItem.displayName = 'FAQItem';
+);
 
 export default function BabyNamesSlugPage() {
   const router = useRouter();
@@ -486,6 +488,7 @@ export default function BabyNamesSlugPage() {
   const [likedNames, setLikedNames] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [namesLoaded, setNamesLoaded] = useState(false);
+  const [babyNames, setBabyNames] = useState([]);
 
   // Wait for router to be ready and load data
   useEffect(() => {
@@ -493,7 +496,8 @@ export default function BabyNamesSlugPage() {
       if (router.isReady) {
         // Load baby names data in background
         if (!namesLoaded) {
-          await loadBabyNames();
+          const names = await loadBabyNames();
+          setBabyNames(names);
           setNamesLoaded(true);
         }
         setIsLoading(false);
@@ -554,7 +558,7 @@ export default function BabyNamesSlugPage() {
     const current = filtered.slice(startIndex, endIndex);
 
     return { filteredNames: filtered, totalPages, currentNames: current };
-  }, [selectedLetter, selectedGender, currentPage, namesLoaded]);
+  }, [selectedLetter, selectedGender, currentPage, namesLoaded, babyNames]);
 
   const seoProperties = useMemo(() => 
     selectedLetter ? generateSEOProperties(selectedGender, selectedLetter, filteredNames.length, currentPage) : null,
