@@ -1,39 +1,12 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-
-// Lazy load components
-const Header = dynamic(() => import("../components/Header"), {
-  loading: () => <div className="h-16 bg-white border-b border-gray-200 animate-pulse" />
-});
-
-const Footer = dynamic(() => import("../components/Footer"), {
-  loading: () => <div className="h-32 bg-gray-100 animate-pulse" />
-});
-
-const AdBanner = dynamic(() => import("../components/AdBanner"), {
-  loading: () => <div className="h-24 bg-gray-100 rounded-lg animate-pulse" />,
-  ssr: false
-});
-
-const BreadcrumbSchema = dynamic(() => import("../components/BreadcrumbSchema"));
-
-// Lazy load heavy data - use a ref to store the loaded data
-let babyNamesData = null;
-const loadBabyNames = async () => {
-  if (typeof window !== 'undefined' && !babyNamesData) {
-    try {
-      const module = await import("../../data/babyNamesArray");
-      babyNamesData = module.default || module;
-    } catch (error) {
-      console.error('Failed to load baby names:', error);
-      babyNamesData = [];
-    }
-  }
-  return babyNamesData || [];
-};
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import AdBanner from "../components/AdBanner";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import babyNames from "../../data/babyNamesArray";
+import Link from "next/link";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const NAMES_PER_PAGE = 100;
@@ -331,40 +304,36 @@ const articleTags = [
   "Parenting", "Newborn", "Baby Care", "Name Inspiration"
 ];
 
-// Optimized Pagination Component
+// Pagination Component
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const pages = useMemo(() => {
-    const pageArray = [];
-    
-    // Always show first page
-    pageArray.push(1);
+  const pages = [];
 
-    // Calculate range around current page
-    const startPage = Math.max(2, currentPage - 2);
-    const endPage = Math.min(totalPages - 1, currentPage + 2);
+  // Always show first page
+  pages.push(1);
 
-    // Add ellipsis after first page if needed
-    if (startPage > 2) {
-      pageArray.push('...');
-    }
+  // Calculate range around current page
+  const startPage = Math.max(2, currentPage - 2);
+  const endPage = Math.min(totalPages - 1, currentPage + 2);
 
-    // Add pages around current page
-    for (let i = startPage; i <= endPage; i++) {
-      pageArray.push(i);
-    }
+  // Add ellipsis after first page if needed
+  if (startPage > 2) {
+    pages.push('...');
+  }
 
-    // Add ellipsis before last page if needed
-    if (endPage < totalPages - 1) {
-      pageArray.push('...');
-    }
+  // Add pages around current page
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i);
+  }
 
-    // Always show last page if there's more than one page
-    if (totalPages > 1) {
-      pageArray.push(totalPages);
-    }
+  // Add ellipsis before last page if needed
+  if (endPage < totalPages - 1) {
+    pages.push('...');
+  }
 
-    return pageArray;
-  }, [currentPage, totalPages]);
+  // Always show last page if there's more than one page
+  if (totalPages > 1) {
+    pages.push(totalPages);
+  }
 
   return (
     <div className="flex flex-wrap justify-center items-center gap-2 my-8">
@@ -372,11 +341,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${
-          currentPage === 1
+        className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${currentPage === 1
             ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
             : "bg-white text-blue-600 border-blue-300 hover:bg-blue-50 hover:border-blue-500 hover:shadow-md"
-        }`}
+          }`}
       >
         ← Previous
       </button>
@@ -386,13 +354,12 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <button
           key={index}
           onClick={() => typeof page === 'number' && onPageChange(page)}
-          className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${
-            page === currentPage
+          className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${page === currentPage
               ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent shadow-lg"
               : typeof page === 'number'
                 ? "bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-blue-300 hover:shadow-md"
                 : "bg-transparent text-gray-500 border-transparent cursor-default"
-          }`}
+            }`}
           disabled={page === '...'}
         >
           {page}
@@ -403,11 +370,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${
-          currentPage === totalPages
+        className={`px-4 py-2 rounded-lg border-2 font-medium transition-all duration-300 ${currentPage === totalPages
             ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
             : "bg-white text-blue-600 border-blue-300 hover:bg-blue-50 hover:border-blue-500 hover:shadow-md"
-        }`}
+          }`}
       >
         Next →
       </button>
@@ -420,66 +386,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   );
 };
 
-// Optimized Name Card Component
-const NameCard = ({ baby, isLiked, onToggleLike }) => (
-  <div className="group bg-white rounded-xl p-4 shadow-lg border-2 border-gray-100 hover:border-blue-300 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-    <div className="flex justify-between items-center mb-2">
-      <span className="font-bold text-gray-800 text-lg group-hover:text-blue-600 transition-colors">
-        {baby.name}
-      </span>
-      <button
-        onClick={() => onToggleLike(baby.name)}
-        className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-300 ${
-          isLiked
-            ? "bg-red-500 text-white shadow-lg"
-            : "bg-gray-200 text-gray-500 hover:bg-gray-300"
-        }`}
-        aria-label={isLiked ? `Unlike ${baby.name}` : `Like ${baby.name}`}
-      >
-        {isLiked ? "♥" : "♡"}
-      </button>
-    </div>
-    <span
-      className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-        baby.gender === "Boy"
-          ? "bg-blue-100 text-blue-700 border border-blue-200"
-          : "bg-pink-100 text-pink-700 border border-pink-200"
-      }`}
-    >
-      {baby.gender}
-    </span>
-  </div>
-);
-
-// Optimized FAQ Item Component
-const FAQItem = ({ faq, isOpen, onToggle, index }) => (
-  <div className="border-b border-gray-200 last:border-b-0">
-    <button
-      onClick={() => onToggle(index)}
-      className="w-full flex justify-between items-center text-left p-6 hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg"
-      aria-expanded={isOpen}
-      aria-controls={`faq-answer-${index}`}
-    >
-      <span className="text-lg font-semibold text-gray-900 pr-4">
-        {faq.question}
-      </span>
-      <span className={`text-blue-600 font-bold text-xl transition-transform ${isOpen ? 'rotate-180' : ''}`}>
-        ▼
-      </span>
-    </button>
-    {isOpen && (
-      <div
-        id={`faq-answer-${index}`}
-        className="p-6 pt-0"
-      >
-        <div className="text-gray-700 leading-relaxed bg-blue-50 rounded-xl p-4 border border-blue-200">
-          {faq.answer}
-        </div>
-      </div>
-    )}
-  </div>
-);
-
 export default function BabyNamesSlugPage() {
   const router = useRouter();
   const { slug } = router.query;
@@ -487,25 +393,13 @@ export default function BabyNamesSlugPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [likedNames, setLikedNames] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-  const [namesLoaded, setNamesLoaded] = useState(false);
-  const [babyNames, setBabyNames] = useState([]);
 
-  // Wait for router to be ready and load data
+  // Wait for router to be ready
   useEffect(() => {
-    const initializePage = async () => {
-      if (router.isReady) {
-        // Load baby names data in background
-        if (!namesLoaded) {
-          const names = await loadBabyNames();
-          setBabyNames(names);
-          setNamesLoaded(true);
-        }
-        setIsLoading(false);
-      }
-    };
-
-    initializePage();
-  }, [router.isReady, namesLoaded]);
+    if (router.isReady) {
+      setIsLoading(false);
+    }
+  }, [router.isReady]);
 
   // Load liked names from localStorage
   useEffect(() => {
@@ -525,72 +419,6 @@ export default function BabyNamesSlugPage() {
     setCurrentPage(1);
   }, [slug]);
 
-  // Parse slug, e.g. "girl-names-with-a"
-  const { selectedGender, selectedLetter } = useMemo(() => {
-    if (!slug) return { selectedGender: "All", selectedLetter: null };
-    
-    const lowerSlug = slug.toLowerCase();
-    let gender = "All";
-    if (lowerSlug.includes("girl")) gender = "Girl";
-    else if (lowerSlug.includes("boy")) gender = "Boy";
-
-    const letterMatch = lowerSlug.match(/with-([a-z])/);
-    const letter = letterMatch ? letterMatch[1].toUpperCase() : null;
-
-    return { selectedGender: gender, selectedLetter: letter };
-  }, [slug]);
-
-  // Filter names based on selected gender and letter
-  const { filteredNames, totalPages, currentNames } = useMemo(() => {
-    if (!selectedLetter || !namesLoaded) {
-      return { filteredNames: [], totalPages: 0, currentNames: [] };
-    }
-
-    const filtered = babyNames.filter(
-      (b) =>
-        b.name.startsWith(selectedLetter) &&
-        (selectedGender === "All" || b.gender === selectedGender)
-    );
-
-    const totalPages = Math.ceil(filtered.length / NAMES_PER_PAGE);
-    const startIndex = (currentPage - 1) * NAMES_PER_PAGE;
-    const endIndex = startIndex + NAMES_PER_PAGE;
-    const current = filtered.slice(startIndex, endIndex);
-
-    return { filteredNames: filtered, totalPages, currentNames: current };
-  }, [selectedLetter, selectedGender, currentPage, namesLoaded, babyNames]);
-
-  const seoProperties = useMemo(() => 
-    selectedLetter ? generateSEOProperties(selectedGender, selectedLetter, filteredNames.length, currentPage) : null,
-    [selectedGender, selectedLetter, filteredNames.length, currentPage]
-  );
-
-  const currentFaqData = useMemo(() => 
-    selectedLetter ? faqData(selectedGender, selectedLetter, filteredNames.length) : [],
-    [selectedGender, selectedLetter, filteredNames.length]
-  );
-
-  const toggleLike = useCallback((name) => {
-    const newLikedNames = {
-      ...likedNames,
-      [name]: !likedNames[name]
-    };
-    setLikedNames(newLikedNames);
-
-    // Save to localStorage
-    if (typeof window !== "undefined") {
-      localStorage.setItem("likedNames", JSON.stringify(newLikedNames));
-    }
-  }, [likedNames]);
-
-  const toggleFAQ = useCallback((idx) => setOpenFAQ(openFAQ === idx ? null : idx), [openFAQ]);
-
-  const handlePageChange = useCallback((newPage) => {
-    setCurrentPage(newPage);
-    // Scroll to top when page changes
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
   if (isLoading || !slug) {
     return (
       <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
@@ -603,6 +431,57 @@ export default function BabyNamesSlugPage() {
     );
   }
 
+  // Parse slug, e.g. "girl-names-with-a"
+  const lowerSlug = slug.toLowerCase();
+
+  let selectedGender = "All";
+  if (lowerSlug.includes("girl")) selectedGender = "Girl";
+  else if (lowerSlug.includes("boy")) selectedGender = "Boy";
+
+  const selectedLetterMatch = lowerSlug.match(/with-([a-z])/);
+  const selectedLetter = selectedLetterMatch
+    ? selectedLetterMatch[1].toUpperCase()
+    : null;
+
+  // Filter names based on selected gender and letter
+  const filteredNames = selectedLetter
+    ? babyNames.filter(
+      (b) =>
+        b.name.startsWith(selectedLetter) &&
+        (selectedGender === "All" || b.gender === selectedGender)
+    )
+    : [];
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredNames.length / NAMES_PER_PAGE);
+  const startIndex = (currentPage - 1) * NAMES_PER_PAGE;
+  const endIndex = startIndex + NAMES_PER_PAGE;
+  const currentNames = filteredNames.slice(startIndex, endIndex);
+
+  const seoProperties = selectedLetter ? generateSEOProperties(selectedGender, selectedLetter, filteredNames.length, currentPage) : null;
+  const currentFaqData = selectedLetter ? faqData(selectedGender, selectedLetter, filteredNames.length) : [];
+
+  const toggleLike = (name) => {
+    const newLikedNames = {
+      ...likedNames,
+      [name]: !likedNames[name]
+    };
+    setLikedNames(newLikedNames);
+
+    // Save to localStorage
+    if (typeof window !== "undefined") {
+      localStorage.setItem("likedNames", JSON.stringify(newLikedNames));
+    }
+  };
+
+  const toggleFAQ = (idx) => setOpenFAQ(openFAQ === idx ? null : idx);
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    // Scroll to top when page changes
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
       <Head>
@@ -613,7 +492,7 @@ export default function BabyNamesSlugPage() {
         />
         <meta name="keywords" content={`baby names, ${selectedGender} names, names starting with ${selectedLetter}, name meanings, baby name search, popular names, unique names`} />
 
-        {/* Critical SEO Meta Tags */}
+        {/* Additional SEO Meta Tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#F97316" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -621,19 +500,6 @@ export default function BabyNamesSlugPage() {
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta name="author" content="Parth Jani" />
         <meta name="publisher" content="Belly Buds" />
-
-        {/* Preload critical resources */}
-        <link
-          rel="preload"
-          href="/fonts/inter-var.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        
-        {/* DNS preconnect for external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
 
         {/* Favicon Links */}
         <link rel="icon" href="/favicon.ico" />
@@ -688,9 +554,6 @@ export default function BabyNamesSlugPage() {
               ? `Baby Names Starting with "${selectedLetter}"`
               : `${selectedGender} Names Starting with "${selectedLetter}"`}
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover beautiful names, their meanings, and cultural origins
-          </p>
         </section>
 
         {/* Results Count */}
@@ -701,7 +564,7 @@ export default function BabyNamesSlugPage() {
                 Found <strong className="text-blue-600">{filteredNames.length}</strong> {selectedGender.toLowerCase()} name{filteredNames.length !== 1 ? 's' : ''} starting with <strong className="text-purple-600">{selectedLetter}</strong>
               </p>
               <p className="text-gray-600 text-sm mb-2">
-                Showing names <strong>{Math.min((currentPage - 1) * NAMES_PER_PAGE + 1, filteredNames.length)}</strong> to <strong>{Math.min(currentPage * NAMES_PER_PAGE, filteredNames.length)}</strong> of {filteredNames.length} total names
+                Showing names <strong>{startIndex + 1}</strong> to <strong>{Math.min(endIndex, filteredNames.length)}</strong> of {filteredNames.length} total names
               </p>
               {Object.keys(likedNames).filter(name => likedNames[name]).length > 0 && (
                 <p className="text-gray-600">
@@ -715,63 +578,6 @@ export default function BabyNamesSlugPage() {
           </section>
         )}
 
-        {/* Navigation Links */}
-        <section className="mb-8">
-          <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-13 gap-2 mb-6">
-            {alphabet.map((letter) => (
-              <Link
-                key={letter}
-                href={`/baby-names/${selectedGender.toLowerCase()}-names-with-${letter.toLowerCase()}`}
-                className={`p-3 rounded-xl text-center font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${
-                  selectedLetter === letter
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent shadow-lg"
-                    : "bg-white border-gray-200 hover:border-blue-300 hover:shadow-md"
-                }`}
-                prefetch={false}
-              >
-                {letter}
-              </Link>
-            ))}
-          </div>
-
-          {/* Gender Navigation */}
-          <div className="flex flex-wrap justify-center gap-3 mb-6">
-            <Link
-              href={`/baby-names/boy-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${
-                selectedGender === "Boy"
-                  ? "bg-gradient-to-r from-blue-500 to-cyan-600 text-white border-transparent shadow-lg"
-                  : "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100 hover:border-blue-300"
-              }`}
-              prefetch={false}
-            >
-              👦 Boy Names
-            </Link>
-            <Link
-              href={`/baby-names/girl-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300 ${
-                selectedGender === "Girl"
-                  ? "bg-gradient-to-r from-pink-500 to-rose-600 text-white border-transparent shadow-lg"
-                  : "bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100 hover:border-pink-300"
-              }`}
-              prefetch={false}
-            >
-              👧 Girl Names
-            </Link>
-            <Link
-              href={`/baby-names/baby-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 ${
-                selectedGender === "All"
-                  ? "bg-gradient-to-r from-gray-500 to-gray-700 text-white border-transparent shadow-lg"
-                  : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100 hover:border-gray-300"
-              }`}
-              prefetch={false}
-            >
-              👶 All Names
-            </Link>
-          </div>
-        </section>
-
         {/* Results Grid */}
         {selectedLetter ? (
           filteredNames.length > 0 ? (
@@ -779,12 +585,34 @@ export default function BabyNamesSlugPage() {
               <section className="mb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {currentNames.map((baby, i) => (
-                    <NameCard
+                    <div
                       key={`${baby.name}-${i}`}
-                      baby={baby}
-                      isLiked={!!likedNames[baby.name]}
-                      onToggleLike={toggleLike}
-                    />
+                      className="group bg-white rounded-xl p-4 shadow-lg border-2 border-gray-100 hover:border-blue-300 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                    >
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-bold text-gray-800 text-lg group-hover:text-blue-600 transition-colors">
+                          {baby.name}
+                        </span>
+                        <button
+                          onClick={() => toggleLike(baby.name)}
+                          className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-300 ${likedNames[baby.name]
+                              ? "bg-red-500 text-white shadow-lg"
+                              : "bg-gray-200 text-gray-500 hover:bg-gray-300"
+                            }`}
+                          aria-label={likedNames[baby.name] ? `Unlike ${baby.name}` : `Like ${baby.name}`}
+                        >
+                          {likedNames[baby.name] ? "♥" : "♡"}
+                        </button>
+                      </div>
+                      <span
+                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${baby.gender === "Boy"
+                            ? "bg-blue-100 text-blue-700 border border-blue-200"
+                            : "bg-pink-100 text-pink-700 border border-pink-200"
+                          }`}
+                      >
+                        {baby.gender}
+                      </span>
+                    </div>
                   ))}
                 </div>
 
@@ -822,13 +650,34 @@ export default function BabyNamesSlugPage() {
                 </h2>
                 <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
                   {currentFaqData.map((faq, idx) => (
-                    <FAQItem
+                    <div
                       key={idx}
-                      faq={faq}
-                      isOpen={openFAQ === idx}
-                      onToggle={toggleFAQ}
-                      index={idx}
-                    />
+                      className="border-b border-gray-200 last:border-b-0"
+                    >
+                      <button
+                        onClick={() => toggleFAQ(idx)}
+                        className="w-full flex justify-between items-center text-left p-6 hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg"
+                        aria-expanded={openFAQ === idx}
+                        aria-controls={`faq-answer-${idx}`}
+                      >
+                        <span className="text-lg font-semibold text-gray-900 pr-4">
+                          {faq.question}
+                        </span>
+                        <span className={`text-blue-600 font-bold text-xl transition-transform ${openFAQ === idx ? 'rotate-180' : ''}`}>
+                          ▼
+                        </span>
+                      </button>
+                      {openFAQ === idx && (
+                        <div
+                          id={`faq-answer-${idx}`}
+                          className="p-6 pt-0"
+                        >
+                          <div className="text-gray-700 leading-relaxed bg-blue-50 rounded-xl p-4 border border-blue-200">
+                            {faq.answer}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               </section>
@@ -886,6 +735,58 @@ export default function BabyNamesSlugPage() {
             </div>
           </section>
         )}
+        {/* Navigation Links */}
+        <section className="mb-8">
+          <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-13 gap-2 mb-6">
+            {alphabet.map((letter) => (
+              <Link
+                key={letter}
+                href={`/baby-names/${selectedGender.toLowerCase()}-names-with-${letter.toLowerCase()}`}
+                className={`p-3 rounded-xl text-center font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${selectedLetter === letter
+                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent shadow-lg"
+                    : "bg-white border-gray-200 hover:border-blue-300 hover:shadow-md"
+                  }`}
+                prefetch={false}
+              >
+                {letter}
+              </Link>
+            ))}
+          </div>
+
+          {/* Gender Navigation */}
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            <Link
+              href={`/baby-names/boy-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
+              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${selectedGender === "Boy"
+                  ? "bg-gradient-to-r from-blue-500 to-cyan-600 text-white border-transparent shadow-lg"
+                  : "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100 hover:border-blue-300"
+                }`}
+              prefetch={false}
+            >
+              👦 Boy Names
+            </Link>
+            <Link
+              href={`/baby-names/girl-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
+              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300 ${selectedGender === "Girl"
+                  ? "bg-gradient-to-r from-pink-500 to-rose-600 text-white border-transparent shadow-lg"
+                  : "bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100 hover:border-pink-300"
+                }`}
+              prefetch={false}
+            >
+              👧 Girl Names
+            </Link>
+            <Link
+              href={`/baby-names/baby-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
+              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 ${selectedGender === "All"
+                  ? "bg-gradient-to-r from-gray-500 to-gray-700 text-white border-transparent shadow-lg"
+                  : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100 hover:border-gray-300"
+                }`}
+              prefetch={false}
+            >
+              👶 All Names
+            </Link>
+          </div>
+        </section>
       </main>
 
       {/* Sponsored Ad - Bottom */}
