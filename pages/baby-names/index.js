@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
@@ -274,11 +274,42 @@ const generateSEOProperties = () => {
 
 const seoProperties = generateSEOProperties();
 
+// Optimized Image Component
+const OptimizedImage = ({ src, alt, width, height, className, priority = false }) => (
+  <div className={`relative overflow-hidden ${className}`}>
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      priority={priority}
+      loading={priority ? "eager" : "lazy"}
+      placeholder="blur"
+      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+      className="object-cover transition-transform duration-300 hover:scale-105"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    />
+  </div>
+);
+
 export default function BabyNamesHome() {
   const [openFAQ, setOpenFAQ] = useState(null);
   const [activeTab, setActiveTab] = useState("all");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate initial load
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleFAQ = (idx) => setOpenFAQ(openFAQ === idx ? null : idx);
+
+  // Preload critical images
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -296,6 +327,10 @@ export default function BabyNamesHome() {
         <meta name="author" content="Parth Jani" />
         <meta name="publisher" content="Belly Buds" />
 
+        {/* Preload critical resources */}
+        <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/images/top-names-2024.jpg" as="image" />
+        
         {/* Favicon Links */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -337,41 +372,18 @@ export default function BabyNamesHome() {
       <Header />
       <BreadcrumbSchema title={seoProperties.title} breadcrumbs={seoProperties.breadcrumbs} />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-16 lg:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="absolute top-0 left-0 w-72 h-72 bg-white opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white opacity-10 rounded-full translate-x-1/3 translate-y-1/3"></div>
-        
+      {/* Hero Section - LCP Optimized */}
+      <section className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-8 lg:py-16 overflow-hidden">
+        <div className="absolute bottom-0 right-0 bg-white opacity-10 rounded-full translate-x-1/3 translate-y-1/3"></div>  
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-            Find the Perfect
-            <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-              Baby Name
-            </span>
+            Find the Perfect Baby Name
           </h1>
-          <p className="text-xl lg:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
-            Discover thousands of beautiful baby names with meanings, origins, and popularity trends
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="#name-search"
-              className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
-            >
-              🔍 Search Names
-            </Link>
-            <Link
-              href="/blogs/how-to-choose-baby-name"
-              className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all"
-            >
-              💡 Naming Tips
-            </Link>
-          </div>
         </div>
       </section>
 
       <main className="max-w-6xl mx-auto px-4 py-12">
-        {/* A–Z Letter Navigation */}
+        {/* A–Z Letter Navigation - Critical Content */}
         <section id="name-search" className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -382,12 +394,14 @@ export default function BabyNamesHome() {
             </p>
           </div>
 
+          {/* Main A-Z Grid */}
           <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-13 gap-3 mb-8">
             {alphabet.map((letter) => (
               <Link
                 key={letter}
                 href={`/baby-names/baby-names-with-${letter.toLowerCase()}`}
-                className="group relative p-4 rounded-2xl text-center transition-all duration-300 bg-white border-2 border-gray-200 hover:border-blue-500 hover:shadow-2xl hover:scale-105"
+                className="group relative p-4 rounded-2xl text-center transition-all duration-300 bg-white border-2 border-gray-200 hover:border-blue-500 hover:shadow-2xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                prefetch={false}
               >
                 <div className="text-2xl font-bold text-gray-700 group-hover:text-blue-600 transition-colors">
                   {letter}
@@ -408,7 +422,8 @@ export default function BabyNamesHome() {
                 <Link
                   key={`boy-${letter}`}
                   href={`/baby-names/boy-names-with-${letter.toLowerCase()}`}
-                  className="group p-3 rounded-xl text-center transition-all duration-300 bg-blue-50 border-2 border-blue-200 hover:border-blue-500 hover:bg-blue-100 hover:shadow-lg"
+                  className="group p-3 rounded-xl text-center transition-all duration-300 bg-blue-50 border-2 border-blue-200 hover:border-blue-500 hover:bg-blue-100 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  prefetch={false}
                 >
                   <div className="text-lg font-semibold text-blue-700 group-hover:text-blue-800">
                     {letter}
@@ -430,7 +445,8 @@ export default function BabyNamesHome() {
                 <Link
                   key={`girl-${letter}`}
                   href={`/baby-names/girl-names-with-${letter.toLowerCase()}`}
-                  className="group p-3 rounded-xl text-center transition-all duration-300 bg-pink-50 border-2 border-pink-200 hover:border-pink-500 hover:bg-pink-100 hover:shadow-lg"
+                  className="group p-3 rounded-xl text-center transition-all duration-300 bg-pink-50 border-2 border-pink-200 hover:border-pink-500 hover:bg-pink-100 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-300"
+                  prefetch={false}
                 >
                   <div className="text-lg font-semibold text-pink-700 group-hover:text-pink-800">
                     {letter}
@@ -449,7 +465,8 @@ export default function BabyNamesHome() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Link
                 href="/baby-names/boy-names"
-                className="group p-6 rounded-xl bg-white/10 backdrop-blur-sm border-2 border-white/20 hover:border-white/40 transition-all hover:shadow-lg"
+                className="group p-6 rounded-xl bg-white/10 backdrop-blur-sm border-2 border-white/20 hover:border-white/40 transition-all hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30"
+                prefetch={false}
               >
                 <div className="text-center">
                   <div className="text-4xl mb-3">👦</div>
@@ -459,7 +476,8 @@ export default function BabyNamesHome() {
               </Link>
               <Link
                 href="/baby-names/girl-names"
-                className="group p-6 rounded-xl bg-white/10 backdrop-blur-sm border-2 border-white/20 hover:border-white/40 transition-all hover:shadow-lg"
+                className="group p-6 rounded-xl bg-white/10 backdrop-blur-sm border-2 border-white/20 hover:border-white/40 transition-all hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30"
+                prefetch={false}
               >
                 <div className="text-center">
                   <div className="text-4xl mb-3">👧</div>
@@ -487,7 +505,8 @@ export default function BabyNamesHome() {
               <Link
                 key={index}
                 href={category.link}
-                className="group block p-6 rounded-2xl bg-white border-2 border-gray-200 hover:border-transparent transition-all duration-300 hover:shadow-2xl overflow-hidden"
+                className="group block p-6 rounded-2xl bg-white border-2 border-gray-200 hover:border-transparent transition-all duration-300 hover:shadow-2xl overflow-hidden focus:outline-none focus:ring-4 focus:ring-blue-300"
+                prefetch={false}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-5 transition-opacity`}></div>
                 <div className="relative">
@@ -544,7 +563,8 @@ export default function BabyNamesHome() {
               <Link
                 key={index}
                 href={`/blogs/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                className="bg-white px-4 py-3 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all duration-300 hover:scale-105"
+                className="bg-white px-4 py-3 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                prefetch={false}
               >
                 <span className="text-gray-700 hover:text-blue-600 font-medium text-sm">
                   #{tag}
@@ -573,7 +593,7 @@ export default function BabyNamesHome() {
               >
                 <button
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full flex justify-between items-center text-left p-6 hover:bg-gray-50 transition-colors"
+                  className="w-full flex justify-between items-center text-left p-6 hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg"
                   aria-expanded={openFAQ === idx}
                 >
                   <span className="text-lg font-semibold text-gray-900 pr-4">
@@ -611,7 +631,8 @@ export default function BabyNamesHome() {
               <Link
                 key={index}
                 href={`/${article.slug}`}
-                className="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-blue-300"
+                className="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-blue-300 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                prefetch={false}
               >
                 <div className="relative h-48 bg-gradient-to-br from-blue-100 to-purple-100 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -653,19 +674,22 @@ export default function BabyNamesHome() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="#name-search"
-                className="inline-flex items-center bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
+                className="inline-flex items-center bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/30"
+                prefetch={false}
               >
                 🎉 Start Exploring Names
               </Link>
               <Link
                 href="/baby-names/boy-names"
-                className="inline-flex items-center border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-orange-600 transition-all"
+                className="inline-flex items-center border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-orange-600 transition-all transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/30"
+                prefetch={false}
               >
                 👦 Browse Boy Names
               </Link>
               <Link
                 href="/baby-names/girl-names"
-                className="inline-flex items-center border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-orange-600 transition-all"
+                className="inline-flex items-center border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-orange-600 transition-all transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/30"
+                prefetch={false}
               >
                 👧 Browse Girl Names
               </Link>
