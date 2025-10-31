@@ -1,13 +1,11 @@
-"use client";
-
+import { useRouter } from 'next/router';
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
 import Head from "next/head";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import AdBanner from "../../components/AdBanner";
-import BreadcrumbSchema from "../../components/BreadcrumbSchema";
-import babyNames from "../../../data/babyNamesArray";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import AdBanner from "../components/AdBanner";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import babyNames from "../../data/babyNamesArray";
 import Link from "next/link";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -392,12 +390,49 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 };
 
 export default function BabyNamesSlugPage() {
-  const params = useParams();
-  const slug = params?.slug ?? "default";
+  const router = useRouter();
+  const { slug } = router.query;
   const [openFAQ, setOpenFAQ] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [likedNames, setLikedNames] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
+
+  // Wait for router to be ready
+  useEffect(() => {
+    if (router.isReady) {
+      setIsLoading(false);
+    }
+  }, [router.isReady]);
+
+  // Load liked names from localStorage
+  useEffect(() => {
+    const loadLikedNames = () => {
+      if (typeof window !== "undefined") {
+        const stored = localStorage.getItem("likedNames");
+        return stored ? JSON.parse(stored) : {};
+      }
+      return {};
+    };
+
+    setLikedNames(loadLikedNames());
+  }, []);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [slug]);
+
+  if (isLoading || !slug) {
+    return (
+      <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
+        <Header />
+        <main className="max-w-6xl mx-auto px-4 py-8 text-center">
+          <div className="animate-pulse">Loading baby names...</div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   // Parse slug, e.g. "girl-names-with-a"
   const lowerSlug = slug.toLowerCase();
@@ -429,29 +464,6 @@ export default function BabyNamesSlugPage() {
   const seoProperties = selectedLetter ? generateSEOProperties(selectedGender, selectedLetter, filteredNames.length, currentPage) : null;
   const currentFaqData = selectedLetter ? faqData(selectedGender, selectedLetter, filteredNames.length) : [];
 
-  useEffect(() => {
-    // Load liked names from localStorage
-    const loadLikedNames = () => {
-      if (typeof window !== "undefined") {
-        const stored = localStorage.getItem("likedNames");
-        return stored ? JSON.parse(stored) : {};
-      }
-      return {};
-    };
-
-    setLikedNames(loadLikedNames());
-    
-    // Reset to page 1 when filters change
-    setCurrentPage(1);
-    
-    // Simulate loading state
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [selectedGender, selectedLetter]);
-
   const toggleLike = (name) => {
     const newLikedNames = {
       ...likedNames,
@@ -473,24 +485,6 @@ export default function BabyNamesSlugPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Preload adjacent letters for better navigation experience
-  useEffect(() => {
-    if (selectedLetter) {
-      const currentIndex = alphabet.indexOf(selectedLetter);
-      const adjacentLetters = [
-        alphabet[currentIndex - 1],
-        alphabet[currentIndex + 1]
-      ].filter(Boolean);
-
-      adjacentLetters.forEach(letter => {
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = `/baby-names/${selectedGender.toLowerCase()}-names-with-${letter.toLowerCase()}`;
-        document.head.appendChild(link);
-      });
-    }
-  }, [selectedLetter, selectedGender]);
-
   return (
     <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
       <Head>
@@ -510,9 +504,6 @@ export default function BabyNamesSlugPage() {
         <meta name="author" content="Parth Jani" />
         <meta name="publisher" content="Belly Buds" />
 
-        {/* Preload critical resources */}
-        <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        
         {/* Favicon Links */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
