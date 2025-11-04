@@ -22,7 +22,8 @@ import {
   FaChartLine,
   FaChild,
   FaComments,
-  FaSearch
+  FaSearch,
+  FaBezierCurve
 } from 'react-icons/fa';
 
 export default function Header() {
@@ -167,6 +168,13 @@ export default function Header() {
             <FaBaby className="w-5 h-5 group-hover:scale-110 transition-transform" /> 
             <span>Baby Names</span>
           </Link>
+          <Link
+            href="/astrology/horoscope"
+            className="flex items-center gap-2 text-teal-700 hover:text-teal-600 font-semibold transition-colors duration-200 group"
+          >
+            <FaBezierCurve className="w-5 h-5 group-hover:scale-110 transition-transform" /> 
+            <span>Horoscope</span>
+          </Link>
 
           {/* Login / Logout */}
           {session ? (
@@ -264,6 +272,14 @@ export default function Header() {
             >
               <FaBaby className="w-5 h-5 group-hover:scale-110 transition-transform" />
               <span className="font-semibold">Baby Names</span>
+            </Link>
+            <Link
+              href="/astrology/horoscope"
+              className="flex items-center gap-3 px-6 py-4 text-teal-700 hover:bg-teal-50 rounded-xl mx-2 transition-all duration-200 group"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <FaBezierCurve className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <span className="font-semibold">Horoscope</span>
             </Link>
 
             {session ? (
