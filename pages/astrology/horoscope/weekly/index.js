@@ -247,7 +247,7 @@ export default function WeeklyHoroscopeHub() {
                                             href={`/astrology/horoscope/today/sign/${sign.name.toLowerCase()}`}
                                             className="flex-1 border border-gray-300 text-gray-700 text-center py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 transition-colors"
                                         >
-                                            Today's Horoscope
+                                            Today Horoscope
                                         </Link>
                                     </div>
                                 </div>
@@ -307,8 +307,8 @@ export default function WeeklyHoroscopeHub() {
                                 <div className="bg-white border border-gray-200 rounded-xl p-6">
                                     <h3 className="font-bold text-lg mb-3 text-purple-600">How accurate are weekly predictions?</h3>
                                     <p className="text-gray-700">
-                                        Weekly horoscopes provide general trends based on planetary transits. While they can't predict
-                                        specific events, they accurately describe the energy and opportunities you're likely to encounter
+                                        Weekly horoscopes provide general trends based on planetary transits. While they can not predict
+                                        specific events, they accurately describe the energy and opportunities you are likely to encounter
                                         throughout the week.
                                     </p>
                                 </div>
@@ -330,7 +330,7 @@ export default function WeeklyHoroscopeHub() {
                                     </p>
                                 </div>
                                 <div className="bg-white border border-gray-200 rounded-xl p-6">
-                                    <h3 className="font-bold text-lg mb-3 text-purple-600">What's the difference between sun sign and rising sign weekly horoscopes?</h3>
+                                    <h3 className="font-bold text-lg mb-3 text-purple-600">What is the difference between sun sign and rising sign weekly horoscopes?</h3>
                                     <p className="text-gray-700">
                                         Sun sign horoscopes relate to your core identity, while rising sign horoscopes reflect how you experience
                                         the world. Many people find reading both provides a more complete picture of their weekly energy.
@@ -376,7 +376,7 @@ export default function WeeklyHoroscopeHub() {
 
                         <h3 className="text-xl font-semibold mt-8 mb-4">How to Get the Most Value from Your Weekly Zodiac Predictions</h3>
                         <p>
-                            Reading your <strong>weekly horoscope</strong> effectively involves more than just passive reading. Here's how to integrate
+                            Reading your <strong>weekly horoscope</strong> effectively involves more than just passive reading. Here is how to integrate
                             cosmic guidance into your weekly planning for maximum benefit:
                         </p>
                         <div className="bg-gray-50 rounded-lg p-6 mt-4">
@@ -392,7 +392,7 @@ export default function WeeklyHoroscopeHub() {
 
                         <h3 className="text-xl font-semibold mt-8 mb-4">The Difference Between Daily, Weekly, and Monthly Horoscopes</h3>
                         <p>
-                            While <strong>daily horoscopes</strong> provide immediate guidance for navigating each day's energy,
+                            While <strong>daily horoscopes</strong> provide immediate guidance for navigating each day energy,
                             <strong> weekly horoscopes</strong> offer strategic planning insights for the entire week. <strong>Monthly horoscopes</strong>
                             give you an even broader overview of upcoming trends and major transits. Many astrology enthusiasts use all three:
                             monthly for big-picture planning, weekly for weekly strategy, and daily for daily navigation.
@@ -404,15 +404,15 @@ export default function WeeklyHoroscopeHub() {
                             astrology principles with modern life applications. We focus on providing <strong>actionable guidance</strong>
                             that you can actually use to improve your relationships, advance your career, manage your finances, and enhance
                             your personal growth. Each weekly forecast includes specific dates for favorable activities, relationship advice,
-                            career opportunities, and health recommendations tailored to your zodiac sign's energy.
+                            career opportunities, and health recommendations tailored to your zodiac sign energy.
                         </p>
 
                         <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6 mt-8">
                             <h3 className="text-xl font-semibold mb-3">💫 Professional Astrology Insights</h3>
                             <p className="mb-0">
-                                "Weekly horoscopes are your cosmic planning tool. They help you align your actions with planetary energies,
+                                Weekly horoscopes are your cosmic planning tool. They help you align your actions with planetary energies,
                                 making you more effective in your personal and professional life. Think of them as your celestial strategic
-                                planner for the week ahead." - Master Astrologer Team
+                                planner for the week ahead. - Master Astrologer Team
                             </p>
                         </div>
                     </section>

@@ -1,6 +1,8 @@
 // pages/astrology/horoscope/index.js
 import Head from 'next/head';
 import Link from 'next/link';
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
 
 export default function HoroscopeHub() {
     const today = new Date().toISOString().split("T")[0];
@@ -75,9 +77,28 @@ export default function HoroscopeHub() {
                 />
             </Head>
 
-            <div className="container mx-auto px-4 py-8">
+            <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
+                <Header />
+                 <nav className="bg-white shadow-sm">
+                    <div className="container mx-auto px-4 py-4">
+                        <div className="flex items-center justify-between">
+                            <div className="flex gap-4">
+                                <Link href="/astrology/horoscope" className="text-gray-600 hover:text-purple-600">
+                                    All Horoscopes
+                                </Link>
+                                <Link href="/astrology/horoscope/today" className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm">
+                                    Daily
+                                </Link>
+                                <Link href="/astrology/horoscope/weekly"
+                                    className="text-gray-600 hover:text-purple-600">
+                                    Weekly Horoscope
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
                 {/* Header Section */}
-                <header className="text-center mb-12">
+                <header className="text-center mb-12 mt-12">
                     <h1 className="text-4xl font-bold mb-4 text-gray-900">Daily & Weekly Horoscopes</h1>
                     <p className="text-xl text-gray-600 mb-2">Today is {currentDate}</p>
                     <p className="text-lg text-gray-600">
@@ -92,16 +113,16 @@ export default function HoroscopeHub() {
                         <p className="mb-6">Get your personalized daily horoscope reading for today. Discover what the stars have in store for your love life, career, and personal growth.</p>
                         <div className="flex flex-wrap gap-3">
                             <Link
-                                href={`/astrology/horoscope/${today}`}
+                                href={`/astrology/horoscope/today/${today}`}
                                 className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                             >
-                                Today's Horoscope
+                                Todays Horoscope
                             </Link>
                             <Link
-                                href="/astrology/horoscope/tomorrow"
+                                href={`/astrology/horoscope/today/${today}`}
                                 className="bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-800 transition-colors"
                             >
-                                Tomorrow's Preview
+                                Tomorrows Preview
                             </Link>
                         </div>
                     </div>
@@ -114,7 +135,7 @@ export default function HoroscopeHub() {
                                 href="/astrology/horoscope/weekly"
                                 className="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                             >
-                                This Week's Horoscope
+                                This Week Horoscope
                             </Link>
                             <Link
                                 href="/astrology/horoscope/weekly/next"
@@ -146,7 +167,7 @@ export default function HoroscopeHub() {
                                         Daily Horoscope
                                     </Link>
                                     <Link
-                                        href={`/astrology/horoscope/weekly/${sign.name.toLowerCase()}`}
+                                        href={`/astrology/horoscope/weekly/sign/${sign.name.toLowerCase()}`}
                                         className="bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-orange-700 transition-colors"
                                     >
                                         Weekly Horoscope
@@ -166,7 +187,7 @@ export default function HoroscopeHub() {
                                 <span className="text-xl">🔮</span>
                             </div>
                             <h3 className="font-semibold text-lg mb-2">Understand Planetary Movements</h3>
-                            <p className="text-gray-600 text-sm">Learn how moon phases and planetary transits affect your zodiac sign's energy and predictions.</p>
+                            <p className="text-gray-600 text-sm">Learn how moon phases and planetary transits affect your zodiac signs energy and predictions.</p>
                         </div>
                         <div className="text-center">
                             <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -187,7 +208,7 @@ export default function HoroscopeHub() {
                                 <span className="text-xl">🌙</span>
                             </div>
                             <h3 className="font-semibold text-lg mb-2">Timing is Key</h3>
-                            <p className="text-gray-600 text-sm">Read your horoscope in the morning to set intentions and navigate the day's energy effectively.</p>
+                            <p className="text-gray-600 text-sm">Read your horoscope in the morning to set intentions and navigate the days energy effectively.</p>
                         </div>
                     </div>
                 </section>
@@ -206,22 +227,22 @@ export default function HoroscopeHub() {
                                 <p className="text-gray-700">Horoscopes provide general guidance based on sun signs. For personalized accuracy, consider your rising sign and complete birth chart analysis.</p>
                             </div>
                             <div className="bg-white border border-gray-200 rounded-xl p-6">
-                                <h3 className="font-bold text-lg mb-3 text-purple-600">What's the difference between daily and weekly horoscopes?</h3>
+                                <h3 className="font-bold text-lg mb-3 text-purple-600">Whats the difference between daily and weekly horoscopes?</h3>
                                 <p className="text-gray-700">Daily horoscopes focus on immediate guidance and daily energy, while weekly horoscopes provide broader trends and upcoming opportunities for the entire week.</p>
                             </div>
                         </div>
                         <div className="space-y-6">
                             <div className="bg-white border border-gray-200 rounded-xl p-6">
                                 <h3 className="font-bold text-lg mb-3 text-purple-600">Can horoscopes predict my future?</h3>
-                                <p className="text-gray-700">Horoscopes don't predict fixed futures but highlight potential energies and opportunities. Your free will and choices ultimately shape your path.</p>
+                                <p className="text-gray-700">Horoscopes dont predict fixed futures but highlight potential energies and opportunities. Your free will and choices ultimately shape your path.</p>
                             </div>
                             <div className="bg-white border border-gray-200 rounded-xl p-6">
                                 <h3 className="font-bold text-lg mb-3 text-purple-600">Why should I read my horoscope regularly?</h3>
                                 <p className="text-gray-700">Regular reading helps you understand planetary influences, make informed decisions, and align with cosmic energies for personal growth.</p>
                             </div>
                             <div className="bg-white border border-gray-200 rounded-xl p-6">
-                                <h3 className="font-bold text-lg mb-3 text-purple-600">What if my horoscope doesn't resonate?</h3>
-                                <p className="text-gray-700">Try reading for your rising sign instead of your sun sign. Also, horoscopes are general guidance - apply what resonates and leave what doesn't.</p>
+                                <h3 className="font-bold text-lg mb-3 text-purple-600">What if my horoscope does not resonate?</h3>
+                                <p className="text-gray-700">Try reading for your rising sign instead of your sun sign. Also, horoscopes are general guidance - apply what resonates and leave what does not.</p>
                             </div>
                         </div>
                     </div>
@@ -241,7 +262,7 @@ export default function HoroscopeHub() {
                     <h3 className="text-xl font-semibold mt-6 mb-4">Benefits of Weekly Horoscope Readings</h3>
                     <p>
                         <strong>Weekly horoscopes</strong> offer a broader perspective on upcoming trends and patterns for each zodiac sign. Unlike daily horoscopes that focus on immediate guidance,
-                        weekly predictions help you plan ahead, anticipate challenges, and prepare for significant astrological events. They're particularly valuable for:
+                        weekly predictions help you plan ahead, anticipate challenges, and prepare for significant astrological events. They are particularly valuable for:
                     </p>
                     <ul className="list-disc pl-6 mt-3">
                         <li><strong>Strategic planning</strong> for career moves and important decisions</li>
@@ -253,17 +274,18 @@ export default function HoroscopeHub() {
                     <h3 className="text-xl font-semibold mt-6 mb-4">Zodiac Signs and Their Elements</h3>
                     <p>
                         Each of the 12 zodiac signs belongs to one of four elements: <strong>Fire (Aries, Leo, Sagittarius)</strong>, <strong>Earth (Taurus, Virgo, Capricorn)</strong>,
-                        <strong> Air (Gemini, Libra, Aquarius)</strong>, and <strong>Water (Cancer, Scorpio, Pisces)</strong>. Understanding your sign's element helps you better
+                        <strong> Air (Gemini, Libra, Aquarius)</strong>, and <strong>Water (Cancer, Scorpio, Pisces)</strong>. Understanding your sign element helps you better
                         interpret horoscope readings and apply them to your life circumstances.
                     </p>
 
                     <h3 className="text-xl font-semibold mt-6 mb-4">Why Trust Our Horoscope Readings?</h3>
                     <p>
                         Our astrological predictions are crafted by experienced astrologers who analyze current planetary transits, moon phases, and astrological aspects.
-                        We combine traditional astrology principles with modern interpretations to provide <strong>accurate, relevant, and practical guidance</strong> for today's world.
-                        Whether you're new to astrology or a seasoned enthusiast, our daily and weekly horoscopes offer valuable insights for personal development and self-awareness.
+                        We combine traditional astrology principles with modern interpretations to provide <strong>accurate, relevant, and practical guidance</strong> for today world.
+                        Whether you are new to astrology or a seasoned enthusiast, our daily and weekly horoscopes offer valuable insights for personal development and self-awareness.
                     </p>
                 </section>
+                <Footer></Footer>
             </div>
         </>
     );

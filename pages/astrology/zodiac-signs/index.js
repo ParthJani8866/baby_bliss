@@ -401,7 +401,7 @@ export default function ZodiacSignsHub() {
                                 </div>
                                 <h3 className="font-semibold text-lg mb-3">Sun Signs</h3>
                                 <p className="text-gray-600 text-sm">
-                                    Your Sun sign represents your core identity, ego, and life purpose. It's the sign most people know as their "zodiac sign" and influences your fundamental personality.
+                                    Your Sun sign represents your core identity, ego, and life purpose. It is the sign most people know as their zodiac sign and influences your fundamental personality.
                                 </p>
                             </div>
 
@@ -421,7 +421,7 @@ export default function ZodiacSignsHub() {
                                 </div>
                                 <h3 className="font-semibold text-lg mb-3">Rising Signs</h3>
                                 <p className="text-gray-600 text-sm">
-                                    Your Rising sign (Ascendant) represents how you present yourself to the world and your immediate reactions. It's the mask you wear and how others first perceive you.
+                                    Your Rising sign (Ascendant) represents how you present yourself to the world and your immediate reactions. It is the mask you wear and how others first perceive you.
                                 </p>
                             </div>
                         </div>
@@ -464,7 +464,7 @@ export default function ZodiacSignsHub() {
                                     <h3 className="font-bold text-lg mb-3 text-purple-600">What is the difference between sun, moon, and rising signs?</h3>
                                     <p className="text-gray-700">
                                         Your <strong>Sun sign</strong> represents your core identity and ego. Your <strong>Moon sign</strong> represents your emotional nature and inner self.
-                                        Your <strong>Rising sign</strong> (Ascendant) represents how you present yourself to the world. While your Sun sign is what you're becoming,
+                                        Your <strong>Rising sign</strong> (Ascendant) represents how you present yourself to the world. While your Sun sign is what you are becoming,
                                         your Rising sign is how you start things and make first impressions.
                                     </p>
                                 </div>
@@ -474,7 +474,7 @@ export default function ZodiacSignsHub() {
                                     <p className="text-gray-700">
                                         Compatibility in astrology is determined by several factors including elements, modalities, and planetary aspects.
                                         Signs of the same element usually get along well (Fire with Fire, etc.). Complementary elements (Earth-Water, Fire-Air)
-                                        often create balanced relationships. The specific planetary placements in each person's birth chart also significantly influence compatibility.
+                                        often create balanced relationships. The specific planetary placements in each person birth chart also significantly influence compatibility.
                                     </p>
                                 </div>
 
@@ -483,7 +483,7 @@ export default function ZodiacSignsHub() {
                                     <p className="text-gray-700">
                                         Each zodiac sign has a ruling planet that influences its core characteristics. For example, Mars rules Aries, giving them
                                         their warrior spirit and initiative. Venus rules Taurus and Libra, influencing their love of beauty and harmony.
-                                        Your ruling planet represents the cosmic energy that most strongly influences your sign's expression and life lessons.
+                                        Your ruling planet represents the cosmic energy that most strongly influences your sign expression and life lessons.
                                     </p>
                                 </div>
                             </div>
@@ -512,7 +512,7 @@ export default function ZodiacSignsHub() {
                                 <div className="bg-white border border-gray-200 rounded-xl p-6">
                                     <h3 className="font-bold text-lg mb-3 text-purple-600">How accurate are zodiac sign descriptions?</h3>
                                     <p className="text-gray-700">
-                                        General zodiac sign descriptions provide accurate overviews of each sign's core energies and tendencies. However,
+                                        General zodiac sign descriptions provide accurate overviews of each sign core energies and tendencies. However,
                                         individual expression varies based on your complete birth chart, life experiences, and personal choices. For the most
                                         accurate understanding, consider your entire birth chart rather than just your Sun sign. Many people find that learning
                                         about their Moon and Rising signs provides additional valuable insights.
@@ -528,8 +528,8 @@ export default function ZodiacSignsHub() {
 
                         <h3 className="text-xl font-semibold mb-4">The Historical Origins of the Zodiac</h3>
                         <p>
-                            The <strong>zodiac system</strong> has its roots in ancient Babylonian astronomy around the 5th century BCE. The word "zodiac" comes from the Greek word "zodiakos kyklos,"
-                            meaning "circle of animals." The Babylonians divided the sky into twelve equal sections of 30 degrees each, corresponding to the twelve months of their calendar.
+                            The <strong>zodiac system</strong> has its roots in ancient Babylonian astronomy around the 5th century BCE. The word zodiac comes from the Greek word zodiakos kyklos,
+                            meaning circle of animals. The Babylonians divided the sky into twelve equal sections of 30 degrees each, corresponding to the twelve months of their calendar.
                             Each section was associated with a constellation that the sun appeared to pass through during that month.
                         </p>
                         <p>
@@ -541,18 +541,18 @@ export default function ZodiacSignsHub() {
                         <h3 className="text-xl font-semibold mt-8 mb-4">The Astronomical Basis of Zodiac Signs</h3>
                         <p>
                             From an astronomical perspective, the <strong>zodiac belt</strong> is the band of constellations through which the Sun, Moon, and planets appear to travel across the sky.
-                            This band extends approximately 8-9 degrees on either side of the ecliptic (the Sun's apparent path around the Earth). The twelve zodiac signs correspond to twelve
+                            This band extends approximately 8-9 degrees on either side of the ecliptic (the Sun apparent path around the Earth). The twelve zodiac signs correspond to twelve
                             equal 30-degree segments of this 360-degree circle.
                         </p>
                         <p>
-                            It's important to distinguish between <strong>astronomical constellations</strong> and <strong>astrological signs</strong>. While they share names, the constellations are
-                            irregular in size and don't perfectly align with the 30-degree segments used in astrology. This discrepancy is due to the precession of the equinoxes, a gradual shift
-                            in Earth's orientation that has caused the tropical zodiac (used in Western astrology) to drift from the sidereal zodiac (based on actual constellation positions).
+                            It is important to distinguish between <strong>astronomical constellations</strong> and <strong>astrological signs</strong>. While they share names, the constellations are
+                            irregular in size and do not perfectly align with the 30-degree segments used in astrology. This discrepancy is due to the precession of the equinoxes, a gradual shift
+                            in Earth orientation that has caused the tropical zodiac (used in Western astrology) to drift from the sidereal zodiac (based on actual constellation positions).
                         </p>
 
                         <h3 className="text-xl font-semibold mt-8 mb-4">The Psychological Depth of Zodiac Sign Interpretations</h3>
                         <p>
-                            Modern psychological astrology, influenced by Carl Jung's work, views <strong>zodiac signs</strong> as archetypes representing fundamental human experiences and personality patterns.
+                            Modern psychological astrology, influenced by Carl Jung work, views <strong>zodiac signs</strong> as archetypes representing fundamental human experiences and personality patterns.
                             Each sign embodies specific psychological themes and developmental challenges:
                         </p>
 
@@ -595,10 +595,10 @@ export default function ZodiacSignsHub() {
                         <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6 mt-8">
                             <h3 className="text-xl font-semibold mb-3">💫 Expert Astrological Insight</h3>
                             <p className="mb-0">
-                                "The zodiac signs represent twelve fundamental approaches to life, twelve different ways of being human.
+                                The zodiac signs represent twelve fundamental approaches to life, twelve different ways of being human.
                                 Rather than limiting us to stereotypes, they offer a rich symbolic language for understanding our strengths,
-                                challenges, and unique life paths. When we study the zodiac, we're not learning about predetermined fate,
-                                but about the archetypal energies available for our personal growth and self-understanding."
+                                challenges, and unique life paths. When we study the zodiac, we are not learning about predetermined fate,
+                                but about the archetypal energies available for our personal growth and self-understanding.
                             </p>
                         </div>
 

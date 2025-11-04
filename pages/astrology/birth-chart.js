@@ -602,7 +602,7 @@ export default function BirthChart() {
                                     </p>
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-lg mb-3 text-purple-600">What's the difference between birth chart and horoscope?</h3>
+                                    <h3 className="font-bold text-lg mb-3 text-purple-600">What is the difference between birth chart and horoscope?</h3>
                                     <p className="text-gray-700">
                                         Your <strong>birth chart</strong> is unique to you and doesnt change. <strong>Horoscopes</strong> are 
                                         general predictions based on Sun signs. A birth chart gives you personalized insights, while horoscopes 
