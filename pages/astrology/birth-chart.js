@@ -410,7 +410,7 @@ export default function BirthChart() {
 
                                     {/* The Big Three */}
                                     <section className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-6">
-                                        <h2 className="text-2xl font-bold mb-6 text-center">Understanding Your "Big Three"</h2>
+                                        <h2 className="text-2xl font-bold mb-6 text-center">Understanding Your Big Three</h2>
                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                             <div className="text-center">
                                                 <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -418,7 +418,7 @@ export default function BirthChart() {
                                                 </div>
                                                 <h3 className="font-bold text-lg mb-2">Sun Sign</h3>
                                                 <p className="text-gray-700 text-sm">
-                                                    Your core identity, ego, and life purpose. Represents who you're becoming and your essential self.
+                                                    Your core identity, ego, and life purpose. Represents who youre becoming and your essential self.
                                                 </p>
                                             </div>
                                             <div className="text-center">
@@ -436,7 +436,7 @@ export default function BirthChart() {
                                                 </div>
                                                 <h3 className="font-bold text-lg mb-2">Rising Sign</h3>
                                                 <p className="text-gray-700 text-sm">
-                                                    Your social personality, first impressions, and how others see you. Your "mask" and approach to life.
+                                                    Your social personality, first impressions, and how others see you. Your mask and approach to life.
                                                 </p>
                                             </div>
                                         </div>
@@ -586,17 +586,17 @@ export default function BirthChart() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-6">
                                 <div>
-                                    <h3 className="font-bold text-lg mb-3 text-purple-600">What if I don't know my exact birth time?</h3>
+                                    <h3 className="font-bold text-lg mb-3 text-purple-600">What if I dont know my exact birth time?</h3>
                                     <p className="text-gray-700">
-                                        If you don't know your exact birth time, use 12:00 PM (noon) as a default. While this won't give you 
-                                        an accurate Rising sign or house placements, you'll still get correct planetary positions for your 
+                                        If you dont know your exact birth time, use 12:00 PM (noon) as a default. While this wont give you 
+                                        an accurate Rising sign or house placements, youll still get correct planetary positions for your 
                                         Sun, Moon, and other planets. For the most accurate chart, try to find your birth certificate.
                                     </p>
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-lg mb-3 text-purple-600">How often should I check my birth chart?</h3>
                                     <p className="text-gray-700">
-                                        Your birth chart remains the same throughout your life - it's your cosmic blueprint. However, 
+                                        Your birth chart remains the same throughout your life - its your cosmic blueprint. However, 
                                         you can check <strong>transits</strong> (current planetary positions) to see how they interact with 
                                         your natal chart. Many people review their chart during important life transitions or annually.
                                     </p>
@@ -604,7 +604,7 @@ export default function BirthChart() {
                                 <div>
                                     <h3 className="font-bold text-lg mb-3 text-purple-600">What's the difference between birth chart and horoscope?</h3>
                                     <p className="text-gray-700">
-                                        Your <strong>birth chart</strong> is unique to you and doesn't change. <strong>Horoscopes</strong> are 
+                                        Your <strong>birth chart</strong> is unique to you and doesnt change. <strong>Horoscopes</strong> are 
                                         general predictions based on Sun signs. A birth chart gives you personalized insights, while horoscopes 
                                         provide broad guidance for your Sun sign.
                                     </p>
@@ -622,8 +622,8 @@ export default function BirthChart() {
                                 <div>
                                     <h3 className="font-bold text-lg mb-3 text-purple-600">Can my birth chart predict my future?</h3>
                                     <p className="text-gray-700">
-                                        Your birth chart doesn't predict a fixed future but reveals <strong>potentials, tendencies, and life themes</strong>. 
-                                        It shows your natural strengths, challenges, and the kinds of experiences you're likely to attract. 
+                                        Your birth chart doesnt predict a fixed future but reveals <strong>potentials, tendencies, and life themes</strong>. 
+                                        It shows your natural strengths, challenges, and the kinds of experiences you are likely to attract. 
                                         Your free will always determines how these energies manifest.
                                     </p>
                                 </div>

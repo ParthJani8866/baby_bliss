@@ -196,7 +196,7 @@ export default function DailySignHoroscope({ horoscopeData, error }) {
                         <div className="lg:col-span-2 space-y-8">
                             {/* Daily Overview */}
                             <section className="bg-white rounded-xl shadow-lg p-6">
-                                <h2 className="text-2xl font-bold mb-4 text-gray-900">🌟 Today's Overview</h2>
+                                <h2 className="text-2xl font-bold mb-4 text-gray-900">🌟 Today Overview</h2>
                                 <p className="text-gray-700 text-lg leading-relaxed">
                                     {horoscopeData.overview}
                                 </p>
@@ -281,7 +281,7 @@ export default function DailySignHoroscope({ horoscopeData, error }) {
 
                             {/* Planetary Influences */}
                             <section className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-6">
-                                <h2 className="text-2xl font-bold mb-4 text-gray-900">🪐 Today's Planetary Influences</h2>
+                                <h2 className="text-2xl font-bold mb-4 text-gray-900">🪐 Today Planetary Influences</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {horoscopeData.planetaryInfluences.map((influence, index) => (
                                         <div key={index} className="bg-white rounded-lg p-4 shadow-sm">
@@ -328,13 +328,13 @@ export default function DailySignHoroscope({ horoscopeData, error }) {
                             {/* Daily Affirmation */}
                             <div className="bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl p-6 text-white">
                                 <h3 className="font-bold text-lg mb-3">🧘 Daily Affirmation</h3>
-                                <p className="text-lg italic mb-4">"{horoscopeData.dailyAffirmation}"</p>
-                                <p className="text-sm opacity-90">Repeat this throughout your day to align with today's positive energy.</p>
+                                <p className="text-lg italic mb-4">{horoscopeData.dailyAffirmation}</p>
+                                <p className="text-sm opacity-90">Repeat this throughout your day to align with today positive energy.</p>
                             </div>
 
                             {/* Compatibility */}
                             <div className="bg-white rounded-xl shadow-lg p-6">
-                                <h3 className="font-bold text-lg mb-4">💕 Today's Best Matches</h3>
+                                <h3 className="font-bold text-lg mb-4">💕 Today Best Matches</h3>
                                 <div className="space-y-3">
                                     {horoscopeData.todaysBestMatches.map((match, index) => (
                                         <Link
@@ -405,14 +405,14 @@ export default function DailySignHoroscope({ horoscopeData, error }) {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-6">
                                 <div>
-                                    <h3 className="font-bold text-lg mb-3 text-purple-600">How accurate is today's horoscope for {horoscopeData.name}?</h3>
+                                    <h3 className="font-bold text-lg mb-3 text-purple-600">How accurate is today horoscope for {horoscopeData.name}?</h3>
                                     <p className="text-gray-700">
-                                        Today's horoscope for {horoscopeData.name} is based on current planetary transits and their aspects to your sun sign.
+                                        Today horoscope for {horoscopeData.name} is based on current planetary transits and their aspects to your sun sign.
                                         While it provides valuable guidance, remember that horoscopes are general and should be used as inspiration rather than absolute prediction.
                                     </p>
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-lg mb-3 text-purple-600">What's the best time to read my daily horoscope?</h3>
+                                    <h3 className="font-bold text-lg mb-3 text-purple-600">What is the best time to read my daily horoscope?</h3>
                                     <p className="text-gray-700">
                                         Many {horoscopeData.name} individuals find reading their horoscope in the morning helps set intentions for the day.
                                         However, you can read it anytime that allows you to reflect on how the guidance might apply to your current situation.
@@ -424,14 +424,14 @@ export default function DailySignHoroscope({ horoscopeData, error }) {
                                     <h3 className="font-bold text-lg mb-3 text-purple-600">Why should I read my horoscope daily?</h3>
                                     <p className="text-gray-700">
                                         Regular horoscope reading helps {horoscopeData.name} natives stay attuned to cosmic energies,
-                                        recognize opportunities, and navigate challenges with greater awareness. It's a tool for self-reflection and personal growth.
+                                        recognize opportunities, and navigate challenges with greater awareness. It is a tool for self-reflection and personal growth.
                                     </p>
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-lg mb-3 text-purple-600">What if today's predictions don't resonate?</h3>
+                                    <h3 className="font-bold text-lg mb-3 text-purple-600">What if today predictions do not resonate?</h3>
                                     <p className="text-gray-700">
-                                        If today's horoscope doesn't resonate, consider reading for your rising sign instead of your sun sign.
-                                        Also, remember that horoscopes are general guidance - apply what feels right and disregard what doesn't align with your experience.
+                                        If today horoscope does not resonate, consider reading for your rising sign instead of your sun sign.
+                                        Also, remember that horoscopes are general guidance - apply what feels right and disregard what does not align with your experience.
                                     </p>
                                 </div>
                             </div>

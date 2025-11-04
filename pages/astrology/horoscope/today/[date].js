@@ -22,7 +22,7 @@ export default function DailyHoroscopePage({
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Horoscope Not Found</h1>
           <p className="text-gray-600 mb-6">The horoscope for this date is not available.</p>
           <Link href="/astrology/horoscope" className="bg-purple-600 text-white px-6 py-3 rounded-lg">
-            View Today's Horoscope
+            View Today Horoscope
           </Link>
         </div>
       </div>
@@ -161,7 +161,7 @@ export default function DailyHoroscopePage({
 
                   {/* Overall Prediction */}
                   <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-                    <h3 className="font-semibold text-lg mb-2 text-gray-900">Today's Overview</h3>
+                    <h3 className="font-semibold text-lg mb-2 text-gray-900">Today Overview</h3>
                     <p className="text-gray-700">{sign.overview}</p>
                   </div>
 
@@ -248,7 +248,7 @@ export default function DailyHoroscopePage({
                     <h3 className="font-bold text-lg mb-3 text-purple-600">How accurate are daily horoscopes?</h3>
                     <p className="text-gray-700">
                       Daily horoscopes provide general guidance based on planetary transits affecting each zodiac sign.
-                      While they offer valuable insights, remember they're general predictions. For personalized accuracy,
+                      While they offer valuable insights, remember they are general predictions. For personalized accuracy,
                       consider your complete birth chart.
                     </p>
                   </div>
@@ -260,7 +260,7 @@ export default function DailyHoroscopePage({
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-3 text-purple-600">Can I read yesterday's horoscope?</h3>
+                    <h3 className="font-bold text-lg mb-3 text-purple-600">Can I read yesterday horoscope?</h3>
                     <p className="text-gray-700">
                       Yes! You can access past horoscopes by changing the date in the URL. Simply replace the date in the URL
                       with your desired date in YYYY-MM-DD format.
@@ -271,22 +271,22 @@ export default function DailyHoroscopePage({
                   <div>
                     <h3 className="font-bold text-lg mb-3 text-purple-600">Why do horoscopes sometimes not resonate?</h3>
                     <p className="text-gray-700">
-                      If your sun sign horoscope doesn't resonate, try reading for your rising sign (ascendant).
+                      If your sun sign horoscope does not resonate, try reading for your rising sign (ascendant).
                       Also, remember horoscopes are general guidance - apply what feels right for your specific situation.
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-3 text-purple-600">What's the best time to read my horoscope?</h3>
+                    <h3 className="font-bold text-lg mb-3 text-purple-600">What is the best time to read my horoscope?</h3>
                     <p className="text-gray-700">
                       Many people find reading their horoscope in the morning helps set intentions for the day.
-                      However, you can read it anytime that fits your schedule and helps you reflect on the day's energy.
+                      However, you can read it anytime that fits your schedule and helps you reflect on the day energy.
                     </p>
                   </div>
                   <div>
                     <h3 className="font-bold text-lg mb-3 text-purple-600">How are horoscope predictions made?</h3>
                     <p className="text-gray-700">
                       Our astrologers analyze current planetary positions, moon phases, aspects between planets,
-                      and their relationships to each zodiac sign. This creates personalized guidance for each sign's energy.
+                      and their relationships to each zodiac sign. This creates personalized guidance for each sign energy.
                     </p>
                   </div>
                 </div>
@@ -301,10 +301,10 @@ export default function DailyHoroscopePage({
             <p>
               Welcome to your comprehensive <strong>daily horoscope reading for {formattedDate.month} {formattedDate.day}, {formattedDate.year}</strong>.
               Our astrological predictions are carefully crafted to provide guidance and insights for all twelve zodiac signs,
-              helping you navigate the day's cosmic energies in <strong>love, career, health, and personal growth</strong>.
+              helping you navigate the day cosmic energies in <strong>love, career, health, and personal growth</strong>.
             </p>
 
-            <h3 className="text-xl font-semibold mt-6 mb-4">Understanding Today's Planetary Influences</h3>
+            <h3 className="text-xl font-semibold mt-6 mb-4">Understanding Today Planetary Influences</h3>
             <p>
               {horoscopeData.planetaryOverview || `The celestial configuration today creates unique opportunities for each zodiac sign. 
               Planetary alignments influence different aspects of our lives, from relationships and career to health and spiritual growth.`}
@@ -312,7 +312,7 @@ export default function DailyHoroscopePage({
 
             <h3 className="text-xl font-semibold mt-6 mb-4">How to Make the Most of Your Daily Horoscope</h3>
             <p>
-              Reading your horoscope daily can be a powerful tool for self-awareness and personal development. Here's how to get the most value:
+              Reading your horoscope daily can be a powerful tool for self-awareness and personal development. Here is how to get the most value:
             </p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li><strong>Read in the morning</strong> - Set your intentions for the day based on cosmic guidance</li>
@@ -324,7 +324,7 @@ export default function DailyHoroscopePage({
             <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6 mt-6">
               <h3 className="text-xl font-semibold mb-3">💫 Astrological Insight for {formattedDate.month} {formattedDate.day}</h3>
               <p className="mb-0">
-                Today's planetary aspects favor introspection and planning. Consider how you can align your actions with
+                Today planetary aspects favor introspection and planning. Consider how you can align your actions with
                 the cosmic currents to maximize opportunities and minimize challenges throughout your day.
               </p>
             </div>

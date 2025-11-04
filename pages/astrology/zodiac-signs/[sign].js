@@ -15,7 +15,7 @@ export default function ZodiacSignPage({ signData, error }) {
             <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
                     <h1 className="text-2xl font-bold text-gray-900 mb-4">Zodiac Sign Not Found</h1>
-                    <p className="text-gray-600 mb-6">The zodiac sign you're looking for doesn't exist.</p>
+                    <p className="text-gray-600 mb-6">The zodiac sign you are looking for does not exist.</p>
                     <Link href="/astrology/zodiac-signs" className="bg-purple-600 text-white px-6 py-3 rounded-lg">
                         Browse All Zodiac Signs
                     </Link>
@@ -156,7 +156,7 @@ export default function ZodiacSignPage({ signData, error }) {
                             >
                                 <div className="text-2xl mb-3">📅</div>
                                 <h3 className="font-bold text-lg mb-2">Daily Horoscope</h3>
-                                <p className="text-sm opacity-90">Get today's personalized guidance</p>
+                                <p className="text-sm opacity-90">Get today personalized guidance</p>
                             </Link>
                             <Link
                                 href={`/astrology/horoscope/weekly/${sign.toLowerCase()}`}

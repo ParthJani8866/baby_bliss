@@ -236,7 +236,7 @@ export default function HoroscopeHub() {
                     href={`/astrology/horoscope/today/${today}`}
                     className="block bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-center"
                   >
-                    Today's Horoscope
+                    Today Horoscope
                   </Link>
                   <Link
                     href="/astrology/horoscope/daily"
@@ -258,7 +258,7 @@ export default function HoroscopeHub() {
                     href="/astrology/horoscope/weekly"
                     className="block bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-center"
                   >
-                    This Week's Horoscope
+                    This Week Horoscope
                   </Link>
                   <Link
                     href="/astrology/horoscope/weekly/next"
@@ -438,7 +438,7 @@ export default function HoroscopeHub() {
                   <div>
                     <h4 className="font-semibold mb-2">Focus on Relevant Areas</h4>
                     <p className="text-gray-700 text-sm">
-                      Pay special attention to sections addressing your current concerns - whether it's love,
+                      Pay special attention to sections addressing your current concerns - whether it is love,
                       career, health, or personal growth. Identify which areas of your life need the most
                       attention and apply the guidance specifically to those situations.
                     </p>
@@ -467,7 +467,7 @@ export default function HoroscopeHub() {
                     <h4 className="font-semibold mb-2">Combine with Intuition</h4>
                     <p className="text-gray-700 text-sm">
                       Use horoscope guidance as one tool among many. Your intuition and personal judgment
-                      should always be your primary guides. If something doesn't resonate, trust your inner
+                      should always be your primary guides. If something does not resonate, trust your inner
                       wisdom and adapt the guidance to your unique circumstances.
                     </p>
                   </div>
@@ -485,26 +485,26 @@ export default function HoroscopeHub() {
                   <h3 className="font-bold text-lg mb-3 text-purple-600">How accurate are daily horoscopes?</h3>
                   <p className="text-gray-700">
                     Daily horoscopes provide general guidance based on planetary transits affecting each zodiac sign.
-                    While they offer valuable insights, they're general predictions. Accuracy increases when you consider
+                    While they offer valuable insights, they are general predictions. Accuracy increases when you consider
                     your complete birth chart, including your rising sign and moon sign. Many people find 70-80% accuracy
                     for general guidance when reading consistently.
                   </p>
                 </div>
 
                 <div className="bg-white border border-gray-200 rounded-xl p-6">
-                  <h3 className="font-bold text-lg mb-3 text-purple-600">What's the difference between sun sign and rising sign horoscopes?</h3>
+                  <h3 className="font-bold text-lg mb-3 text-purple-600">What is the difference between sun sign and rising sign horoscopes?</h3>
                   <p className="text-gray-700">
                     Your sun sign represents your core identity and life purpose, while your rising sign (ascendant)
                     represents how you present yourself to the world and your immediate reactions. Many experienced
                     astrology enthusiasts read both their sun sign and rising sign horoscopes for a more complete picture.
-                    If you don't know your rising sign, you need your exact birth time and location to calculate it.
+                    If you do not know your rising sign, you need your exact birth time and location to calculate it.
                   </p>
                 </div>
 
                 <div className="bg-white border border-gray-200 rounded-xl p-6">
                   <h3 className="font-bold text-lg mb-3 text-purple-600">Can horoscopes predict specific events?</h3>
                   <p className="text-gray-700">
-                    Horoscopes don't predict specific events with certainty. Instead, they describe energies, opportunities,
+                    Horoscopes do not predict specific events with certainty. Instead, they describe energies, opportunities,
                     and challenges you might encounter. Think of them as weather forecasts for your life - they tell you
                     whether to expect sunny opportunities or stormy challenges, but your choices determine the specific outcomes.
                   </p>
@@ -515,7 +515,7 @@ export default function HoroscopeHub() {
                   <p className="text-gray-700">
                     There are several reasons: you might resonate more with your rising sign, the current planetary transits
                     might not strongly aspect your personal chart, or you might be in a period where free will is more
-                    influential than cosmic influences. Also, generic horoscopes can't account for your unique life
+                    influential than cosmic influences. Also, generic horoscopes can not account for your unique life
                     circumstances and choices.
                   </p>
                 </div>
@@ -527,17 +527,17 @@ export default function HoroscopeHub() {
                   <p className="text-gray-700">
                     Professional astrologers analyze current planetary positions, aspects (angles between planets),
                     moon phases, and retrogrades. They interpret how these celestial events interact with each zodiac
-                    sign's natural qualities. This involves studying ephemerides (planetary position tables),
+                    sign natural qualities. This involves studying ephemerides (planetary position tables),
                     astrological houses, and the relationships between different planetary energies.
                   </p>
                 </div>
 
                 <div className="bg-white border border-gray-200 rounded-xl p-6">
-                  <h3 className="font-bold text-lg mb-3 text-purple-600">What's the best time to read my horoscope?</h3>
+                  <h3 className="font-bold text-lg mb-3 text-purple-600">What is the best time to read my horoscope?</h3>
                   <p className="text-gray-700">
                     Many people find reading their horoscope in the morning helps set intentions for the day. However,
                     the best time is whenever you can read it mindfully and reflect on how the guidance might apply to
-                    your life. Some prefer evening reading to reflect on the day's events through an astrological lens.
+                    your life. Some prefer evening reading to reflect on the day events through an astrological lens.
                   </p>
                 </div>
 
@@ -570,20 +570,20 @@ export default function HoroscopeHub() {
             <h3 className="text-xl font-semibold mb-4">Understanding the History and Purpose of Horoscopes</h3>
             <p>
               <strong>Horoscopes</strong> have been guiding humanity for thousands of years, with origins dating back to ancient
-              Babylonian astrology around the 5th century BCE. The word "horoscope" comes from the Greek words "hora" (time)
-              and "skopos" (observer), literally meaning "observer of the hour." Traditional astrologers created horoscopes
+              Babylonian astrology around the 5th century BCE. The word horoscope comes from the Greek words hora (time)
+              and skopos (observer), literally meaning observer of the hour. Traditional astrologers created horoscopes
               as celestial maps to understand personality traits, predict seasonal changes, and guide important decisions.
             </p>
             <p>
               In modern times, <strong>daily and weekly horoscopes</strong> serve as accessible tools for self-reflection and
-              personal growth. While newspaper horoscopes popularized sun sign astrology in the 20th century, today's online
+              personal growth. While newspaper horoscopes popularized sun sign astrology in the 20th century, today online
               horoscopes offer much more detailed and nuanced interpretations. The purpose remains the same: to help individuals
               understand cosmic influences and make conscious choices aligned with planetary energies.
             </p>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">The Science and Art Behind Astrological Predictions</h3>
             <p>
-              While astrology isn't considered a science in the traditional sense, it operates on symbolic systems and
+              While astrology is not considered a science in the traditional sense, it operates on symbolic systems and
               patterns that many find meaningful. Professional astrologers use mathematical calculations to track planetary
               movements through the <strong>zodiac wheel</strong>, which is divided into twelve 30-degree segments, each
               representing a zodiac sign.
@@ -603,15 +603,15 @@ export default function HoroscopeHub() {
             <h4 className="font-semibold text-lg mt-4 mb-2">Daily Horoscopes</h4>
             <p>
               <strong>Daily horoscopes</strong> are perfect for navigating immediate energies and making day-to-day decisions.
-              They're influenced by the Moon's daily movement, which changes signs every 2-3 days, creating shifting emotional
+              They are influenced by the Moon daily movement, which changes signs every 2-3 days, creating shifting emotional
               landscapes. Daily readings help you understand the prevailing energy of each specific day and how to work with it
               effectively.
             </p>
 
             <h4 className="font-semibold text-lg mt-4 mb-2">Weekly Horoscopes</h4>
             <p>
-              <strong>Weekly horoscopes</strong> provide a broader overview of upcoming trends and patterns. They're influenced
-              by slower-moving planetary aspects and help you plan your week strategically. If you're scheduling important
+              <strong>Weekly horoscopes</strong> provide a broader overview of upcoming trends and patterns. They are influenced
+              by slower-moving planetary aspects and help you plan your week strategically. If you are scheduling important
               meetings, social events, or personal projects, weekly horoscopes help you choose optimal timing based on
               cosmic influences.
             </p>
@@ -619,7 +619,7 @@ export default function HoroscopeHub() {
             <h4 className="font-semibold text-lg mt-4 mb-2">Monthly Horoscopes</h4>
             <p>
               <strong>Monthly horoscopes</strong> offer even wider perspectives, often focusing on themes that will develop
-              over the coming weeks. They're particularly valuable for understanding longer-term planetary transits like
+              over the coming weeks. They are particularly valuable for understanding longer-term planetary transits like
               Mercury retrograde periods, Venus transitions, or Mars sign changes that affect multiple weeks.
             </p>
 
@@ -641,7 +641,7 @@ export default function HoroscopeHub() {
             <h3 className="text-xl font-semibold mt-8 mb-4">Developing Your Personal Horoscope Practice</h3>
             <p>
               Creating a consistent <strong>horoscope practice</strong> can enhance your self-awareness and decision-making.
-              Here's how to develop a meaningful relationship with astrological guidance:
+              Here is how to develop a meaningful relationship with astrological guidance:
             </p>
 
             <div className="bg-gray-50 rounded-lg p-6 mt-4">
@@ -661,20 +661,20 @@ export default function HoroscopeHub() {
               Several misconceptions prevent people from getting the most value from horoscopes:
             </p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
-              <li><strong>"Horoscopes predict my future"</strong>: They describe energies and possibilities, not fixed outcomes</li>
-              <li><strong>"All horoscopes are the same"</strong>: Quality varies greatly between different astrologers and sources</li>
-              <li><strong>"I'm too logical for horoscopes"</strong>: Many scientists and intellectuals throughout history valued astrology</li>
-              <li><strong>"My horoscope is always wrong"</strong>: You might resonate more with your rising sign or need birth time accuracy</li>
-              <li><strong>"Astrology is fortune-telling"</strong>: It's better understood as a symbolic language for self-understanding</li>
+              <li><strong>Horoscopes predict my future</strong>: They describe energies and possibilities, not fixed outcomes</li>
+              <li><strong>All horoscopes are the same</strong>: Quality varies greatly between different astrologers and sources</li>
+              <li><strong>I am too logical for horoscopes</strong>: Many scientists and intellectuals throughout history valued astrology</li>
+              <li><strong>My horoscope is always wrong</strong>: You might resonate more with your rising sign or need birth time accuracy</li>
+              <li><strong>Astrology is fortune-telling</strong>: It is better understood as a symbolic language for self-understanding</li>
             </ul>
 
             <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6 mt-8">
               <h3 className="text-xl font-semibold mb-3">💫 Expert Astrology Insight</h3>
               <p className="mb-0">
-                "The most powerful way to use horoscopes is as a mirror for self-reflection rather than a crystal ball for prediction.
-                When you read your horoscope, ask yourself: 'How does this insight help me understand myself better? What actions can
-                I take to align with this energy?' This transforms horoscope reading from passive entertainment to active personal
-                development." - Master Astrologer Team
+                The most powerful way to use horoscopes is as a mirror for self-reflection rather than a crystal ball for prediction.
+                When you read your horoscope, ask yourself: How does this insight help me understand myself better? What actions can
+                I take to align with this energy? This transforms horoscope reading from passive entertainment to active personal
+                development. - Master Astrologer Team
               </p>
             </div>
 
