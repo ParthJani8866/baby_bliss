@@ -414,10 +414,6 @@ export default function ChineseGenderPredictionPage() {
                     <h1 className="text-4xl font-bold text-orange-600 text-center md:text-left">
                         Chinese Gender Prediction Calendar 2026
                     </h1>
-                    
-                    <p className="text-lg text-gray-700 leading-relaxed">
-                        The <strong>Chinese Gender Prediction Calendar</strong> is an ancient <strong>Chinese baby gender chart</strong> that has been used for centuries to predict whether expecting parents will have a boy or girl. This traditional <strong>Chinese gender predictor</strong> method uses the mother's lunar age at conception and the lunar month of conception to determine the baby's gender. Our <strong>Chinese gender calculator 2026</strong> makes this ancient wisdom accessible to modern parents, providing instant <strong>baby gender predictions</strong> based on the same principles used in imperial China.
-                    </p>
 
                     {/* Calculator Section */}
                     <div className="bg-orange-50 p-6 rounded-xl shadow-md space-y-4">
@@ -425,7 +421,7 @@ export default function ChineseGenderPredictionPage() {
                         
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-gray-700 font-medium mb-2">Mother's Age at Conception:</label>
+                                <label className="block text-gray-700 font-medium mb-2">Mothers Age at Conception:</label>
                                 <input
                                     type="number"
                                     value={age}
