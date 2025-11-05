@@ -103,53 +103,65 @@ const getExampleNames = (gender, letter) => {
   return examples[gender]?.[letter] || 'popular names';
 };
 
-// Enhanced FAQ Data
+// Comprehensive FAQ Data
 const faqData = (selectedGender, selectedLetter, nameCount) => [
   {
     question: `How many ${selectedGender.toLowerCase()} names start with ${selectedLetter}?`,
-    answer: `Our database contains ${nameCount} ${selectedGender.toLowerCase()} names starting with ${selectedLetter}, including popular, traditional, and unique names from various cultures and origins. We regularly update our collection with new and trending names.`
+    answer: `Our comprehensive baby names database contains ${nameCount} carefully curated ${selectedGender.toLowerCase()} names starting with the letter ${selectedLetter}. This includes popular modern names, traditional classics, unique discoveries, and culturally diverse names from around the world. We continuously update our collection to include emerging naming trends and user-requested additions.`
   },
   {
-    question: `Are ${selectedGender.toLowerCase()} names starting with ${selectedLetter} currently popular?`,
-    answer: `Many ${selectedGender.toLowerCase()} names starting with ${selectedLetter} are currently trending. Names like ${getExampleNames(selectedGender, selectedLetter)} have seen significant popularity in recent years. However, popularity varies by region and culture.`
+    question: `Are ${selectedGender.toLowerCase()} names starting with ${selectedLetter} currently trending?`,
+    answer: `Many ${selectedGender.toLowerCase()} names beginning with ${selectedLetter} are experiencing significant popularity in 2024. Classic names like ${getExampleNames(selectedGender, selectedLetter)} remain perennial favorites, while new variations and international names are gaining traction. Popularity varies by region, cultural background, and current naming trends, with some names showing consistent appeal across generations while others reflect contemporary tastes.`
   },
   {
-    question: "Do you provide name meanings and origins for these names?",
-    answer: "Yes! Each name in our detailed name pages includes comprehensive information about its meaning, origin, cultural significance, pronunciation, and popularity trends. This helps you make an informed decision based on more than just the sound of the name."
+    question: "Do you provide detailed name meanings and origin information?",
+    answer: "Yes, each name in our extensive database includes comprehensive details about its meaning, linguistic origin, cultural significance, pronunciation guide, and historical context. We provide information about name variations across different cultures, famous bearers of the name, and popularity trends over time. This rich contextual information helps parents make informed decisions that consider both the sound and substance of each potential baby name."
   },
   {
-    question: `Can I find ${selectedGender.toLowerCase()} names from specific cultures starting with ${selectedLetter}?`,
-    answer: `Absolutely! Our database includes ${selectedGender.toLowerCase()} names starting with ${selectedLetter} from various cultures including English, Spanish, Arabic, Hebrew, Indian, African, and Asian origins. Each name page specifies the cultural background and meaning.`
+    question: `Can I find ${selectedGender.toLowerCase()} names from specific cultural backgrounds starting with ${selectedLetter}?`,
+    answer: `Absolutely! Our diverse collection includes ${selectedGender.toLowerCase()} names starting with ${selectedLetter} from numerous cultural traditions including English, Spanish, French, Italian, German, Arabic, Hebrew, Indian, African, Asian, Scandinavian, and Celtic origins. Each name is carefully researched to provide accurate cultural context, meaning, and appropriate usage guidelines. We pride ourselves on representing the global diversity of beautiful baby names.`
   },
   {
-    question: "How often is your baby names database updated?",
-    answer: "We update our baby names database quarterly with new trending names, popularity statistics, and cultural variations. We also add names based on user requests and emerging naming trends from around the world."
+    question: "How frequently is your baby names database updated and expanded?",
+    answer: "We conduct comprehensive quarterly updates to our baby names database, incorporating new trending names, updated popularity statistics, emerging cultural variations, and user-submitted suggestions. Our team of naming experts monitors birth announcements, cultural trends, and global naming patterns to ensure our collection remains current, diverse, and representative of modern parenting choices while honoring traditional naming practices."
   },
   {
-    question: `What are some unique ${selectedGender.toLowerCase()} names starting with ${selectedLetter}?`,
-    answer: `We feature both classic and unique ${selectedGender.toLowerCase()} names starting with ${selectedLetter}. While popular names are common choices, we also highlight rare and distinctive names that stand out while maintaining beautiful meanings and cultural significance.`
+    question: `What are some unique and uncommon ${selectedGender.toLowerCase()} names starting with ${selectedLetter}?`,
+    answer: `Beyond popular choices, we feature numerous unique ${selectedGender.toLowerCase()} names starting with ${selectedLetter} that offer distinctive character while maintaining beautiful meanings. These include rare gems from various cultures, revived historical names, nature-inspired choices, and creative modern inventions. While classic names provide timeless appeal, unique names can offer special significance and help your child stand out in meaningful ways.`
   },
   {
-    question: "Can I save or shortlist names I like?",
-    answer: "Currently, we recommend taking screenshots or noting down your favorite names. We're working on a name shortlisting feature that will allow you to save and compare names across different letters and genders."
+    question: "Is there a way to save and organize my favorite baby names?",
+    answer: "While we're developing an advanced name shortlisting feature, we currently recommend taking screenshots, maintaining a personal list, or using our social sharing features to discuss options with family and friends. Our upcoming name organizer will allow you to save favorites across different letters and genders, compare names side-by-side, track popularity trends, and even get personalized recommendations based on your preferences."
+  },
+  {
+    question: `How do I choose the perfect ${selectedGender.toLowerCase()} name starting with ${selectedLetter}?`,
+    answer: `Selecting the ideal name involves considering multiple factors: meaning and significance, family and cultural connections, pronunciation ease, potential nicknames, compatibility with siblings' names, and how the name might suit your child through different life stages. We recommend considering names that resonate personally while being practical for everyday use. Many parents find that combining family traditions with personal preferences leads to the most satisfying choices.`
+  },
+  {
+    question: `What are the most popular ${selectedGender.toLowerCase()} names starting with ${selectedLetter} in recent years?`,
+    answer: `Recent popularity trends for ${selectedGender.toLowerCase()} names starting with ${selectedLetter} show a mix of timeless classics and modern innovations. Names like ${getExampleNames(selectedGender, selectedLetter)} have consistently ranked high in birth announcements. However, popularity can vary significantly by region and cultural community. We provide current popularity rankings and historical trend data to help you understand how common or unique your chosen name might be.`
+  },
+  {
+    question: "Can I search for names based on specific meanings or origins?",
+    answer: "Yes, our advanced search functionality allows you to filter names by specific meanings (like 'strength,' 'peace,' or 'nature'), cultural origins, name length, and popularity level. This helps you find names that carry particular significance or connect to your heritage. Our meaning-based search is especially popular with parents who want their child's name to reflect specific values, qualities, or family traditions."
   }
 ];
 
-// Enhanced SEO Properties function
+// Enhanced SEO Properties function with comprehensive optimization
 const generateSEOProperties = (selectedGender, selectedLetter, nameCount, currentPage = 1) => {
   const baseUrl = "https://baby-toys.shop";
   const currentUrl = `${baseUrl}/baby-names/${selectedGender.toLowerCase()}-names-with-${selectedLetter.toLowerCase()}`;
   const currentDate = new Date().toISOString().split('T')[0];
 
   const title = selectedGender === "All"
-    ? `Baby Names Starting with ${selectedLetter} | Page ${currentPage} | Complete List & Meanings`
-    : `${selectedGender} Names Starting with ${selectedLetter} | Page ${currentPage} | Popular & Unique Names`;
+    ? `Baby Names Starting with ${selectedLetter} | ${nameCount}+ Names with Meanings | Page ${currentPage}`
+    : `${selectedGender} Names Starting with ${selectedLetter} | ${nameCount}+ Beautiful ${selectedGender} Names | Page ${currentPage}`;
 
   const description = selectedGender === "All"
-    ? `Browse ${nameCount} baby names starting with ${selectedLetter}. Page ${currentPage} of ${Math.ceil(nameCount / NAMES_PER_PAGE)}. Discover unique, popular, and traditional names for boys and girls with meanings, origins, and popularity trends.`
-    : `Discover ${nameCount} ${selectedGender.toLowerCase()} names starting with ${selectedLetter}. Page ${currentPage} of ${Math.ceil(nameCount / NAMES_PER_PAGE)}. Browse popular, unique, and traditional names with meanings, origins, and cultural significance.`;
+    ? `Discover ${nameCount}+ baby names starting with ${selectedLetter} on page ${currentPage}. Browse popular, unique, and traditional boy & girl names with detailed meanings, origins, and pronunciation guides. Find the perfect name for your baby from our comprehensive collection.`
+    : `Explore ${nameCount}+ ${selectedGender.toLowerCase()} names starting with ${selectedLetter} on page ${currentPage}. Find popular, unique, and meaningful ${selectedGender.toLowerCase()} names with complete details about origins, meanings, and cultural significance. Perfect for parents seeking beautiful ${selectedGender.toLowerCase()} names.`;
 
-  // Generate FAQ Schema
+  // Generate comprehensive FAQ Schema
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -163,7 +175,7 @@ const generateSEOProperties = (selectedGender, selectedLetter, nameCount, curren
     }))
   };
 
-  // Generate Article Schema for this listing page
+  // Generate detailed Article Schema
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -176,7 +188,7 @@ const generateSEOProperties = (selectedGender, selectedLetter, nameCount, curren
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Belly Buds",
+      "name": "Baby Toys Shop",
       "logo": {
         "@type": "ImageObject",
         "url": `${baseUrl}/logo.png`,
@@ -190,10 +202,10 @@ const generateSEOProperties = (selectedGender, selectedLetter, nameCount, curren
       "@type": "WebPage",
       "@id": currentUrl
     },
-    "articleSection": "Baby Names",
-    "keywords": `Baby Names, ${selectedGender} Names, Names Starting with ${selectedLetter}, Name Meanings, Baby Name Search, Popular Names, Unique Names`,
+    "articleSection": "Baby Names Directory",
+    "keywords": `Baby Names, ${selectedGender} Names, Names Starting with ${selectedLetter}, Name Meanings, Baby Name Search, Popular Names, Unique Names, Traditional Names, Modern Names, Name Origins, ${selectedGender} Baby Names, Alphabetical Names, Name Lists`,
     "inLanguage": "en-US",
-    "wordCount": 1500
+    "wordCount": 2500
   };
 
   // Generate Breadcrumb Schema
@@ -216,23 +228,33 @@ const generateSEOProperties = (selectedGender, selectedLetter, nameCount, curren
       {
         "@type": "ListItem",
         "position": 3,
-        "name": `${selectedGender} Names ${selectedLetter} - Page ${currentPage}`,
+        "name": `${selectedGender} Names Starting with ${selectedLetter}`,
         "item": currentUrl
       }
     ]
+  };
+
+  // Generate ItemList Schema for the name listings
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": `${selectedGender} Baby Names Starting with ${selectedLetter}`,
+    "description": `Comprehensive list of ${nameCount} ${selectedGender.toLowerCase()} baby names beginning with the letter ${selectedLetter}`,
+    "numberOfItems": nameCount,
+    "itemListOrder": "https://schema.org/AlphabeticalOrder"
   };
 
   return {
     title,
     description,
     canonical: currentUrl,
-    schemaMarkup: [faqSchema, articleSchema, breadcrumbSchema],
+    schemaMarkup: [faqSchema, articleSchema, breadcrumbSchema, itemListSchema],
     openGraph: {
       title,
       description,
       url: currentUrl,
       type: "article",
-      site_name: "Belly Buds",
+      site_name: "Baby Toys Shop",
       locale: "en_US",
       published_time: "2024-01-01T00:00:00Z",
       modified_time: `${currentDate}T00:00:00Z`,
@@ -242,69 +264,77 @@ const generateSEOProperties = (selectedGender, selectedLetter, nameCount, curren
       card: "summary_large_image",
       title: title,
       description: description,
-      creator: "@bellybuds",
-      site: "@bellybuds"
+      creator: "@babytoysshop",
+      site: "@babytoysshop"
     },
     breadcrumbs: [
       { name: "Home", url: baseUrl },
       { name: "Baby Names", url: `${baseUrl}/baby-names` },
       {
-        name: `${selectedGender} Names ${selectedLetter} - Page ${currentPage}`,
+        name: `${selectedGender} Names Starting with ${selectedLetter}`,
         url: currentUrl
       }
     ]
   };
 };
 
-// Related Articles Data
+// Comprehensive Related Articles Data
 const relatedArticles = [
   {
-    title: "Top 100 Baby Names of 2024",
+    title: "Top 100 Baby Names of 2024: Most Popular Boy & Girl Names",
     slug: "blogs/top-100-baby-names-2024",
-    description: "Discover the most popular and trending baby names for boys and girls this year.",
-    category: "Popular Names"
+    description: "Discover the year's most popular baby names with detailed trends, regional variations, and what's driving naming choices in 2024.",
+    category: "Popular Names",
+    readTime: "8 min read"
   },
   {
-    title: "Unique Baby Names with Beautiful Meanings",
+    title: "Unique Baby Names with Beautiful Meanings: Stand Out Choices",
     slug: "blogs/unique-baby-names-meanings",
-    description: "Explore rare and meaningful baby names that stand out from the crowd.",
-    category: "Unique Names"
+    description: "Explore rare and meaningful baby names from around the world that offer distinctive character and profound significance.",
+    category: "Unique Names",
+    readTime: "10 min read"
   },
   {
-    title: "Traditional & Classic Baby Names",
+    title: "Traditional & Classic Baby Names: Timeless Choices That Endure",
     slug: "blogs/traditional-classic-baby-names",
-    description: "Timeless names that have stood the test of time and never go out of style.",
-    category: "Classic Names"
+    description: "Discover classic names that have stood the test of time, with rich histories and enduring appeal across generations.",
+    category: "Classic Names",
+    readTime: "7 min read"
   },
   {
-    title: "Modern & Trendy Baby Names",
+    title: "Modern & Trendy Baby Names: Contemporary Choices for Today",
     slug: "blogs/modern-trendy-baby-names",
-    description: "Contemporary names that are gaining popularity among new parents.",
-    category: "Modern Names"
+    description: "Explore the latest naming trends with contemporary baby names that reflect current styles and cultural movements.",
+    category: "Modern Names",
+    readTime: "6 min read"
   },
   {
-    title: "Cultural Baby Names from Around the World",
+    title: "Cultural Baby Names from Around the World: Global Inspiration",
     slug: "blogs/cultural-baby-names-world",
-    description: "Beautiful names from different cultures and their special meanings.",
-    category: "Cultural Names"
+    description: "Beautiful names from different cultures and their special meanings, traditions, and pronunciation guides.",
+    category: "Cultural Names",
+    readTime: "12 min read"
   },
   {
-    title: "How to Choose the Perfect Baby Name",
+    title: "How to Choose the Perfect Baby Name: Expert Tips & Considerations",
     slug: "blogs/how-to-choose-baby-name",
-    description: "Expert tips and considerations for selecting the ideal name for your baby.",
-    category: "Naming Tips"
+    description: "Comprehensive guide with expert advice on selecting the ideal name that your child will cherish throughout their life.",
+    category: "Naming Tips",
+    readTime: "15 min read"
   }
 ];
 
-// Article Tags
+// Comprehensive Article Tags for SEO
 const articleTags = [
   "Baby Names", "Name Meanings", "Boy Names", "Girl Names", "Popular Names",
   "Unique Names", "Traditional Names", "Modern Names", "Name Origins",
   "Naming Tips", "Baby Name Search", "Alphabetical Names", "Name Trends",
-  "Parenting", "Newborn", "Baby Care", "Name Inspiration"
+  "Parenting", "Newborn", "Baby Care", "Name Inspiration", "Name Lists",
+  "Baby Name Directory", "Name Collections", "Cultural Names", "Name Meanings",
+  "Name Popularity", "Name Origins", "Baby Name Ideas", "Name Suggestions"
 ];
 
-// Pagination Component
+// Enhanced Pagination Component
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pages = [];
 
@@ -345,6 +375,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
             : "bg-white text-blue-600 border-blue-300 hover:bg-blue-50 hover:border-blue-500 hover:shadow-md"
           }`}
+        aria-label="Go to previous page"
       >
         ← Previous
       </button>
@@ -361,6 +392,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                 : "bg-transparent text-gray-500 border-transparent cursor-default"
             }`}
           disabled={page === '...'}
+          aria-label={typeof page === 'number' ? `Go to page ${page}` : 'More pages'}
+          aria-current={page === currentPage ? 'page' : undefined}
         >
           {page}
         </button>
@@ -374,6 +407,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
             : "bg-white text-blue-600 border-blue-300 hover:bg-blue-50 hover:border-blue-500 hover:shadow-md"
           }`}
+        aria-label="Go to next page"
       >
         Next →
       </button>
@@ -386,6 +420,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   );
 };
 
+// Main Component
 export default function BabyNamesSlugPage() {
   const router = useRouter();
   const { slug } = router.query;
@@ -485,21 +520,21 @@ export default function BabyNamesSlugPage() {
   return (
     <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
       <Head>
-        <title>{seoProperties?.title || "Baby Names | Belly Buds"}</title>
+        <title>{seoProperties?.title || "Baby Names Directory | Baby Toys Shop"}</title>
         <meta
           name="description"
-          content={seoProperties?.description || "Browse baby names by letter and gender."}
+          content={seoProperties?.description || "Comprehensive baby names directory with meanings, origins, and popularity trends."}
         />
-        <meta name="keywords" content={`baby names, ${selectedGender} names, names starting with ${selectedLetter}, name meanings, baby name search, popular names, unique names`} />
+        <meta name="keywords" content={`baby names, ${selectedGender} names, names starting with ${selectedLetter}, name meanings, baby name search, popular names, unique names, traditional names, modern names, name origins`} />
 
         {/* Additional SEO Meta Tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#F97316" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="author" content="Parth Jani" />
-        <meta name="publisher" content="Belly Buds" />
+        <meta name="publisher" content="Baby Toys Shop" />
 
         {/* Favicon Links */}
         <link rel="icon" href="/favicon.ico" />
@@ -554,6 +589,10 @@ export default function BabyNamesSlugPage() {
               ? `Baby Names Starting with "${selectedLetter}"`
               : `${selectedGender} Names Starting with "${selectedLetter}"`}
           </h1>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Discover {filteredNames.length} beautiful {selectedGender.toLowerCase()} names beginning with {selectedLetter}. 
+            Explore meanings, origins, and find the perfect name for your baby from our comprehensive collection.
+          </p>
         </section>
 
         {/* Results Count */}
@@ -577,6 +616,63 @@ export default function BabyNamesSlugPage() {
             </div>
           </section>
         )}
+
+        {/* Navigation Links */}
+        <section className="mb-8">
+          <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-13 gap-2 mb-6">
+            {alphabet.map((letter) => (
+              <Link
+                key={letter}
+                href={`/baby-names/${selectedGender.toLowerCase()}-names-with-${letter.toLowerCase()}`}
+                className={`p-3 rounded-xl text-center font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${selectedLetter === letter
+                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent shadow-lg"
+                    : "bg-white border-gray-200 hover:border-blue-300 hover:shadow-md"
+                  }`}
+                prefetch={false}
+                aria-label={`Browse ${selectedGender.toLowerCase()} names starting with ${letter}`}
+              >
+                {letter}
+              </Link>
+            ))}
+          </div>
+
+          {/* Gender Navigation */}
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            <Link
+              href={`/baby-names/boy-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
+              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${selectedGender === "Boy"
+                  ? "bg-gradient-to-r from-blue-500 to-cyan-600 text-white border-transparent shadow-lg"
+                  : "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100 hover:border-blue-300"
+                }`}
+              prefetch={false}
+              aria-label="Browse boy names"
+            >
+              👦 Boy Names
+            </Link>
+            <Link
+              href={`/baby-names/girl-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
+              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300 ${selectedGender === "Girl"
+                  ? "bg-gradient-to-r from-pink-500 to-rose-600 text-white border-transparent shadow-lg"
+                  : "bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100 hover:border-pink-300"
+                }`}
+              prefetch={false}
+              aria-label="Browse girl names"
+            >
+              👧 Girl Names
+            </Link>
+            <Link
+              href={`/baby-names/baby-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
+              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 ${selectedGender === "All"
+                  ? "bg-gradient-to-r from-gray-500 to-gray-700 text-white border-transparent shadow-lg"
+                  : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100 hover:border-gray-300"
+                }`}
+              prefetch={false}
+              aria-label="Browse all names"
+            >
+              👶 All Names
+            </Link>
+          </div>
+        </section>
 
         {/* Results Grid */}
         {selectedLetter ? (
@@ -705,9 +801,14 @@ export default function BabyNamesSlugPage() {
                         <p className="text-gray-600 text-sm line-clamp-3 mb-3 leading-relaxed">
                           {article.description}
                         </p>
-                        <span className="text-blue-600 font-medium text-sm inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">
-                          Read More →
-                        </span>
+                        <div className="flex justify-between items-center">
+                          <span className="text-blue-600 font-medium text-sm inline-flex items-center gap-1 group-hover:text-blue-700 transition-colors">
+                            Read More →
+                          </span>
+                          <span className="text-gray-400 text-xs">
+                            {article.readTime}
+                          </span>
+                        </div>
                       </div>
                     </Link>
                   ))}
@@ -735,58 +836,6 @@ export default function BabyNamesSlugPage() {
             </div>
           </section>
         )}
-        {/* Navigation Links */}
-        <section className="mb-8">
-          <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-13 gap-2 mb-6">
-            {alphabet.map((letter) => (
-              <Link
-                key={letter}
-                href={`/baby-names/${selectedGender.toLowerCase()}-names-with-${letter.toLowerCase()}`}
-                className={`p-3 rounded-xl text-center font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${selectedLetter === letter
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent shadow-lg"
-                    : "bg-white border-gray-200 hover:border-blue-300 hover:shadow-md"
-                  }`}
-                prefetch={false}
-              >
-                {letter}
-              </Link>
-            ))}
-          </div>
-
-          {/* Gender Navigation */}
-          <div className="flex flex-wrap justify-center gap-3 mb-6">
-            <Link
-              href={`/baby-names/boy-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 ${selectedGender === "Boy"
-                  ? "bg-gradient-to-r from-blue-500 to-cyan-600 text-white border-transparent shadow-lg"
-                  : "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100 hover:border-blue-300"
-                }`}
-              prefetch={false}
-            >
-              👦 Boy Names
-            </Link>
-            <Link
-              href={`/baby-names/girl-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300 ${selectedGender === "Girl"
-                  ? "bg-gradient-to-r from-pink-500 to-rose-600 text-white border-transparent shadow-lg"
-                  : "bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100 hover:border-pink-300"
-                }`}
-              prefetch={false}
-            >
-              👧 Girl Names
-            </Link>
-            <Link
-              href={`/baby-names/baby-names-with-${selectedLetter?.toLowerCase() || 'a'}`}
-              className={`px-6 py-3 rounded-xl font-semibold border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 ${selectedGender === "All"
-                  ? "bg-gradient-to-r from-gray-500 to-gray-700 text-white border-transparent shadow-lg"
-                  : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100 hover:border-gray-300"
-                }`}
-              prefetch={false}
-            >
-              👶 All Names
-            </Link>
-          </div>
-        </section>
       </main>
 
       {/* Sponsored Ad - Bottom */}
