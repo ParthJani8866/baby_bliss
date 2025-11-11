@@ -146,7 +146,7 @@ export default function MotherhoodBlogs() {
   const breadcrumbs = [
     { name: "Home", href: "/" },
     { name: "Resources", href: "/resources" },
-    { name: "Motherhood Blogs", href: "/parenting-blogs" }
+    { name: "Parenting Blogs", href: "/parenting-blogs" }
   ];
 
   return (
@@ -340,7 +340,7 @@ export default function MotherhoodBlogs() {
 
                           <div className="mt-8 pt-6 border-t border-gray-200">
                             <Link 
-                              href={`/motherhood-blogs/${blog.slug}`}
+                              href={`/parenting-blogs/${blog.slug}`}
                               className="inline-flex items-center bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 shadow-md hover:shadow-lg"
                             >
                               Read Complete Guide for Month {blog.month}
