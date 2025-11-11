@@ -38,7 +38,7 @@ export default function Header() {
   const motherhoodMonths = [
     {
       label: "Parenting Guides",
-      href: "/motherhood-blogs",
+      href: "/parenting-blogs",
       icon: <FaUser className="w-4 h-4" />
     },
   ]
@@ -113,7 +113,7 @@ export default function Header() {
           <div className="relative group">
             <button className="flex items-center gap-2 text-teal-700 hover:text-teal-600 font-semibold transition-colors duration-200 group">
               <FaUser className="w-5 h-5 group-hover:scale-110 transition-transform" /> 
-              <span>Motherhood</span>
+              <span>Parenting</span>
               <FaChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
             </button>
             <div className="absolute left-0 top-full mt-2 w-64 bg-white border border-teal-200 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top">
@@ -241,10 +241,10 @@ export default function Header() {
             </Link>
 
             <MobileSubmenu
-              title="Motherhood"
+              title="parenting"
               icon={<FaUser className="w-5 h-5" />}
-              open={openMobileSubmenu === "motherhood"}
-              onToggle={() => toggleMobileSubmenu("motherhood")}
+              open={openMobileSubmenu === "parenting"}
+              onToggle={() => toggleMobileSubmenu("parenting")}
               items={motherhoodMonths}
             />
 

@@ -15,12 +15,12 @@ export default function BreadcrumbSchema({ title, seoProperties }) {
     },
   ];
 
-  if (pathname.includes("/motherhood-blogs")) {
+  if (pathname.includes("/parenting-blogs")) {
     breadcrumbs.push({
       "@type": "ListItem",
       position: 2,
-      name: "Motherhood Blogs",
-      item: "https://baby-toys.shop/motherhood-blogs",
+      name: "parenting Blogs",
+      item: "https://baby-toys.shop/parenting-blogs",
     });
   } else if (pathname.includes("/pregnancy-week-wise")) {
     breadcrumbs.push({

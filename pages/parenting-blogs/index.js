@@ -13,7 +13,7 @@ export default function MotherhoodBlogs() {
     {
       month: 1,
       title: "Month 1 — Surviving the First 30 Days",
-      slug: "Motherhood-month-1",
+      slug: "parenting-month-1",
       shortDescription: "Navigating the overwhelming yet magical first month of parenting with essential tips for newborn care and mother recovery.",
       description: `The first month of parenting is often described as the most overwhelming yet magical period in a parent's life. During this time, both the baby and the mother are adjusting to a completely new routine...`,
       image: "/images/motherhood-1.jpg",
@@ -22,7 +22,7 @@ export default function MotherhoodBlogs() {
     {
       month: 2,
       title: "Month 2 — Smiles & Early Connections",
-      slug: "Motherhood-month-2",
+      slug: "parenting-month-2",
       shortDescription: "Discover the joy of social smiles and early bonding as your baby becomes more interactive and responsive.",
       description: `Month 2 of parenting is often filled with small victories and increasing confidence. Babies begin to show social smiles, respond to familiar voices, and start engaging more with their environment...`,
       image: "/images/motherhood-2.jpg",
@@ -31,7 +31,7 @@ export default function MotherhoodBlogs() {
     {
       month: 3,
       title: "Month 3 — Social Smiles & Tummy Time",
-      slug: "Motherhood-month-3",
+      slug: "parenting-month-3",
       shortDescription: "Enhanced interactions and crucial tummy time activities for your baby's development in the third month.",
       description: `Month 3 of parenting is a period where the baby becomes more interactive and parents begin to notice real personality traits. Social smiles become more frequent...`,
       image: "/images/motherhood-3.jpg",
@@ -40,7 +40,7 @@ export default function MotherhoodBlogs() {
     {
       month: 4,
       title: "Month 4 — Strengthening Muscles & Interaction",
-      slug: "Motherhood-month-4",
+      slug: "parenting-month-4",
       shortDescription: "Physical milestones and increased social engagement as your baby grows stronger and more curious.",
       description: `Month 4 of parenting marks an exciting period where babies become more active, alert, and socially engaged. Physical milestones such as rolling from tummy to back...`,
       image: "/images/motherhood-4.jpg",
@@ -49,7 +49,7 @@ export default function MotherhoodBlogs() {
     {
       month: 5,
       title: "Month 5 — Rolling, Sitting & Exploring",
-      slug: "Motherhood-month-5",
+      slug: "parenting-month-5",
       shortDescription: "Exploration and discovery phase with improved mobility and cognitive development in the fifth month.",
       description: `Month 5 of parenting is a phase of discovery and exploration. Babies gain more control over their bodies, begin rolling independently, and may start sitting with support...`,
       image: "/images/motherhood-5.jpg",
@@ -58,7 +58,7 @@ export default function MotherhoodBlogs() {
     {
       month: 6,
       title: "Month 6 — First Solids & Responsive Play",
-      slug: "Motherhood-month-6",
+      slug: "parenting-month-6",
       shortDescription: "Introducing first solid foods and encouraging responsive play for comprehensive development.",
       description: `Month 6 of parenting is a significant milestone in a baby's first year. Many babies are ready for their first solid foods, complementing breast milk or formula...`,
       image: "/images/motherhood-6.jpg",
@@ -67,7 +67,7 @@ export default function MotherhoodBlogs() {
     {
       month: 7,
       title: "Month 7 — Sitting Confidently & Babbling",
-      slug: "Motherhood-month-7",
+      slug: "parenting-month-7",
       shortDescription: "Confident sitting and early language development as your baby becomes more communicative.",
       description: `By Month 7 of parenting, babies often sit confidently without support and start exploring their surroundings more actively. Crawling may begin...`,
       image: "/images/motherhood-7.jpg",
@@ -76,7 +76,7 @@ export default function MotherhoodBlogs() {
     {
       month: 8,
       title: "Month 8 — Crawling, Grasping & Social Play",
-      slug: "Motherhood-month-8",
+      slug: "parenting-month-8",
       shortDescription: "Enhanced mobility and fine motor skills development through crawling and interactive play.",
       description: `Month 8 of parenting is characterized by enhanced mobility and curiosity. Babies often crawl confidently, explore surroundings, and manipulate objects with greater precision...`,
       image: "/images/motherhood-8.jpg",
@@ -85,7 +85,7 @@ export default function MotherhoodBlogs() {
     {
       month: 9,
       title: "Month 9 — Standing, Stronger Communication & Play",
-      slug: "Motherhood-month-9",
+      slug: "parenting-month-9",
       shortDescription: "Standing milestones and stronger communication skills as your baby prepares for walking.",
       description: `Month 9 of parenting is a time of increasing independence and communication. Babies often pull themselves up to stand, cruise along furniture...`,
       image: "/images/motherhood-9.jpg",
@@ -94,7 +94,7 @@ export default function MotherhoodBlogs() {
     {
       month: 10,
       title: "Month 10 — First Words, Peek-a-Boo & Mobility",
-      slug: "Motherhood-month-10",
+      slug: "parenting-month-10",
       shortDescription: "First words and increased mobility as your baby approaches toddlerhood with confidence.",
       description: `Month 10 of parenting is filled with milestones in mobility, communication, and curiosity. Babies often take first steps while holding furniture...`,
       image: "/images/motherhood-10.jpg",
@@ -103,7 +103,7 @@ export default function MotherhoodBlogs() {
     {
       month: 11,
       title: "Month 11 — Early Walking & Playful Independence",
-      slug: "Motherhood-month-11",
+      slug: "parenting-month-11",
       shortDescription: "Early walking stages and growing independence as your baby explores the world more actively.",
       description: `Month 11 of parenting is a time of significant physical, cognitive, and emotional milestones. Many babies take their first independent steps...`,
       image: "/images/motherhood-11.jpg",
@@ -112,7 +112,7 @@ export default function MotherhoodBlogs() {
     {
       month: 12,
       title: "Month 12 — First Birthday, Walking & Talking",
-      slug: "Motherhood-month-12",
+      slug: "parenting-month-12",
       shortDescription: "Celebrating the first year with major milestones in walking, talking, and cognitive development.",
       description: `Month 12 of parenting marks the completion of the first year, a period full of remarkable growth and achievements. Babies often walk independently...`,
       image: "/images/motherhood-12.jpg",
@@ -146,7 +146,7 @@ export default function MotherhoodBlogs() {
   const breadcrumbs = [
     { name: "Home", href: "/" },
     { name: "Resources", href: "/resources" },
-    { name: "Motherhood Blogs", href: "/motherhood-blogs" }
+    { name: "Motherhood Blogs", href: "/parenting-blogs" }
   ];
 
   return (
@@ -161,7 +161,7 @@ export default function MotherhoodBlogs() {
         <meta property="og:title" content="Month-by-Month Parenting Guide | First Year Development | Belly Buds" />
         <meta property="og:description" content="Complete parenting guide for baby's first year with expert tips on development, feeding, sleep, and mother's well-being." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://baby-toys.shop/motherhood-blogs" />
+        <meta property="og:url" content="https://baby-toys.shop/parenting" />
         <meta property="og:image" content="/images/motherhood-og.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Month-by-Month Parenting Guide | Belly Buds" />
@@ -187,7 +187,7 @@ export default function MotherhoodBlogs() {
             "datePublished": "2024-01-01",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://baby-toys.shop/motherhood-blogs"
+              "@id": "https://baby-toys.shop/parenting"
             }
           })}
         </script>
