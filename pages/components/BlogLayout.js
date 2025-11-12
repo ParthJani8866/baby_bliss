@@ -12,6 +12,7 @@ import SocialShare from "./SocialShare";
 import BreadcrumbSchema from "./BreadcrumbSchema";
 import NativeAdBanner from "./NativeAdBanner";
 import { FaBell } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 export default function BlogLayout({
   title,
