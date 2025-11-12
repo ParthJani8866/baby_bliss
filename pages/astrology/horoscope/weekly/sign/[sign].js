@@ -46,13 +46,13 @@ export default function DailySignHoroscope({ horoscopeData, error }) {
                 <title>{horoscopeData.metaTitle}</title>
                 <meta name="description" content={horoscopeData.metaDescription} />
                 <meta name="keywords" content={horoscopeData.metaKeywords} />
-                <link rel="canonical" href={`https://yoursite.com/astrology/horoscope/today/sign/${sign}`} />
+                <link rel="canonical" href={`https://baby-toys.shop/astrology/horoscope/today/sign/${sign}`} />
 
                 {/* Open Graph */}
                 <meta property="og:title" content={horoscopeData.metaTitle} />
                 <meta property="og:description" content={horoscopeData.metaDescription} />
                 <meta property="og:type" content="article" />
-                <meta property="og:url" content={`https://yoursite.com/astrology/horoscope/today/sign/${sign}`} />
+                <meta property="og:url" content={`https://baby-toys.shop/astrology/horoscope/today/sign/${sign}`} />
 
                 {/* Twitter Card */}
                 <meta name="twitter:card" content="summary_large_image" />

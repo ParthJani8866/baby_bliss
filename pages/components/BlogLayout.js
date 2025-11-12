@@ -71,6 +71,8 @@ export default function BlogLayout({
       .trim()
       .slice(0, 155);
   }, []);
+  const router = useRouter();
+  const [canonicalUrl, setCanonicalUrl] = useState('https://baby-toys.shop');
 
   const [toc, setToc] = useState([]);
   const [likes, setLikes] = useState(0);
@@ -79,10 +81,15 @@ export default function BlogLayout({
   const [tocOpen, setTocOpen] = useState(false);
   const [randomBlogs, setRandomBlogs] = useState([]);
 
+  useEffect(() => {
+    if (router.isReady) {
+      const path = router.asPath === '/' ? '' : router.asPath;
+      setCanonicalUrl(`https://baby-toys.shop${path}`);
+    }
+  }, [router.isReady, router.asPath]);
   // Comprehensive SEO Properties Generator
   const generateSEOProperties = useCallback(() => {
     const baseUrl = "https://baby-toys.shop";
-    const currentUrl = `${baseUrl}/${slug}`;
     const currentDate = new Date().toISOString().split('T')[0];
 
     // Extract primary and secondary keywords
@@ -167,7 +174,7 @@ export default function BlogLayout({
         "dateModified": currentDate,
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": currentUrl
+          "@id": canonicalUrl
         },
         "wordCount": readingData.wordCount,
         "timeRequired": `PT${readingData.minutes}M`,
@@ -219,7 +226,7 @@ export default function BlogLayout({
           title: optimizeTitle(title),
           description: optimizeDescription(description),
           image: socialImage,
-          url: currentUrl,
+          url: canonicalUrl,
           type: "article",
           site_name: "Belly Buds",
           published_time: "2025-01-01T00:00:00Z",
@@ -241,7 +248,7 @@ export default function BlogLayout({
     const keywords = extractKeywords();
 
     return {
-      canonicalUrl: currentUrl,
+      canonicalUrl: canonicalUrl,
       schemaMarkup: generateSchemaMarkup(),
       socialMeta: generateSocialMeta(),
       keywords: keywords,
