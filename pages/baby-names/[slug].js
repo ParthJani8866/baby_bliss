@@ -9,7 +9,7 @@ import babyNames from "../../data/babyNamesArray";
 import Link from "next/link";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-const NAMES_PER_PAGE = 100;
+const NAMES_PER_PAGE = 500;
 
 // Helper function for example names
 const getExampleNames = (gender, letter) => {

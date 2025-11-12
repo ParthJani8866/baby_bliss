@@ -166,7 +166,7 @@ export default function BlogLayout({
           "url": baseUrl,
           "logo": {
             "@type": "ImageObject",
-            "url": `${baseUrl}/logo.png`,
+            "url": `https://baby-toys.shop/_next/image?url=%2Fimages%2Flogo.jpg&w=256&q=75`,
             "width": 180,
             "height": 60
           }
