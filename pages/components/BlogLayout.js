@@ -430,6 +430,45 @@ export default function BlogLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       </Head>
       <BreadcrumbSchema title={title} seoProperties={seoProperties} />
+      {/* Article Header */}
+      <header className="mb-8">
+        <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-orange-500 leading-tight" itemProp="headline">
+          {title}
+        </h1>
+
+        {/* Author Information */}
+        <div className="flex items-center gap-4 mb-6 p-4 bg-gray-50 border rounded-lg shadow-sm">
+
+          <div itemProp="author" itemScope itemType="https://schema.org/Person">
+            <Image
+              src={authorImage}
+              alt={authorName}
+              width={60}
+              height={60}
+              className="rounded-full"
+              itemProp="image"
+            />
+          </div>
+          <div className="flex-1">
+            <p className="font-semibold text-gray-800" itemProp="name">{authorName}</p>
+            <p className="text-sm text-gray-500">
+              Updated: <time itemProp="dateModified" dateTime={seoProperties.lastModified}>{updatedAt}</time>
+            </p>
+            <p className="text-sm text-gray-500">Reading time: {seoProperties.readingTime}</p>
+            <a
+              href={`mailto:${authorEmail}`}
+              className="text-sm text-orange-500 hover:underline"
+              itemProp="email"
+            >
+              {authorEmail}
+            </a>
+          </div>
+        </div>
+
+        <p className="text-lg leading-relaxed text-gray-700" itemProp="description">
+          {description}
+        </p>
+      </header>
       {/* Mobile Table of Contents */}
       <div style={{ marginTop: "35px" }} className="lg:hidden fixed top-16 left-0 right-0 z-50 bg-green-800 text-white flex justify-between items-center px-4 py-3 shadow-lg">
         <span className="font-semibold text-sm">📚 Article Contents</span>
@@ -537,45 +576,7 @@ export default function BlogLayout({
 
 
 
-          {/* Article Header */}
-          <header className="mb-8">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-orange-500 leading-tight" itemProp="headline">
-              {title}
-            </h1>
 
-            {/* Author Information */}
-            <div className="flex items-center gap-4 mb-6 p-4 bg-gray-50 border rounded-lg shadow-sm">
-
-              <div itemProp="author" itemScope itemType="https://schema.org/Person">
-                <Image
-                  src={authorImage}
-                  alt={authorName}
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                  itemProp="image"
-                />
-              </div>
-              <div className="flex-1">
-                <p className="font-semibold text-gray-800" itemProp="name">{authorName}</p>
-                <p className="text-sm text-gray-500">
-                  Updated: <time itemProp="dateModified" dateTime={seoProperties.lastModified}>{updatedAt}</time>
-                </p>
-                <p className="text-sm text-gray-500">Reading time: {seoProperties.readingTime}</p>
-                <a
-                  href={`mailto:${authorEmail}`}
-                  className="text-sm text-orange-500 hover:underline"
-                  itemProp="email"
-                >
-                  {authorEmail}
-                </a>
-              </div>
-            </div>
-
-            <p className="text-lg leading-relaxed text-gray-700" itemProp="description">
-              {description}
-            </p>
-          </header>
           {/* Featured Image */}
           {mainImage && (
             <div className="my-6 flex flex-col items-center gap-4">
