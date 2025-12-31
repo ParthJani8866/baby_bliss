@@ -606,7 +606,7 @@ export default function BirthChart() {
                                     <p className="text-gray-700">
                                         Your <strong>birth chart</strong> is unique to you and doesnt change. <strong>Horoscopes</strong> are 
                                         general predictions based on Sun signs. A birth chart gives you personalized insights, while horoscopes 
-                                        provide broad guidance for your Sun sign.
+                                        provide broad guidance for your Sun sign. Test
                                     </p>
                                 </div>
                             </div>
