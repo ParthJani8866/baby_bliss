@@ -36,7 +36,7 @@ export default function Disclaimer() {
                 <section className="mb-8">
                     <h2 className="text-2xl font-semibold mt-6 mb-3">1. General Information Disclaimer</h2>
                     <p className="mb-4">
-                        The information contained on Belly Buds  (the "Website") is for general informational and educational purposes only. All information on the Website is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Website.
+                        The information contained on Belly Buds  (the Website) is for general informational and educational purposes only. All information on the Website is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Website.
                     </p>
                     
                     <p className="mb-4">
@@ -109,7 +109,7 @@ export default function Disclaimer() {
                     </p>
                     
                     <p className="mb-4">
-                        Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to our website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our sites and/or other sites on the Internet.
+                        Third-party vendors, including Google, use cookies to serve ads based on a user prior visits to our website or other websites. Google use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our sites and/or other sites on the Internet.
                     </p>
                     
                     <h3 className="text-xl font-medium mt-4 mb-2">5.2 Cookie Usage and Tracking</h3>
@@ -130,7 +130,7 @@ export default function Disclaimer() {
                     <ul className="list-disc pl-5 mb-4 space-y-2">
                         <li><strong>Google Ads Settings:</strong> <a href="https://www.google.com/settings/ads" className="text-blue-600 hover:underline">https://www.google.com/settings/ads</a></li>
                         <li><strong>Network Advertising Initiative opt-out page:</strong> <a href="http://optout.networkadvertising.org/" className="text-blue-600 hover:underline">http://optout.networkadvertising.org/</a></li>
-                        <li><strong>Digital Advertising Alliance's opt-out portal:</strong> <a href="http://optout.aboutads.info/" className="text-blue-600 hover:underline">http://optout.aboutads.info/</a></li>
+                        <li><strong>Digital Advertising Alliance opt-out portal:</strong> <a href="http://optout.aboutads.info/" className="text-blue-600 hover:underline">http://optout.aboutads.info/</a></li>
                     </ul>
                     
                     <p className="mb-4">
@@ -195,7 +195,7 @@ export default function Disclaimer() {
                     </p>
                     
                     <p className="mb-4">
-                        We believe this constitutes a "fair use" of any such copyrighted material as provided for in section 107 of the US Copyright Law. If you wish to use copyrighted material from this site for purposes of your own that go beyond fair use, you must obtain permission from the copyright owner.
+                        We believe this constitutes a fair use of any such copyrighted material as provided for in section 107 of the US Copyright Law. If you wish to use copyrighted material from this site for purposes of your own that go beyond fair use, you must obtain permission from the copyright owner.
                     </p>
                 </section>
 
@@ -206,7 +206,7 @@ export default function Disclaimer() {
                     </p>
                     
                     <p className="mb-4">
-                        All information in this site is provided "as is", with no guarantee of completeness, accuracy, timeliness, or of the results obtained from the use of this information, and without warranty of any kind, express or implied, including, but not limited to warranties of performance, merchantability, and fitness for a particular purpose.
+                        All information in this site is provided as is, with no guarantee of completeness, accuracy, timeliness, or of the results obtained from the use of this information, and without warranty of any kind, express or implied, including, but not limited to warranties of performance, merchantability, and fitness for a particular purpose.
                     </p>
                     
                     <p className="mb-4">
@@ -228,7 +228,7 @@ export default function Disclaimer() {
                     </p>
                     
                     <p className="mb-4">
-                        All information in this site is provided "as is", with no guarantee of completeness, accuracy, timeliness, or of the results obtained from the use of this information, and without warranty of any kind, express or implied, including, but not limited to warranties of performance, merchantability, and fitness for a particular purpose.
+                        All information in this site is provided as is, with no guarantee of completeness, accuracy, timeliness, or of the results obtained from the use of this information, and without warranty of any kind, express or implied, including, but not limited to warranties of performance, merchantability, and fitness for a particular purpose.
                     </p>
                 </section>
 
@@ -268,7 +268,7 @@ export default function Disclaimer() {
                     </div>
                     
                     <p className="mt-4">
-                        For copyright infringement notices, please refer to our <a href="/terms-and-conditions" className="text-blue-600 hover:underline">Terms & Conditions</a> page.
+                        For copyright infringement notices, please refer to our <a href="/terms" className="text-blue-600 hover:underline">Terms & Conditions</a> page.
                     </p>
                 </section>
 

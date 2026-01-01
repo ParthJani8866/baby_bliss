@@ -27,15 +27,15 @@ export default function TermsAndConditions() {
 
                 <section className="mb-8">
                     <p className="mb-4">
-                        These Terms of Use govern your use of the websites, content and community services offered through Belly Buds  ("Website") and any mobile or internet connected device or otherwise (the "Service").
+                        These Terms of Use govern your use of the websites, content and community services offered through Belly Buds  (Website) and any mobile or internet connected device or otherwise (the Service).
                     </p>
                     
                     <p className="mb-4">
-                        These terms of use ("Terms") constitute a legally binding agreement between you and Belly Buds  ("Company", "we", "our" or "us") regarding your use of the Website and any Services offered by the Company. By accessing the Website or Service and/or by clicking "I agree", you agree to be bound by these Terms.
+                        These terms of use (Terms) constitute a legally binding agreement between you and Belly Buds  (Company, we, our or us) regarding your use of the Website and any Services offered by the Company. By accessing the Website or Service and/or by clicking I agree, you agree to be bound by these Terms.
                     </p>
                     
                     <p className="mb-4">
-                        You hereby represent and warrant to the Company that you are at least eighteen (18) years of age or above and are capable of entering, performing and adhering to these Terms. While individuals under the age of 18 may utilize the Services or the Website, they shall do so only with the involvement and guidance of their parents and / or legal guardians, under such parent /legal guardian's registered account.
+                        You hereby represent and warrant to the Company that you are at least eighteen (18) years of age or above and are capable of entering, performing and adhering to these Terms. While individuals under the age of 18 may utilize the Services or the Website, they shall do so only with the involvement and guidance of their parents and / or legal guardians, under such parent /legal guardian registered account.
                     </p>
                     
                     <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-4">
@@ -100,12 +100,12 @@ export default function TermsAndConditions() {
                     </p>
                     
                     <ul className="list-disc pl-5 mb-4 space-y-2">
-                        <li>Upload or transmit any content that is unlawful, harmful, threatening, abusive, harassing, tortious, defamatory, vulgar, obscene, libelous, invasive of another's privacy, hateful, or racially, ethnically or otherwise objectionable</li>
+                        <li>Upload or transmit any content that is unlawful, harmful, threatening, abusive, harassing, tortious, defamatory, vulgar, obscene, libelous, invasive of another privacy, hateful, or racially, ethnically or otherwise objectionable</li>
                         <li>Create a false identity for the purpose of misleading others or impersonate any person or entity</li>
                         <li>Upload or transmit any material that you do not have a right to reproduce, display or transmit under any law</li>
                         <li>Upload files that contain viruses, Trojan horses, worms, time bombs, or any other similar software or programs</li>
                         <li>Delete any author attributions, legal notices or proprietary designations or labels</li>
-                        <li>Upload or transmit any unsolicited advertising, promotional materials, "junk mail," "spam," or other forms of solicitation</li>
+                        <li>Upload or transmit any unsolicited advertising, promotional materials, junk mail, spam, or other forms of solicitation</li>
                         <li>Violate any applicable local, state, national or international law</li>
                         <li>Upload or transmit any material that infringes any patent, trademark, copyright or other proprietary rights</li>
                         <li>Delete or revise any material posted by any other person or entity</li>
@@ -115,18 +115,18 @@ export default function TermsAndConditions() {
                     </ul>
                     
                     <p className="mb-4">
-                        We reserve the right to monitor the use of the Website and its Services and to take whatever lawful actions we may deem appropriate in response to actual or suspected violations, including suspension or termination of a user's access and/or account.
+                        We reserve the right to monitor the use of the Website and its Services and to take whatever lawful actions we may deem appropriate in response to actual or suspected violations, including suspension or termination of a user access and/or account.
                     </p>
                 </section>
 
                 <section className="mb-8">
                     <h2 className="text-2xl font-semibold mt-6 mb-3">5. Content Submission and User-Generated Content</h2>
                     <p className="mb-4">
-                        All information, data, text, software, music, sound, photographs, graphics, video, messages or other materials (collectively, "Content"), whether publicly or privately transmitted / posted, is the sole responsibility of the person from where such content is originated.
+                        All information, data, text, software, music, sound, photographs, graphics, video, messages or other materials (collectively, Content), whether publicly or privately transmitted / posted, is the sole responsibility of the person from where such content is originated.
                     </p>
                     
                     <p className="mb-4">
-                        By posting any material which contain images, photographs, pictures or that are otherwise graphical in whole or in part ("Images"), you warrant and represent that:
+                        By posting any material which contain images, photographs, pictures or that are otherwise graphical in whole or in part (Images), you warrant and represent that:
                     </p>
                     <ul className="list-disc pl-5 mb-4 space-y-2">
                         <li>You are the copyright owner of such Images, or that the copyright owner has granted you permission to use such Images</li>
@@ -187,7 +187,7 @@ export default function TermsAndConditions() {
                 <section className="mb-8">
                     <h2 className="text-2xl font-semibold mt-6 mb-3">10. Disclaimer of Warranties</h2>
                     <p className="mb-4">
-                        THE INFORMATION, SOFTWARE, CONTENT, AND MATERIALS AVAILABLE FROM OR PROVIDED ON THE WEBSITE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OR GUARANTEES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, TITLE, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+                        THE INFORMATION, SOFTWARE, CONTENT, AND MATERIALS AVAILABLE FROM OR PROVIDED ON THE WEBSITE IS PROVIDED ON AN AS IS AND AS AVAILABLE BASIS, WITHOUT WARRANTIES OR GUARANTEES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, TITLE, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
                     </p>
                     
                     <p className="mb-4">

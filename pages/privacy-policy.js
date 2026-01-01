@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
 
                 <section className="mb-8">
                     <p className="mb-4">
-                        We at Belly Buds ("Company", "we", "our", "us") respect your privacy and are committed to protecting your personal data. In this privacy policy, we explain how we collect, use, and process your personal information when you access our website or associated services ("Services"). Unless indicated otherwise, this privacy policy further applies to any related websites or other online properties owned or controlled by Company (together with the Websites and Apps, the "Platforms").
+                        We at Belly Buds (Company, we, our, us) respect your privacy and are committed to protecting your personal data. In this privacy policy, we explain how we collect, use, and process your personal information when you access our website or associated services ("Services"). Unless indicated otherwise, this privacy policy further applies to any related websites or other online properties owned or controlled by Company (together with the Websites and Apps, the Platforms).
                     </p>
                     
                     <p className="mb-4">
@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
                         We collect information using cookies and other similar technologies to help distinguish you from other users of our Platforms. When you visit our Platforms, we may collect:
                     </p>
                     <ul className="list-disc pl-5 mb-4 space-y-2">
-                        <li>Your IP address/ device's serial number or unique identification number and general location</li>
+                        <li>Your IP address/ device serial number or unique identification number and general location</li>
                         <li>A device identifier (cookie or IP address or Device ID)</li>
                         <li>Details of the hardware and software that you are using to access the Platforms</li>
                         <li>URL and time stamps</li>
@@ -102,7 +102,7 @@ export default function PrivacyPolicy() {
                         We use this information to deliver our web pages to you upon request, to tailor our Platform(s) to the interests of our users, to measure traffic within our Platform(s) to improve the quality, functionality and interactivity of our Platform(s).
                     </p>
                     <p className="mb-4">
-                        We use session replay technologies to help us identify user behavior, pain points, errors encountered on our Website and Services, and general product improvement opportunities. Session replay technology enables us to review and replay a user's actions on a website, such as scrolls, clicks, information entered, and other such data.
+                        We use session replay technologies to help us identify user behavior, pain points, errors encountered on our Website and Services, and general product improvement opportunities. Session replay technology enables us to review and replay a user actions on a website, such as scrolls, clicks, information entered, and other such data.
                     </p>
                 </section>
 
@@ -182,7 +182,7 @@ export default function PrivacyPolicy() {
                         We take commercially reasonable technical, physical, and organizational steps to safeguard any information you provide to us, to protect it from unauthorized access, loss, misuse, or alteration.
                     </p>
                     <p className="mb-4">
-                        We try to ensure that all information you provide to us is transferred securely via the website (always check for the padlock symbol in your browser, and "https" in the URL, to ensure that your connection is secure).
+                        We try to ensure that all information you provide to us is transferred securely via the website (always check for the padlock symbol in your browser, and https in the URL, to ensure that your connection is secure).
                     </p>
                     <p className="mb-4">
                         All information you provide to us is stored on secure servers. Where we have given you (or where you have chosen) a password which enables you to access certain parts of our website, you are responsible for keeping this password confidential. We ask you not to share a password with anyone.
@@ -218,23 +218,23 @@ export default function PrivacyPolicy() {
                         <li>The right to know what personal information we have collected about you</li>
                         <li>The right to delete personal information we have collected from you</li>
                         <li>The right to correct inaccurate personal information</li>
-                        <li>The right to opt-out of the "sale" or "sharing" of your personal information</li>
+                        <li>The right to opt-out of the sale or sharing of your personal information</li>
                         <li>The right to non-discrimination for exercising your CCPA rights</li>
                     </ul>
                     
                     <h3 className="text-xl font-medium mt-4 mb-2">9.2 Notice of Right to Opt-out</h3>
                     <p className="mb-4">
-                        We may allow certain third parties (such as online advertising services) to collect your personal information via automated technologies. Under certain U.S. state privacy laws, this may constitute a "sale" or "share" of personal information or "targeted advertising". To opt out of this data sharing, please click on the "Do Not Sell or Share My Personal Information" link in our website footer or contact us directly.
+                        We may allow certain third parties (such as online advertising services) to collect your personal information via automated technologies. Under certain U.S. state privacy laws, this may constitute a sale or share of personal information or targeted advertising. To opt out of this data sharing, please click on the Do Not Sell or Share My Personal Information link in our website footer or contact us directly.
                     </p>
                 </section>
 
                 <section className="mb-8">
-                    <h2 className="text-2xl font-semibold mt-6 mb-3">10. Children's Privacy</h2>
+                    <h2 className="text-2xl font-semibold mt-6 mb-3">10. Children Privacy</h2>
                     <p className="mb-4">
                         You must have attained the age of majority to be able to use and access our Services. If you are a minor in your jurisdiction, your registration and use of our Services must be with the supervision of an adult.
                     </p>
                     <p className="mb-4">
-                        As a parent or legal guardian, please do not allow your minors under your care to submit Personal Information to us. In the event that such Personal Information of a minor is disclosed to us, you hereby consent to the processing of the minor's Personal Information and accept and agree to be bound by this Privacy Policy and take responsibility for his or her actions.
+                        As a parent or legal guardian, please do not allow your minors under your care to submit Personal Information to us. In the event that such Personal Information of a minor is disclosed to us, you hereby consent to the processing of the minor Personal Information and accept and agree to be bound by this Privacy Policy and take responsibility for his or her actions.
                     </p>
                 </section>
 
@@ -248,7 +248,7 @@ export default function PrivacyPolicy() {
                 <section className="mb-8">
                     <h2 className="text-2xl font-semibold mt-6 mb-3">12. Changes to This Policy</h2>
                     <p className="mb-4">
-                        We may update our Privacy Policy from time to time. If we make material changes to how we treat our users' personal information, we will notify you by e-mail to the primary e-mail address specified in your account or through an in-website alert. The most recent version of the Privacy Policy is reflected by the effective date located at the top of this policy.
+                        We may update our Privacy Policy from time to time. If we make material changes to how we treat our users personal information, we will notify you by e-mail to the primary e-mail address specified in your account or through an in-website alert. The most recent version of the Privacy Policy is reflected by the effective date located at the top of this policy.
                     </p>
                 </section>
 
