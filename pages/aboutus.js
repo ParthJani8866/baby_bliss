@@ -97,7 +97,7 @@ export default function AboutUs() {
                         make family life brighter.
                     </p>
                     <Link
-                        href="#"
+                        href="/contactus"
                         className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium px-6 py-3 rounded-full shadow-md transition"
                     >
                         Contact Us
