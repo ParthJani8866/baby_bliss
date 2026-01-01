@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
 
                 <section className="mb-8">
                     <p className="mb-4">
-                        We at Belly Buds (Company, we, our, us) respect your privacy and are committed to protecting your personal data. In this privacy policy, we explain how we collect, use, and process your personal information when you access our website or associated services ("Services"). Unless indicated otherwise, this privacy policy further applies to any related websites or other online properties owned or controlled by Company (together with the Websites and Apps, the Platforms).
+                        We at Belly Buds (Company, we, our, us) respect your privacy and are committed to protecting your personal data. In this privacy policy, we explain how we collect, use, and process your personal information when you access our website or associated services (Services). Unless indicated otherwise, this privacy policy further applies to any related websites or other online properties owned or controlled by Company (together with the Websites and Apps, the Platforms).
                     </p>
                     
                     <p className="mb-4">
