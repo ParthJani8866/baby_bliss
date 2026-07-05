@@ -1,4 +1,4 @@
-import dbConnect from "../../ui/libs/mongodb";
+import dbConnect from "../../lib/mongodb";
 import Purchase from "../../ui/models/purchase"; // Mongo model for purchases
 
 export default async function handler(req, res) {

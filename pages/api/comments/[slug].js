@@ -1,5 +1,5 @@
 // pages/api/comments/[slug].js
-import clientPromise from "../../../ui/libs/mongodb";
+import clientPromise from "../../../lib/mongodb";
 
 export default async function handler(req, res) {
   const { slug } = req.query;

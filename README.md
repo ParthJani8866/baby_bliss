@@ -1,6 +1,6 @@
 🧸 Baby Toys Shop
 
-Welcome to baby-toys.shop
+Welcome to https://baby-toys.shop
  — your trusted online destination for safe, fun, and educational baby toys.
 Whether you are preparing for pregnancy, navigating the early stages of parenting, or celebrating the joys of motherhood, our shop is designed to support families with toys that spark curiosity, encourage growth, and make playtime magical.
 
